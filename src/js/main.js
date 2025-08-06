@@ -6,8 +6,6 @@ document.addEventListener('DOMContentLoaded', function() {
         currentSlide: 0,
         slides: document.querySelectorAll('.carousel-slide'),
         dots: document.querySelectorAll('.carousel-dot'),
-        prevBtn: document.querySelector('.carousel-prev'),
-        nextBtn: document.querySelector('.carousel-next'),
         
         init() {
             if (this.slides.length === 0) return;
@@ -17,17 +15,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 this.nextSlide();
             }, 3000);
             
-            // Event listeners
-            this.prevBtn?.addEventListener('click', () => {
-                this.prevSlide();
-                this.resetAutoRotate();
-            });
-            
-            this.nextBtn?.addEventListener('click', () => {
-                this.nextSlide();
-                this.resetAutoRotate();
-            });
-            
+            // Event listeners for dots only
             this.dots.forEach((dot, index) => {
                 dot.addEventListener('click', () => {
                     this.goToSlide(index);
