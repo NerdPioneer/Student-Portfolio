@@ -60,11 +60,11 @@
         *{scroll-behavior:smooth}
         .loading-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:#000000;display:flex;align-items:center;justify-content:center;z-index:10000;transition:opacity 0.5s ease}
         .loading-hidden{opacity:0;pointer-events:none}
-        .hero{min-height:100vh;display:flex;align-items:center;background:#FFFFFF;padding-top:80px;padding-bottom:40px}
+        .hero{min-height:100vh;display:flex;align-items:center;background:#FFFFFF;padding-top:80px}
         .container{max-width:1200px;margin:0 auto;padding:0 2rem}
         @media (max-width:768px){
             .container{padding:0 1rem}
-            .hero{padding-top:100px;padding-bottom:60px;min-height:auto}
+            .hero{padding-top:100px}
         }
         
         /* Glitch Effect */
@@ -209,28 +209,163 @@
     
     <main id="main-content">
     <!-- Hero Section -->
-    <section id="home" class="hero min-h-screen flex items-center relative pt-20 pb-10 bg-gray-50" role="banner">
+    <section id="home" class="hero h-screen flex items-center relative pt-20 bg-gray-50 overflow-hidden" role="banner">
+        <!-- Floating Technology Icons Background -->
+        <div class="floating-icons absolute inset-0 z-0 pointer-events-none">
+            <!-- AWS -->
+            <div class="floating-icon absolute text-gray-400 opacity-20" style="top: 15%; left: 10%; animation-delay: 0s;">
+                <i class="fab fa-aws text-2xl"></i>
+            </div>
+            <!-- Microsoft Azure -->
+            <div class="floating-icon absolute text-gray-400 opacity-20" style="top: 25%; right: 15%; animation-delay: 2s;">
+                <i class="fab fa-microsoft text-xl"></i>
+            </div>
+            <!-- Docker -->
+            <div class="floating-icon absolute text-gray-400 opacity-20" style="top: 40%; left: 5%; animation-delay: 4s;">
+                <i class="fab fa-docker text-xl"></i>
+            </div>
+            <!-- Kubernetes (using server icon as alternative) -->
+            <div class="floating-icon absolute text-gray-400 opacity-20" style="top: 60%; right: 20%; animation-delay: 1s;">
+                <i class="fas fa-server text-lg"></i>
+            </div>
+            <!-- Red Hat / Ansible -->
+            <div class="floating-icon absolute text-gray-400 opacity-20" style="top: 35%; right: 8%; animation-delay: 3s;">
+                <i class="fab fa-redhat text-xl"></i>
+            </div>
+            <!-- Google Cloud Platform -->
+            <div class="floating-icon absolute text-gray-400 opacity-20" style="top: 70%; left: 15%; animation-delay: 5s;">
+                <i class="fab fa-google text-xl"></i>
+            </div>
+            <!-- Cloud Icons -->
+            <div class="floating-icon absolute text-gray-400 opacity-15" style="top: 20%; left: 60%; animation-delay: 1.5s;">
+                <i class="fas fa-cloud text-lg"></i>
+            </div>
+            <div class="floating-icon absolute text-gray-400 opacity-15" style="top: 50%; left: 70%; animation-delay: 4.5s;">
+                <i class="fas fa-cloud text-xl"></i>
+            </div>
+            <div class="floating-icon absolute text-gray-400 opacity-15" style="top: 80%; right: 25%; animation-delay: 2.5s;">
+                <i class="fas fa-cloud text-lg"></i>
+            </div>
+            <!-- Additional Tech Icons -->
+            <div class="floating-icon absolute text-gray-400 opacity-18" style="top: 10%; right: 35%; animation-delay: 6s;">
+                <i class="fas fa-cog text-xl"></i>
+            </div>
+            <div class="floating-icon absolute text-gray-400 opacity-18" style="top: 85%; left: 8%; animation-delay: 3.5s;">
+                <i class="fas fa-network-wired text-xl"></i>
+            </div>
+            <div class="floating-icon absolute text-gray-400 opacity-18" style="top: 45%; left: 25%; animation-delay: 5.5s;">
+                <i class="fas fa-database text-lg"></i>
+            </div>
+            <!-- Additional rotating icons for variety -->
+            <div class="floating-icon absolute text-gray-400 opacity-18" style="top: 55%; right: 5%; animation-delay: 7s;">
+                <i class="fab fa-linux text-xl"></i>
+            </div>
+            <div class="floating-icon absolute text-gray-400 opacity-18" style="top: 30%; left: 40%; animation-delay: 8s;">
+                <i class="fas fa-shield-alt text-lg"></i>
+            </div>
+            <div class="floating-icon absolute text-gray-400 opacity-18" style="top: 75%; right: 40%; animation-delay: 9s;">
+                <i class="fas fa-code text-xl"></i>
+            </div>
+            
+            <!-- Additional Layer of Icons for More Visibility -->
+            <!-- Jenkins/CI-CD -->
+            <div class="floating-icon absolute text-gray-400 opacity-16" style="top: 12%; left: 30%; animation-delay: 10s;">
+                <i class="fas fa-cogs text-lg"></i>
+            </div>
+            <!-- Terraform/IaC -->
+            <div class="floating-icon absolute text-gray-400 opacity-16" style="top: 28%; left: 75%; animation-delay: 11s;">
+                <i class="fas fa-cube text-lg"></i>
+            </div>
+            <!-- Python -->
+            <div class="floating-icon absolute text-gray-400 opacity-16" style="top: 42%; right: 35%; animation-delay: 12s;">
+                <i class="fab fa-python text-xl"></i>
+            </div>
+            <!-- Git -->
+            <div class="floating-icon absolute text-gray-400 opacity-16" style="top: 58%; left: 35%; animation-delay: 13s;">
+                <i class="fab fa-git-alt text-lg"></i>
+            </div>
+            <!-- Terminal/CLI -->
+            <div class="floating-icon absolute text-gray-400 opacity-16" style="top: 68%; right: 45%; animation-delay: 14s;">
+                <i class="fas fa-terminal text-lg"></i>
+            </div>
+            <!-- More Cloud Icons -->
+            <div class="floating-icon absolute text-gray-400 opacity-14" style="top: 18%; left: 80%; animation-delay: 15s;">
+                <i class="fas fa-cloud text-lg"></i>
+            </div>
+            <div class="floating-icon absolute text-gray-400 opacity-14" style="top: 38%; left: 15%; animation-delay: 16s;">
+                <i class="fas fa-cloud text-xl"></i>
+            </div>
+            <div class="floating-icon absolute text-gray-400 opacity-14" style="top: 62%; left: 65%; animation-delay: 17s;">
+                <i class="fas fa-cloud text-lg"></i>
+            </div>
+            <div class="floating-icon absolute text-gray-400 opacity-14" style="top: 78%; left: 45%; animation-delay: 18s;">
+                <i class="fas fa-cloud text-xl"></i>
+            </div>
+            <!-- Security Icons -->
+            <div class="floating-icon absolute text-gray-400 opacity-16" style="top: 22%; right: 55%; animation-delay: 19s;">
+                <i class="fas fa-lock text-lg"></i>
+            </div>
+            <div class="floating-icon absolute text-gray-400 opacity-16" style="top: 48%; left: 55%; animation-delay: 20s;">
+                <i class="fas fa-key text-lg"></i>
+            </div>
+            <div class="floating-icon absolute text-gray-400 opacity-16" style="top: 72%; left: 25%; animation-delay: 21s;">
+                <i class="fas fa-user-shield text-lg"></i>
+            </div>
+            <!-- API/Web Icons -->
+            <div class="floating-icon absolute text-gray-400 opacity-16" style="top: 33%; left: 85%; animation-delay: 22s;">
+                <i class="fas fa-globe text-lg"></i>
+            </div>
+            <div class="floating-icon absolute text-gray-400 opacity-16" style="top: 52%; right: 12%; animation-delay: 23s;">
+                <i class="fas fa-wifi text-lg"></i>
+            </div>
+            <div class="floating-icon absolute text-gray-400 opacity-16" style="top: 88%; right: 15%; animation-delay: 24s;">
+                <i class="fas fa-link text-lg"></i>
+            </div>
+            <!-- DevOps Tools -->
+            <div class="floating-icon absolute text-gray-400 opacity-16" style="top: 8%; left: 55%; animation-delay: 25s;">
+                <i class="fas fa-rocket text-lg"></i>
+            </div>
+            <div class="floating-icon absolute text-gray-400 opacity-16" style="top: 65%; right: 65%; animation-delay: 26s;">
+                <i class="fas fa-tools text-lg"></i>
+            </div>
+            <div class="floating-icon absolute text-gray-400 opacity-16" style="top: 82%; left: 75%; animation-delay: 27s;">
+                <i class="fas fa-chart-line text-lg"></i>
+            </div>
+        </div>
+
         <!-- Hero Content -->
-        <div class="container mx-auto px-6">
-            <!-- Mobile-First Layout -->
-            <div class="flex flex-col items-center text-center lg:grid lg:grid-cols-2 lg:gap-12 lg:items-center lg:text-left">
-                
-                <!-- Hero Title (Always First) -->
-                <div class="lg:order-1 w-full lg:w-auto">
-                    <h1 class="hero-title text-4xl md:text-6xl font-bold text-gray-900 leading-tight mb-6 glitch-effect" data-text="NAVIGATE THE DIGITAL LANDSCAPE WITH CONFIDENCE">
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <!-- LEFT SIDE: Content -->
+                <div class="hero-left order-2 lg:order-1">
+                    <h1 class="hero-title text-3xl md:text-5xl font-bold text-gray-900 leading-tight mb-6 glitch-effect" data-text="NAVIGATE THE DIGITAL LANDSCAPE WITH CONFIDENCE">
                         NAVIGATE THE DIGITAL LANDSCAPE WITH CONFIDENCE
                     </h1>
                     <h2 class="hero-subtitle text-lg md:text-xl text-black mb-8 font-medium font-montserrat uppercase tracking-wider" id="typewriter-title">
                         EZEKIEL OBEISUN JR. - CLOUD COMPUTING GRADUATE
                     </h2>
+                    <div class="hero-description space-y-6 text-lg text-gray-700 bg-white p-6 rounded-lg shadow-lg">
+                        <p class="hero-mission">
+                            I'm a results-driven, mission-focused Cloud Computing graduate with 4+ years of experience in cybersecurity and IT operations. I began my career as a Security Analyst, where I built a strong foundation in Linux administration, incident response, and Python scripting — skills I continued to sharpen through hands-on experience and academic training.
+                        </p>
+                        <p class="hero-mission">
+                            Over the years, I've shifted my focus toward cloud security and infrastructure. I've worked with tools like AWS and Azure, and gained experience navigating high-compliance environments. Right now, I'm sharpening my skills in network engineering and cloud architecture, with the Cisco CCNA as my next milestone.
+                        </p>
+                        <p class="hero-mission">
+                            My mindset is simple: consistent growth over time. I treat every project, lab, and challenge as a chance to improve. Whether I'm writing code, studying for certs, or building systems, I bring the same mindset — show up, improve, and keep moving forward.
+                        </p>
+                        <p class="hero-mission text-center">
+                            <em id="atomic-habits-quote" class="text-black font-normal font-montserrat">1% Better Everyday - Atomic Habits by James Clear</em>
+                        </p>
+                    </div>
                 </div>
                 
-                <!-- Hero Image (Second on Mobile, Second on Desktop) -->
-                <div class="lg:order-2 mb-8 lg:mb-0">
+                <!-- RIGHT SIDE: Hero Image -->
+                <div class="hero-right order-1 lg:order-2">
                     <div class="hero-image-container flex flex-col items-center">
-                        <div class="profile-carousel relative">
+                        <div class="profile-carousel relative mb-6">
                             <!-- Profile Image Carousel -->
-                            <div class="carousel-container w-72 h-72 sm:w-80 sm:h-80 lg:w-[450px] lg:h-[450px] xl:w-[500px] xl:h-[500px] relative overflow-hidden rounded-2xl shadow-2xl border-4 border-white/50">
+                            <div class="carousel-container w-80 h-80 md:w-[500px] md:h-[500px] relative overflow-hidden rounded-2xl shadow-2xl border-4 border-white/50">
                                 <!-- Profile Images -->
                                 <div class="carousel-slides relative w-full h-full">
                                     <div class="carousel-slide active absolute inset-0 w-full h-full">
@@ -259,37 +394,18 @@
                                     <button class="carousel-dot w-3 h-3 rounded-full bg-white/60 hover:bg-white transition-all duration-300" data-slide="3" aria-label="View profile photo 4"></button>
                                 </div>
                             </div>
+                            
+                            <!-- Hero Buttons -->
+                            <div class="hero-buttons flex flex-col sm:flex-row gap-4 mt-6 justify-center items-center">
+                                <a href="#projects" class="bg-black text-white px-8 py-4 rounded-lg font-medium hover:bg-gray-800 transition duration-300 text-center shadow-lg font-montserrat uppercase tracking-wider">
+                                    View My Projects
+                                </a>
+                                <a href="#contact" class="bg-black text-white px-8 py-4 rounded-lg font-medium hover:bg-gray-800 transition duration-300 text-center shadow-lg font-montserrat uppercase tracking-wider">
+                                    Get In Touch
+                                </a>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                
-                <!-- Hero Buttons (Third on Mobile, moves with image section on desktop) -->
-                <div class="lg:col-span-2 lg:order-3 mb-8 lg:mb-0 lg:text-center">
-                    <div class="hero-buttons flex flex-col sm:flex-row gap-4 justify-center items-center max-w-md mx-auto">
-                        <a href="#projects" class="w-full sm:w-auto bg-black text-white px-8 py-4 rounded-lg font-medium hover:bg-gray-800 transition duration-300 text-center shadow-lg font-montserrat uppercase tracking-wider">
-                            View My Projects
-                        </a>
-                        <a href="#contact" class="w-full sm:w-auto bg-black text-white px-8 py-4 rounded-lg font-medium hover:bg-gray-800 transition duration-300 text-center shadow-lg font-montserrat uppercase tracking-wider">
-                            Get In Touch
-                        </a>
-                    </div>
-                </div>
-                
-                <!-- Hero Description (Last on Mobile, spans both columns on desktop) -->
-                <div class="lg:col-span-2 lg:order-4 max-w-4xl mx-auto">
-                    <div class="hero-description space-y-6 text-lg text-gray-700 bg-white p-6 rounded-lg shadow-lg">
-                        <p class="hero-mission">
-                            I'm a results-driven, mission-focused Cloud Computing graduate with 4+ years of experience in cybersecurity and IT operations. I began my career as a Security Analyst, where I built a strong foundation in Linux administration, incident response, and Python scripting — skills I continued to sharpen through hands-on experience and academic training.
-                        </p>
-                        <p class="hero-mission">
-                            Over the years, I've shifted my focus toward cloud security and infrastructure. I've worked with tools like AWS and Azure, and gained experience navigating high-compliance environments. Right now, I'm sharpening my skills in network engineering and cloud architecture, with the Cisco CCNA as my next milestone.
-                        </p>
-                        <p class="hero-mission">
-                            My mindset is simple: consistent growth over time. I treat every project, lab, and challenge as a chance to improve. Whether I'm writing code, studying for certs, or building systems, I bring the same mindset — show up, improve, and keep moving forward.
-                        </p>
-                        <p class="hero-mission text-center">
-                            <em id="atomic-habits-quote" class="text-black font-normal font-montserrat">1% Better Everyday - Atomic Habits by James Clear</em>
-                        </p>
+
                     </div>
                 </div>
             </div>

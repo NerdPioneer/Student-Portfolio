@@ -4,34 +4,85 @@ document.addEventListener('DOMContentLoaded', function() {
     // Profile Image Carousel Functionality
     const carousel = {
         currentSlide: 0,
-        slides: document.querySelectorAll('.carousel-slide'),
-        dots: document.querySelectorAll('.carousel-dot'),
+        slides: null,
+        dots: null,
+        autoRotate: null,
+        isInitialized: false,
         
         init() {
-            if (this.slides.length === 0) return;
+            // Re-query elements to ensure they exist
+            this.slides = document.querySelectorAll('.carousel-slide');
+            this.dots = document.querySelectorAll('.carousel-dot');
             
-            // Auto-rotate every 3 seconds
-            this.autoRotate = setInterval(() => {
-                this.nextSlide();
-            }, 3000);
+            console.log('Carousel initialization:', {
+                slides: this.slides.length,
+                dots: this.dots.length
+            });
             
-            // Event listeners for dots only
+            if (this.slides.length === 0) {
+                console.warn('No carousel slides found');
+                return;
+            }
+            
+            if (this.isInitialized) {
+                this.stop();
+            }
+            
+            // Set initial slide
+            this.currentSlide = 0;
+            this.updateSlides();
+            
+            // Start auto-rotation every 3 seconds
+            this.start();
+            
+            // Event listeners for dots
             this.dots.forEach((dot, index) => {
                 dot.addEventListener('click', () => {
+                    console.log(`Dot ${index} clicked`);
                     this.goToSlide(index);
                     this.resetAutoRotate();
                 });
             });
             
-            // Pause on hover
+            // Pause on hover (optional - you can remove this if you want continuous rotation)
             const carouselContainer = document.querySelector('.carousel-container');
-            carouselContainer?.addEventListener('mouseenter', () => {
-                clearInterval(this.autoRotate);
-            });
+            if (carouselContainer) {
+                carouselContainer.addEventListener('mouseenter', () => {
+                    console.log('Carousel hover - pausing');
+                    this.pause();
+                });
+                
+                carouselContainer.addEventListener('mouseleave', () => {
+                    console.log('Carousel leave - resuming');
+                    this.resume();
+                });
+            }
             
-            carouselContainer?.addEventListener('mouseleave', () => {
-                this.resetAutoRotate();
-            });
+            this.isInitialized = true;
+            console.log('Carousel initialized successfully with auto-rotation');
+        },
+        
+        start() {
+            this.stop(); // Clear any existing interval
+            this.autoRotate = setInterval(() => {
+                this.nextSlide();
+                console.log(`Auto-rotated to slide ${this.currentSlide}`);
+            }, 3000);
+        },
+        
+        stop() {
+            if (this.autoRotate) {
+                clearInterval(this.autoRotate);
+                this.autoRotate = null;
+            }
+        },
+        
+        pause() {
+            this.stop();
+        },
+        
+        resume() {
+            this.start();
         },
         
         nextSlide() {
@@ -50,27 +101,44 @@ document.addEventListener('DOMContentLoaded', function() {
         },
         
         updateSlides() {
+            if (!this.slides || !this.dots) return;
+            
             this.slides.forEach((slide, index) => {
-                slide.classList.toggle('active', index === this.currentSlide);
-                slide.style.opacity = index === this.currentSlide ? '1' : '0';
+                const isActive = index === this.currentSlide;
+                slide.classList.toggle('active', isActive);
+                slide.style.opacity = isActive ? '1' : '0';
+                slide.style.zIndex = isActive ? '2' : '1';
             });
             
             this.dots.forEach((dot, index) => {
-                dot.classList.toggle('active', index === this.currentSlide);
-                dot.style.backgroundColor = index === this.currentSlide ? 'white' : 'rgba(255, 255, 255, 0.6)';
+                const isActive = index === this.currentSlide;
+                dot.classList.toggle('active', isActive);
+                dot.style.backgroundColor = isActive ? 'white' : 'rgba(255, 255, 255, 0.6)';
+                dot.style.transform = isActive ? 'scale(1.2)' : 'scale(1)';
             });
         },
         
         resetAutoRotate() {
-            clearInterval(this.autoRotate);
-            this.autoRotate = setInterval(() => {
-                this.nextSlide();
-            }, 3000);
+            this.start();
         }
     };
     
-    // Initialize carousel
+    // Initialize carousel - with fallback for delayed loading
     carousel.init();
+    
+    // Fallback initialization in case elements load later
+    setTimeout(() => {
+        if (!carousel.isInitialized || document.querySelectorAll('.carousel-slide').length > 0) {
+            console.log('Fallback carousel initialization');
+            carousel.init();
+        }
+    }, 1000);
+    
+    // Additional initialization when images are loaded
+    window.addEventListener('load', () => {
+        console.log('Window loaded - reinitializing carousel');
+        carousel.init();
+    });
     
     // Typewriter effect for hero subtitle
     const typewriterElement = document.getElementById('typewriter-title');
