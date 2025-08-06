@@ -146,18 +146,20 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log('Mobile nav elements found:', { navToggle, navMenu, hamburgerLines: hamburgerLines.length });
     
     if (navToggle && navMenu) {
+        let isMenuOpen = false;
+        
         navToggle.addEventListener('click', function(e) {
             e.preventDefault();
             e.stopPropagation();
             
-            const isOpen = !navMenu.classList.contains('hidden');
+            console.log('Mobile menu toggle clicked, currently open:', isMenuOpen);
             
-            console.log('Mobile menu toggle clicked, currently open:', isOpen);
-            
-            if (isOpen) {
+            if (isMenuOpen) {
                 // Close menu
-                navMenu.classList.add('hidden');
+                navMenu.style.maxHeight = '0';
                 navToggle.setAttribute('aria-expanded', 'false');
+                isMenuOpen = false;
+                
                 // Reset hamburger lines
                 hamburgerLines.forEach((line) => {
                     line.style.transform = '';
@@ -166,8 +168,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 console.log('Mobile menu closed');
             } else {
                 // Open menu
-                navMenu.classList.remove('hidden');
+                navMenu.style.maxHeight = navMenu.scrollHeight + 'px';
                 navToggle.setAttribute('aria-expanded', 'true');
+                isMenuOpen = true;
+                
                 // Animate hamburger to X
                 if (hamburgerLines.length >= 3) {
                     hamburgerLines[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
@@ -181,6 +185,20 @@ document.addEventListener('DOMContentLoaded', function() {
         // Add touch event for better mobile responsiveness
         navToggle.addEventListener('touchstart', function(e) {
             e.preventDefault();
+        });
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', function(e) {
+            if (isMenuOpen && !navToggle.contains(e.target) && !navMenu.contains(e.target)) {
+                navMenu.style.maxHeight = '0';
+                navToggle.setAttribute('aria-expanded', 'false');
+                isMenuOpen = false;
+                
+                hamburgerLines.forEach((line) => {
+                    line.style.transform = '';
+                    line.style.opacity = '';
+                });
+            }
         });
         
     } else {
@@ -208,9 +226,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
                 
                 // Close mobile menu if open
-                if (navMenu && !navMenu.classList.contains('hidden')) {
+                if (navMenu && navMenu.style.maxHeight !== '0px' && navMenu.style.maxHeight !== '') {
                     console.log('Closing mobile menu after link click');
-                    navMenu.classList.add('hidden');
+                    navMenu.style.maxHeight = '0';
                     navToggle?.setAttribute('aria-expanded', 'false');
                     hamburgerLines.forEach((line) => {
                         line.style.transform = '';
@@ -280,38 +298,26 @@ document.addEventListener('DOMContentLoaded', function() {
         sectionObserver.observe(section);
     });
     
-    // Loading overlay
+    // Loading overlay - Remove immediately
     const loadingOverlay = document.getElementById('loading-overlay');
     if (loadingOverlay) {
-        setTimeout(() => {
-            loadingOverlay.classList.add('loading-hidden');
-        }, 1000);
-    }
-    
-    // Make the first section visible immediately
-    const firstSection = document.querySelector('.section');
-    if (firstSection) {
-        firstSection.classList.add('visible');
+        loadingOverlay.classList.add('loading-hidden');
     }
 
-    // Add scroll animations and section visibility
+    // Add scroll animations for cards and elements
     const animateOnScroll = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('animate-fade-in');
-                // Add visible class to sections
-                if (entry.target.classList.contains('section')) {
-                    entry.target.classList.add('visible');
-                }
             }
         });
     }, {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
+        threshold: 0.05,
+        rootMargin: '0px 0px -20px 0px'
     });
 
-    // Observe cards and sections for animations
-    document.querySelectorAll('.project-card, .education-card, .skill-item, .learning-item, .section').forEach(el => {
+    // Observe cards for animations (removed section visibility management)
+    document.querySelectorAll('.project-card, .education-card, .skill-item, .learning-item').forEach(el => {
         animateOnScroll.observe(el);
     });
     
@@ -369,8 +375,8 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Add keyboard navigation support
     document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && navMenu && !navMenu.classList.contains('hidden')) {
-            navMenu.classList.add('hidden');
+        if (e.key === 'Escape' && navMenu && navMenu.style.maxHeight !== '0px' && navMenu.style.maxHeight !== '') {
+            navMenu.style.maxHeight = '0';
             navToggle?.setAttribute('aria-expanded', 'false');
             hamburgerLines.forEach((line) => {
                 line.style.transform = '';
