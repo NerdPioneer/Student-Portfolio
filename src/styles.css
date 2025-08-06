@@ -502,3 +502,21 @@
     }
   }
 }
+
+/* Course Cards Styling */
+.course-card {
+  @apply transition-all duration-300 hover:transform hover:scale-105;
+}
+
+.course-card:hover {
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.highlighted-courses-section {
+  @apply relative;
+}
+
+.highlighted-courses-section::before {
+  content: '';
+  @apply absolute top-0 left-1/2 transform -translate-x-1/2 w-20 h-1 bg-primary-600;
+}

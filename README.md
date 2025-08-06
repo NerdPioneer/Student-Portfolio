@@ -157,9 +157,6 @@ const projects = [
 4. Test thoroughly
 5. Submit a pull request
 
-## 📄 License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
 
 ## 📞 Support
 
@@ -167,4 +164,6 @@ If you have any questions or need help customizing your portfolio, feel free to 
 
 ---
 
-**Happy coding! 🚀**
+**1% Better Everyday**
+
+If necessary i could explain what each framework does not but i feel like this will be enough. 
