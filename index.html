@@ -60,11 +60,14 @@
         *{scroll-behavior:smooth}
         .loading-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:#000000;display:flex;align-items:center;justify-content:center;z-index:10000;transition:opacity 0.5s ease}
         .loading-hidden{opacity:0;pointer-events:none}
-        .hero{min-height:100vh;display:flex;align-items:center;background:#FFFFFF;padding-top:80px}
-        .container{max-width:1200px;margin:0 auto;padding:0 2rem}
-        @media (max-width:768px){
-            .container{padding:0 1rem}
-            .hero{padding-top:100px}
+        .hero{min-height:100vh;display:flex;align-items:center;background:#FFFFFF;padding-top:5rem}
+        .container{max-width:1200px;margin:0 auto;padding:0 1rem}
+        @media (min-width:768px){
+            .container{padding:0 2rem}
+            .hero{padding-top:6rem}
+        }
+        @media (min-width:1024px){
+            .hero{padding-top:7rem}
         }
         
         /* Glitch Effect */
@@ -122,12 +125,24 @@
         /* Responsive Grid Fixes */
         @media (max-width: 768px) {
             .hero-buttons {
-                flex-direction: column !important;
                 width: 100%;
             }
             .hero-buttons a {
                 width: 100%;
                 max-width: 280px;
+            }
+            .hero-title {
+                line-height: 1.1;
+            }
+            .hero-description {
+                font-size: 0.95rem;
+            }
+        }
+        
+        /* Better mobile spacing */
+        @media (max-width: 640px) {
+            .hero {
+                padding-top: 4.5rem;
             }
         }
         
@@ -209,7 +224,7 @@
     
     <main id="main-content">
     <!-- Hero Section -->
-    <section id="home" class="hero h-screen flex items-center relative pt-20 bg-gray-50 overflow-hidden" role="banner">
+    <section id="home" class="hero min-h-screen flex items-center relative pt-24 md:pt-28 lg:pt-32 bg-gray-50 overflow-hidden" role="banner">
         <!-- Floating Technology Icons Background -->
         <div class="floating-icons absolute inset-0 z-0 pointer-events-none">
             <!-- AWS -->
@@ -334,17 +349,17 @@
         </div>
 
         <!-- Hero Content -->
-        <div class="container mx-auto px-6 relative z-10">
-            <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div class="container mx-auto px-4 md:px-6 relative z-10">
+            <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
                 <!-- LEFT SIDE: Content -->
                 <div class="hero-left order-2 lg:order-1">
-                    <h1 class="hero-title text-3xl md:text-5xl font-bold text-gray-900 leading-tight mb-6 glitch-effect" data-text="NAVIGATE THE DIGITAL LANDSCAPE WITH CONFIDENCE">
+                    <h1 class="hero-title text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-gray-900 leading-tight mb-4 md:mb-6 glitch-effect" data-text="NAVIGATE THE DIGITAL LANDSCAPE WITH CONFIDENCE">
                         NAVIGATE THE DIGITAL LANDSCAPE WITH CONFIDENCE
                     </h1>
-                    <h2 class="hero-subtitle text-lg md:text-xl text-black mb-8 font-medium font-montserrat uppercase tracking-wider" id="typewriter-title">
+                    <h2 class="hero-subtitle text-base sm:text-lg md:text-xl text-black mb-6 md:mb-8 font-medium font-montserrat uppercase tracking-wider" id="typewriter-title">
                         EZEKIEL OBEISUN JR. - CLOUD COMPUTING GRADUATE
                     </h2>
-                    <div class="hero-description space-y-6 text-lg text-gray-700 bg-white p-6 rounded-lg shadow-lg">
+                    <div class="hero-description space-y-4 md:space-y-6 text-base md:text-lg text-gray-700 bg-white p-4 md:p-6 rounded-lg shadow-lg">
                         <p class="hero-mission">
                             I'm a results-driven, mission-focused Cloud Computing graduate with 4+ years of experience in cybersecurity and IT operations. I began my career as a Security Analyst, where I built a strong foundation in Linux administration, incident response, and Python scripting — skills I continued to sharpen through hands-on experience and academic training.
                         </p>
@@ -363,25 +378,25 @@
                 <!-- RIGHT SIDE: Hero Image -->
                 <div class="hero-right order-1 lg:order-2">
                     <div class="hero-image-container flex flex-col items-center">
-                        <div class="profile-carousel relative mb-6">
+                        <div class="profile-carousel relative mb-4 md:mb-6">
                             <!-- Profile Image Carousel -->
-                            <div class="carousel-container w-80 h-80 md:w-[500px] md:h-[500px] relative overflow-hidden rounded-2xl shadow-2xl border-4 border-white/50">
+                            <div class="carousel-container w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 lg:w-[400px] lg:h-[400px] xl:w-[500px] xl:h-[500px] relative overflow-hidden rounded-2xl shadow-2xl border-4 border-white/50">
                                 <!-- Profile Images -->
                                 <div class="carousel-slides relative w-full h-full">
                                     <div class="carousel-slide active absolute inset-0 w-full h-full">
-                                        <img src="./public/images/profile_1.jpg" alt="Ezekiel Obeisun Jr - Profile Photo 1" class="w-full h-full object-cover" loading="lazy">
+                                        <img src="./public/images/profile_1.jpg" alt="Ezekiel Obeisun Jr - Profile Photo 1" class="w-full h-full object-cover object-center" loading="lazy">
                                         <div class="absolute inset-0 bg-gradient-to-t from-primary-600/20 to-transparent"></div>
                                     </div>
                                     <div class="carousel-slide absolute inset-0 w-full h-full opacity-0">
-                                        <img src="./public/images/profile_2.jpg" alt="Ezekiel Obeisun Jr - Profile Photo 2" class="w-full h-full object-cover" loading="lazy">
+                                        <img src="./public/images/profile_2.jpg" alt="Ezekiel Obeisun Jr - Profile Photo 2" class="w-full h-full object-cover object-center" loading="lazy">
                                         <div class="absolute inset-0 bg-gradient-to-t from-primary-600/20 to-transparent"></div>
                                     </div>
                                     <div class="carousel-slide absolute inset-0 w-full h-full opacity-0">
-                                        <img src="./public/images/profile_3.jpg" alt="Ezekiel Obeisun Jr - Profile Photo 3" class="w-full h-full object-cover" loading="lazy">
+                                        <img src="./public/images/profile_3.jpg" alt="Ezekiel Obeisun Jr - Profile Photo 3" class="w-full h-full object-cover object-center" loading="lazy">
                                         <div class="absolute inset-0 bg-gradient-to-t from-primary-600/20 to-transparent"></div>
                                     </div>
                                     <div class="carousel-slide absolute inset-0 w-full h-full opacity-0">
-                                        <img src="./public/images/profile_4.jpg" alt="Ezekiel Obeisun Jr - Profile Photo 4" class="w-full h-full object-cover" loading="lazy">
+                                        <img src="./public/images/profile_4.jpg" alt="Ezekiel Obeisun Jr - Profile Photo 4" class="w-full h-full object-cover object-center" loading="lazy">
                                         <div class="absolute inset-0 bg-gradient-to-t from-primary-600/20 to-transparent"></div>
                                     </div>
                                 </div>
@@ -396,11 +411,11 @@
                             </div>
                             
                             <!-- Hero Buttons -->
-                            <div class="hero-buttons flex flex-col sm:flex-row gap-4 mt-6 justify-center items-center">
-                                <a href="#projects" class="bg-black text-white px-8 py-4 rounded-lg font-medium hover:bg-gray-800 transition duration-300 text-center shadow-lg font-montserrat uppercase tracking-wider">
+                            <div class="hero-buttons flex flex-col sm:flex-row gap-3 md:gap-4 mt-4 md:mt-6 justify-center items-center">
+                                <a href="#projects" class="bg-black text-white px-6 md:px-8 py-3 md:py-4 rounded-lg font-medium hover:bg-gray-800 transition duration-300 text-center shadow-lg font-montserrat uppercase tracking-wider text-sm md:text-base w-full sm:w-auto max-w-xs">
                                     View My Projects
                                 </a>
-                                <a href="#contact" class="bg-black text-white px-8 py-4 rounded-lg font-medium hover:bg-gray-800 transition duration-300 text-center shadow-lg font-montserrat uppercase tracking-wider">
+                                <a href="#contact" class="bg-black text-white px-6 md:px-8 py-3 md:py-4 rounded-lg font-medium hover:bg-gray-800 transition duration-300 text-center shadow-lg font-montserrat uppercase tracking-wider text-sm md:text-base w-full sm:w-auto max-w-xs">
                                     Get In Touch
                                 </a>
                             </div>
@@ -557,7 +572,7 @@
                     <span data-text="CREDENTIALS">CREDENTIALS</span>
                 </h2>
                 <p class="section-subtitle text-xl text-gray-600 mb-4 max-w-4xl mx-auto">
-                    Professional certifications demonstrate domain expertise, showcase commitment to excellence, and ensure cutting-edge knowledge to deliver exceptional results from day one.
+                    Certifications demonstrate not just technical capability, but a proactive mindset—ensuring that knowledge stays relevant, applicable, and aligned with evolving industry demands.
                 </p>
             </div>
             <div class="certifications-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
@@ -597,12 +612,21 @@
                     </div>
                 </div>
 
-                <!-- CompTIA Cloud+ -->
+                <!-- Microsoft SC-200 -->
                 <div class="certification-card bg-white rounded-xl shadow-lg hover:shadow-xl transition duration-300 p-6 border border-gray-100 h-full">
                     <div class="flex flex-col items-center justify-center h-full">
-                        <h3 class="text-lg font-bold text-gray-900 mb-2">CompTIA Cloud+</h3>
-                        <p class="text-sm text-gray-600 mb-3">Cloud Technologies</p>
-                        <span class="inline-block px-3 py-1 bg-green-100 text-green-800 rounded-full text-xs font-medium">CERTIFIED</span>
+                        <h3 class="text-lg font-bold text-gray-900 mb-2">Microsoft SC-200</h3>
+                        <p class="text-sm text-gray-600 mb-3">Security Operations Analyst</p>
+                        <span class="inline-block px-3 py-1 bg-purple-100 text-purple-800 rounded-full text-xs font-medium">CERTIFIED</span>
+                    </div>
+                </div>
+
+                <!-- Microsoft AZ-500 -->
+                <div class="certification-card bg-white rounded-xl shadow-lg hover:shadow-xl transition duration-300 p-6 border border-gray-100 h-full">
+                    <div class="flex flex-col items-center justify-center h-full">
+                        <h3 class="text-lg font-bold text-gray-900 mb-2">Microsoft AZ-500</h3>
+                        <p class="text-sm text-gray-600 mb-3">Azure Security Engineer</p>
+                        <span class="inline-block px-3 py-1 bg-purple-100 text-purple-800 rounded-full text-xs font-medium">CERTIFIED</span>
                     </div>
                 </div>
 
@@ -641,7 +665,7 @@
                     <p class="text-gray-600 mb-6">
                         Explore my complete professional certifications, endorsements, and career journey
                     </p>
-                    <a href="https://linkedin.com/in/ezekiel-obeisun-jr" target="_blank" rel="noopener noreferrer" 
+                    <a href="https://www.linkedin.com/in/nerdpioneer" target="_blank" rel="noopener noreferrer" 
                        class="inline-flex items-center bg-blue-600 text-white px-8 py-4 rounded-full font-medium hover:bg-blue-700 transition duration-300">
                         <svg class="w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 20 20">
                             <path fill-rule="evenodd" d="M16.338 16.338H13.67V12.16c0-.995-.017-2.277-1.387-2.277-1.39 0-1.601 1.086-1.601 2.207v4.248H8.014v-8.59h2.559v1.174h.037c.356-.675 1.227-1.387 2.526-1.387 2.703 0 3.203 1.778 3.203 4.092v4.711zM5.005 6.575a1.548 1.548 0 11-.003-3.096 1.548 1.548 0 01.003 3.096zm-1.337 9.763H6.34v-8.59H3.667v8.59zM17.668 1H2.328C1.595 1 1 1.581 1 2.298v15.403C1 18.418 1.595 19 2.328 19h15.34c.734 0 1.332-.582 1.332-1.299V2.298C19 1.581 18.402 1 17.668 1z" clip-rule="evenodd"/>
@@ -851,7 +875,7 @@
         </div>
     </footer>
 
-    <script type="text/babel" src="./src/js/main.js"></script>
+    <script src="./src/js/main.js"></script>
     
     <!-- Service Worker for advanced caching -->
     <script>
