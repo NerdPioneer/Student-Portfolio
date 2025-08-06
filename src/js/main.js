@@ -300,20 +300,30 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 1000);
     }
     
-    // Add scroll animations
+    // Make the first section visible immediately
+    const firstSection = document.querySelector('.section');
+    if (firstSection) {
+        firstSection.classList.add('visible');
+    }
+
+    // Add scroll animations and section visibility
     const animateOnScroll = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('animate-fade-in');
+                // Add visible class to sections
+                if (entry.target.classList.contains('section')) {
+                    entry.target.classList.add('visible');
+                }
             }
         });
     }, {
         threshold: 0.1,
         rootMargin: '0px 0px -50px 0px'
     });
-    
+
     // Observe cards and sections for animations
-    document.querySelectorAll('.project-card, .education-card, .skill-item, .learning-item').forEach(el => {
+    document.querySelectorAll('.project-card, .education-card, .skill-item, .learning-item, .section').forEach(el => {
         animateOnScroll.observe(el);
     });
     
