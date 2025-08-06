@@ -21,10 +21,10 @@
     <meta http-equiv="Content-Encoding" content="gzip, br">
     <meta http-equiv="Cache-Control" content="public, max-age=3600, must-revalidate">
     
-    <title>Student Portfolio — Computing Student | 1% Better Everyday</title>
-    <meta name="description" content="Student Portfolio - Computing Student driven by '1% Better Everyday' mindset. Showcasing projects, skills, and educational journey in technology and programming.">
-    <meta name="keywords" content="Student Portfolio, Computing Student, Web Development, Programming, Technology, Projects, Education, Skills">
-    <meta name="author" content="Student">
+    <title>Ezekiel Obeisun Jr Portfolio — Cloud Computing Graduate | NerdPioneer | 1PercentNerd</title>
+    <meta name="description" content="Ezekiel Obeisun Jr (NerdPioneer) - 1PercentNerd Cloud Computing Graduate with 4+ years cybersecurity experience. Results-driven professional specializing in cloud security, infrastructure, and network engineering.">
+    <meta name="keywords" content="Ezekiel Obeisun Jr, Ezekiel Obeisun, NerdPioneer, 1PercentNerd, Cloud Computing Graduate, Cybersecurity, Cloud Security, AWS, Azure, Network Engineering, Security Analyst, IT Operations, Linux Administration">
+    <meta name="author" content="Ezekiel Obeisun Jr">
     <meta name="robots" content="index, follow">
     
     <!-- Security Headers -->
@@ -37,8 +37,8 @@
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='brain-grad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%232563eb;stop-opacity:1' /%3E%3Cstop offset='100%25' style='stop-color:%23764ba2;stop-opacity:1' /%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M25 35c-5 0-9 4-9 9v12c0 5 4 9 9 9h6c2 3 5 5 9 5s7-2 9-5h6c5 0 9-4 9-9V44c0-5-4-9-9-9h-4c-1-6-6-10-12-10s-11 4-12 10h-2zm5 5h8c3 0 5 2 5 5v8c0 3-2 5-5 5h-8c-3 0-5-2-5-5v-8c0-3 2-5 5-5zm20 0h8c3 0 5 2 5 5v8c0 3-2 5-5 5h-8c-3 0-5-2-5-5v-8c0-3 2-5 5-5z' fill='url(%23brain-grad)'/%3E%3Ccircle cx='35' cy='47' r='2' fill='white' opacity='0.8'/%3E%3Ccircle cx='55' cy='47' r='2' fill='white' opacity='0.8'/%3E%3Cpath d='M30 30c2-8 8-15 16-15s14 7 16 15' stroke='url(%23brain-grad)' stroke-width='2' fill='none'/%3E%3C/svg%3E">
     
     <!-- Social Media Meta -->
-    <meta property="og:title" content="Student Portfolio — Computing Student">
-    <meta property="og:description" content="Student Portfolio - Computing Student driven by '1% Better Everyday' mindset. Showcasing projects, skills, and educational journey.">
+    <meta property="og:title" content="Ezekiel Obeisun Jr Portfolio — Cloud Computing Graduate | NerdPioneer">
+    <meta property="og:description" content="Ezekiel Obeisun Jr (NerdPioneer) - 1PercentNerd Cloud Computing Graduate with 4+ years cybersecurity experience. Results-driven professional specializing in cloud security and infrastructure.">
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary_large_image">
     
@@ -62,7 +62,75 @@
         .loading-hidden{opacity:0;pointer-events:none}
         .hero{min-height:100vh;display:flex;align-items:center;background:#FFFFFF;padding-top:80px}
         .container{max-width:1200px;margin:0 auto;padding:0 2rem}
-        @media (max-width:768px){.container{padding:0 1rem}.hero{padding-top:100px}}
+        @media (max-width:768px){
+            .container{padding:0 1rem}
+            .hero{padding-top:100px}
+        }
+        
+        /* Glitch Effect */
+        .glitch-effect {
+            position: relative;
+            animation: glitch 3s infinite;
+        }
+        .glitch-effect:before,
+        .glitch-effect:after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.8;
+        }
+        .glitch-effect:before {
+            animation: glitch-1 0.3s infinite;
+            color: #ff0000;
+            z-index: -1;
+        }
+        .glitch-effect:after {
+            animation: glitch-2 0.3s infinite;
+            color: #00ff00;
+            z-index: -2;
+        }
+        @keyframes glitch {
+            0%, 99% { transform: translate(0); }
+            1% { transform: translate(2px, -1px); }
+            2% { transform: translate(-1px, 2px); }
+            3% { transform: translate(0); }
+        }
+        @keyframes glitch-1 {
+            0%, 99% { transform: translate(0); }
+            1% { transform: translate(-2px, 1px); }
+            2% { transform: translate(2px, -1px); }
+            3% { transform: translate(0); }
+        }
+        @keyframes glitch-2 {
+            0%, 99% { transform: translate(0); }
+            1% { transform: translate(1px, -2px); }
+            2% { transform: translate(-1px, 2px); }
+            3% { transform: translate(0); }
+        }
+        
+        /* Carousel Auto-rotation */
+        .carousel-slide {
+            transition: opacity 0.8s ease-in-out;
+        }
+        .carousel-slide.active {
+            opacity: 1;
+        }
+        
+        /* Responsive Grid Fixes */
+        @media (max-width: 768px) {
+            .hero-buttons {
+                flex-direction: column !important;
+                width: 100%;
+            }
+            .hero-buttons a {
+                width: 100%;
+                max-width: 280px;
+            }
+        }
+        
         /* Browser-specific theme color fallbacks */
         @supports not (color: var(--primary-color)) {
             .bg-primary-600 { background-color: #2563eb !important; }
@@ -74,6 +142,10 @@
     <link rel="stylesheet" href="./dist/styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=Poppins:wght@300;400;500;600;700;800&family=Raleway:wght@300;400;500;600;700;900&family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    
+    <!-- Vanta.js dependencies -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.globe.min.js"></script>
     
     <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
@@ -104,6 +176,7 @@
                 <ul class="hidden md:flex space-x-8 nav-links">
                     <li><a href="#home" class="nav-link px-4 py-2 text-white hover:text-gray-300 transition duration-300 rounded-lg font-montserrat font-medium uppercase tracking-wider text-sm">Home</a></li>
                     <li><a href="#about" class="nav-link px-4 py-2 text-white hover:text-gray-300 transition duration-300 rounded-lg font-montserrat font-medium uppercase tracking-wider text-sm">Education</a></li>
+                    <li><a href="#certifications" class="nav-link px-4 py-2 text-white hover:text-gray-300 transition duration-300 rounded-lg font-montserrat font-medium uppercase tracking-wider text-sm">Certifications</a></li>
                     <li><a href="#projects" class="nav-link px-4 py-2 text-white hover:text-gray-300 transition duration-300 rounded-lg font-montserrat font-medium uppercase tracking-wider text-sm">Projects</a></li>
                     <li><a href="#contact" class="nav-link px-4 py-2 text-white hover:text-gray-300 transition duration-300 rounded-lg font-montserrat font-medium uppercase tracking-wider text-sm">Notes</a></li>
                 </ul>
@@ -122,6 +195,7 @@
                 <ul class="flex flex-col space-y-2 mt-2">
                     <li><a href="#home" class="nav-link block px-4 py-3 text-white hover:text-gray-300 hover:bg-gray-800 transition duration-300 rounded-lg font-montserrat font-medium uppercase tracking-wider text-sm">Home</a></li>
                     <li><a href="#about" class="nav-link block px-4 py-3 text-white hover:text-gray-300 hover:bg-gray-800 transition duration-300 rounded-lg font-montserrat font-medium uppercase tracking-wider text-sm">Education</a></li>
+                    <li><a href="#certifications" class="nav-link block px-4 py-3 text-white hover:text-gray-300 hover:bg-gray-800 transition duration-300 rounded-lg font-montserrat font-medium uppercase tracking-wider text-sm">Certifications</a></li>
                     <li><a href="#projects" class="nav-link block px-4 py-3 text-white hover:text-gray-300 hover:bg-gray-800 transition duration-300 rounded-lg font-montserrat font-medium uppercase tracking-wider text-sm">Projects</a></li>
                     <li><a href="#contact" class="nav-link block px-4 py-3 text-white hover:text-gray-300 hover:bg-gray-800 transition duration-300 rounded-lg font-montserrat font-medium uppercase tracking-wider text-sm">Notes</a></li>
                 </ul>
@@ -131,26 +205,30 @@
     
     <main id="main-content">
     <!-- Hero Section -->
-    <section id="home" class="hero min-h-screen flex items-center bg-gradient-to-br from-white to-gray-50 pt-20" role="banner">
+    <section id="home" class="hero h-screen flex items-center relative pt-20 bg-gray-50" role="banner">
+        <!-- Hero Content -->
         <div class="container mx-auto px-6">
             <div class="grid lg:grid-cols-2 gap-12 items-center">
                 <!-- LEFT SIDE: Content -->
                 <div class="hero-left order-2 lg:order-1">
-                    <h1 class="hero-title text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight mb-4 glitch-effect" data-text="NAVIGATE THE DIGITAL LANDSCAPE WITH CONFIDENCE">
+                    <h1 class="hero-title text-4xl md:text-6xl font-bold text-gray-900 leading-tight mb-6 glitch-effect" data-text="NAVIGATE THE DIGITAL LANDSCAPE WITH CONFIDENCE">
                         NAVIGATE THE DIGITAL LANDSCAPE WITH CONFIDENCE
                     </h1>
-                    <h2 class="hero-subtitle text-lg md:text-xl lg:text-2xl text-black mb-6 font-montserrat font-medium uppercase tracking-wider" id="typewriter-title">
+                    <h2 class="hero-subtitle text-lg md:text-xl text-black mb-8 font-medium font-montserrat uppercase tracking-wider" id="typewriter-title">
                         EZEKIEL OBEISUN JR. - CLOUD COMPUTING GRADUATE
                     </h2>
-                    <div class="hero-description space-y-4 text-base md:text-lg text-gray-600">
+                    <div class="hero-description space-y-6 text-lg text-gray-700 bg-white p-6 rounded-lg shadow-lg">
                         <p class="hero-mission">
                             I'm a results-driven, mission-focused Cloud Computing graduate with 4+ years of experience in cybersecurity and IT operations. I began my career as a Security Analyst, where I built a strong foundation in Linux administration, incident response, and Python scripting — skills I continued to sharpen through hands-on experience and academic training.
                         </p>
                         <p class="hero-mission">
-                            Over time, I've expanded my focus toward cloud security and infrastructure, gaining practical experience across AWS, Azure, and compliance-driven environments. Now, I'm intentionally moving into network engineering and cloud architecture, actively training for the Cisco CCNA as a milestone toward building secure, resilient systems at scale.
+                            Over the years, I've shifted my focus toward cloud security and infrastructure. I've worked with tools like AWS and Azure, and gained experience navigating high-compliance environments. Right now, I'm sharpening my skills in network engineering and cloud architecture, with the Cisco CCNA as my next milestone.
                         </p>
                         <p class="hero-mission">
-                            <strong>Driven by the "1% Better Every Day" mindset</strong>, I bring high adaptability, relentless curiosity, and a long-term vision for mastering the intersection of cloud, networking, and automation.
+                            My mindset is simple: consistent growth over time. I treat every project, lab, and challenge as a chance to improve. Whether I'm writing code, studying for certs, or building systems, I bring the same mindset — show up, improve, and keep moving forward.
+                        </p>
+                        <p class="hero-mission text-center">
+                            <em id="atomic-habits-quote" class="text-black font-normal font-montserrat">1% Better Everyday - Atomic Habits by James Clear</em>
                         </p>
                     </div>
                 </div>
@@ -158,50 +236,57 @@
                 <!-- RIGHT SIDE: Hero Image -->
                 <div class="hero-right order-1 lg:order-2">
                     <div class="hero-image-container flex flex-col items-center">
-                        <div class="profile-carousel relative mb-8">
-                            <!-- Profile Image Placeholder -->
-                            <div class="profile-image w-[500px] h-[500px] bg-gradient-to-br from-primary-600 to-purple-600 rounded-2xl shadow-2xl border-4 border-white flex items-center justify-center">
-                                <div class="text-center text-white">
-                                    <svg class="w-24 h-24 mx-auto mb-4 opacity-80" fill="currentColor" viewBox="0 0 24 24">
-                                        <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
-                                    </svg>
-                                    <p class="text-sm font-medium opacity-90">Profile Photo</p>
-                                    <p class="text-xs opacity-70 mt-1">Coming Soon</p>
+                        <div class="profile-carousel relative mb-6">
+                            <!-- Profile Image Carousel -->
+                            <div class="carousel-container w-80 h-80 md:w-[500px] md:h-[500px] relative overflow-hidden rounded-2xl shadow-2xl border-4 border-white/50">
+                                <!-- Profile Images -->
+                                <div class="carousel-slides relative w-full h-full">
+                                    <div class="carousel-slide active absolute inset-0 w-full h-full">
+                                        <img src="./public/images/profile_1.jpg" alt="Ezekiel Obeisun Jr - Profile Photo 1" class="w-full h-full object-cover" loading="lazy">
+                                        <div class="absolute inset-0 bg-gradient-to-t from-primary-600/20 to-transparent"></div>
+                                    </div>
+                                    <div class="carousel-slide absolute inset-0 w-full h-full opacity-0">
+                                        <img src="./public/images/profile_2.jpg" alt="Ezekiel Obeisun Jr - Profile Photo 2" class="w-full h-full object-cover" loading="lazy">
+                                        <div class="absolute inset-0 bg-gradient-to-t from-primary-600/20 to-transparent"></div>
+                                    </div>
+                                    <div class="carousel-slide absolute inset-0 w-full h-full opacity-0">
+                                        <img src="./public/images/profile_3.jpg" alt="Ezekiel Obeisun Jr - Profile Photo 3" class="w-full h-full object-cover" loading="lazy">
+                                        <div class="absolute inset-0 bg-gradient-to-t from-primary-600/20 to-transparent"></div>
+                                    </div>
+                                    <div class="carousel-slide absolute inset-0 w-full h-full opacity-0">
+                                        <img src="./public/images/profile_4.jpg" alt="Ezekiel Obeisun Jr - Profile Photo 4" class="w-full h-full object-cover" loading="lazy">
+                                        <div class="absolute inset-0 bg-gradient-to-t from-primary-600/20 to-transparent"></div>
+                                    </div>
                                 </div>
+                                
+                                <!-- Carousel Navigation Dots -->
+                                <div class="carousel-dots absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
+                                    <button class="carousel-dot w-3 h-3 rounded-full bg-white/60 hover:bg-white transition-all duration-300 active" data-slide="0" aria-label="View profile photo 1"></button>
+                                    <button class="carousel-dot w-3 h-3 rounded-full bg-white/60 hover:bg-white transition-all duration-300" data-slide="1" aria-label="View profile photo 2"></button>
+                                    <button class="carousel-dot w-3 h-3 rounded-full bg-white/60 hover:bg-white transition-all duration-300" data-slide="2" aria-label="View profile photo 3"></button>
+                                    <button class="carousel-dot w-3 h-3 rounded-full bg-white/60 hover:bg-white transition-all duration-300" data-slide="3" aria-label="View profile photo 4"></button>
+                                </div>
+                                
+                                <!-- Carousel Navigation Arrows -->
+                                <button class="carousel-prev absolute left-4 top-1/2 transform -translate-y-1/2 w-10 h-10 bg-white/80 backdrop-blur-sm rounded-full flex items-center justify-center text-gray-700 hover:bg-white hover:text-primary-600 transition-all duration-300 shadow-lg" aria-label="Previous photo">
+                                    <i class="fas fa-chevron-left"></i>
+                                </button>
+                                <button class="carousel-next absolute right-4 top-1/2 transform -translate-y-1/2 w-10 h-10 bg-white/80 backdrop-blur-sm rounded-full flex items-center justify-center text-gray-700 hover:bg-white hover:text-primary-600 transition-all duration-300 shadow-lg" aria-label="Next photo">
+                                    <i class="fas fa-chevron-right"></i>
+                                </button>
                             </div>
-                            <div class="absolute inset-0 rounded-2xl bg-gradient-to-tr from-primary-600/20 to-transparent"></div>
+                            
+                            <!-- Hero Buttons -->
+                            <div class="hero-buttons flex flex-col sm:flex-row gap-4 mt-6 justify-center items-center">
+                                <a href="#projects" class="bg-black text-white px-8 py-4 rounded-lg font-medium hover:bg-gray-800 transition duration-300 text-center shadow-lg font-montserrat uppercase tracking-wider">
+                                    View My Projects
+                                </a>
+                                <a href="#contact" class="bg-black text-white px-8 py-4 rounded-lg font-medium hover:bg-gray-800 transition duration-300 text-center shadow-lg font-montserrat uppercase tracking-wider">
+                                    Get In Touch
+                                </a>
+                            </div>
                         </div>
-                        
-                        <!-- Social Media Links -->
-                        <div class="social-links flex gap-4 mb-6">
-                            <a href="https://linkedin.com/in/ezekiel-obeisun" target="_blank" rel="noopener noreferrer" 
-                               class="w-12 h-12 bg-black text-white rounded-full flex items-center justify-center hover:bg-gray-800 transition duration-300 transform hover:scale-110"
-                               title="LinkedIn Profile" aria-label="LinkedIn Profile">
-                                <i class="fab fa-linkedin-in text-lg"></i>
-                            </a>
-                            <a href="https://github.com/ezekielobeisun" target="_blank" rel="noopener noreferrer" 
-                               class="w-12 h-12 bg-black text-white rounded-full flex items-center justify-center hover:bg-gray-800 transition duration-300 transform hover:scale-110"
-                               title="GitHub Profile" aria-label="GitHub Profile">
-                                <i class="fab fa-github text-lg"></i>
-                            </a>
-                            <a href="https://medium.com/@ezekielobeisun" target="_blank" rel="noopener noreferrer" 
-                               class="w-12 h-12 bg-black text-white rounded-full flex items-center justify-center hover:bg-gray-800 transition duration-300 transform hover:scale-110"
-                               title="Medium Profile" aria-label="Medium Profile">
-                                <i class="fab fa-medium text-lg"></i>
-                            </a>
-                            <a href="https://x.com/ezekielobeisun" target="_blank" rel="noopener noreferrer" 
-                               class="w-12 h-12 bg-black text-white rounded-full flex items-center justify-center hover:bg-gray-800 transition duration-300 transform hover:scale-110"
-                               title="X (Twitter) Profile" aria-label="X (Twitter) Profile">
-                                <i class="fab fa-x-twitter text-lg"></i>
-                            </a>
-                        </div>
-                        
-                        <!-- Explore Projects Button -->
-                        <div class="explore-projects-btn">
-                            <a href="#projects" class="bg-black text-white px-8 py-4 rounded-lg font-montserrat font-medium uppercase tracking-wider text-sm hover:bg-gray-800 transition duration-300 text-center block">
-                                EXPLORE PROJECTS
-                            </a>
-                        </div>
+
                     </div>
                 </div>
             </div>
@@ -209,7 +294,7 @@
     </section>
     
     <!-- Education Section -->
-    <section id="about" class="section py-20 bg-white">
+    <section id="about" class="section py-24 bg-white mt-16">
         <div class="container mx-auto px-6">
             <div class="section-header text-center mb-16">
                 <div class="section-accent-line w-20 h-1 bg-primary-600 mx-auto mb-6"></div>
@@ -219,24 +304,23 @@
             
             <div class="education-grid grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
                 <!-- Formal Education Card -->
-                <div class="education-card bg-white rounded-xl shadow-lg hover:shadow-xl transition duration-300 p-8 border border-gray-100">
+                <div class="education-card bg-white rounded-xl shadow-lg hover:shadow-xl transition duration-300 p-8 border border-gray-100 h-full">
                     <div class="card-header flex items-center mb-6">
                         <div class="card-icon w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center mr-4">
                             <i class="fas fa-university text-primary-600 text-xl"></i>
                         </div>
                         <div>
                             <h4 class="card-title text-xl font-semibold text-gray-900">Formal Education</h4>
-                            <p class="card-subtitle text-gray-600">Academic foundation in cloud computing</p>
+                            <p class="card-subtitle text-gray-600">Professional degree program</p>
                         </div>
                     </div>
                     
                     <div class="education-item border-l-4 border-primary-600 pl-6">
                         <h5 class="text-lg font-semibold text-gray-900 mb-2">Bachelor of Science in Cloud Computing</h5>
                         <p class="text-primary-600 font-medium mb-2">Western Governors University</p>
-                        <span class="inline-block px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-medium mb-3">IN PROGRESS</span>
-                        <p class="text-gray-600 text-sm mb-3">Expected Graduation: December 2025</p>
+                        <span class="inline-block px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-medium mb-3">In Progress - Graduation December 2025</span>
                         <div class="course-highlights">
-                            <h6 class="font-medium text-gray-900 mb-2">KEY FOCUS AREAS:</h6>
+                            <h6 class="font-medium text-gray-900 mb-2">Key Focus Areas:</h6>
                             <ul class="text-gray-600 space-y-1">
                                 <li>• Cloud Architecture & Security</li>
                                 <li>• Infrastructure as Code (IaC)</li>
@@ -247,101 +331,151 @@
                     </div>
                 </div>
 
-                <!-- Skills & Certifications Card -->
-                <div class="education-card bg-white rounded-xl shadow-lg hover:shadow-xl transition duration-300 p-8 border border-gray-100">
+                <!-- Technical Skills Card -->
+                <div class="education-card bg-white rounded-xl shadow-lg hover:shadow-xl transition duration-300 p-8 border border-gray-100 h-full">
                     <div class="card-header flex items-center mb-6">
                         <div class="card-icon w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center mr-4">
-                            <i class="fas fa-certificate text-primary-600 text-xl"></i>
+                            <i class="fas fa-code text-primary-600 text-xl"></i>
                         </div>
                         <div>
-                            <h4 class="card-title text-xl font-semibold text-gray-900">Skills & Learning</h4>
-                            <p class="card-subtitle text-gray-600">Continuous skill development</p>
+                            <h4 class="card-title text-xl font-semibold text-gray-900">Technical Skills</h4>
+                            <p class="card-subtitle text-gray-600">Core programming & development tools</p>
                         </div>
                     </div>
                     
-                    <div class="skills-section">
-                        <h6 class="font-medium text-gray-900 mb-4">Core Programming Languages & Tools:</h6>
-                        <div class="flex flex-wrap gap-2 mb-6">
-                            <span class="px-3 py-1 bg-primary-100 text-primary-700 rounded-full text-sm font-medium">JavaScript</span>
-                            <span class="px-3 py-1 bg-primary-100 text-primary-700 rounded-full text-sm font-medium">Python</span>
-                            <span class="px-3 py-1 bg-primary-100 text-primary-700 rounded-full text-sm font-medium">SQL</span>
-                            <span class="px-3 py-1 bg-primary-100 text-primary-700 rounded-full text-sm font-medium">HTML/CSS</span>
-                            <span class="px-3 py-1 bg-primary-100 text-primary-700 rounded-full text-sm font-medium">Docker</span>
-                            <span class="px-3 py-1 bg-primary-100 text-primary-700 rounded-full text-sm font-medium">Git</span>
-                            <span class="px-3 py-1 bg-primary-100 text-primary-700 rounded-full text-sm font-medium">React</span>
+                    <div class="skills-categories space-y-6">
+                        <div class="skill-category">
+                            <h6 class="font-medium text-gray-900 mb-2">Core Programming Languages:</h6>
+                            <ul class="text-gray-600 space-y-1">
+                                <li>• JavaScript, Python, SQL, HTML/CSS</li>
+                            </ul>
                         </div>
                         
-                        <h6 class="font-medium text-gray-900 mb-4">Current Learning Focus:</h6>
-                        <ul class="text-gray-600 space-y-2">
-                            <li class="flex items-center">
-                                <i class="fas fa-check text-green-600 mr-2"></i>
-                                Cloud Computing (AWS, Azure & GCP)
-                            </li>
-                            <li class="flex items-center">
-                                <i class="fas fa-clock text-yellow-600 mr-2"></i>
-                                DevOps & CI/CD (GitHub Actions, Docker)
-                            </li>
-                            <li class="flex items-center">
-                                <i class="fas fa-clock text-yellow-600 mr-2"></i>
-                                Advanced React Development
-                            </li>
-                            <li class="flex items-center">
-                                <i class="fas fa-clock text-yellow-600 mr-2"></i>
-                                Machine Learning Fundamentals
-                            </li>
-                        </ul>
+                        <div class="skill-category">
+                            <h6 class="font-medium text-gray-900 mb-2">Development Tools:</h6>
+                            <ul class="text-gray-600 space-y-1">
+                                <li>• Docker, Git, React, Node.js</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="skill-category">
+                            <h6 class="font-medium text-gray-900 mb-2">Current Learning Focus:</h6>
+                            <ul class="text-gray-600 space-y-1">
+                                <li>• Cloud Computing: AWS • Azure • GCP</li>
+                                <li>• DevOps & CI/CD: GitHub Actions • Docker</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
             
-            <!-- Highlighted Courses Section -->
-            <div class="highlighted-courses-section mt-16">
-                <div class="section-header text-center mb-12">
-                    <h3 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Highlighted Courses</h3>
-                    <p class="text-lg text-gray-600">Key academic coursework demonstrating specialized knowledge and skills</p>
-                </div>
-                
-                <div class="courses-grid grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-                    <!-- Course 1: Introduction to Cryptography -->
+            <!-- Highlighted Courses -->
+            <div class="highlighted-courses mt-20">
+                <div class="container mx-auto px-6">
+                    <h3 class="text-2xl font-semibold text-gray-900 mb-8 text-center">Highlighted Courses</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                    <!-- Course 1 -->
                     <div class="course-card bg-white rounded-xl shadow-lg hover:shadow-xl transition duration-300 p-6 border border-gray-100">
                         <div class="course-header mb-4">
-                            <h4 class="text-xl font-bold text-gray-900 mb-2">Introduction to Cryptography</h4>
-                            <p class="text-primary-600 font-medium text-sm mb-2">Academic Course - Western Governors University</p>
+                            <h4 class="text-lg font-bold text-gray-900 mb-2">Introduction to Cryptography</h4>
+                            <p class="text-sm text-gray-600 mb-2">Academic Course - Western Governors University</p>
                             <span class="inline-block px-3 py-1 bg-green-100 text-green-800 rounded-full text-xs font-medium">PASSED</span>
                         </div>
-                        <div class="course-content">
-                            <p class="text-gray-600 text-sm leading-relaxed italic border-l-4 border-primary-200 pl-4">
-                                Mastered encryption algorithms and secure communications—essential for protecting data in transit and at rest.
+                        <div class="course-description">
+                            <p class="text-gray-700 text-sm">
+                                Mastered encryption algorithms and secure communications — essential for protecting data in transit and at rest.
                             </p>
                         </div>
                     </div>
-                    
-                    <!-- Course 2: Linux Foundations -->
+
+                    <!-- Course 2 -->
                     <div class="course-card bg-white rounded-xl shadow-lg hover:shadow-xl transition duration-300 p-6 border border-gray-100">
                         <div class="course-header mb-4">
-                            <h4 class="text-xl font-bold text-gray-900 mb-2">Linux Foundations</h4>
-                            <p class="text-primary-600 font-medium text-sm mb-2">Academic Course - Western Governors University</p>
+                            <h4 class="text-lg font-bold text-gray-900 mb-2">Linux Foundations</h4>
+                            <p class="text-sm text-gray-600 mb-2">Academic Course - Western Governors University</p>
                             <span class="inline-block px-3 py-1 bg-green-100 text-green-800 rounded-full text-xs font-medium">PASSED</span>
                         </div>
-                        <div class="course-content">
-                            <p class="text-gray-600 text-sm leading-relaxed italic border-l-4 border-primary-200 pl-4">
+                        <div class="course-description">
+                            <p class="text-gray-700 text-sm">
                                 Achieved command-line mastery and system hardening expertise on Linux servers, a foundational platform in modern SOC environments.
                             </p>
                         </div>
                     </div>
-                    
-                    <!-- Course 3: Network and Security Foundations -->
+
+                    <!-- Course 3 -->
                     <div class="course-card bg-white rounded-xl shadow-lg hover:shadow-xl transition duration-300 p-6 border border-gray-100">
                         <div class="course-header mb-4">
-                            <h4 class="text-xl font-bold text-gray-900 mb-2">Network and Security Foundations</h4>
-                            <p class="text-primary-600 font-medium text-sm mb-2">Academic Course - Western Governors University</p>
+                            <h4 class="text-lg font-bold text-gray-900 mb-2">Network and Security Foundations</h4>
+                            <p class="text-sm text-gray-600 mb-2">Academic Course - Western Governors University</p>
                             <span class="inline-block px-3 py-1 bg-green-100 text-green-800 rounded-full text-xs font-medium">PASSED</span>
                         </div>
-                        <div class="course-content">
-                            <p class="text-gray-600 text-sm leading-relaxed italic border-l-4 border-primary-200 pl-4">
+                        <div class="course-description">
+                            <p class="text-gray-700 text-sm">
                                 Mastered core principles of network design, security controls, and risk management—directly applicable to advanced threat detection and incident investigation.
                             </p>
                         </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section id="certifications" class="py-24 bg-gray-50 mt-16">
+        <div class="container mx-auto px-6">
+            <div class="certifications-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+                <!-- CompTIA A+ -->
+                <div class="certification-card bg-white rounded-xl shadow-lg hover:shadow-xl transition duration-300 p-6 border border-gray-100 h-full">
+                    <div class="flex flex-col items-center justify-center h-full">
+                        <h3 class="text-lg font-bold text-gray-900 mb-2">CompTIA A+</h3>
+                        <p class="text-sm text-gray-600 mb-3">Hardware & Software Fundamentals</p>
+                        <span class="inline-block px-3 py-1 bg-green-100 text-green-800 rounded-full text-xs font-medium">CERTIFIED</span>
+                    </div>
+                </div>
+
+                <!-- CompTIA Network+ -->
+                <div class="certification-card bg-white rounded-xl shadow-lg hover:shadow-xl transition duration-300 p-6 border border-gray-100 h-full">
+                    <div class="flex flex-col items-center justify-center h-full">
+                        <h3 class="text-lg font-bold text-gray-900 mb-2">CompTIA Network+</h3>
+                        <p class="text-sm text-gray-600 mb-3">Networking Infrastructure</p>
+                        <span class="inline-block px-3 py-1 bg-green-100 text-green-800 rounded-full text-xs font-medium">CERTIFIED</span>
+                    </div>
+                </div>
+
+                <!-- CompTIA Security+ -->
+                <div class="certification-card bg-white rounded-xl shadow-lg hover:shadow-xl transition duration-300 p-6 border border-gray-100 h-full">
+                    <div class="flex flex-col items-center justify-center h-full">
+                        <h3 class="text-lg font-bold text-gray-900 mb-2">CompTIA Security+</h3>
+                        <p class="text-sm text-gray-600 mb-3">Cybersecurity Fundamentals</p>
+                        <span class="inline-block px-3 py-1 bg-green-100 text-green-800 rounded-full text-xs font-medium">CERTIFIED</span>
+                    </div>
+                </div>
+
+                <!-- CompTIA CySA+ -->
+                <div class="certification-card bg-white rounded-xl shadow-lg hover:shadow-xl transition duration-300 p-6 border border-gray-100 h-full">
+                    <div class="flex flex-col items-center justify-center h-full">
+                        <h3 class="text-lg font-bold text-gray-900 mb-2">CompTIA CySA+</h3>
+                        <p class="text-sm text-gray-600 mb-3">Cybersecurity Analyst</p>
+                        <span class="inline-block px-3 py-1 bg-green-100 text-green-800 rounded-full text-xs font-medium">CERTIFIED</span>
+                    </div>
+                </div>
+
+                <!-- CompTIA Cloud+ -->
+                <div class="certification-card bg-white rounded-xl shadow-lg hover:shadow-xl transition duration-300 p-6 border border-gray-100 h-full">
+                    <div class="flex flex-col items-center justify-center h-full">
+                        <h3 class="text-lg font-bold text-gray-900 mb-2">CompTIA Cloud+</h3>
+                        <p class="text-sm text-gray-600 mb-3">Cloud Technologies</p>
+                        <span class="inline-block px-3 py-1 bg-green-100 text-green-800 rounded-full text-xs font-medium">CERTIFIED</span>
+                    </div>
+                </div>
+
+                <!-- CompTIA Project+ -->
+                <div class="certification-card bg-white rounded-xl shadow-lg hover:shadow-xl transition duration-300 p-6 border border-gray-100 h-full">
+                    <div class="flex flex-col items-center justify-center h-full">
+                        <h3 class="text-lg font-bold text-gray-900 mb-2">CompTIA Project+</h3>
+                        <p class="text-sm text-gray-600 mb-3">Project Management</p>
+                        <span class="inline-block px-3 py-1 bg-orange-100 text-orange-800 rounded-full text-xs font-medium">PENDING</span>
                     </div>
                 </div>
             </div>
@@ -349,7 +483,7 @@
     </section>
 
     <!-- Projects Section -->
-    <section id="projects" class="projects py-20 bg-gray-50">
+    <section id="projects" class="projects py-24 bg-white mt-16">
         <div class="container mx-auto px-6">
             <div class="text-center mb-16">
                 <h2 class="section-title text-4xl md:text-5xl font-bold text-gray-900 mb-4">
@@ -464,7 +598,7 @@
     </section>
 
     <!-- Notes Section -->
-    <section id="contact" class="py-20 bg-gray-50">
+    <section id="contact" class="py-24 bg-gray-50 mt-16">
         <div class="container mx-auto px-6">
             <div class="max-w-6xl mx-auto text-center">
                 <h2 class="text-4xl md:text-5xl font-bold mb-4 text-gray-900 font-raleway uppercase tracking-wide">NOTES FROM THE CLIMB</h2>
@@ -473,38 +607,38 @@
                 </p>
                 
                 <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-                    <!-- Medium Column -->
-                    <div class="notes-card bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 p-8 border border-green-200">
-                        <div class="flex items-start mb-6">
-                            <div class="w-12 h-12 bg-green-600 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
-                                <svg class="w-6 h-6 text-white" viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/>
-                                </svg>
-                            </div>
-                            <div class="text-left">
-                                <h3 class="text-2xl font-bold text-gray-900 mb-2 font-raleway">Medium</h3>
-                                <p class="text-sm text-gray-500 uppercase tracking-wider font-medium">WRITING & INSIGHTS</p>
-                            </div>
+                <!-- Medium Column -->
+                <div class="notes-card bg-white rounded-2xl p-8 flex flex-col h-full">
+                    <div class="flex items-start mb-6">
+                        <div class="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                            <svg class="w-6 h-6 text-white" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/>
+                            </svg>
                         </div>
-                        
-                        <p class="text-gray-600 text-left mb-8 leading-relaxed">
-                            Get a front-row seat to my evolving path in cloud computing, network engineering, and career growth—every milestone, insight, and lesson captured in detailed articles.
-                        </p>
-                        
+                        <div class="text-left">
+                            <h3 class="text-2xl font-bold text-gray-900 mb-2 font-raleway">Medium</h3>
+                            <p class="text-sm text-gray-500 uppercase tracking-wider font-medium">WRITING & INSIGHTS</p>
+                        </div>
+                    </div>
+                    
+                    <p class="text-gray-600 text-left mb-8 leading-relaxed flex-grow">
+                        Get a front-row seat to my evolving path in cloud computing, network engineering, and career growth—every milestone, insight, and lesson captured in detailed articles.
+                    </p>
+                    
+                    <div class="mt-auto">
                         <a href="https://medium.com/@yourusername" target="_blank" rel="noopener noreferrer" 
-                           class="inline-flex items-center bg-green-600 text-white px-6 py-3 rounded-full font-medium hover:bg-green-700 transition duration-300 text-sm">
+                           class="inline-flex items-center bg-green-500 text-white px-6 py-3 rounded-full font-medium hover:bg-green-600 transition duration-300 text-sm w-full justify-center">
                             <svg class="w-4 h-4 mr-2" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/>
                             </svg>
                             Read My Journey
-                            <span class="ml-2 text-xs text-green-200">Latest insights & reflections</span>
+                            <span class="ml-2 text-xs opacity-75">Latest insights & reflections</span>
                         </a>
                     </div>
-                    
-                    <!-- GitHub Column -->
-                    <div class="notes-card bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 p-8 border border-gray-200">
+                </div>                    <!-- GitHub Column -->
+                    <div class="notes-card bg-white rounded-2xl p-8 flex flex-col h-full">
                         <div class="flex items-start mb-6">
-                            <div class="w-12 h-12 bg-gray-900 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                            <div class="w-12 h-12 bg-gray-800 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
                                 <svg class="w-6 h-6 text-white" viewBox="0 0 24 24" fill="currentColor">
                                     <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
                                 </svg>
@@ -515,18 +649,20 @@
                             </div>
                         </div>
                         
-                        <p class="text-gray-600 text-left mb-8 leading-relaxed">
+                        <p class="text-gray-600 text-left mb-8 leading-relaxed flex-grow">
                             Explore my hands-on projects, automation scripts, and technical solutions. From security tools to infrastructure code—see how I solve real-world problems.
                         </p>
                         
-                        <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer" 
-                           class="inline-flex items-center bg-gray-900 text-white px-6 py-3 rounded-full font-medium hover:bg-gray-800 transition duration-300 text-sm">
-                            <svg class="w-4 h-4 mr-2" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.30.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                            </svg>
-                            View My Code
-                            <span class="ml-2 text-xs text-gray-400">Projects & contributions</span>
-                        </a>
+                        <div class="mt-auto">
+                            <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer" 
+                               class="inline-flex items-center bg-gray-800 text-white px-6 py-3 rounded-full font-medium hover:bg-gray-900 transition duration-300 text-sm w-full justify-center">
+                                <svg class="w-4 h-4 mr-2" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.30.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                                </svg>
+                                View My Code
+                                <span class="ml-2 text-xs opacity-75">Projects & contributions</span>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -536,44 +672,10 @@
     </main>
 
     <!-- Footer -->
-    <footer class="footer bg-gray-900 text-white py-12" role="contentinfo">
+    <footer class="footer bg-gray-50 text-gray-900 py-8 border-t border-gray-200" role="contentinfo">
         <div class="container mx-auto px-6">
-            <div class="grid md:grid-cols-3 gap-8 mb-8">
-                <div>
-                    <div class="flex items-center space-x-2 mb-4">
-                        <i class="fas fa-brain text-primary-400 text-2xl"></i>
-                        <span class="text-xl font-bold">Student Portfolio</span>
-                    </div>
-                    <p class="text-gray-400">
-                        Continuous learning and growth in technology, driven by the "1% Better Every Day" mindset.
-                    </p>
-                </div>
-                <div>
-                    <h4 class="font-semibold mb-4">Quick Links</h4>
-                    <ul class="space-y-2">
-                        <li><a href="#home" class="text-gray-400 hover:text-white transition duration-300">Home</a></li>
-                        <li><a href="#about" class="text-gray-400 hover:text-white transition duration-300">Education</a></li>
-                        <li><a href="#projects" class="text-gray-400 hover:text-white transition duration-300">Projects</a></li>
-                        <li><a href="#contact" class="text-gray-400 hover:text-white transition duration-300">Contact</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="font-semibold mb-4">Connect</h4>
-                    <div class="flex space-x-4">
-                        <a href="https://github.com/student" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition duration-300" title="Visit GitHub Profile" aria-label="Visit GitHub Profile">
-                            <i class="fab fa-github text-xl"></i>
-                        </a>
-                        <a href="https://linkedin.com/in/student" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition duration-300" title="Visit LinkedIn Profile" aria-label="Visit LinkedIn Profile">
-                            <i class="fab fa-linkedin text-xl"></i>
-                        </a>
-                        <a href="mailto:student@example.com" class="text-gray-400 hover:text-white transition duration-300" title="Send Email" aria-label="Send Email">
-                            <i class="fas fa-envelope text-xl"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="border-t border-gray-800 pt-8 text-center">
-                <p class="text-gray-400">&copy; 2025 Student Portfolio. All rights reserved. Built with ❤️ and lots of ☕</p>
+            <div class="text-center">
+                <p class="text-gray-700 font-montserrat font-medium uppercase tracking-wider">&copy; 2025 Ezekiel Obeisun Jr All rights reserved.</p>
             </div>
         </div>
     </footer>

@@ -1,41 +1,153 @@
 // Enhanced Student Portfolio JavaScript
 document.addEventListener('DOMContentLoaded', function() {
     
+    // Profile Image Carousel Functionality
+    const carousel = {
+        currentSlide: 0,
+        slides: document.querySelectorAll('.carousel-slide'),
+        dots: document.querySelectorAll('.carousel-dot'),
+        prevBtn: document.querySelector('.carousel-prev'),
+        nextBtn: document.querySelector('.carousel-next'),
+        
+        init() {
+            if (this.slides.length === 0) return;
+            
+            // Auto-rotate every 3 seconds
+            this.autoRotate = setInterval(() => {
+                this.nextSlide();
+            }, 3000);
+            
+            // Event listeners
+            this.prevBtn?.addEventListener('click', () => {
+                this.prevSlide();
+                this.resetAutoRotate();
+            });
+            
+            this.nextBtn?.addEventListener('click', () => {
+                this.nextSlide();
+                this.resetAutoRotate();
+            });
+            
+            this.dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    this.goToSlide(index);
+                    this.resetAutoRotate();
+                });
+            });
+            
+            // Pause on hover
+            const carouselContainer = document.querySelector('.carousel-container');
+            carouselContainer?.addEventListener('mouseenter', () => {
+                clearInterval(this.autoRotate);
+            });
+            
+            carouselContainer?.addEventListener('mouseleave', () => {
+                this.resetAutoRotate();
+            });
+        },
+        
+        nextSlide() {
+            this.currentSlide = (this.currentSlide + 1) % this.slides.length;
+            this.updateSlides();
+        },
+        
+        prevSlide() {
+            this.currentSlide = this.currentSlide === 0 ? this.slides.length - 1 : this.currentSlide - 1;
+            this.updateSlides();
+        },
+        
+        goToSlide(index) {
+            this.currentSlide = index;
+            this.updateSlides();
+        },
+        
+        updateSlides() {
+            this.slides.forEach((slide, index) => {
+                slide.classList.toggle('active', index === this.currentSlide);
+                slide.style.opacity = index === this.currentSlide ? '1' : '0';
+            });
+            
+            this.dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === this.currentSlide);
+                dot.style.backgroundColor = index === this.currentSlide ? 'white' : 'rgba(255, 255, 255, 0.6)';
+            });
+        },
+        
+        resetAutoRotate() {
+            clearInterval(this.autoRotate);
+            this.autoRotate = setInterval(() => {
+                this.nextSlide();
+            }, 3000);
+        }
+    };
+    
+    // Initialize carousel
+    carousel.init();
+    
     // Typewriter effect for hero subtitle
     const typewriterElement = document.getElementById('typewriter-title');
     if (typewriterElement) {
-        const fullText = 'EZEKIEL OBEISUN JR. - CLOUD COMPUTING GRADUATE';
+        const texts = [
+            'EZEKIEL OBEISUN JR. - CLOUD COMPUTING GRADUATE',
+            'NERDPIONEER | 1PERCENTNERD JOURNEY',
+            'CYBERSECURITY PROFESSIONAL',
+            'CLOUD INFRASTRUCTURE SPECIALIST'
+        ];
+        let textIndex = 0;
         let charIndex = 0;
-        
-        // Clear the initial text
-        typewriterElement.textContent = '';
-        typewriterElement.style.borderRight = '2px solid #000000';
+        let isDeleting = false;
         
         function typeWriter() {
-            if (charIndex < fullText.length) {
-                typewriterElement.textContent += fullText.charAt(charIndex);
-                charIndex++;
-                setTimeout(typeWriter, 80); // Slightly faster typing speed
+            const currentText = texts[textIndex];
+            
+            if (isDeleting) {
+                typewriterElement.textContent = currentText.substring(0, charIndex - 1);
+                charIndex--;
             } else {
-                // Keep the cursor blinking after typing is complete
-                setTimeout(() => {
-                    typewriterElement.style.borderRight = '2px solid transparent';
-                    setTimeout(() => {
-                        typewriterElement.style.borderRight = '2px solid #000000';
-                    }, 500);
-                }, 500);
-                
-                // Restart the cursor blinking animation
-                setInterval(() => {
-                    typewriterElement.style.borderRight = typewriterElement.style.borderRight === '2px solid transparent' 
-                        ? '2px solid #000000' 
-                        : '2px solid transparent';
-                }, 1000);
+                typewriterElement.textContent = currentText.substring(0, charIndex + 1);
+                charIndex++;
+            }
+            
+            let typeSpeed = 100;
+            
+            if (isDeleting) {
+                typeSpeed /= 2;
+            }
+            
+            if (!isDeleting && charIndex === currentText.length) {
+                typeSpeed = 2000; // Pause at end
+                isDeleting = true;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                textIndex = (textIndex + 1) % texts.length;
+                typeSpeed = 500; // Pause before starting new text
+            }
+            
+            setTimeout(typeWriter, typeSpeed);
+        }
+        
+        typeWriter();
+    }
+    
+    // Typewriter effect for Atomic Habits quote
+    const atomicHabitsQuote = document.getElementById('atomic-habits-quote');
+    if (atomicHabitsQuote) {
+        const quoteText = '1% Better Everyday - Atomic Habits by James Clear';
+        let quoteIndex = 0;
+        
+        // Clear the text first
+        atomicHabitsQuote.textContent = '';
+        
+        function typeQuote() {
+            if (quoteIndex < quoteText.length) {
+                atomicHabitsQuote.textContent += quoteText.charAt(quoteIndex);
+                quoteIndex++;
+                setTimeout(typeQuote, 80);
             }
         }
         
-        // Start typing after a short delay
-        setTimeout(typeWriter, 500);
+        // Start typing the quote after a delay
+        setTimeout(typeQuote, 3000);
     }
     
     // Mobile navigation functionality - Enhanced for better mobile experience

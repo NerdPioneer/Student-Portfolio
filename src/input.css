@@ -1,3 +1,444 @@
+/* Cross-browser compatibility enhancements */
+/* Normalize styles for cross-browser compatibility */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Smooth scrolling with fallbacks */
+html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+}
+
+/* Enhanced body styles for cross-browser */
+body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    line-height: 1.5;
+    overflow-x: hidden;
+}
+
+/* Button focus styles for accessibility */
+button:focus,
+a:focus {
+    outline: 2px solid #3b82f6;
+    outline-offset: 2px;
+}
+
+/* Cross-browser flexbox compatibility */
+.flex {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+/* Grid compatibility */
+.grid {
+    display: -ms-grid;
+    display: grid;
+}
+
+/* Transform compatibility */
+.transform {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+}
+
+/* Transition compatibility */
+.transition {
+    -webkit-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+
+/* Enhanced animation support */
+@-webkit-keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Safari-specific fixes */
+@supports (-webkit-appearance: none) {
+    .carousel {
+        -webkit-overflow-scrolling: touch;
+    }
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Custom Components */
+@layer components {
+  /* Glitch Effect */
+  .glitch-effect {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .glitch-effect[data-text]:before,
+  .glitch-effect[data-text]:after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .glitch-effect[data-text]:before {
+    animation: glitch-anim-1 2s infinite linear alternate-reverse;
+    color: #ff0040;
+    z-index: -1;
+  }
+  
+  .glitch-effect[data-text]:after {
+    animation: glitch-anim-2 2s infinite linear alternate-reverse;
+    color: #00ffff;
+    z-index: -2;
+  }
+  
+  /* Loading Overlay */
+  .loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: opacity 0.3s ease;
+  }
+  
+  .loading-hidden {
+    opacity: 0;
+    pointer-events: none;
+  }
+  
+  /* Carousel Styles */
+  .carousel-slide {
+    transition: opacity 0.5s ease-in-out;
+  }
+  
+  .carousel-slide.active {
+    opacity: 1;
+  }
+  
+  .carousel-dot.active {
+    background-color: white !important;
+    transform: scale(1.2);
+  }
+  
+  /* Navigation Styles */
+  .nav-toggle.active div {
+    transform: rotate(45deg);
+  }
+  
+  .nav-toggle.active div:before {
+    transform: rotate(90deg);
+    top: 0;
+  }
+  
+  .nav-toggle.active div:after {
+    transform: rotate(90deg);
+    bottom: 0;
+  }
+  
+  /* Section Transitions */
+  .section {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease;
+  }
+  
+  .section.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* Card Hover Effects */
+  .project-card,
+  .education-card,
+  .certification-card,
+  .course-card,
+  .notes-card {
+    transition: all 0.3s ease;
+  }
+  
+  .project-card:hover,
+  .education-card:hover,
+  .certification-card:hover,
+  .course-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  /* Button Animations */
+  .hero-buttons a {
+    transition: all 0.3s ease;
+  }
+  
+  .hero-buttons a:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Typewriter Effect */
+  .typewriter {
+    overflow: hidden;
+    border-right: 2px solid;
+    animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+  }
+  
+  /* Smooth Scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+}
+
+/* Animations */
+@layer utilities {
+  @keyframes glitch-anim-1 {
+    0% {
+      clip: rect(64px, 9999px, 66px, 0);
+      transform: skew(0.85deg);
+    }
+    5% {
+      clip: rect(30px, 9999px, 36px, 0);
+      transform: skew(0.02deg);
+    }
+    10% {
+      clip: rect(70px, 9999px, 71px, 0);
+      transform: skew(0.97deg);
+    }
+    15% {
+      clip: rect(10px, 9999px, 40px, 0);
+      transform: skew(0.45deg);
+    }
+    20% {
+      clip: rect(40px, 9999px, 80px, 0);
+      transform: skew(0.12deg);
+    }
+    25% {
+      clip: rect(20px, 9999px, 30px, 0);
+      transform: skew(0.87deg);
+    }
+    30% {
+      clip: rect(80px, 9999px, 90px, 0);
+      transform: skew(0.65deg);
+    }
+    35% {
+      clip: rect(50px, 9999px, 55px, 0);
+      transform: skew(0.23deg);
+    }
+    40% {
+      clip: rect(25px, 9999px, 85px, 0);
+      transform: skew(0.78deg);
+    }
+    45% {
+      clip: rect(15px, 9999px, 45px, 0);
+      transform: skew(0.34deg);
+    }
+    50% {
+      clip: rect(75px, 9999px, 95px, 0);
+      transform: skew(0.56deg);
+    }
+    55% {
+      clip: rect(5px, 9999px, 25px, 0);
+      transform: skew(0.89deg);
+    }
+    60% {
+      clip: rect(60px, 9999px, 70px, 0);
+      transform: skew(0.12deg);
+    }
+    65% {
+      clip: rect(35px, 9999px, 65px, 0);
+      transform: skew(0.67deg);
+    }
+    70% {
+      clip: rect(85px, 9999px, 100px, 0);
+      transform: skew(0.45deg);
+    }
+    75% {
+      clip: rect(45px, 9999px, 75px, 0);
+      transform: skew(0.23deg);
+    }
+    80% {
+      clip: rect(55px, 9999px, 85px, 0);
+      transform: skew(0.78deg);
+    }
+    85% {
+      clip: rect(65px, 9999px, 95px, 0);
+      transform: skew(0.34deg);
+    }
+    90% {
+      clip: rect(75px, 9999px, 105px, 0);
+      transform: skew(0.56deg);
+    }
+    95% {
+      clip: rect(85px, 9999px, 115px, 0);
+      transform: skew(0.89deg);
+    }
+    100% {
+      clip: rect(95px, 9999px, 125px, 0);
+      transform: skew(0.12deg);
+    }
+  }
+  
+  @keyframes glitch-anim-2 {
+    0% {
+      clip: rect(65px, 9999px, 119px, 0);
+      transform: skew(0.41deg);
+    }
+    5% {
+      clip: rect(25px, 9999px, 90px, 0);
+      transform: skew(0.84deg);
+    }
+    10% {
+      clip: rect(95px, 9999px, 100px, 0);
+      transform: skew(0.25deg);
+    }
+    15% {
+      clip: rect(35px, 9999px, 85px, 0);
+      transform: skew(0.67deg);
+    }
+    20% {
+      clip: rect(55px, 9999px, 115px, 0);
+      transform: skew(0.13deg);
+    }
+    25% {
+      clip: rect(15px, 9999px, 75px, 0);
+      transform: skew(0.89deg);
+    }
+    30% {
+      clip: rect(75px, 9999px, 105px, 0);
+      transform: skew(0.46deg);
+    }
+    35% {
+      clip: rect(45px, 9999px, 95px, 0);
+      transform: skew(0.72deg);
+    }
+    40% {
+      clip: rect(5px, 9999px, 65px, 0);
+      transform: skew(0.28deg);
+    }
+    45% {
+      clip: rect(85px, 9999px, 125px, 0);
+      transform: skew(0.93deg);
+    }
+    50% {
+      clip: rect(20px, 9999px, 80px, 0);
+      transform: skew(0.52deg);
+    }
+    55% {
+      clip: rect(70px, 9999px, 110px, 0);
+      transform: skew(0.18deg);
+    }
+    60% {
+      clip: rect(40px, 9999px, 100px, 0);
+      transform: skew(0.76deg);
+    }
+    65% {
+      clip: rect(10px, 9999px, 70px, 0);
+      transform: skew(0.39deg);
+    }
+    70% {
+      clip: rect(90px, 9999px, 130px, 0);
+      transform: skew(0.84deg);
+    }
+    75% {
+      clip: rect(30px, 9999px, 90px, 0);
+      transform: skew(0.47deg);
+    }
+    80% {
+      clip: rect(80px, 9999px, 120px, 0);
+      transform: skew(0.21deg);
+    }
+    85% {
+      clip: rect(50px, 9999px, 110px, 0);
+      transform: skew(0.68deg);
+    }
+    90% {
+      clip: rect(0px, 9999px, 60px, 0);
+      transform: skew(0.95deg);
+    }
+    95% {
+      clip: rect(100px, 9999px, 140px, 0);
+      transform: skew(0.32deg);
+    }
+    100% {
+      clip: rect(60px, 9999px, 120px, 0);
+      transform: skew(0.58deg);
+    }
+  }
+  
+  @keyframes typing {
+    from {
+      width: 0;
+    }
+    to {
+      width: 100%;
+    }
+  }
+  
+  @keyframes blink-caret {
+    from,
+    to {
+      border-color: transparent;
+    }
+    50% {
+      border-color: currentColor;
+    }
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}

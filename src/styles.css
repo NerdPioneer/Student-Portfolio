@@ -98,6 +98,45 @@
     @apply bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2;
   }
   
+  /* Profile Carousel Styles */
+  .carousel-slide {
+    @apply absolute inset-0 w-full h-full transition-opacity duration-500 ease-in-out;
+  }
+  
+  .carousel-slide.active {
+    @apply opacity-100;
+  }
+  
+  .carousel-slide:not(.active) {
+    @apply opacity-0;
+  }
+  
+  .carousel-dot {
+    @apply w-3 h-3 rounded-full transition-all duration-300 cursor-pointer;
+    background-color: rgba(255, 255, 255, 0.6);
+  }
+  
+  .carousel-dot.active {
+    @apply bg-white transform scale-125;
+  }
+  
+  .carousel-dot:hover {
+    @apply bg-white;
+  }
+  
+  /* Certification Cards */
+  .certification-card {
+    @apply transition-all duration-300 transform hover:-translate-y-2;
+  }
+  
+  .certification-logo img {
+    @apply transition-transform duration-300;
+  }
+  
+  .certification-card:hover .certification-logo img {
+    @apply transform scale-110;
+  }
+  
   /* Education Cards */
   .education-card {
     @apply bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100;
@@ -501,22 +540,4 @@
       scroll-behavior: auto;
     }
   }
-}
-
-/* Course Cards Styling */
-.course-card {
-  @apply transition-all duration-300 hover:transform hover:scale-105;
-}
-
-.course-card:hover {
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-}
-
-.highlighted-courses-section {
-  @apply relative;
-}
-
-.highlighted-courses-section::before {
-  content: '';
-  @apply absolute top-0 left-1/2 transform -translate-x-1/2 w-20 h-1 bg-primary-600;
 }
