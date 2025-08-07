@@ -344,19 +344,39 @@ function initializeApp() {
                 const learnMoreBtn = document.getElementById('learn-more-btn');
                 const dropdownContent = document.getElementById('hero-description-content');
                 const chevronIcon = document.getElementById('learn-more-chevron');
+                const mobileContainer = document.querySelector('.hero-description-mobile');
+                const desktopContainer = document.querySelector('.hero-description');
+                
                 console.log('🔍 Hero Elements Check:');
                 console.log('Learn More Button:', learnMoreBtn);
                 console.log('Dropdown Content:', dropdownContent);
                 console.log('Chevron Icon:', chevronIcon);
+                console.log('Mobile Container:', mobileContainer);
+                console.log('Desktop Container:', desktopContainer);
                 console.log('Screen Width:', window.innerWidth);
-                console.log('XL Hidden Class Present:', learnMoreBtn?.closest('.xl\\:hidden') !== null);
+                console.log('Mobile Container Visible:', mobileContainer ? getComputedStyle(mobileContainer).display !== 'none' : false);
+                console.log('Desktop Container Visible:', desktopContainer ? getComputedStyle(desktopContainer).display !== 'none' : false);
+                
                 return {
                     button: !!learnMoreBtn,
                     content: !!dropdownContent,
                     chevron: !!chevronIcon,
                     screenWidth: window.innerWidth,
-                    parentVisible: learnMoreBtn?.closest('.xl\\:hidden') !== null
+                    mobileVisible: mobileContainer ? getComputedStyle(mobileContainer).display !== 'none' : false,
+                    desktopVisible: desktopContainer ? getComputedStyle(desktopContainer).display !== 'none' : false
                 };
+            },
+            forceShowDropdown: () => {
+                const mobileContainer = document.querySelector('.hero-description-mobile');
+                if (mobileContainer) {
+                    mobileContainer.style.display = 'block';
+                    mobileContainer.style.visibility = 'visible';
+                    console.log('✅ Forced mobile dropdown container to be visible for testing');
+                    return true;
+                } else {
+                    console.log('❌ Mobile dropdown container not found');
+                    return false;
+                }
             },
             getState: () => ({
                 currentSlide,
