@@ -223,11 +223,112 @@
             }
         }
         
-        /* Better mobile spacing */
+        /* Better mobile spacing and visibility fixes */
         @media (max-width: 640px) {
             .hero {
-                padding-top: 4.5rem;
+                padding-top: 3rem;
+                padding-bottom: 2rem;
             }
+            
+            /* Improve floating icons visibility on mobile */
+            .floating-icons {
+                z-index: 1;
+            }
+            
+            .floating-icon {
+                opacity: 0.25 !important;
+                font-size: 1.2rem !important;
+            }
+            
+            /* Ensure hero content is above background */
+            .hero-left, .hero-right {
+                position: relative;
+                z-index: 10;
+            }
+            
+            /* Mobile profile carousel fixes */
+            .carousel-container {
+                width: 280px !important;
+                height: 280px !important;
+                margin: 0 auto;
+                box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+                border: 3px solid rgba(255, 255, 255, 0.8);
+            }
+            
+            .profile-carousel {
+                margin-bottom: 1.5rem;
+            }
+            
+            /* Better mobile button spacing */
+            .hero-buttons {
+                gap: 0.75rem !important;
+                margin-top: 1.5rem !important;
+            }
+            
+            /* Mobile hero description improvements */
+            .hero-description-mobile {
+                margin-bottom: 2rem !important;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero {
+                padding-top: 2.5rem;
+                min-height: calc(100vh - 80px);
+            }
+            
+            .carousel-container {
+                width: 240px !important;
+                height: 240px !important;
+            }
+            
+            .hero-title {
+                font-size: 1.5rem !important;
+                line-height: 1.2 !important;
+                margin-bottom: 1rem !important;
+            }
+            
+            .hero-subtitle {
+                font-size: 0.875rem !important;
+                margin-bottom: 1.5rem !important;
+            }
+        }
+        
+        /* Enhanced floating icons animation and positioning */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            25% { transform: translateY(-10px) rotate(3deg); }
+            50% { transform: translateY(-5px) rotate(-2deg); }
+            75% { transform: translateY(-15px) rotate(1deg); }
+        }
+        
+        .floating-icon {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        /* Stagger animation delays for better effect */
+        .floating-icon:nth-child(odd) {
+            animation-duration: 7s;
+        }
+        
+        .floating-icon:nth-child(even) {
+            animation-duration: 5s;
+        }
+        
+        /* Make icons more visible on mobile */
+        @media (max-width: 768px) {
+            .floating-icon {
+                opacity: 0.3 !important;
+                font-size: 1.5rem !important;
+            }
+            
+            /* Move some icons to better positions on mobile */
+            .floating-icons div:nth-child(1) { top: 10% !important; left: 15% !important; }
+            .floating-icons div:nth-child(2) { top: 20% !important; right: 10% !important; }
+            .floating-icons div:nth-child(3) { top: 75% !important; left: 10% !important; }
+            .floating-icons div:nth-child(4) { top: 80% !important; right: 15% !important; }
+            .floating-icons div:nth-child(5) { top: 30% !important; right: 5% !important; }
+            .floating-icons div:nth-child(6) { top: 85% !important; left: 20% !important; }
         }
         
         /* Browser-specific theme color fallbacks */
@@ -323,135 +424,92 @@
     
     <main id="main-content">
     <!-- Hero Section -->
-    <section id="home" class="hero min-h-screen flex items-center relative pt-24 md:pt-28 lg:pt-32 bg-gray-50 overflow-hidden" role="banner">
+    <section id="home" class="hero min-h-screen flex items-center relative pt-16 md:pt-28 lg:pt-32 bg-gray-50 overflow-hidden" role="banner">
         <!-- Floating Technology Icons Background -->
         <div class="floating-icons absolute inset-0 z-0 pointer-events-none">
             <!-- AWS -->
-            <div class="floating-icon absolute text-gray-400 opacity-20" style="top: 15%; left: 10%; animation-delay: 0s;">
-                <i class="fab fa-aws text-2xl"></i>
+            <div class="floating-icon absolute text-gray-600 opacity-25" style="top: 15%; left: 10%; animation-delay: 0s;">
+                <i class="fab fa-aws text-2xl md:text-3xl"></i>
             </div>
             <!-- Microsoft Azure -->
-            <div class="floating-icon absolute text-gray-400 opacity-20" style="top: 25%; right: 15%; animation-delay: 2s;">
-                <i class="fab fa-microsoft text-xl"></i>
+            <div class="floating-icon absolute text-gray-600 opacity-25" style="top: 25%; right: 15%; animation-delay: 2s;">
+                <i class="fab fa-microsoft text-xl md:text-2xl"></i>
             </div>
             <!-- Docker -->
-            <div class="floating-icon absolute text-gray-400 opacity-20" style="top: 40%; left: 5%; animation-delay: 4s;">
-                <i class="fab fa-docker text-xl"></i>
+            <div class="floating-icon absolute text-gray-600 opacity-25" style="top: 40%; left: 5%; animation-delay: 4s;">
+                <i class="fab fa-docker text-xl md:text-2xl"></i>
             </div>
             <!-- Kubernetes (using server icon as alternative) -->
-            <div class="floating-icon absolute text-gray-400 opacity-20" style="top: 60%; right: 20%; animation-delay: 1s;">
-                <i class="fas fa-server text-lg"></i>
+            <div class="floating-icon absolute text-gray-600 opacity-25" style="top: 60%; right: 20%; animation-delay: 1s;">
+                <i class="fas fa-server text-lg md:text-xl"></i>
             </div>
             <!-- Red Hat / Ansible -->
-            <div class="floating-icon absolute text-gray-400 opacity-20" style="top: 35%; right: 8%; animation-delay: 3s;">
-                <i class="fab fa-redhat text-xl"></i>
+            <div class="floating-icon absolute text-gray-600 opacity-25" style="top: 35%; right: 8%; animation-delay: 3s;">
+                <i class="fab fa-redhat text-xl md:text-2xl"></i>
             </div>
             <!-- Google Cloud Platform -->
-            <div class="floating-icon absolute text-gray-400 opacity-20" style="top: 70%; left: 15%; animation-delay: 5s;">
-                <i class="fab fa-google text-xl"></i>
+            <div class="floating-icon absolute text-gray-600 opacity-25" style="top: 70%; left: 15%; animation-delay: 5s;">
+                <i class="fab fa-google text-xl md:text-2xl"></i>
             </div>
             <!-- Cloud Icons -->
-            <div class="floating-icon absolute text-gray-400 opacity-15" style="top: 20%; left: 60%; animation-delay: 1.5s;">
-                <i class="fas fa-cloud text-lg"></i>
+            <div class="floating-icon absolute text-gray-600 opacity-20" style="top: 20%; left: 60%; animation-delay: 1.5s;">
+                <i class="fas fa-cloud text-lg md:text-xl"></i>
             </div>
-            <div class="floating-icon absolute text-gray-400 opacity-15" style="top: 50%; left: 70%; animation-delay: 4.5s;">
-                <i class="fas fa-cloud text-xl"></i>
+            <div class="floating-icon absolute text-gray-600 opacity-20" style="top: 50%; left: 70%; animation-delay: 4.5s;">
+                <i class="fas fa-cloud text-xl md:text-2xl"></i>
             </div>
-            <div class="floating-icon absolute text-gray-400 opacity-15" style="top: 80%; right: 25%; animation-delay: 2.5s;">
-                <i class="fas fa-cloud text-lg"></i>
+            <div class="floating-icon absolute text-gray-600 opacity-20" style="top: 80%; right: 25%; animation-delay: 2.5s;">
+                <i class="fas fa-cloud text-lg md:text-xl"></i>
             </div>
             <!-- Additional Tech Icons -->
-            <div class="floating-icon absolute text-gray-400 opacity-18" style="top: 10%; right: 35%; animation-delay: 6s;">
-                <i class="fas fa-cog text-xl"></i>
+            <div class="floating-icon absolute text-gray-600 opacity-23" style="top: 10%; right: 35%; animation-delay: 6s;">
+                <i class="fas fa-cog text-xl md:text-2xl"></i>
             </div>
-            <div class="floating-icon absolute text-gray-400 opacity-18" style="top: 85%; left: 8%; animation-delay: 3.5s;">
-                <i class="fas fa-network-wired text-xl"></i>
+            <div class="floating-icon absolute text-gray-600 opacity-23" style="top: 85%; left: 8%; animation-delay: 3.5s;">
+                <i class="fas fa-network-wired text-xl md:text-2xl"></i>
             </div>
-            <div class="floating-icon absolute text-gray-400 opacity-18" style="top: 45%; left: 25%; animation-delay: 5.5s;">
-                <i class="fas fa-database text-lg"></i>
+            <div class="floating-icon absolute text-gray-600 opacity-23" style="top: 45%; left: 25%; animation-delay: 5.5s;">
+                <i class="fas fa-database text-lg md:text-xl"></i>
             </div>
             <!-- Additional rotating icons for variety -->
-            <div class="floating-icon absolute text-gray-400 opacity-18" style="top: 55%; right: 5%; animation-delay: 7s;">
-                <i class="fab fa-linux text-xl"></i>
+            <div class="floating-icon absolute text-gray-600 opacity-23" style="top: 55%; right: 5%; animation-delay: 7s;">
+                <i class="fab fa-linux text-xl md:text-2xl"></i>
             </div>
-            <div class="floating-icon absolute text-gray-400 opacity-18" style="top: 30%; left: 40%; animation-delay: 8s;">
-                <i class="fas fa-shield-alt text-lg"></i>
+            <div class="floating-icon absolute text-gray-600 opacity-23" style="top: 30%; left: 40%; animation-delay: 8s;">
+                <i class="fas fa-shield-alt text-lg md:text-xl"></i>
             </div>
-            <div class="floating-icon absolute text-gray-400 opacity-18" style="top: 75%; right: 40%; animation-delay: 9s;">
-                <i class="fas fa-code text-xl"></i>
+            <div class="floating-icon absolute text-gray-600 opacity-23" style="top: 75%; right: 40%; animation-delay: 9s;">
+                <i class="fas fa-code text-xl md:text-2xl"></i>
             </div>
             
             <!-- Additional Layer of Icons for More Visibility -->
             <!-- Jenkins/CI-CD -->
-            <div class="floating-icon absolute text-gray-400 opacity-16" style="top: 12%; left: 30%; animation-delay: 10s;">
-                <i class="fas fa-cogs text-lg"></i>
+            <div class="floating-icon absolute text-gray-600 opacity-21" style="top: 12%; left: 30%; animation-delay: 10s;">
+                <i class="fas fa-cogs text-lg md:text-xl"></i>
             </div>
             <!-- Terraform/IaC -->
-            <div class="floating-icon absolute text-gray-400 opacity-16" style="top: 28%; left: 75%; animation-delay: 11s;">
-                <i class="fas fa-cube text-lg"></i>
+            <div class="floating-icon absolute text-gray-600 opacity-21" style="top: 28%; left: 75%; animation-delay: 11s;">
+                <i class="fas fa-cube text-lg md:text-xl"></i>
             </div>
             <!-- Python -->
-            <div class="floating-icon absolute text-gray-400 opacity-16" style="top: 42%; right: 35%; animation-delay: 12s;">
-                <i class="fab fa-python text-xl"></i>
+            <div class="floating-icon absolute text-gray-600 opacity-21" style="top: 42%; right: 35%; animation-delay: 12s;">
+                <i class="fab fa-python text-xl md:text-2xl"></i>
             </div>
             <!-- Git -->
-            <div class="floating-icon absolute text-gray-400 opacity-16" style="top: 58%; left: 35%; animation-delay: 13s;">
-                <i class="fab fa-git-alt text-lg"></i>
+            <div class="floating-icon absolute text-gray-600 opacity-21" style="top: 58%; left: 35%; animation-delay: 13s;">
+                <i class="fab fa-git-alt text-lg md:text-xl"></i>
             </div>
             <!-- Terminal/CLI -->
-            <div class="floating-icon absolute text-gray-400 opacity-16" style="top: 68%; right: 45%; animation-delay: 14s;">
-                <i class="fas fa-terminal text-lg"></i>
-            </div>
-            <!-- More Cloud Icons -->
-            <div class="floating-icon absolute text-gray-400 opacity-14" style="top: 18%; left: 80%; animation-delay: 15s;">
-                <i class="fas fa-cloud text-lg"></i>
-            </div>
-            <div class="floating-icon absolute text-gray-400 opacity-14" style="top: 38%; left: 15%; animation-delay: 16s;">
-                <i class="fas fa-cloud text-xl"></i>
-            </div>
-            <div class="floating-icon absolute text-gray-400 opacity-14" style="top: 62%; left: 65%; animation-delay: 17s;">
-                <i class="fas fa-cloud text-lg"></i>
-            </div>
-            <div class="floating-icon absolute text-gray-400 opacity-14" style="top: 78%; left: 45%; animation-delay: 18s;">
-                <i class="fas fa-cloud text-xl"></i>
-            </div>
-            <!-- Security Icons -->
-            <div class="floating-icon absolute text-gray-400 opacity-16" style="top: 22%; right: 55%; animation-delay: 19s;">
-                <i class="fas fa-lock text-lg"></i>
-            </div>
-            <div class="floating-icon absolute text-gray-400 opacity-16" style="top: 48%; left: 55%; animation-delay: 20s;">
-                <i class="fas fa-key text-lg"></i>
-            </div>
-            <div class="floating-icon absolute text-gray-400 opacity-16" style="top: 72%; left: 25%; animation-delay: 21s;">
-                <i class="fas fa-user-shield text-lg"></i>
-            </div>
-            <!-- API/Web Icons -->
-            <div class="floating-icon absolute text-gray-400 opacity-16" style="top: 33%; left: 85%; animation-delay: 22s;">
-                <i class="fas fa-globe text-lg"></i>
-            </div>
-            <div class="floating-icon absolute text-gray-400 opacity-16" style="top: 52%; right: 12%; animation-delay: 23s;">
-                <i class="fas fa-wifi text-lg"></i>
-            </div>
-            <div class="floating-icon absolute text-gray-400 opacity-16" style="top: 88%; right: 15%; animation-delay: 24s;">
-                <i class="fas fa-link text-lg"></i>
-            </div>
-            <!-- DevOps Tools -->
-            <div class="floating-icon absolute text-gray-400 opacity-16" style="top: 8%; left: 55%; animation-delay: 25s;">
-                <i class="fas fa-rocket text-lg"></i>
-            </div>
-            <div class="floating-icon absolute text-gray-400 opacity-16" style="top: 65%; right: 65%; animation-delay: 26s;">
-                <i class="fas fa-tools text-lg"></i>
-            </div>
-            <div class="floating-icon absolute text-gray-400 opacity-16" style="top: 82%; left: 75%; animation-delay: 27s;">
-                <i class="fas fa-chart-line text-lg"></i>
+            <div class="floating-icon absolute text-gray-600 opacity-21" style="top: 68%; right: 45%; animation-delay: 14s;">
+                <i class="fas fa-terminal text-lg md:text-xl"></i>
             </div>
         </div>
 
         <!-- Hero Content -->
-        <div class="container mx-auto px-4 md:px-6 relative z-10">
-            <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+        <div class="container mx-auto px-4 md:px-6 relative z-20">
+            <div class="grid lg:grid-cols-2 gap-6 lg:gap-12 items-center">
                 <!-- LEFT SIDE: Content -->
-                <div class="hero-left order-2 lg:order-1">
+                <div class="hero-left order-2 lg:order-1 relative z-30">
                     <h1 class="hero-title text-center lg:text-left text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-black text-gray-900 leading-tight mb-4 md:mb-6 glitch-effect" data-text="NAVIGATE THE DIGITAL LANDSCAPE WITH CONFIDENCE">
                         NAVIGATE THE DIGITAL LANDSCAPE WITH CONFIDENCE
                     </h1>
@@ -460,7 +518,7 @@
                     </h2>
                     
                     <!-- Mobile/Tablet Hero Description with Dropdown -->
-                    <div class="hero-description-mobile xl:hidden mb-6 md:mb-8">
+                    <div class="hero-description-mobile xl:hidden mb-6 md:mb-8 relative z-30">
                         <!-- Learn More Button -->
                         <button 
                             id="learn-more-btn" 
@@ -496,7 +554,7 @@
                     </div>
                     
                     <!-- Desktop Hero Description (Always Visible) -->
-                    <div class="hero-description hidden xl:block space-y-4 md:space-y-6 text-base md:text-lg text-gray-700 bg-white p-4 md:p-6 rounded-lg shadow-lg">
+                    <div class="hero-description hidden xl:block space-y-4 md:space-y-6 text-base md:text-lg text-gray-700 bg-white p-4 md:p-6 rounded-lg shadow-lg relative z-30">
                         <p class="hero-mission">
                             I'm a results-driven, mission-focused Cloud Computing graduate with 4+ years of experience in cybersecurity and IT operations. I began my career as a Security Analyst, where I built a strong foundation in Linux administration, incident response, and Python scripting — skills I continued to sharpen through hands-on experience and academic training.
                         </p>
@@ -513,37 +571,37 @@
                 </div>
                 
                 <!-- RIGHT SIDE: Hero Image -->
-                <div class="hero-right order-1 lg:order-2">
+                <div class="hero-right order-1 lg:order-2 relative z-30">
                     <div class="hero-image-container flex flex-col items-center">
                         <div class="profile-carousel relative mb-4 md:mb-6">
                             <!-- Profile Image Carousel -->
-                            <div class="carousel-container w-80 h-80 sm:w-96 sm:h-96 md:w-96 md:h-96 lg:w-[400px] lg:h-[400px] xl:w-[500px] xl:h-[500px] relative overflow-hidden rounded-2xl shadow-2xl border-4 border-white/50">
+                            <div class="carousel-container w-80 h-80 sm:w-96 sm:h-96 md:w-96 md:h-96 lg:w-[400px] lg:h-[400px] xl:w-[500px] xl:h-[500px] relative overflow-hidden rounded-2xl shadow-2xl border-4 border-white/80 bg-white">
                                 <!-- Profile Images -->
                                 <div class="carousel-slides relative w-full h-full">
                                     <div class="carousel-slide active absolute inset-0 w-full h-full">
-                                        <img src="./public/images/profile_1.jpg" alt="Ezekiel Obeisun Jr - Profile Photo 1" class="w-full h-full object-cover object-center" onerror="this.onerror=null; this.src='public/images/profile_1.jpg';">
+                                        <img src="./public/images/profile_1.jpg" alt="Ezekiel Obeisun Jr - Profile Photo 1" class="w-full h-full object-cover object-center" loading="eager" onerror="this.onerror=null; this.src='public/images/profile_1.jpg';">
                                         <div class="absolute inset-0 bg-gradient-to-t from-primary-600/20 to-transparent"></div>
                                     </div>
                                     <div class="carousel-slide absolute inset-0 w-full h-full opacity-0">
-                                        <img src="./public/images/profile_2.jpg" alt="Ezekiel Obeisun Jr - Profile Photo 2" class="w-full h-full object-cover object-center" onerror="this.onerror=null; this.src='public/images/profile_2.jpg';">
+                                        <img src="./public/images/profile_2.jpg" alt="Ezekiel Obeisun Jr - Profile Photo 2" class="w-full h-full object-cover object-center" loading="lazy" onerror="this.onerror=null; this.src='public/images/profile_2.jpg';">
                                         <div class="absolute inset-0 bg-gradient-to-t from-primary-600/20 to-transparent"></div>
                                     </div>
                                     <div class="carousel-slide absolute inset-0 w-full h-full opacity-0">
-                                        <img src="./public/images/profile_3.jpg" alt="Ezekiel Obeisun Jr - Profile Photo 3" class="w-full h-full object-cover object-center" onerror="this.onerror=null; this.src='public/images/profile_3.jpg';">
+                                        <img src="./public/images/profile_3.jpg" alt="Ezekiel Obeisun Jr - Profile Photo 3" class="w-full h-full object-cover object-center" loading="lazy" onerror="this.onerror=null; this.src='public/images/profile_3.jpg';">
                                         <div class="absolute inset-0 bg-gradient-to-t from-primary-600/20 to-transparent"></div>
                                     </div>
                                     <div class="carousel-slide absolute inset-0 w-full h-full opacity-0">
-                                        <img src="./public/images/profile_4.jpg" alt="Ezekiel Obeisun Jr - Profile Photo 4" class="w-full h-full object-cover object-center" onerror="this.onerror=null; this.src='public/images/profile_4.jpg';">
+                                        <img src="./public/images/profile_4.jpg" alt="Ezekiel Obeisun Jr - Profile Photo 4" class="w-full h-full object-cover object-center" loading="lazy" onerror="this.onerror=null; this.src='public/images/profile_4.jpg';">
                                         <div class="absolute inset-0 bg-gradient-to-t from-primary-600/20 to-transparent"></div>
                                     </div>
                                 </div>
                                 
                                 <!-- Carousel Navigation Dots -->
-                                <div class="carousel-dots absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
-                                    <button class="carousel-dot w-3 h-3 rounded-full bg-white/60 hover:bg-white transition-all duration-300 active" data-slide="0" aria-label="View profile photo 1"></button>
-                                    <button class="carousel-dot w-3 h-3 rounded-full bg-white/60 hover:bg-white transition-all duration-300" data-slide="1" aria-label="View profile photo 2"></button>
-                                    <button class="carousel-dot w-3 h-3 rounded-full bg-white/60 hover:bg-white transition-all duration-300" data-slide="2" aria-label="View profile photo 3"></button>
-                                    <button class="carousel-dot w-3 h-3 rounded-full bg-white/60 hover:bg-white transition-all duration-300" data-slide="3" aria-label="View profile photo 4"></button>
+                                <div class="carousel-dots absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2 z-10">
+                                    <button class="carousel-dot w-3 h-3 rounded-full bg-white/80 hover:bg-white transition-all duration-300 active shadow-sm" data-slide="0" aria-label="View profile photo 1"></button>
+                                    <button class="carousel-dot w-3 h-3 rounded-full bg-white/80 hover:bg-white transition-all duration-300 shadow-sm" data-slide="1" aria-label="View profile photo 2"></button>
+                                    <button class="carousel-dot w-3 h-3 rounded-full bg-white/80 hover:bg-white transition-all duration-300 shadow-sm" data-slide="2" aria-label="View profile photo 3"></button>
+                                    <button class="carousel-dot w-3 h-3 rounded-full bg-white/80 hover:bg-white transition-all duration-300 shadow-sm" data-slide="3" aria-label="View profile photo 4"></button>
                                 </div>
                             </div>
                             
