@@ -415,12 +415,12 @@ function initSmoothScrolling() {
     if (isIOS) {
         console.log('� Applying iOS scroll fixes...');
         
-        // Prevent scroll bounce on iOS
-        document.addEventListener('touchstart', function(e) {
-            if (e.target.tagName === 'BODY' || e.target === document.documentElement) {
-                e.preventDefault();
-            }
-        }, { passive: false });
+        // Prevent scroll bounce on iOS - DISABLED to fix scroll issues
+        // document.addEventListener('touchstart', function(e) {
+        //     if (e.target.tagName === 'BODY' || e.target === document.documentElement) {
+        //         e.preventDefault();
+        //     }
+        // }, { passive: false });
         
         // Fix for iOS Safari scroll issues with fixed elements
         let ticking = false;
