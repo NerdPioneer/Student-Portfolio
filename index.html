@@ -112,6 +112,10 @@
     <!-- Preload critical resources -->
     <link rel="preload" href="./dist/styles.css" as="style">
     <link rel="preload" href="./src/js/main.js" as="script">
+    <link rel="preload" href="./public/images/profile_1.jpg" as="image">
+    <link rel="preload" href="./public/images/profile_2.jpg" as="image">
+    <link rel="preload" href="./public/images/profile_3.jpg" as="image">
+    <link rel="preload" href="./public/images/profile_4.jpg" as="image">
     
     <!-- Critical CSS -->
     <style>
@@ -215,6 +219,21 @@
             .bg-primary-600 { background-color: #2563eb !important; }
             .text-primary-600 { color: #2563eb !important; }
             .border-primary-600 { border-color: #2563eb !important; }
+        }
+        
+        /* Safari mobile image loading fixes */
+        .carousel-slide img {
+            -webkit-transform: translateZ(0);
+            transform: translateZ(0);
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+        }
+        
+        /* Force hardware acceleration on Safari */
+        .carousel-container {
+            -webkit-transform: translateZ(0);
+            transform: translateZ(0);
+            will-change: transform;
         }
     </style>
     
@@ -486,19 +505,19 @@
                                 <!-- Profile Images -->
                                 <div class="carousel-slides relative w-full h-full">
                                     <div class="carousel-slide active absolute inset-0 w-full h-full">
-                                        <img src="./public/images/profile_1.jpg" alt="Ezekiel Obeisun Jr - Profile Photo 1" class="w-full h-full object-cover object-center" loading="lazy">
+                                        <img src="./public/images/profile_1.jpg" alt="Ezekiel Obeisun Jr - Profile Photo 1" class="w-full h-full object-cover object-center" onerror="this.onerror=null; this.src='public/images/profile_1.jpg';">
                                         <div class="absolute inset-0 bg-gradient-to-t from-primary-600/20 to-transparent"></div>
                                     </div>
                                     <div class="carousel-slide absolute inset-0 w-full h-full opacity-0">
-                                        <img src="./public/images/profile_2.jpg" alt="Ezekiel Obeisun Jr - Profile Photo 2" class="w-full h-full object-cover object-center" loading="lazy">
+                                        <img src="./public/images/profile_2.jpg" alt="Ezekiel Obeisun Jr - Profile Photo 2" class="w-full h-full object-cover object-center" onerror="this.onerror=null; this.src='public/images/profile_2.jpg';">
                                         <div class="absolute inset-0 bg-gradient-to-t from-primary-600/20 to-transparent"></div>
                                     </div>
                                     <div class="carousel-slide absolute inset-0 w-full h-full opacity-0">
-                                        <img src="./public/images/profile_3.jpg" alt="Ezekiel Obeisun Jr - Profile Photo 3" class="w-full h-full object-cover object-center" loading="lazy">
+                                        <img src="./public/images/profile_3.jpg" alt="Ezekiel Obeisun Jr - Profile Photo 3" class="w-full h-full object-cover object-center" onerror="this.onerror=null; this.src='public/images/profile_3.jpg';">
                                         <div class="absolute inset-0 bg-gradient-to-t from-primary-600/20 to-transparent"></div>
                                     </div>
                                     <div class="carousel-slide absolute inset-0 w-full h-full opacity-0">
-                                        <img src="./public/images/profile_4.jpg" alt="Ezekiel Obeisun Jr - Profile Photo 4" class="w-full h-full object-cover object-center" loading="lazy">
+                                        <img src="./public/images/profile_4.jpg" alt="Ezekiel Obeisun Jr - Profile Photo 4" class="w-full h-full object-cover object-center" onerror="this.onerror=null; this.src='public/images/profile_4.jpg';">
                                         <div class="absolute inset-0 bg-gradient-to-t from-primary-600/20 to-transparent"></div>
                                     </div>
                                 </div>
