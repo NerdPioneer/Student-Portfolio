@@ -4,25 +4,48 @@
 
 function initHeroDropdown() {
     console.log('📱 Initializing hero dropdown functionality...');
+    console.log('🖥️ Current screen width:', window.innerWidth);
     
     const learnMoreBtn = document.getElementById('learn-more-btn');
     const dropdownContent = document.getElementById('hero-description-content');
     const chevronIcon = document.getElementById('learn-more-chevron');
     
+    console.log('🔍 Element check results:');
+    console.log('  - Learn More Button:', learnMoreBtn);
+    console.log('  - Dropdown Content:', dropdownContent);
+    console.log('  - Chevron Icon:', chevronIcon);
+    
     if (!learnMoreBtn || !dropdownContent || !chevronIcon) {
         console.warn('⚠️ Hero dropdown elements not found');
+        console.warn('  Missing elements:', {
+            button: !learnMoreBtn,
+            content: !dropdownContent,
+            chevron: !chevronIcon
+        });
         return;
     }
+    
+    // Check if parent container is visible on current screen size
+    const parentContainer = learnMoreBtn.closest('.hero-description-mobile');
+    const isParentVisible = parentContainer && getComputedStyle(parentContainer).display !== 'none';
+    console.log('👁️ Parent container visible:', isParentVisible);
+    console.log('📦 Parent container:', parentContainer);
     
     console.log('✅ Hero dropdown elements found, setting up functionality...');
     
     let isOpen = false;
     
-    learnMoreBtn.addEventListener('click', function() {
+    learnMoreBtn.addEventListener('click', function(e) {
         console.log('📖 Learn More button clicked!');
+        console.log('🖱️ Click event:', e);
+        console.log('📐 Current state - isOpen:', isOpen);
+        console.log('📏 Dropdown content scrollHeight:', dropdownContent.scrollHeight);
+        
+        e.preventDefault(); // Ensure click is handled
         
         if (isOpen) {
             // Close dropdown
+            console.log('📤 Closing dropdown...');
             dropdownContent.style.maxHeight = '0px';
             chevronIcon.style.transform = 'rotate(0deg)';
             learnMoreBtn.setAttribute('aria-expanded', 'false');
@@ -31,7 +54,10 @@ function initHeroDropdown() {
             console.log('📖 Hero dropdown closed');
         } else {
             // Open dropdown
-            dropdownContent.style.maxHeight = dropdownContent.scrollHeight + 'px';
+            console.log('📥 Opening dropdown...');
+            const targetHeight = dropdownContent.scrollHeight + 'px';
+            console.log('🎯 Target height:', targetHeight);
+            dropdownContent.style.maxHeight = targetHeight;
             chevronIcon.style.transform = 'rotate(180deg)';
             learnMoreBtn.setAttribute('aria-expanded', 'true');
             learnMoreBtn.querySelector('span').textContent = 'Show Less';
@@ -42,7 +68,9 @@ function initHeroDropdown() {
     
     // Reset dropdown on window resize (if switching to desktop)
     window.addEventListener('resize', () => {
+        console.log('📐 Window resized to:', window.innerWidth + 'x' + window.innerHeight);
         if (window.innerWidth >= 1280 && isOpen) { // xl breakpoint
+            console.log('💻 Switching to desktop view, closing dropdown...');
             dropdownContent.style.maxHeight = '0px';
             chevronIcon.style.transform = 'rotate(0deg)';
             learnMoreBtn.setAttribute('aria-expanded', 'false');
@@ -149,6 +177,7 @@ function initNavbar() {
 
 let currentSlide = 0;
 let slideInterval;
+let showSlideFunction = null; // Store reference to showSlide function
 
 function initCarousel() {
     console.log('🎠 Initializing carousel...');
@@ -191,6 +220,9 @@ function initCarousel() {
         currentSlide = index;
         console.log(`🎯 Showing slide ${index + 1}/${slides.length}`);
     }
+    
+    // Store reference for global access
+    showSlideFunction = showSlide;
     
     function nextSlide() {
         const next = (currentSlide + 1) % slides.length;
@@ -295,9 +327,9 @@ function initializeApp() {
         window.portfolioDebug = {
             showSlide: (index) => {
                 const slides = document.querySelectorAll('.carousel-slide');
-                if (index >= 0 && index < slides.length) {
+                if (index >= 0 && index < slides.length && showSlideFunction) {
                     currentSlide = index;
-                    showSlide(index);
+                    showSlideFunction(index);
                 }
             },
             toggleMenu: () => {
@@ -307,6 +339,24 @@ function initializeApp() {
             toggleHeroDropdown: () => {
                 const learnMoreBtn = document.getElementById('learn-more-btn');
                 if (learnMoreBtn) learnMoreBtn.click();
+            },
+            testHeroElements: () => {
+                const learnMoreBtn = document.getElementById('learn-more-btn');
+                const dropdownContent = document.getElementById('hero-description-content');
+                const chevronIcon = document.getElementById('learn-more-chevron');
+                console.log('🔍 Hero Elements Check:');
+                console.log('Learn More Button:', learnMoreBtn);
+                console.log('Dropdown Content:', dropdownContent);
+                console.log('Chevron Icon:', chevronIcon);
+                console.log('Screen Width:', window.innerWidth);
+                console.log('XL Hidden Class Present:', learnMoreBtn?.closest('.xl\\:hidden') !== null);
+                return {
+                    button: !!learnMoreBtn,
+                    content: !!dropdownContent,
+                    chevron: !!chevronIcon,
+                    screenWidth: window.innerWidth,
+                    parentVisible: learnMoreBtn?.closest('.xl\\:hidden') !== null
+                };
             },
             getState: () => ({
                 currentSlide,
