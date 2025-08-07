@@ -1,4 +1,61 @@
 // ==============================================
+// HERO DROPDOWN FUNCTIONALITY
+// ==============================================
+
+function initHeroDropdown() {
+    console.log('📱 Initializing hero dropdown functionality...');
+    
+    const learnMoreBtn = document.getElementById('learn-more-btn');
+    const dropdownContent = document.getElementById('hero-description-content');
+    const chevronIcon = document.getElementById('learn-more-chevron');
+    
+    if (!learnMoreBtn || !dropdownContent || !chevronIcon) {
+        console.warn('⚠️ Hero dropdown elements not found');
+        return;
+    }
+    
+    console.log('✅ Hero dropdown elements found, setting up functionality...');
+    
+    let isOpen = false;
+    
+    learnMoreBtn.addEventListener('click', function() {
+        console.log('📖 Learn More button clicked!');
+        
+        if (isOpen) {
+            // Close dropdown
+            dropdownContent.style.maxHeight = '0px';
+            chevronIcon.style.transform = 'rotate(0deg)';
+            learnMoreBtn.setAttribute('aria-expanded', 'false');
+            learnMoreBtn.querySelector('span').textContent = 'Learn More About Me';
+            isOpen = false;
+            console.log('📖 Hero dropdown closed');
+        } else {
+            // Open dropdown
+            dropdownContent.style.maxHeight = dropdownContent.scrollHeight + 'px';
+            chevronIcon.style.transform = 'rotate(180deg)';
+            learnMoreBtn.setAttribute('aria-expanded', 'true');
+            learnMoreBtn.querySelector('span').textContent = 'Show Less';
+            isOpen = true;
+            console.log('📖 Hero dropdown opened');
+        }
+    });
+    
+    // Reset dropdown on window resize (if switching to desktop)
+    window.addEventListener('resize', () => {
+        if (window.innerWidth >= 1280 && isOpen) { // xl breakpoint
+            dropdownContent.style.maxHeight = '0px';
+            chevronIcon.style.transform = 'rotate(0deg)';
+            learnMoreBtn.setAttribute('aria-expanded', 'false');
+            learnMoreBtn.querySelector('span').textContent = 'Learn More About Me';
+            isOpen = false;
+            console.log('📖 Hero dropdown reset due to screen size change');
+        }
+    });
+    
+    console.log('✅ Hero dropdown functionality initialized successfully');
+}
+
+// ==============================================
 // NAVBAR FUNCTIONALITY
 // ==============================================
 
@@ -227,6 +284,7 @@ function initializeApp() {
     
     try {
         // Initialize all components
+        initHeroDropdown();
         initNavbar();
         initCarousel();
         initSmoothScrolling();
@@ -246,10 +304,15 @@ function initializeApp() {
                 const navToggle = document.querySelector('.nav-toggle');
                 if (navToggle) navToggle.click();
             },
+            toggleHeroDropdown: () => {
+                const learnMoreBtn = document.getElementById('learn-more-btn');
+                if (learnMoreBtn) learnMoreBtn.click();
+            },
             getState: () => ({
                 currentSlide,
                 slidesCount: document.querySelectorAll('.carousel-slide').length,
-                menuOpen: document.querySelector('.nav-menu')?.style.maxHeight !== '0px'
+                menuOpen: document.querySelector('.nav-menu')?.style.maxHeight !== '0px',
+                heroDropdownOpen: document.getElementById('hero-description-content')?.style.maxHeight !== '0px'
             })
         };
         
