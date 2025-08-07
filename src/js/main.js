@@ -34,6 +34,7 @@ function initHeroDropdown() {
     console.log('✅ Hero dropdown elements found, setting up functionality...');
     
     let isOpen = false;
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
     
     learnMoreBtn.addEventListener('click', function(e) {
         console.log('📖 Learn More button clicked!');
@@ -42,6 +43,17 @@ function initHeroDropdown() {
         console.log('📏 Dropdown content scrollHeight:', dropdownContent.scrollHeight);
         
         e.preventDefault(); // Ensure click is handled
+        e.stopPropagation(); // Prevent event bubbling
+        
+        // Prevent body scroll on mobile while dropdown is opening/closing
+        if (isMobile) {
+            document.body.style.overflow = isOpen ? '' : 'hidden';
+            setTimeout(() => {
+                if (document.body.style.overflow === 'hidden') {
+                    document.body.style.overflow = '';
+                }
+            }, 600); // Clear after animation completes
+        }
         
         if (isOpen) {
             // Close dropdown
@@ -102,9 +114,13 @@ function initNavbar() {
     
     console.log('✅ Navbar elements found, setting up toggle...');
     
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    
     // Toggle mobile menu
-    navToggle.addEventListener('click', function() {
+    navToggle.addEventListener('click', function(e) {
         console.log('🍔 Hamburger clicked!');
+        e.preventDefault();
+        e.stopPropagation();
         
         const isOpen = navMenu.style.maxHeight && navMenu.style.maxHeight !== '0px';
         
@@ -119,6 +135,12 @@ function initNavbar() {
                 line.style.opacity = '';
             });
             
+            // Re-enable body scroll on mobile
+            if (isMobile) {
+                document.body.style.overflow = '';
+                document.body.style.position = '';
+            }
+            
             console.log('📱 Mobile menu closed');
         } else {
             // Open menu
@@ -130,6 +152,13 @@ function initNavbar() {
                 hamburgerLines[0].style.transform = 'rotate(45deg) translate(6px, 6px)';
                 hamburgerLines[1].style.opacity = '0';
                 hamburgerLines[2].style.transform = 'rotate(-45deg) translate(6px, -6px)';
+            }
+            
+            // Prevent body scroll on mobile when menu is open
+            if (isMobile) {
+                document.body.style.overflow = 'hidden';
+                document.body.style.position = 'fixed';
+                document.body.style.width = '100%';
             }
             
             console.log('📱 Mobile menu opened');
@@ -149,12 +178,18 @@ function initNavbar() {
                     line.style.opacity = '';
                 });
                 
+                // Re-enable body scroll on mobile
+                if (isMobile) {
+                    document.body.style.overflow = '';
+                    document.body.style.position = '';
+                }
+                
                 console.log('📱 Mobile menu closed via nav link');
             }
         });
     });
     
-    // Close menu on window resize
+    // Close menu on window resize and fix body scroll
     window.addEventListener('resize', () => {
         if (window.innerWidth > 1024) {
             navMenu.style.maxHeight = '';
@@ -165,6 +200,36 @@ function initNavbar() {
                 line.style.transform = '';
                 line.style.opacity = '';
             });
+            
+            // Always reset body styles on desktop
+            document.body.style.overflow = '';
+            document.body.style.position = '';
+            document.body.style.width = '';
+        }
+    });
+    
+    // Close menu when clicking outside
+    document.addEventListener('click', function(e) {
+        const isMenuOpen = navMenu.style.maxHeight && navMenu.style.maxHeight !== '0px';
+        const isClickInsideNav = navToggle.contains(e.target) || navMenu.contains(e.target);
+        
+        if (isMenuOpen && !isClickInsideNav && window.innerWidth <= 1024) {
+            navMenu.style.maxHeight = '0px';
+            navToggle.setAttribute('aria-expanded', 'false');
+            
+            // Reset hamburger animation
+            hamburgerLines.forEach(line => {
+                line.style.transform = '';
+                line.style.opacity = '';
+            });
+            
+            // Re-enable body scroll on mobile
+            if (isMobile) {
+                document.body.style.overflow = '';
+                document.body.style.position = '';
+            }
+            
+            console.log('📱 Mobile menu closed via outside click');
         }
     });
     
@@ -270,13 +335,19 @@ function initCarousel() {
 }
 
 // ==============================================
-// SMOOTH SCROLLING
+// SMOOTH SCROLLING WITH MOBILE FIXES
 // ==============================================
 
 function initSmoothScrolling() {
-    console.log('📜 Initializing smooth scrolling...');
+    console.log('📜 Initializing smooth scrolling with mobile fixes...');
     
     const navLinks = document.querySelectorAll('a[href^="#"]');
+    
+    // Detect mobile devices
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+    
+    console.log('📱 Device detection:', { isMobile, isIOS });
     
     navLinks.forEach(link => {
         link.addEventListener('click', function(e) {
@@ -292,17 +363,85 @@ function initSmoothScrolling() {
                 const headerHeight = document.querySelector('.desktop-nav')?.offsetHeight || 80;
                 const targetPosition = targetElement.offsetTop - headerHeight;
                 
-                window.scrollTo({
-                    top: targetPosition,
-                    behavior: 'smooth'
-                });
-                
-                console.log(`🎯 Scrolling to ${href}`);
+                // Use different scrolling behavior based on device
+                if (isMobile || isIOS) {
+                    // For mobile devices, use a more reliable method
+                    console.log(`📱 Mobile scroll to ${href}`);
+                    
+                    // Disable body scroll during navigation
+                    document.body.style.overflow = 'hidden';
+                    
+                    // Use requestAnimationFrame for smoother mobile scrolling
+                    const startPosition = window.pageYOffset;
+                    const distance = targetPosition - startPosition;
+                    const duration = 800; // Slightly longer for mobile
+                    let startTime = null;
+                    
+                    function animateScroll(currentTime) {
+                        if (startTime === null) startTime = currentTime;
+                        const timeElapsed = currentTime - startTime;
+                        const progress = Math.min(timeElapsed / duration, 1);
+                        
+                        // Easing function for smooth animation
+                        const easeInOutQuad = progress < 0.5 
+                            ? 2 * progress * progress 
+                            : 1 - Math.pow(-2 * progress + 2, 2) / 2;
+                        
+                        window.scrollTo(0, startPosition + distance * easeInOutQuad);
+                        
+                        if (progress < 1) {
+                            requestAnimationFrame(animateScroll);
+                        } else {
+                            // Re-enable body scroll
+                            document.body.style.overflow = '';
+                            console.log(`✅ Mobile scroll to ${href} completed`);
+                        }
+                    }
+                    
+                    requestAnimationFrame(animateScroll);
+                } else {
+                    // For desktop, use native smooth scrolling
+                    console.log(`🖥️ Desktop scroll to ${href}`);
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
             }
         });
     });
     
-    console.log('✅ Smooth scrolling initialized');
+    // Fix for iOS scroll momentum issues
+    if (isIOS) {
+        console.log('� Applying iOS scroll fixes...');
+        
+        // Prevent scroll bounce on iOS
+        document.addEventListener('touchstart', function(e) {
+            if (e.target.tagName === 'BODY' || e.target === document.documentElement) {
+                e.preventDefault();
+            }
+        }, { passive: false });
+        
+        // Fix for iOS Safari scroll issues with fixed elements
+        let ticking = false;
+        
+        function updateScrollPosition() {
+            const nav = document.querySelector('.desktop-nav');
+            if (nav) {
+                nav.style.transform = 'translateZ(0)';
+            }
+            ticking = false;
+        }
+        
+        window.addEventListener('scroll', function() {
+            if (!ticking) {
+                requestAnimationFrame(updateScrollPosition);
+                ticking = true;
+            }
+        });
+    }
+    
+    console.log('✅ Smooth scrolling with mobile fixes initialized');
 }
 
 // ==============================================
