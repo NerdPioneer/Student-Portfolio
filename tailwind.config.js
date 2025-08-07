@@ -45,7 +45,6 @@ module.exports = {
         'bounce-slow': 'bounce 2s infinite',
         'pulse-slow': 'pulse 3s infinite',
         'gradient': 'gradient 6s ease infinite',
-        'typing': 'typing 3.5s steps(40, end), blink-caret .75s step-end infinite',
       },
       keyframes: {
         fadeIn: {
@@ -65,14 +64,6 @@ module.exports = {
             'background-size': '200% 200%',
             'background-position': 'right center'
           },
-        },
-        typing: {
-          'from': { width: '0' },
-          'to': { width: '100%' },
-        },
-        'blink-caret': {
-          'from, to': { 'border-color': 'transparent' },
-          '50%': { 'border-color': '#3b82f6' },
         },
       },
       backgroundImage: {
