@@ -66,11 +66,11 @@ function initHeroDropdown() {
         }
     });
     
-    // Reset dropdown on window resize (if switching to desktop)
+    // Reset dropdown on window resize (if switching to largest desktop)
     window.addEventListener('resize', () => {
         console.log('📐 Window resized to:', window.innerWidth + 'x' + window.innerHeight);
-        if (window.innerWidth >= 1280 && isOpen) { // xl breakpoint
-            console.log('💻 Switching to desktop view, closing dropdown...');
+        if (window.innerWidth >= 1536 && isOpen) { // 2xl breakpoint
+            console.log('💻 Switching to largest desktop view, closing dropdown...');
             dropdownContent.style.maxHeight = '0px';
             chevronIcon.style.transform = 'rotate(0deg)';
             learnMoreBtn.setAttribute('aria-expanded', 'false');
