@@ -398,7 +398,7 @@
             }
         }
         
-        /* Responsive quote styling */
+        /* Enhanced mobile quote visibility and styling */
         @media (max-width: 640px) {
             .inspirational-quote p {
                 font-size: 1rem;
@@ -418,6 +418,41 @@
             .quote-mark:last-child {
                 bottom: -1rem;
                 right: 0;
+            }
+            
+            /* Ensure quote section is always visible on mobile */
+            #contact .mt-16 {
+                margin-top: 3rem !important;
+                margin-bottom: 2rem !important;
+                padding: 1rem !important;
+                min-height: 120px;
+                display: block !important;
+                visibility: visible !important;
+            }
+            
+            /* Mobile-specific quote styling */
+            .notes-quote-mobile {
+                background: #f9fafb !important;
+                border: 2px solid #e5e7eb !important;
+                border-radius: 12px !important;
+                padding: 1.5rem !important;
+                margin: 1rem auto !important;
+                max-width: 90% !important;
+                box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1) !important;
+            }
+            
+            .notes-quote-mobile p {
+                color: #1f2937 !important;
+                font-weight: 500 !important;
+                font-size: 0.95rem !important;
+                line-height: 1.6 !important;
+                margin-bottom: 0.75rem !important;
+            }
+            
+            .notes-quote-mobile footer {
+                color: #6b7280 !important;
+                font-size: 0.825rem !important;
+                font-weight: 400 !important;
             }
         }
     </style>
@@ -1191,15 +1226,30 @@
                 </div>
                 
                 <!-- Inspirational Quote at Bottom of Notes -->
-                <div class="mt-16 text-center">
-                    <blockquote class="relative">
-                        <p class="text-sm md:text-base text-gray-600 font-light italic leading-relaxed mb-2">
-                            "To become the person you want you must destroy the person you are."
-                        </p>
-                        <p class="text-xs text-gray-500 font-light italic">
-                            — Often attributed to Jordan Peterson
-                        </p>
-                    </blockquote>
+                <div class="mt-16 mb-8 text-center px-4">
+                    <div class="max-w-2xl mx-auto">
+                        <!-- Decorative line above quote -->
+                        <div class="w-16 h-px bg-gradient-to-r from-transparent via-gray-400 to-transparent mx-auto mb-6"></div>
+                        
+                        <blockquote class="relative bg-gray-50 rounded-lg p-6 md:p-8 shadow-sm border-l-4 border-primary-600 notes-quote-mobile">
+                            <!-- Quote marks -->
+                            <div class="absolute -top-2 -left-1 text-4xl text-primary-600 opacity-50 font-serif quote-mark">"</div>
+                            
+                            <p class="text-base md:text-lg text-gray-800 font-medium italic leading-relaxed mb-4 relative z-10">
+                                To become the person you want you must destroy the person you are.
+                            </p>
+                            
+                            <footer class="text-sm text-gray-600 font-normal">
+                                <cite class="not-italic">— Often attributed to Jordan Peterson</cite>
+                            </footer>
+                            
+                            <!-- Closing quote mark -->
+                            <div class="absolute -bottom-2 -right-1 text-4xl text-primary-600 opacity-50 font-serif quote-mark">"</div>
+                        </blockquote>
+                        
+                        <!-- Decorative line below quote -->
+                        <div class="w-16 h-px bg-gradient-to-r from-transparent via-gray-400 to-transparent mx-auto mt-6"></div>
+                    </div>
                 </div>
             </div>
         </div>
