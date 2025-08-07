@@ -1,4 +1,86 @@
 // ==============================================
+// SCROLL TO TOP ON PAGE LOAD/REFRESH
+// ==============================================
+
+function initScrollToTop() {
+    console.log('🔝 Initializing scroll to top functionality...');
+    
+    // Disable scroll restoration if not already done
+    if ('scrollRestoration' in history) {
+        history.scrollRestoration = 'manual';
+    }
+    
+    // Force scroll to top immediately when page loads
+    window.scrollTo(0, 0);
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+    
+    // Also ensure scroll to top after full page load
+    window.addEventListener('load', function() {
+        console.log('🔄 Page fully loaded, ensuring scroll to top...');
+        setTimeout(() => {
+            window.scrollTo({
+                top: 0,
+                left: 0,
+                behavior: 'instant'
+            });
+            document.documentElement.scrollTop = 0;
+            document.body.scrollTop = 0;
+            
+            // Remove any hash from URL to ensure clean state
+            if (window.location.hash) {
+                console.log('🧹 Cleaning URL hash...');
+                history.pushState("", document.title, window.location.pathname + window.location.search);
+            }
+        }, 100); // Small delay to ensure DOM is ready
+    });
+    
+    // Handle browser back/forward button navigation
+    window.addEventListener('pageshow', function(event) {
+        console.log('📄 Page show event triggered...');
+        if (event.persisted) {
+            // Page was restored from cache (back/forward navigation)
+            console.log('💾 Page restored from cache, scrolling to top...');
+            window.scrollTo(0, 0);
+            document.documentElement.scrollTop = 0;
+            document.body.scrollTop = 0;
+        }
+    });
+    
+    // Handle unload event to ensure clean state
+    window.addEventListener('beforeunload', function() {
+        console.log('🚪 Page unloading, preparing clean state...');
+        window.scrollTo(0, 0);
+    });
+    
+    // Handle visibility change (when user switches tabs and comes back)
+    document.addEventListener('visibilitychange', function() {
+        if (!document.hidden) {
+            console.log('👁️ Page became visible again...');
+            // Optional: Uncomment to scroll to top when user returns to tab
+            // window.scrollTo(0, 0);
+        }
+    });
+    
+    // Additional safety net - periodic check for first 5 seconds
+    let scrollCheckCount = 0;
+    const maxScrollChecks = 25; // 5 seconds worth of checks (every 200ms)
+    
+    const scrollCheck = setInterval(() => {
+        if (window.scrollY > 0 && scrollCheckCount < maxScrollChecks) {
+            console.log('🔍 Detected unwanted scroll, correcting to top...');
+            window.scrollTo(0, 0);
+        }
+        scrollCheckCount++;
+        
+        if (scrollCheckCount >= maxScrollChecks) {
+            console.log('✅ Scroll monitoring complete');
+            clearInterval(scrollCheck);
+        }
+    }, 200);
+}
+
+// ==============================================
 // HERO DROPDOWN FUNCTIONALITY
 // ==============================================
 
@@ -315,6 +397,9 @@ function initializeApp() {
     console.log('🖥️ Screen Size:', window.innerWidth + 'x' + window.innerHeight);
     
     try {
+        // Initialize scroll to top first (before other components)
+        initScrollToTop();
+        
         // Initialize all components
         initHeroDropdown();
         initNavbar();

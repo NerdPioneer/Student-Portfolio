@@ -27,6 +27,15 @@
     <meta name="author" content="Ezekiel Obeisun Jr">
     <meta name="robots" content="index, follow">
     
+    <!-- Prevent browser from restoring scroll position -->
+    <script>
+        // Immediately scroll to top before page loads
+        if ('scrollRestoration' in history) {
+            history.scrollRestoration = 'manual';
+        }
+        window.scrollTo(0, 0);
+    </script>
+    
     <!-- Security Headers -->
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
     <meta http-equiv="X-Frame-Options" content="DENY">
