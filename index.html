@@ -352,6 +352,74 @@
             transform: translateZ(0);
             will-change: transform;
         }
+        
+        /* Inspirational Quote Styling */
+        .quote-section {
+            background: linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%);
+        }
+        
+        .inspirational-quote {
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 0.5s forwards;
+        }
+        
+        .quote-mark {
+            opacity: 0.6;
+            font-family: Georgia, serif;
+            user-select: none;
+            pointer-events: none;
+        }
+        
+        .quote-divider {
+            opacity: 0;
+            animation: expandWidth 0.8s ease-out 1.5s forwards;
+            transform-origin: center;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes expandWidth {
+            from {
+                opacity: 0;
+                width: 0;
+            }
+            to {
+                opacity: 1;
+                width: 4rem;
+            }
+        }
+        
+        /* Responsive quote styling */
+        @media (max-width: 640px) {
+            .inspirational-quote p {
+                font-size: 1rem;
+                line-height: 1.6;
+                padding: 0 2rem;
+            }
+            
+            .quote-mark {
+                font-size: 3rem;
+            }
+            
+            .quote-mark:first-child {
+                top: -1rem;
+                left: 0;
+            }
+            
+            .quote-mark:last-child {
+                bottom: -1rem;
+                right: 0;
+            }
+        }
     </style>
     
     <link rel="stylesheet" href="./dist/styles.css">
@@ -617,6 +685,22 @@
                         </div>
 
                     </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Inspirational Quote Section -->
+        <div class="quote-section py-16 bg-gray-50 relative">
+            <div class="container mx-auto px-4 md:px-6">
+                <div class="max-w-3xl mx-auto text-center">
+                    <blockquote class="inspirational-quote relative">
+                        <div class="quote-mark absolute -top-4 -left-4 text-6xl text-gray-300 font-serif leading-none">&ldquo;</div>
+                        <p class="text-lg md:text-xl text-gray-800 font-light italic leading-relaxed mb-4 relative z-10">
+                            To become the person you want you must destroy the person you are.
+                        </p>
+                        <div class="quote-mark absolute -bottom-4 -right-4 text-6xl text-gray-300 font-serif leading-none">&rdquo;</div>
+                    </blockquote>
+                    <div class="quote-divider w-16 h-0.5 bg-gray-400 mx-auto mt-8"></div>
                 </div>
             </div>
         </div>
