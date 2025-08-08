@@ -3129,3 +3129,21 @@ html {
     -webkit-perspective: 1000px;
   }
 }
+
+/* Ensure top spacing for hero image section across browsers */
+.hero-image-container {
+  padding-top: 2.5rem;
+}
+
+@media (max-width: 640px) {
+  .hero-image-container {
+    padding-top: 2.5rem;
+  }
+}
+
+/* Safari and Chrome/Brave specific fix for top spacing */
+@supports (-webkit-touch-callout: none) {
+  .hero-image-container {
+    padding-top: 2.5rem !important;
+  }
+}
