@@ -1334,6 +1334,28 @@ select {
   transform: translateY(0);
 }
 
+/* Consistent top spacing for all major sections */
+.section {
+  margin-top: 4rem;
+  margin-bottom: 2.5rem;
+}
+
+#notes.section,
+#projects.section {
+  margin-top: 4rem;
+}
+
+@media (max-width: 640px) {
+  .section {
+    margin-top: 3rem;
+    margin-bottom: 2rem;
+  }
+  #notes.section,
+  #projects.section {
+    margin-top: 3rem;
+  }
+}
+
 /* Mobile spacing for sections */
 @media (max-width: 640px) {
   .section {
