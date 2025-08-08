@@ -3044,3 +3044,78 @@ html {
     line-height: 1;
   }
 }
+
+/* ==============================================
+   SCROLL TO TOP BUTTON STYLES
+   ============================================== */
+
+#scroll-to-top {
+  /* Enhanced transition for smooth animation */
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  /* Ensure proper layering on all devices */
+  z-index: 9999;
+  
+  /* Smooth hardware acceleration */
+  will-change: transform, opacity;
+  
+  /* Enhanced shadow for better visibility */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15), 0 2px 4px rgba(0, 0, 0, 0.1);
+  
+  /* Touch target size for mobile accessibility */
+  min-width: 44px;
+  min-height: 44px;
+}
+
+#scroll-to-top:hover {
+  /* Enhanced hover effects */
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2), 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+#scroll-to-top:active {
+  /* Active state for better feedback */
+  transform: translateY(0) scale(0.95);
+  transition-duration: 0.1s;
+}
+
+/* Mobile-specific optimizations */
+@media (max-width: 767px) {
+  #scroll-to-top {
+    /* Slightly smaller on mobile for better UX */
+    bottom: 1.5rem !important;
+    right: 1.5rem !important;
+    
+    /* Ensure proper touch target */
+    padding: 0.75rem;
+    
+    /* Enhanced mobile visibility */
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+}
+
+/* Enhanced visibility on light backgrounds */
+#scroll-to-top::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: 50%;
+  background: linear-gradient(45deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2));
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+#scroll-to-top:hover::before {
+  opacity: 1;
+}
+
+/* Safari and iOS specific optimizations */
+@supports (-webkit-appearance: none) {
+  #scroll-to-top {
+    -webkit-transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+    -webkit-perspective: 1000px;
+  }
+}

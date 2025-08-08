@@ -448,53 +448,110 @@ function initSmoothScrolling() {
 // INITIALIZATION
 // ==============================================
 
+// ==============================================
+// SCROLL TO TOP FUNCTIONALITY
+// ==============================================
+
+function initScrollToTop() {
+    console.log('⬆️ Initializing scroll to top functionality...');
+    
+    const scrollToTopBtn = document.getElementById('scroll-to-top');
+    
+    if (!scrollToTopBtn) {
+        console.warn('⚠️ Scroll to top button not found');
+        return;
+    }
+    
+    console.log('✅ Scroll to top button found, setting up functionality...');
+    
+    // Show/hide button based on scroll position
+    function toggleScrollButton() {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        const shouldShow = scrollTop > 300; // Show after scrolling 300px
+        
+        if (shouldShow) {
+            scrollToTopBtn.style.opacity = '1';
+            scrollToTopBtn.style.visibility = 'visible';
+            scrollToTopBtn.style.transform = 'translateY(0)';
+        } else {
+            scrollToTopBtn.style.opacity = '0';
+            scrollToTopBtn.style.visibility = 'hidden';
+            scrollToTopBtn.style.transform = 'translateY(8px)';
+        }
+    }
+    
+    // Smooth scroll to top when clicked
+    function scrollToTop(e) {
+        e.preventDefault();
+        console.log('⬆️ Scroll to top clicked');
+        
+        // Use smooth scrolling if supported, fallback to instant
+        if ('scrollBehavior' in document.documentElement.style) {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        } else {
+            // Fallback smooth scroll for older browsers
+            const scrollStep = -window.scrollY / (500 / 15);
+            const scrollInterval = setInterval(() => {
+                if (window.scrollY !== 0) {
+                    window.scrollBy(0, scrollStep);
+                } else {
+                    clearInterval(scrollInterval);
+                }
+            }, 15);
+        }
+    }
+    
+    // Event listeners
+    window.addEventListener('scroll', toggleScrollButton, { passive: true });
+    scrollToTopBtn.addEventListener('click', scrollToTop);
+    
+    // Initial check
+    toggleScrollButton();
+    
+    console.log('✅ Scroll to top functionality initialized');
+}
+
 function initializeApp() {
-    console.log('🚀 Initializing Portfolio App...');
-    console.log('📱 User Agent:', navigator.userAgent);
-    console.log('🖥️ Screen Size:', window.innerWidth + 'x' + window.innerHeight);
+    console.log('🚀 Starting portfolio app initialization...');
+    console.log('📊 Current viewport:', window.innerWidth + 'x' + window.innerHeight);
+    console.log('📱 User agent:', navigator.userAgent);
     
     try {
         // Initialize all components
+        initNavigation();
+        initProfileCarousel();
         initHeroDropdown();
-        initNavbar();
-        initCarousel();
         initSmoothScrolling();
+        initScrollToTop(); // Add scroll to top functionality
         
-        console.log('🎉 Portfolio App initialized successfully!');
-        
-        // Global debugging helpers
+        // Debug helpers
         window.portfolioDebug = {
-            showSlide: (index) => {
+            testCarousel: () => {
+                console.log('🎠 Testing carousel...');
                 const slides = document.querySelectorAll('.carousel-slide');
-                if (index >= 0 && index < slides.length && showSlideFunction) {
-                    currentSlide = index;
-                    showSlideFunction(index);
-                }
+                console.log('Found slides:', slides.length);
+                slides.forEach((slide, index) => {
+                    console.log(`Slide ${index}:`, slide.classList.contains('active'));
+                });
             },
-            toggleMenu: () => {
-                const navToggle = document.querySelector('.nav-toggle');
-                if (navToggle) navToggle.click();
+            testNavigation: () => {
+                console.log('🧭 Testing navigation...');
+                const menu = document.querySelector('.nav-menu');
+                const toggle = document.querySelector('.nav-toggle');
+                console.log('Menu element:', !!menu);
+                console.log('Toggle element:', !!toggle);
+                console.log('Menu max-height:', menu?.style.maxHeight);
             },
-            toggleHeroDropdown: () => {
-                const learnMoreBtn = document.getElementById('learn-more-btn');
-                if (learnMoreBtn) learnMoreBtn.click();
-            },
-            testHeroElements: () => {
+            testHeroDropdown: () => {
+                console.log('📖 Testing hero dropdown...');
                 const learnMoreBtn = document.getElementById('learn-more-btn');
                 const dropdownContent = document.getElementById('hero-description-content');
                 const chevronIcon = document.getElementById('learn-more-chevron');
                 const mobileContainer = document.querySelector('.hero-description-mobile');
-                const desktopContainer = document.querySelector('.hero-description');
-                
-                console.log('🔍 Hero Elements Check:');
-                console.log('Learn More Button:', learnMoreBtn);
-                console.log('Dropdown Content:', dropdownContent);
-                console.log('Chevron Icon:', chevronIcon);
-                console.log('Mobile Container:', mobileContainer);
-                console.log('Desktop Container:', desktopContainer);
-                console.log('Screen Width:', window.innerWidth);
-                console.log('Mobile Container Visible:', mobileContainer ? getComputedStyle(mobileContainer).display !== 'none' : false);
-                console.log('Desktop Container Visible:', desktopContainer ? getComputedStyle(desktopContainer).display !== 'none' : false);
+                const desktopContainer = document.querySelector('.hero-description.hidden');
                 
                 return {
                     button: !!learnMoreBtn,
@@ -521,7 +578,8 @@ function initializeApp() {
                 currentSlide,
                 slidesCount: document.querySelectorAll('.carousel-slide').length,
                 menuOpen: document.querySelector('.nav-menu')?.style.maxHeight !== '0px',
-                heroDropdownOpen: document.getElementById('hero-description-content')?.style.maxHeight !== '0px'
+                heroDropdownOpen: document.getElementById('hero-description-content')?.style.maxHeight !== '0px',
+                scrollToTopVisible: document.getElementById('scroll-to-top')?.style.opacity === '1'
             })
         };
         
