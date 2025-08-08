@@ -3147,3 +3147,12 @@ html {
     padding-top: 2.5rem !important;
   }
 }
+
+/* Fix for mobile browsers: ensure Learn More button is clickable and visible */
+#learn-more-btn {
+  z-index: 100;
+  position: relative;
+  touch-action: manipulation;
+  cursor: pointer;
+  pointer-events: auto;
+}
