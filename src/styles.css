@@ -3132,19 +3132,24 @@ html {
 
 /* Ensure top spacing for hero image section across browsers */
 .hero-image-container {
-  padding-top: 2.5rem;
+  padding-top: 3.5rem; /* Increased top spacing */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 @media (max-width: 640px) {
   .hero-image-container {
-    padding-top: 2.5rem;
+    padding-top: 3.5rem;
+    justify-content: center;
+    align-items: center;
   }
 }
 
 /* Safari and Chrome/Brave specific fix for top spacing */
 @supports (-webkit-touch-callout: none) {
   .hero-image-container {
-    padding-top: 2.5rem !important;
+    padding-top: 3.5rem !important;
   }
 }
 
