@@ -6,6 +6,8 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
 }
 
 /* Smooth scrolling with fallbacks */
@@ -14,6 +16,14 @@ html {
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+}
+
+/* Safari smooth scrolling fallback */
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  html { 
+    scroll-behavior: auto; 
+  }
 }
 
 /* Enhanced body styles for cross-browser */
@@ -27,10 +37,21 @@ body {
   -webkit-overflow-scrolling: touch;
   overscroll-behavior: none;
   -webkit-overscroll-behavior: none;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
 }
 
 /* Mobile scroll enhancements */
 @supports (-webkit-appearance: none) {
+  body {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+}
+
+/* iOS Safari specific fixes */
+@supports (-webkit-touch-callout: none) {
   body {
     -webkit-transform: translateZ(0);
     transform: translateZ(0);
@@ -42,12 +63,38 @@ body.menu-open {
   position: fixed !important;
   width: 100% !important;
   overflow: hidden !important;
+  -webkit-overflow-scrolling: auto !important;
 }
 
 /* Enhanced touch interaction */
 button, a {
   -webkit-tap-highlight-color: transparent;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
   touch-action: manipulation;
+  -webkit-touch-callout: none;
+}
+
+/* Cross-browser button normalization */
+button, input[type="button"], input[type="reset"], input[type="submit"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* Safari form input fixes */
+input, textarea, select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border-radius: 0;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
 }
 
 /* Button focus styles for accessibility */
