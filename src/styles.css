@@ -1326,11 +1326,21 @@ select {
   opacity: 1;
   transform: translateY(0);
   transition: all 0.8s ease;
+  margin-bottom: 2rem; /* Default spacing between sections */
 }
 
 .section.visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* Mobile spacing for sections */
+@media (max-width: 640px) {
+  .section {
+    margin-bottom: 2.5rem; /* Increased spacing for mobile */
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+  }
 }
 
 /* Card Hover Effects */
