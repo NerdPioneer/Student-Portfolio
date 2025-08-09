@@ -1,108 +1,4 @@
 // ==============================================
-// HERO DROPDOWN FUNCTIONALITY
-// ==============================================
-
-function initHeroDropdown() {
-    console.log('📱 Initializing hero dropdown functionality...');
-    console.log('🖥️ Current screen width:', window.innerWidth);
-    
-    const learnMoreBtn = document.getElementById('learn-more-btn');
-    const dropdownContent = document.getElementById('hero-description-content');
-    const chevronIcon = document.getElementById('learn-more-chevron');
-    
-    console.log('🔍 Element check results:');
-    console.log('  - Learn More Button:', learnMoreBtn);
-    console.log('  - Dropdown Content:', dropdownContent);
-    console.log('  - Chevron Icon:', chevronIcon);
-    
-    if (!learnMoreBtn || !dropdownContent || !chevronIcon) {
-        console.warn('⚠️ Hero dropdown elements not found');
-        return;
-    }
-
-    let isOpen = false;
-    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-    const backdrop = document.getElementById('hero-backdrop');
-
-    function openDropdown() {
-        const targetHeight = dropdownContent.scrollHeight + 'px';
-        dropdownContent.style.maxHeight = targetHeight;
-        chevronIcon.style.transform = 'rotate(180deg)';
-        learnMoreBtn.setAttribute('aria-expanded', 'true');
-        learnMoreBtn.querySelector('span').textContent = 'Show Less';
-        isOpen = true;
-        if (isMobile && backdrop) {
-            backdrop.classList.remove('hidden');
-            backdrop.style.opacity = '1';
-            document.body.classList.add('menu-open');
-        }
-    }
-
-    function closeDropdown() {
-        dropdownContent.style.maxHeight = '0px';
-        chevronIcon.style.transform = 'rotate(0deg)';
-        learnMoreBtn.setAttribute('aria-expanded', 'false');
-        learnMoreBtn.querySelector('span').textContent = 'Learn More About Me';
-        isOpen = false;
-        if (isMobile && backdrop) {
-            backdrop.classList.add('hidden');
-            backdrop.style.opacity = '0';
-            document.body.classList.remove('menu-open');
-        }
-    }
-
-    function toggleDropdown(e) {
-        e.preventDefault();
-        // Do not stopPropagation here, let the click event bubble up
-        if (isOpen) {
-            closeDropdown();
-        } else {
-            openDropdown();
-        }
-    }
-
-    // Use mousedown to set a flag so outside click doesn't close immediately after opening
-    let justOpened = false;
-    learnMoreBtn.addEventListener('mousedown', function() {
-        justOpened = true;
-        setTimeout(() => { justOpened = false; }, 300);
-    });
-    learnMoreBtn.addEventListener('click', toggleDropdown);
-
-    // Keyboard accessibility
-    learnMoreBtn.addEventListener('keydown', function(e) {
-        if (e.key === 'Enter' || e.key === ' ') {
-            toggleDropdown(e);
-        } else if (e.key === 'Escape' && isOpen) {
-            closeDropdown();
-            learnMoreBtn.focus();
-        }
-    });
-
-    // Close dropdown when clicking backdrop
-    if (backdrop) {
-        backdrop.addEventListener('click', function() {
-            if (isOpen) closeDropdown();
-        });
-    }
-
-    // Close dropdown when clicking outside
-    document.addEventListener('click', function(e) {
-        if (justOpened) return;
-        if (isOpen && !dropdownContent.contains(e.target) && !learnMoreBtn.contains(e.target)) {
-            closeDropdown();
-        }
-    });
-
-    // Reset dropdown on window resize
-    window.addEventListener('resize', () => {
-        if (isOpen) {
-            closeDropdown();
-        }
-    });
-
-    console.log('✅ Improved hero dropdown functionality initialized');
-}
 
 // ==============================================
 // NAVBAR FUNCTIONALITY
@@ -515,15 +411,12 @@ function initializeApp() {
     console.log('🚀 Starting portfolio app initialization...');
     console.log('📊 Current viewport:', window.innerWidth + 'x' + window.innerHeight);
     console.log('📱 User agent:', navigator.userAgent);
-    
     try {
-        // Initialize all components
-        initNavigation();
-        initProfileCarousel();
-        initHeroDropdown();
+        // Only initialize the correct components
+        initNavbar();
+        initCarousel();
         initSmoothScrolling();
-        initScrollToTop(); // Add scroll to top functionality
-        
+        initScrollToTop();
         // Debug helpers
         window.portfolioDebug = {
             testCarousel: () => {
@@ -542,52 +435,19 @@ function initializeApp() {
                 console.log('Toggle element:', !!toggle);
                 console.log('Menu max-height:', menu?.style.maxHeight);
             },
-            testHeroDropdown: () => {
-                console.log('📖 Testing hero dropdown...');
-                const learnMoreBtn = document.getElementById('learn-more-btn');
-                const dropdownContent = document.getElementById('hero-description-content');
-                const chevronIcon = document.getElementById('learn-more-chevron');
-                const mobileContainer = document.querySelector('.hero-description-mobile');
-                const desktopContainer = document.querySelector('.hero-description.hidden');
-                
-                return {
-                    button: !!learnMoreBtn,
-                    content: !!dropdownContent,
-                    chevron: !!chevronIcon,
-                    screenWidth: window.innerWidth,
-                    mobileVisible: mobileContainer ? getComputedStyle(mobileContainer).display !== 'none' : false,
-                    desktopVisible: desktopContainer ? getComputedStyle(desktopContainer).display !== 'none' : false
-                };
-            },
-            forceShowDropdown: () => {
-                const mobileContainer = document.querySelector('.hero-description-mobile');
-                if (mobileContainer) {
-                    mobileContainer.style.display = 'block';
-                    mobileContainer.style.visibility = 'visible';
-                    console.log('✅ Forced mobile dropdown container to be visible for testing');
-                    return true;
-                } else {
-                    console.log('❌ Mobile dropdown container not found');
-                    return false;
-                }
-            },
             getState: () => ({
                 currentSlide,
                 slidesCount: document.querySelectorAll('.carousel-slide').length,
                 menuOpen: document.querySelector('.nav-menu')?.style.maxHeight !== '0px',
-                heroDropdownOpen: document.getElementById('hero-description-content')?.style.maxHeight !== '0px',
                 scrollToTopVisible: document.getElementById('scroll-to-top')?.style.opacity === '1'
             })
         };
-        
         console.log('🛠️ Debug helpers available: window.portfolioDebug');
-        
     } catch (error) {
         console.error('❌ Error during initialization:', error);
     }
 }
 
-// Initialize when DOM is ready
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initializeApp);
 } else {
