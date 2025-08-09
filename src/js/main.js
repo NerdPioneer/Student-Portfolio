@@ -1,6 +1,4 @@
 // ==============================================
-
-// ==============================================
 // NAVBAR FUNCTIONALITY
 // ==============================================
 
@@ -251,24 +249,6 @@ function initSmoothScrolling() {
             const targetElement = document.querySelector(href);
             
             if (targetElement) {
-                e.preventDefault();
-                
-                const headerHeight = document.querySelector('.desktop-nav')?.offsetHeight || 80;
-                const targetPosition = targetElement.offsetTop - headerHeight;
-                
-                // Use different scrolling behavior based on device
-                if (isMobile || isIOS) {
-                    // For mobile devices, use a more reliable method
-                    console.log(`📱 Mobile scroll to ${href}`);
-                    
-                    // Disable body scroll during navigation
-                    document.body.style.overflow = 'hidden';
-                    
-                    // Use requestAnimationFrame for smoother mobile scrolling
-                    const startPosition = window.pageYOffset;
-                    const distance = targetPosition - startPosition;
-                    const duration = 800; // Slightly longer for mobile
-                    let startTime = null;
                     
                     function animateScroll(currentTime) {
                         if (startTime === null) startTime = currentTime;
@@ -301,41 +281,6 @@ function initSmoothScrolling() {
                     });
                 }
             }
-        });
-    });
-    
-    // Fix for iOS scroll momentum issues
-    if (isIOS) {
-        console.log('� Applying iOS scroll fixes...');
-        
-        // Prevent scroll bounce on iOS - DISABLED to fix scroll issues
-        // document.addEventListener('touchstart', function(e) {
-        //     if (e.target.tagName === 'BODY' || e.target === document.documentElement) {
-        //         e.preventDefault();
-        //     }
-        // }, { passive: false });
-        
-        // Fix for iOS Safari scroll issues with fixed elements
-        let ticking = false;
-        
-        function updateScrollPosition() {
-            const nav = document.querySelector('.desktop-nav');
-            if (nav) {
-                nav.style.transform = 'translateZ(0)';
-            }
-            ticking = false;
-        }
-        
-        window.addEventListener('scroll', function() {
-            if (!ticking) {
-                requestAnimationFrame(updateScrollPosition);
-                ticking = true;
-            }
-        });
-    }
-    
-    console.log('✅ Smooth scrolling with mobile fixes initialized');
-}
 
 // ==============================================
 // INITIALIZATION
@@ -413,10 +358,10 @@ function initializeApp() {
     console.log('📱 User agent:', navigator.userAgent);
     try {
         // Only initialize the correct components
-        initNavbar();
-        initCarousel();
-        initSmoothScrolling();
-        initScrollToTop();
+    initNavbar();
+    initCarousel();
+    initSmoothScrolling();
+    initScrollToTop();
         // Debug helpers
         window.portfolioDebug = {
             testCarousel: () => {

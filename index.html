@@ -1080,13 +1080,6 @@
             <div class="grid lg:grid-cols-2 gap-6 lg:gap-12 items-center">
                 <!-- LEFT SIDE: Content -->
                 <div class="hero-left order-2 lg:order-1 relative z-30">
-                    <h1 class="hero-title text-center lg:text-left text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-black text-gray-900 leading-tight mb-4 md:mb-6 glitch-effect" data-text="NAVIGATE THE DIGITAL LANDSCAPE WITH CONFIDENCE">
-                        NAVIGATE THE DIGITAL LANDSCAPE WITH CONFIDENCE
-                    </h1>
-                    <h2 class="hero-subtitle text-center lg:text-left text-base sm:text-lg md:text-xl text-black mb-6 md:mb-8 font-medium font-montserrat uppercase tracking-wider">
-                        EZEKIEL OBEISUN JR. - <strong>CLOUD & NETWORK ENGINEERING STUDENT</strong>
-                    </h2>
-                    
                     <!-- About Me Section (Static, Unified for All Screens) -->
                     <div class="hero-description space-y-4 md:space-y-6 text-base md:text-lg text-gray-700 bg-white p-4 md:p-6 rounded-lg shadow-lg relative z-30 mb-6 md:mb-8">
                         <p class="hero-mission">
@@ -1102,6 +1095,46 @@
                             <em class="text-black font-normal font-montserrat italic">1% Better Everyday - Atomic Habits by James Clear</em>
                         </p>
                     </div>
+                    <h1 class="hero-title text-center lg:text-left text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-black text-gray-900 leading-tight mb-4 md:mb-6 glitch-effect" data-text="NAVIGATE THE DIGITAL LANDSCAPE WITH CONFIDENCE">
+                        NAVIGATE THE DIGITAL LANDSCAPE WITH CONFIDENCE
+                    </h1>
+                    <h2 class="hero-subtitle text-center lg:text-left text-base sm:text-lg md:text-xl text-black mb-6 md:mb-8 font-medium font-montserrat uppercase tracking-wider">
+                        EZEKIEL OBEISUN JR. - <strong>CLOUD & NETWORK ENGINEERING STUDENT</strong>
+                    </h2>
+                    
+                    <!-- Hero Mission Dropdown (Button Under Title/Sub) -->
+                    <div class="hero-description-mobile mb-6 md:mb-8 relative z-30">
+                        <button 
+                            id="learn-more-btn" 
+                            class="w-full bg-black text-white px-6 py-3 rounded-lg font-montserrat font-medium uppercase tracking-wider text-sm flex items-center justify-center gap-2"
+                            aria-expanded="false"
+                            aria-controls="hero-description-content"
+                        >
+                            <span>LEARN MORE</span>
+                            <i class="fas fa-chevron-down transition-transform duration-300" id="learn-more-chevron"></i>
+                        </button>
+                        <!-- Collapsible Content -->
+                        <div 
+                            id="hero-description-content" 
+                            class="hero-description-dropdown overflow-hidden transition-all duration-500 ease-in-out"
+                            style="max-height: 0;"
+                        >
+                            <div class="space-y-4 text-base text-gray-700 bg-white p-4 rounded-lg shadow-lg mt-4 border border-gray-100">
+                                <p class="hero-mission">
+                                    I'm a results-driven, mission-focused Cloud & Network Engineering student with 5 years of experience in cybersecurity and IT operations. I began my career as a Security Analyst, where I built a strong foundation in Linux administration, incident response, and Python scripting — skills I continued to sharpen through hands-on experience and academic training.
+                                </p>
+                                <p class="hero-mission">
+                                    Over the years, I've shifted my focus toward cloud security and infrastructure. I've worked with tools like AWS and Azure, and gained experience navigating high-compliance environments. Right now, I'm sharpening my skills in network engineering and cloud architecture, with the Cisco CCNA as my next milestone.
+                                </p>
+                                <p class="hero-mission">
+                                    My mindset is simple: consistent growth over time. I treat every project, lab, and challenge as a chance to improve. Whether I'm writing code, studying for certs, or building systems, I bring the same mindset — show up, improve, and keep moving forward. I'm building these skills with the goal of contributing as much value as possible to the defense industry and related fields.
+                                </p>
+                                <p class="hero-mission text-center">
+                                    <em class="text-black font-normal font-montserrat italic">1% Better Everyday - Atomic Habits by James Clear</em>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 
                 <!-- RIGHT SIDE: Hero Image -->
@@ -1111,21 +1144,21 @@
                             <!-- Profile Image Carousel -->
                             <div class="carousel-container w-80 h-80 sm:w-96 sm:h-96 md:w-96 md:h-96 lg:w-[400px] lg:h-[400px] xl:w-[500px] xl:h-[500px] relative overflow-hidden rounded-2xl shadow-2xl border-4 border-white/80 bg-white">
                                 <!-- Profile Images -->
-                                <div class="carousel-slides relative w-full h-full">
+                                <div class="carousel-slides relative w-full h-full" style="width:500px;height:600px;">
                                     <div class="carousel-slide active absolute inset-0 w-full h-full">
-                                        <img src="./public/images/profile_1.jpg" alt="Ezekiel Obeisun Jr - Profile Photo 1" class="w-full h-full object-cover object-center" loading="eager" onerror="this.onerror=null; this.src='public/images/profile_1.jpg';">
+                                        <img src="./public/images/profile_1.jpg" alt="Ezekiel Obeisun Jr - Profile Photo 1" class="w-full h-full object-cover object-center" loading="eager" onerror="this.onerror=null; this.src='public/images/profile_1.jpg';" style="width:500px;height:600px;">
                                         <div class="absolute inset-0 bg-gradient-to-t from-primary-600/20 to-transparent"></div>
                                     </div>
                                     <div class="carousel-slide absolute inset-0 w-full h-full opacity-0">
-                                        <img src="./public/images/profile_2.jpg" alt="Ezekiel Obeisun Jr - Profile Photo 2" class="w-full h-full object-cover object-center" loading="lazy" onerror="this.onerror=null; this.src='public/images/profile_2.jpg';">
+                                        <img src="./public/images/profile_2.jpg" alt="Ezekiel Obeisun Jr - Profile Photo 2" class="w-full h-full object-cover object-center" loading="lazy" onerror="this.onerror=null; this.src='public/images/profile_2.jpg';" style="width:500px;height:600px;">
                                         <div class="absolute inset-0 bg-gradient-to-t from-primary-600/20 to-transparent"></div>
                                     </div>
                                     <div class="carousel-slide absolute inset-0 w-full h-full opacity-0">
-                                        <img src="./public/images/profile_3.jpg" alt="Ezekiel Obeisun Jr - Profile Photo 3" class="w-full h-full object-cover object-center" loading="lazy" onerror="this.onerror=null; this.src='public/images/profile_3.jpg';">
+                                        <img src="./public/images/profile_3.jpg" alt="Ezekiel Obeisun Jr - Profile Photo 3" class="w-full h-full object-cover object-center" loading="lazy" onerror="this.onerror=null; this.src='public/images/profile_3.jpg';" style="width:500px;height:600px;">
                                         <div class="absolute inset-0 bg-gradient-to-t from-primary-600/20 to-transparent"></div>
                                     </div>
                                     <div class="carousel-slide absolute inset-0 w-full h-full opacity-0">
-                                        <img src="./public/images/profile_4.jpg" alt="Ezekiel Obeisun Jr - Profile Photo 4" class="w-full h-full object-cover object-center" loading="lazy" onerror="this.onerror=null; this.src='public/images/profile_4.jpg';">
+                                        <img src="./public/images/profile_4.jpg" alt="Ezekiel Obeisun Jr - Profile Photo 4" class="w-full h-full object-cover object-center" loading="lazy" onerror="this.onerror=null; this.src='public/images/profile_4.jpg';" style="width:500px;height:600px;">
                                         <div class="absolute inset-0 bg-gradient-to-t from-primary-600/20 to-transparent"></div>
                                     </div>
                                 </div>
