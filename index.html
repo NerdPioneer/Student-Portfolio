@@ -1086,40 +1086,44 @@
                     </h2>
                     
                     <!-- Mobile/Tablet/Desktop Hero Description with Dropdown -->
-                    <div class="hero-description-mobile 2xl:hidden mb-6 md:mb-8 relative z-30">
-                        <!-- Learn More Button -->
-                        <button 
-                            id="learn-more-btn" 
-                            class="w-full bg-black text-white px-6 py-3 rounded-lg font-medium hover:bg-gray-800 transition-all duration-300 shadow-lg font-montserrat uppercase tracking-wider text-sm flex items-center justify-center gap-2"
-                            aria-expanded="false"
-                            aria-controls="hero-description-content"
-                        >
-                            <span>Learn More About Me</span>
-                            <i class="fas fa-chevron-down transition-transform duration-300" id="learn-more-chevron"></i>
-                        </button>
-                        
-                        <!-- Collapsible Content -->
-                        <div 
-                            id="hero-description-content" 
-                            class="hero-description-dropdown overflow-hidden transition-all duration-500 ease-in-out"
-                            style="max-height: 0;"
-                        >
-                            <div class="space-y-4 text-base text-gray-700 bg-white p-4 rounded-lg shadow-lg mt-4 border border-gray-100">
-                                <p class="hero-mission">
-                                    I'm a results-driven, mission-focused Cloud & Network Engineering student with 5 years of experience in cybersecurity and IT operations. I began my career as a Security Analyst, where I built a strong foundation in Linux administration, incident response, and Python scripting — skills I continued to sharpen through hands-on experience and academic training.
-                                </p>
-                                <p class="hero-mission">
-                                    Over the years, I've shifted my focus toward cloud security and infrastructure. I've worked with tools like AWS and Azure, and gained experience navigating high-compliance environments. Right now, I'm sharpening my skills in network engineering and cloud architecture, with the Cisco CCNA as my next milestone.
-                                </p>
-                                <p class="hero-mission">
-                                    My mindset is simple: consistent growth over time. I treat every project, lab, and challenge as a chance to improve. Whether I'm writing code, studying for certs, or building systems, I bring the same mindset — show up, improve, and keep moving forward. I'm building these skills with the goal of contributing as much value as possible to the defense industry and related fields.
-                                </p>
-                                <p class="hero-mission text-center">
-                                    <em id="atomic-habits-quote-mobile" class="text-black font-normal font-montserrat">1% Better Everyday - Atomic Habits by James Clear</em>
-                                </p>
+                        <div class="hero-description-mobile mb-6 md:mb-8 relative z-30">
+                            <!-- Learn More Button (always visible) -->
+                            <button 
+                                id="learn-more-btn" 
+                                class="w-full bg-black text-white px-6 py-3 rounded-lg font-medium hover:bg-gray-800 transition-all duration-300 shadow-lg font-montserrat uppercase tracking-wider text-sm flex items-center justify-center gap-2 focus:outline-none focus:ring-2 focus:ring-primary-600"
+                                aria-expanded="false"
+                                aria-controls="hero-description-content"
+                                tabindex="0"
+                            >
+                                <span>Learn More About Me</span>
+                                <i class="fas fa-chevron-down transition-transform duration-300" id="learn-more-chevron" aria-hidden="true"></i>
+                            </button>
+                            <!-- Backdrop overlay for mobile -->
+                            <div id="hero-backdrop" class="fixed inset-0 bg-black bg-opacity-40 z-20 hidden transition-opacity duration-300" tabindex="-1" aria-hidden="true"></div>
+                            <!-- Collapsible Content -->
+                            <div 
+                                id="hero-description-content" 
+                                class="hero-description-dropdown overflow-hidden transition-all duration-500 ease-in-out"
+                                style="max-height: 0;"
+                                aria-labelledby="learn-more-btn"
+                                role="region"
+                            >
+                                <div class="space-y-4 text-base text-gray-700 bg-white p-4 rounded-lg shadow-lg mt-4 border border-gray-100">
+                                    <p class="hero-mission">
+                                        I'm a results-driven, mission-focused Cloud & Network Engineering student with 5 years of experience in cybersecurity and IT operations. I began my career as a Security Analyst, where I built a strong foundation in Linux administration, incident response, and Python scripting — skills I continued to sharpen through hands-on experience and academic training.
+                                    </p>
+                                    <p class="hero-mission">
+                                        Over the years, I've shifted my focus toward cloud security and infrastructure. I've worked with tools like AWS and Azure, and gained experience navigating high-compliance environments. Right now, I'm sharpening my skills in network engineering and cloud architecture, with the Cisco CCNA as my next milestone.
+                                    </p>
+                                    <p class="hero-mission">
+                                        My mindset is simple: consistent growth over time. I treat every project, lab, and challenge as a chance to improve. Whether I'm writing code, studying for certs, or building systems, I bring the same mindset — show up, improve, and keep moving forward. I'm building these skills with the goal of contributing as much value as possible to the defense industry and related fields.
+                                    </p>
+                                    <p class="hero-mission text-center">
+                                        <em id="atomic-habits-quote-mobile" class="text-black font-normal font-montserrat">1% Better Everyday - Atomic Habits by James Clear</em>
+                                    </p>
+                                </div>
                             </div>
                         </div>
-                    </div>
                     
                     <!-- Desktop Hero Description (Always Visible on Largest Screens Only) -->
                     <div class="hero-description hidden 2xl:block space-y-4 md:space-y-6 text-base md:text-lg text-gray-700 bg-white p-4 md:p-6 rounded-lg shadow-lg relative z-30">
@@ -1759,4 +1763,5 @@
         }
     </script>
 </body>
+    <script src="./src/js/main.js"></script>
 </html>

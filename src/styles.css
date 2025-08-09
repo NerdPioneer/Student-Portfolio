@@ -1,3 +1,39 @@
+/* Professional desktop hero description styling */
+.hero-description {
+  font-size: 1rem;
+  background: #fff;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.12), 0 1.5px 4px rgba(0,0,0,0.08);
+  border-radius: 1rem;
+  padding: 2rem;
+  border: 1px solid #f3f4f6;
+  position: relative;
+  z-index: 30;
+}
+
+@media (max-width: 1535px) {
+  .hero-description {
+    padding: 1.25rem;
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 1023px) {
+  .hero-description {
+    display: none !important;
+  }
+  .hero-description-mobile {
+    display: block !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero-description-mobile {
+    display: none !important;
+  }
+  .hero-description {
+    display: block !important;
+  }
+}
 /* Cross-browser compatibility enhancements */
 
 /* Normalize styles for cross-browser compatibility */
@@ -13,19 +49,19 @@
 /* Smooth scrolling with fallbacks */
 
 html {
-  scroll-behavior: smooth;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
   -moz-text-size-adjust: 100%;
-}
-
-/* Safari smooth scrolling fallback */
-@media screen and (-webkit-min-device-pixel-ratio:0) {
-  html { 
-    scroll-behavior: auto; 
-  }
-}
-
+  -moz-osx-font-smoothing: grayscale;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -moz-appearance: none;
+  -moz-border-radius: 0;
+  -moz-appearance: auto;
 /* Enhanced body styles for cross-browser */
 
 body {
@@ -269,50 +305,20 @@ a:focus {
 ::after {
   box-sizing: border-box;
   /* 1 */
-  border-width: 0;
-  /* 2 */
-  border-style: solid;
-  /* 2 */
-  border-color: #e5e7eb;
-  /* 2 */
-}
 
-::before,
-::after {
-  --tw-content: '';
-}
+  html {
+    scroll-behavior: smooth;
+  }
 
-/*
-1. Use a consistent sensible line-height in all browsers.
-2. Prevent adjustments of font size after orientation changes in iOS.
-3. Use a more readable tab size.
-4. Use the user's configured `sans` font-family by default.
-5. Use the user's configured `sans` font-feature-settings by default.
-6. Use the user's configured `sans` font-variation-settings by default.
-7. Disable tap highlights on iOS
-*/
-
-html,
-:host {
-  line-height: 1.5;
-  /* 1 */
-  -webkit-text-size-adjust: 100%;
-  /* 2 */
-  -moz-tab-size: 4;
-  /* 3 */
-  -o-tab-size: 4;
-     tab-size: 4;
-  /* 3 */
-  font-family: Inter, system-ui, sans-serif;
-  /* 4 */
-  font-feature-settings: normal;
-  /* 5 */
-  font-variation-settings: normal;
-  /* 6 */
-  -webkit-tap-highlight-color: transparent;
-  /* 7 */
-}
-
+  body {
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    background: #fff;
+    color: #000;
+    text-rendering: optimizeLegibility;
+    line-height: 1.5;
+    overflow-x: hidden;
+  }
 /*
 1. Remove the margin in all browsers.
 2. Inherit line-height from `html` so users can set them as a class directly on the `html` element.
@@ -972,8 +978,6 @@ select {
 }
 
 .nav-menu.open {
-  max-height: 400px;
-}
 
 /* Mobile Menu Button */
 
@@ -1039,6 +1043,13 @@ select {
   --tw-text-opacity: 1;
   color: rgb(209 213 219 / var(--tw-text-opacity, 1));
 }
+
+  /* Hero Dropdown Animation Fix */
+  .hero-description-dropdown {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
 
 .nav-link.active {
   --tw-bg-opacity: 1;

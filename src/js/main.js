@@ -17,82 +17,91 @@ function initHeroDropdown() {
     
     if (!learnMoreBtn || !dropdownContent || !chevronIcon) {
         console.warn('⚠️ Hero dropdown elements not found');
-        console.warn('  Missing elements:', {
-            button: !learnMoreBtn,
-            content: !dropdownContent,
-            chevron: !chevronIcon
-        });
         return;
     }
-    
-    // Check if parent container is visible on current screen size
-    const parentContainer = learnMoreBtn.closest('.hero-description-mobile');
-    const isParentVisible = parentContainer && getComputedStyle(parentContainer).display !== 'none';
-    console.log('👁️ Parent container visible:', isParentVisible);
-    console.log('📦 Parent container:', parentContainer);
-    
-    console.log('✅ Hero dropdown elements found, setting up functionality...');
-    
+
     let isOpen = false;
     const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-    
-    learnMoreBtn.addEventListener('click', function(e) {
-        console.log('📖 Learn More button clicked!');
-        console.log('🖱️ Click event:', e);
-        console.log('📐 Current state - isOpen:', isOpen);
-        console.log('📏 Dropdown content scrollHeight:', dropdownContent.scrollHeight);
-        
-        e.preventDefault(); // Ensure click is handled
-        e.stopPropagation(); // Prevent event bubbling
-        
-        // Prevent body scroll on mobile while dropdown is opening/closing
-        if (isMobile) {
-            document.body.style.overflow = isOpen ? '' : 'hidden';
-            setTimeout(() => {
-                if (document.body.style.overflow === 'hidden') {
-                    document.body.style.overflow = '';
-                }
-            }, 600); // Clear after animation completes
+    const backdrop = document.getElementById('hero-backdrop');
+
+    function openDropdown() {
+        const targetHeight = dropdownContent.scrollHeight + 'px';
+        dropdownContent.style.maxHeight = targetHeight;
+        chevronIcon.style.transform = 'rotate(180deg)';
+        learnMoreBtn.setAttribute('aria-expanded', 'true');
+        learnMoreBtn.querySelector('span').textContent = 'Show Less';
+        isOpen = true;
+        if (isMobile && backdrop) {
+            backdrop.classList.remove('hidden');
+            backdrop.style.opacity = '1';
+            document.body.classList.add('menu-open');
         }
-        
+    }
+
+    function closeDropdown() {
+        dropdownContent.style.maxHeight = '0px';
+        chevronIcon.style.transform = 'rotate(0deg)';
+        learnMoreBtn.setAttribute('aria-expanded', 'false');
+        learnMoreBtn.querySelector('span').textContent = 'Learn More About Me';
+        isOpen = false;
+        if (isMobile && backdrop) {
+            backdrop.classList.add('hidden');
+            backdrop.style.opacity = '0';
+            document.body.classList.remove('menu-open');
+        }
+    }
+
+    function toggleDropdown(e) {
+        e.preventDefault();
+        // Do not stopPropagation here, let the click event bubble up
         if (isOpen) {
-            // Close dropdown
-            console.log('📤 Closing dropdown...');
-            dropdownContent.style.maxHeight = '0px';
-            chevronIcon.style.transform = 'rotate(0deg)';
-            learnMoreBtn.setAttribute('aria-expanded', 'false');
-            learnMoreBtn.querySelector('span').textContent = 'Learn More About Me';
-            isOpen = false;
-            console.log('📖 Hero dropdown closed');
+            closeDropdown();
         } else {
-            // Open dropdown
-            console.log('📥 Opening dropdown...');
-            const targetHeight = dropdownContent.scrollHeight + 'px';
-            console.log('🎯 Target height:', targetHeight);
-            dropdownContent.style.maxHeight = targetHeight;
-            chevronIcon.style.transform = 'rotate(180deg)';
-            learnMoreBtn.setAttribute('aria-expanded', 'true');
-            learnMoreBtn.querySelector('span').textContent = 'Show Less';
-            isOpen = true;
-            console.log('📖 Hero dropdown opened');
+            openDropdown();
+        }
+    }
+
+    // Use mousedown to set a flag so outside click doesn't close immediately after opening
+    let justOpened = false;
+    learnMoreBtn.addEventListener('mousedown', function() {
+        justOpened = true;
+        setTimeout(() => { justOpened = false; }, 300);
+    });
+    learnMoreBtn.addEventListener('click', toggleDropdown);
+
+    // Keyboard accessibility
+    learnMoreBtn.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+            toggleDropdown(e);
+        } else if (e.key === 'Escape' && isOpen) {
+            closeDropdown();
+            learnMoreBtn.focus();
         }
     });
-    
-    // Reset dropdown on window resize (if switching to largest desktop)
+
+    // Close dropdown when clicking backdrop
+    if (backdrop) {
+        backdrop.addEventListener('click', function() {
+            if (isOpen) closeDropdown();
+        });
+    }
+
+    // Close dropdown when clicking outside
+    document.addEventListener('click', function(e) {
+        if (justOpened) return;
+        if (isOpen && !dropdownContent.contains(e.target) && !learnMoreBtn.contains(e.target)) {
+            closeDropdown();
+        }
+    });
+
+    // Reset dropdown on window resize
     window.addEventListener('resize', () => {
-        console.log('📐 Window resized to:', window.innerWidth + 'x' + window.innerHeight);
-        if (window.innerWidth >= 1536 && isOpen) { // 2xl breakpoint
-            console.log('💻 Switching to largest desktop view, closing dropdown...');
-            dropdownContent.style.maxHeight = '0px';
-            chevronIcon.style.transform = 'rotate(0deg)';
-            learnMoreBtn.setAttribute('aria-expanded', 'false');
-            learnMoreBtn.querySelector('span').textContent = 'Learn More About Me';
-            isOpen = false;
-            console.log('📖 Hero dropdown reset due to screen size change');
+        if (isOpen) {
+            closeDropdown();
         }
     });
-    
-    console.log('✅ Hero dropdown functionality initialized successfully');
+
+    console.log('✅ Improved hero dropdown functionality initialized');
 }
 
 // ==============================================
@@ -121,46 +130,34 @@ function initNavbar() {
         console.log('🍔 Hamburger clicked!');
         e.preventDefault();
         e.stopPropagation();
-        
-        const isOpen = navMenu.style.maxHeight && navMenu.style.maxHeight !== '0px';
-        
+        const isOpen = navMenu.classList.contains('open');
         if (isOpen) {
-            // Close menu
+            navMenu.classList.remove('open');
             navMenu.style.maxHeight = '0px';
             navToggle.setAttribute('aria-expanded', 'false');
-            
-            // Reset hamburger animation
             hamburgerLines.forEach((line, index) => {
                 line.style.transform = '';
                 line.style.opacity = '';
             });
-            
-            // Re-enable body scroll on mobile
             if (isMobile) {
                 document.body.style.overflow = '';
                 document.body.style.position = '';
             }
-            
             console.log('📱 Mobile menu closed');
         } else {
-            // Open menu
+            navMenu.classList.add('open');
             navMenu.style.maxHeight = navMenu.scrollHeight + 'px';
             navToggle.setAttribute('aria-expanded', 'true');
-            
-            // Animate hamburger to X
             if (hamburgerLines.length >= 3) {
                 hamburgerLines[0].style.transform = 'rotate(45deg) translate(6px, 6px)';
                 hamburgerLines[1].style.opacity = '0';
                 hamburgerLines[2].style.transform = 'rotate(-45deg) translate(6px, -6px)';
             }
-            
-            // Prevent body scroll on mobile when menu is open
             if (isMobile) {
                 document.body.style.overflow = 'hidden';
                 document.body.style.position = 'fixed';
                 document.body.style.width = '100%';
             }
-            
             console.log('📱 Mobile menu opened');
         }
     });
