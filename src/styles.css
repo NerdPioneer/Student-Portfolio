@@ -1,3 +1,11 @@
+.navbar-spacing {
+  margin-bottom: 2.5rem;
+}
+@media (max-width: 640px) {
+  .hero-image-container {
+    margin-top: 2.5rem !important;
+  }
+}
 @media (max-width: 640px) {
   .hero {
     padding-top: 5.5rem !important; /* Increase space below navbar for mobile */

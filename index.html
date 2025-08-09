@@ -946,7 +946,7 @@
     <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-primary-600 text-white px-4 py-2 rounded-lg z-50">Skip to main content</a>
     
     <!-- Desktop Navigation -->
-    <nav class="desktop-nav fixed w-full top-0 z-50 bg-black transition-all duration-300" id="desktop-nav" role="navigation" aria-label="Main navigation">
+    <nav class="desktop-nav w-full bg-black transition-all duration-300" id="desktop-nav" role="navigation" aria-label="Main navigation">
         <div class="container mx-auto px-4 lg:px-6">
             <div class="flex justify-between items-center py-4">
                 <div class="nav-brand">
@@ -991,8 +991,10 @@
     </nav>
     
     <main id="main-content">
+    <!-- Spacer Section for Navbar Separation -->
+    <section class="spacer-section" style="height:6rem;"></section>
     <!-- Hero Section -->
-    <section id="home" class="hero min-h-screen flex items-center relative pt-8 md:pt-20 lg:pt-32 bg-gray-50 overflow-hidden" role="banner">
+    <section id="home" class="hero navbar-spacing min-h-screen flex items-center relative pt-8 md:pt-20 lg:pt-32 bg-gray-50 overflow-hidden" role="banner">
         <!-- Floating Technology Icons Background -->
         <div class="floating-icons absolute inset-0 z-0 pointer-events-none">
             <!-- AWS -->
