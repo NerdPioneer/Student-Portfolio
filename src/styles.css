@@ -1400,6 +1400,11 @@ select {
   overflow: hidden;
 }
 
+/* Fallback for Tailwind's aspect-square without a build step */
+.aspect-square {
+  aspect-ratio: 1 / 1;
+}
+
 .carousel-slides {
   position: relative;
   width: 100%;
