@@ -1398,11 +1398,29 @@ select {
 .carousel-container {
   position: relative;
   overflow: hidden;
+  width: 100%;
+  max-width: 500px;
 }
 
 /* Fallback for Tailwind's aspect-square without a build step */
 .aspect-square {
   aspect-ratio: 1 / 1;
+  position: relative;
+}
+.aspect-square::before {
+  content: '';
+  display: block;
+  padding-top: 100%;
+}
+.aspect-square > * {
+  position: absolute;
+  inset: 0;
+}
+
+/* Missing utility fallback */
+.object-contain {
+  -o-object-fit: contain;
+     object-fit: contain;
 }
 
 .carousel-slides {

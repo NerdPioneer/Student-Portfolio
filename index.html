@@ -395,15 +395,17 @@
             
             /* Mobile profile carousel fixes */
             .carousel-container {
-                width: 280px !important;
-                height: 280px !important;
+                width: 300px !important;
+                height: 420px !important; /* Taller portrait on mobile */
                 margin: 0 auto;
                 box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
                 border: 3px solid rgba(255, 255, 255, 0.8);
             }
+            /* Override square ratio on mobile so height can exceed width */
+            .aspect-square { aspect-ratio: auto !important; }
             
             .profile-carousel {
-                margin-bottom: 1.5rem;
+                margin-bottom: 0.5rem; /* Remove extra gap below photo */
             }
             
             /* Better mobile button spacing */
@@ -425,8 +427,8 @@
             }
             
             .carousel-container {
-                width: 240px !important;
-                height: 240px !important;
+                width: 280px !important;
+                height: 380px !important; /* Maintain taller portrait on very small screens */
             }
             
             .hero-title {
