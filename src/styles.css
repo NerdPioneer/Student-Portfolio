@@ -1,18 +1,82 @@
 
 .hero-description-dropdown {
   max-height: 0;
-  transition: max-height 0.5s ease-in-out;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 0;
+  transform: translateY(-10px);
+  border-radius: 0.75rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(229, 231, 235, 0.8);
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
 }
+
 .hero-description-dropdown.open {
   max-height: 1000px;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Hero description container styling */
+.hero-description-container {
+  position: relative;
+  z-index: 30;
+}
+
+/* Enhanced hero mission text styling */
+.hero-mission {
+  line-height: 1.7;
+  color: #374151;
+  text-align: left;
+}
+
+.hero-mission:last-child {
+  text-align: center;
+  font-style: italic;
+  color: #111827;
+  font-weight: 500;
+}
+
+/* Responsive adjustments for the dropdown */
+@media (max-width: 768px) {
+  .hero-description-dropdown {
+    margin-top: 1rem;
+  }
+  
+  .hero-description-dropdown .p-4 {
+    padding: 1rem;
+  }
+  
+  .hero-description-dropdown .space-y-4 {
+    gap: 1rem;
+  }
 }
 #learn-more-btn {
   font-family: 'Montserrat', system-ui, sans-serif;
   background: #000;
   color: #fff;
-  font-weight: 500;
+  font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.05em;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+#learn-more-btn:hover {
+  background: #1f2937;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+#learn-more-btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.3);
+}
+
+#learn-more-btn:active {
+  transform: translateY(0);
 }
 .navbar-spacing {
   margin-bottom: 2.5rem;
@@ -1007,6 +1071,9 @@ select {
 }
 
 .nav-menu.open {
+  /* Ensure menu expands when open; JS sets an exact value for smooth transitions */
+  max-height: 1000px;
+}
 
 /* Mobile Menu Button */
 

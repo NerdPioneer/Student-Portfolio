@@ -20,7 +20,7 @@ function initNavbar() {
     const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
     
     // Toggle mobile menu
-    navToggle.addEventListener('click', function(e) {
+    function toggleMobileMenu(e) {
         console.log('🍔 Hamburger clicked!');
         e.preventDefault();
         e.stopPropagation();
@@ -28,6 +28,7 @@ function initNavbar() {
         if (isOpen) {
             navMenu.classList.remove('open');
             navMenu.style.maxHeight = '0px';
+            navMenu.style.display = '';
             navToggle.setAttribute('aria-expanded', 'false');
             hamburgerLines.forEach((line, index) => {
                 line.style.transform = '';
@@ -40,7 +41,17 @@ function initNavbar() {
             console.log('📱 Mobile menu closed');
         } else {
             navMenu.classList.add('open');
-            navMenu.style.maxHeight = navMenu.scrollHeight + 'px';
+            navMenu.style.display = 'block';
+            // Force reflow to ensure accurate scrollHeight after display change
+            // eslint-disable-next-line no-unused-expressions
+            navMenu.offsetHeight;
+            // Allow time for images inside the menu to load (if any) to ensure height is correct
+            const setHeight = () => {
+                navMenu.style.maxHeight = navMenu.scrollHeight + 'px';
+            };
+            setHeight();
+            // Recalculate after a tick to capture dynamic content
+            setTimeout(setHeight, 50);
             navToggle.setAttribute('aria-expanded', 'true');
             if (hamburgerLines.length >= 3) {
                 hamburgerLines[0].style.transform = 'rotate(45deg) translate(6px, 6px)';
@@ -54,13 +65,17 @@ function initNavbar() {
             }
             console.log('📱 Mobile menu opened');
         }
-    });
+    }
+
+    navToggle.addEventListener('click', toggleMobileMenu);
     
     // Close menu when clicking on nav links
     navLinks.forEach(link => {
         link.addEventListener('click', () => {
             if (window.innerWidth <= 1024) { // lg breakpoint
+                navMenu.classList.remove('open');
                 navMenu.style.maxHeight = '0px';
+                navMenu.style.display = '';
                 navToggle.setAttribute('aria-expanded', 'false');
                 
                 // Reset hamburger animation
@@ -83,7 +98,9 @@ function initNavbar() {
     // Close menu on window resize and fix body scroll
     window.addEventListener('resize', () => {
         if (window.innerWidth > 1024) {
+            navMenu.classList.remove('open');
             navMenu.style.maxHeight = '';
+            navMenu.style.display = '';
             navToggle.setAttribute('aria-expanded', 'false');
             
             // Reset hamburger animation
@@ -105,7 +122,9 @@ function initNavbar() {
         const isClickInsideNav = navToggle.contains(e.target) || navMenu.contains(e.target);
         
         if (isMenuOpen && !isClickInsideNav && window.innerWidth <= 1024) {
+            navMenu.classList.remove('open');
             navMenu.style.maxHeight = '0px';
+            navMenu.style.display = '';
             navToggle.setAttribute('aria-expanded', 'false');
             
             // Reset hamburger animation
@@ -249,6 +268,16 @@ function initSmoothScrolling() {
             const targetElement = document.querySelector(href);
             
             if (targetElement) {
+                e.preventDefault();
+                const targetPosition = targetElement.offsetTop - 100; // Offset for navbar
+                
+                if (isMobile) {
+                    // For mobile, use custom smooth scrolling
+                    console.log(`📱 Mobile scroll to ${href}`);
+                    const startPosition = window.pageYOffset;
+                    const distance = targetPosition - startPosition;
+                    const duration = 1000;
+                    let startTime = null;
                     
                     function animateScroll(currentTime) {
                         if (startTime === null) startTime = currentTime;
@@ -281,10 +310,24 @@ function initSmoothScrolling() {
                     });
                 }
             }
+        });
+    });
+    
+    console.log('✅ Smooth scrolling initialized successfully');
+}
 
 // ==============================================
 // INITIALIZATION
 // ==============================================
+
+// ==============================================
+// HERO DESCRIPTION DROPDOWN FUNCTIONALITY
+// ==============================================
+
+function initHeroDropdown() {
+    // Button removed; no-op to avoid errors if called
+    console.log('ℹ️ Hero dropdown disabled (button removed).');
+}
 
 // ==============================================
 // SCROLL TO TOP FUNCTIONALITY
@@ -362,6 +405,7 @@ function initializeApp() {
     initCarousel();
     initSmoothScrolling();
     initScrollToTop();
+    initHeroDropdown();
         // Debug helpers
         window.portfolioDebug = {
             testCarousel: () => {
@@ -380,11 +424,24 @@ function initializeApp() {
                 console.log('Toggle element:', !!toggle);
                 console.log('Menu max-height:', menu?.style.maxHeight);
             },
+            testHeroDropdown: () => {
+                console.log('📚 Testing hero dropdown...');
+                const btn = document.getElementById('learn-more-btn');
+                const dropdown = document.getElementById('hero-description-dropdown');
+                const icon = document.getElementById('learn-more-icon');
+                console.log('Learn More button:', !!btn);
+                console.log('Dropdown:', !!dropdown);
+                console.log('Icon:', !!icon);
+                if (dropdown) {
+                    console.log('Dropdown is open:', dropdown.classList.contains('open'));
+                }
+            },
             getState: () => ({
                 currentSlide,
                 slidesCount: document.querySelectorAll('.carousel-slide').length,
                 menuOpen: document.querySelector('.nav-menu')?.style.maxHeight !== '0px',
-                scrollToTopVisible: document.getElementById('scroll-to-top')?.style.opacity === '1'
+                scrollToTopVisible: document.getElementById('scroll-to-top')?.style.opacity === '1',
+                heroDropdownOpen: document.getElementById('hero-description-dropdown')?.classList.contains('open') || false
             })
         };
         console.log('🛠️ Debug helpers available: window.portfolioDebug');
