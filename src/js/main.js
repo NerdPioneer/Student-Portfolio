@@ -329,71 +329,7 @@ function initHeroDropdown() {
     console.log('ℹ️ Hero dropdown disabled (button removed).');
 }
 
-// ==============================================
-// SCROLL TO TOP FUNCTIONALITY
-// ==============================================
 
-function initScrollToTop() {
-    console.log('⬆️ Initializing scroll to top functionality...');
-    
-    const scrollToTopBtn = document.getElementById('scroll-to-top');
-    
-    if (!scrollToTopBtn) {
-        console.warn('⚠️ Scroll to top button not found');
-        return;
-    }
-    
-    console.log('✅ Scroll to top button found, setting up functionality...');
-    
-    // Show/hide button based on scroll position
-    function toggleScrollButton() {
-        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-        const shouldShow = scrollTop > 300; // Show after scrolling 300px
-        
-        if (shouldShow) {
-            scrollToTopBtn.style.opacity = '1';
-            scrollToTopBtn.style.visibility = 'visible';
-            scrollToTopBtn.style.transform = 'translateY(0)';
-        } else {
-            scrollToTopBtn.style.opacity = '0';
-            scrollToTopBtn.style.visibility = 'hidden';
-            scrollToTopBtn.style.transform = 'translateY(8px)';
-        }
-    }
-    
-    // Smooth scroll to top when clicked
-    function scrollToTop(e) {
-        e.preventDefault();
-        console.log('⬆️ Scroll to top clicked');
-        
-        // Use smooth scrolling if supported, fallback to instant
-        if ('scrollBehavior' in document.documentElement.style) {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        } else {
-            // Fallback smooth scroll for older browsers
-            const scrollStep = -window.scrollY / (500 / 15);
-            const scrollInterval = setInterval(() => {
-                if (window.scrollY !== 0) {
-                    window.scrollBy(0, scrollStep);
-                } else {
-                    clearInterval(scrollInterval);
-                }
-            }, 15);
-        }
-    }
-    
-    // Event listeners
-    window.addEventListener('scroll', toggleScrollButton, { passive: true });
-    scrollToTopBtn.addEventListener('click', scrollToTop);
-    
-    // Initial check
-    toggleScrollButton();
-    
-    console.log('✅ Scroll to top functionality initialized');
-}
 
 function initializeApp() {
     console.log('🚀 Starting portfolio app initialization...');
@@ -404,7 +340,6 @@ function initializeApp() {
     initNavbar();
     initCarousel();
     initSmoothScrolling();
-    initScrollToTop();
     initHeroDropdown();
         // Debug helpers
         window.portfolioDebug = {
@@ -440,7 +375,6 @@ function initializeApp() {
                 currentSlide,
                 slidesCount: document.querySelectorAll('.carousel-slide').length,
                 menuOpen: document.querySelector('.nav-menu')?.style.maxHeight !== '0px',
-                scrollToTopVisible: document.getElementById('scroll-to-top')?.style.opacity === '1',
                 heroDropdownOpen: document.getElementById('hero-description-dropdown')?.classList.contains('open') || false
             })
         };
