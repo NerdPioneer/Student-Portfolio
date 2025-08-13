@@ -373,8 +373,18 @@
         /* Better mobile spacing and visibility fixes */
         @media (max-width: 640px) {
             .hero {
-                padding-top: 3rem;
-                padding-bottom: 2rem;
+                padding-top: 2rem;
+                padding-bottom: 1rem;
+            }
+            /* Tighter stack spacing on mobile */
+            .hero .grid {
+                gap: 0.75rem !important;
+            }
+            .hero-title {
+                margin-bottom: 0.5rem !important;
+            }
+            .hero-subtitle {
+                margin-bottom: 0.75rem !important;
             }
             
             /* Improve floating icons visibility on mobile */
@@ -407,6 +417,9 @@
             .profile-carousel {
                 margin-bottom: 0.5rem; /* Remove extra gap below photo */
             }
+            .hero-image-container {
+                padding-top: 0.5rem !important; /* Reduce top spacing above photo */
+            }
             
             /* Better mobile button spacing */
             .hero-buttons {
@@ -422,7 +435,7 @@
         
         @media (max-width: 480px) {
             .hero {
-                padding-top: 2.5rem;
+                padding-top: 2rem;
                 min-height: calc(100vh - 80px);
             }
             
@@ -1079,9 +1092,9 @@
 
         <!-- Hero Content -->
         <div class="container mx-auto px-4 md:px-6 relative z-20">
-            <div class="grid lg:grid-cols-2 gap-6 lg:gap-12 items-center">
+            <div class="grid lg:grid-cols-2 gap-6 lg:gap-12 items-center min-h-[80vh] lg:min-h-[70vh]">
                 <!-- LEFT SIDE: Content -->
-                <div class="hero-left order-2 lg:order-1 relative z-30">
+                <div class="hero-left order-2 lg:order-1 relative z-30 flex flex-col justify-center">
                     <h1 class="hero-title text-center lg:text-left text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-black text-gray-900 leading-tight mb-4 md:mb-6 glitch-effect" data-text="NAVIGATE THE DIGITAL LANDSCAPE WITH CONFIDENCE">
                         NAVIGATE THE DIGITAL LANDSCAPE WITH CONFIDENCE
                     </h1>
@@ -1094,27 +1107,27 @@
                 </div>
                 
                 <!-- RIGHT SIDE: Hero Image -->
-                <div class="hero-right order-1 lg:order-2 relative z-30">
-                    <div class="hero-image-container flex flex-col items-center">
-                        <div class="profile-carousel relative mb-4 md:mb-6">
+                <div class="hero-right order-1 lg:order-2 relative z-30 flex flex-col items-center justify-center">
+                    <div class="hero-image-container flex flex-col items-center w-full">
+                        <div class="profile-carousel relative mb-4 md:mb-6 w-full max-w-[280px] sm:max-w-[350px] md:max-w-[400px] lg:max-w-[500px]">
                             <!-- Profile Image Carousel -->
-                            <div class="carousel-container w-full max-w-[500px] aspect-square relative overflow-hidden rounded-2xl shadow-2xl border-4 border-white/80 bg-white">
+                            <div class="carousel-container w-full aspect-square relative overflow-hidden rounded-2xl shadow-2xl border-4 border-white/80 bg-white">
                                 <!-- Profile Images -->
                                 <div class="carousel-slides relative w-full h-full">
                                     <div class="carousel-slide active absolute inset-0 w-full h-full">
-                                        <img src="./public/images/profile_1.jpg" alt="Ezekiel Obeisun Jr - Profile Photo 1" class="w-full h-full object-contain object-center bg-white" loading="eager" onerror="this.onerror=null; this.src='public/images/profile_1.jpg';">
+                                        <img src="./public/images/profile_1.jpg" alt="Ezekiel Obeisun Jr - Profile Photo 1" class="w-full h-full object-cover object-center bg-white" loading="eager" onerror="this.onerror=null; this.src='public/images/profile_1.jpg';">
                                         <div class="absolute inset-0 bg-gradient-to-t from-primary-600/20 to-transparent"></div>
                                     </div>
                                     <div class="carousel-slide absolute inset-0 w-full h-full opacity-0">
-                                        <img src="./public/images/profile_2.jpg" alt="Ezekiel Obeisun Jr - Profile Photo 2" class="w-full h-full object-contain object-center bg-white" loading="lazy" onerror="this.onerror=null; this.src='public/images/profile_2.jpg';">
+                                        <img src="./public/images/profile_2.jpg" alt="Ezekiel Obeisun Jr - Profile Photo 2" class="w-full h-full object-cover object-center bg-white" loading="lazy" onerror="this.onerror=null; this.src='public/images/profile_2.jpg';">
                                         <div class="absolute inset-0 bg-gradient-to-t from-primary-600/20 to-transparent"></div>
                                     </div>
                                     <div class="carousel-slide absolute inset-0 w-full h-full opacity-0">
-                                        <img src="./public/images/profile_3.jpg" alt="Ezekiel Obeisun Jr - Profile Photo 3" class="w-full h-full object-contain object-center bg-white" loading="lazy" onerror="this.onerror=null; this.src='public/images/profile_3.jpg';">
+                                        <img src="./public/images/profile_3.jpg" alt="Ezekiel Obeisun Jr - Profile Photo 3" class="w-full h-full object-cover object-center bg-white" loading="lazy" onerror="this.onerror=null; this.src='public/images/profile_3.jpg';">
                                         <div class="absolute inset-0 bg-gradient-to-t from-primary-600/20 to-transparent"></div>
                                     </div>
                                     <div class="carousel-slide absolute inset-0 w-full h-full opacity-0">
-                                        <img src="./public/images/profile_4.jpg" alt="Ezekiel Obeisun Jr - Profile Photo 4" class="w-full h-full object-contain object-center bg-white" loading="lazy" onerror="this.onerror=null; this.src='public/images/profile_4.jpg';">
+                                        <img src="./public/images/profile_4.jpg" alt="Ezekiel Obeisun Jr - Profile Photo 4" class="w-full h-full object-cover object-center bg-white" loading="lazy" onerror="this.onerror=null; this.src='public/images/profile_4.jpg';">
                                         <div class="absolute inset-0 bg-gradient-to-t from-primary-600/20 to-transparent"></div>
                                     </div>
                                 </div>

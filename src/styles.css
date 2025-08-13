@@ -1,4 +1,3 @@
-
 .hero-description-dropdown {
   max-height: 0;
   transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
@@ -3299,11 +3298,465 @@ html {
   }
 }
 
-/* Fix for mobile browsers: ensure Learn More button is clickable and visible */
-#learn-more-btn {
-  z-index: 100;
-  position: relative;
-  touch-action: manipulation;
-  cursor: pointer;
+/* Mobile Chrome/Android specific fixes */
+@supports (-webkit-appearance: none) and (not (-webkit-touch-callout: none)) {
+  .carousel-slide img {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+  }
+}
+
+/* Mobile Hero Section Improvements */
+@media (max-width: 768px) {
+  /* Hero section mobile spacing */
+  .hero {
+    padding-top: 4rem !important;
+    min-height: 100vh;
+  }
+  
+  /* Hero content mobile layout */
+  .hero .container {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+  
+  /* Hero grid mobile adjustments */
+  .hero .grid {
+    gap: 2rem;
+    min-height: 90vh;
+  }
+  
+  /* Hero left content mobile */
+  .hero-left {
+    order: 2;
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+  
+  /* Hero right content mobile */
+  .hero-right {
+    order: 1;
+    margin-bottom: 2rem;
+  }
+  
+  /* Profile carousel mobile sizing */
+  .profile-carousel {
+    max-width: 280px !important;
+    margin: 0 auto 1rem auto;
+  }
+  
+  /* Carousel container mobile */
+  .carousel-container {
+    max-width: 280px !important;
+    margin: 0 auto;
+  }
+  
+  /* Hero title mobile */
+  .hero-title {
+    font-size: 1.75rem !important;
+    line-height: 2rem !important;
+    margin-bottom: 1rem !important;
+  }
+  
+  /* Hero subtitle mobile */
+  .hero-subtitle {
+    font-size: 0.875rem !important;
+    margin-bottom: 1.5rem !important;
+  }
+  
+  /* Floating icons mobile adjustments */
+  .floating-icon {
+    font-size: 0.75em !important;
+    opacity: 0.15 !important;
+  }
+  
+  /* Reduce orbital movement on mobile */
+  .floating-icon {
+    animation-duration: 20s !important;
+  }
+}
+
+/* Extra small mobile devices */
+@media (max-width: 480px) {
+  .hero {
+    padding-top: 3rem !important;
+  }
+  
+  .hero .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  .profile-carousel {
+    max-width: 250px !important;
+  }
+  
+  .carousel-container {
+    max-width: 250px !important;
+  }
+  
+  .hero-title {
+    font-size: 1.5rem !important;
+    line-height: 1.75rem !important;
+  }
+  
+  .hero-subtitle {
+    font-size: 0.75rem !important;
+  }
+}
+
+/* Small mobile devices */
+@media (max-width: 640px) {
+  .hero {
+    padding-top: 3.5rem !important;
+  }
+  
+  .hero .grid {
+    gap: 1.5rem;
+  }
+  
+  .profile-carousel {
+    max-width: 300px !important;
+  }
+  
+  .carousel-container {
+    max-width: 300px !important;
+  }
+}
+
+/* Medium mobile devices */
+@media (min-width: 641px) and (max-width: 768px) {
+  .hero {
+    padding-top: 4rem !important;
+  }
+  
+  .profile-carousel {
+    max-width: 350px !important;
+  }
+  
+  .carousel-container {
+    max-width: 350px !important;
+  }
+}
+
+/* Image display fixes for mobile */
+@media (max-width: 768px) {
+  .carousel-slide img {
+    object-fit: cover !important;
+    object-position: center !important;
+    width: 100% !important;
+    height: 100% !important;
+  }
+  
+  /* Ensure proper image loading on mobile */
+  .carousel-slide img[loading="eager"] {
+    display: block !important;
+  }
+  
+  .carousel-slide img[loading="lazy"] {
+    display: none !important;
+  }
+  
+  .carousel-slide.active img[loading="lazy"] {
+    display: block !important;
+  }
+}
+
+/* Enhanced mobile touch interactions */
+@media (max-width: 768px) {
+  /* Improve touch targets */
+  .carousel-dot {
+    min-width: 44px;
+    min-height: 44px;
+    padding: 0.5rem;
+  }
+  
+  /* Better mobile scrolling */
+  .hero {
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+  }
+  
+  /* Mobile image optimization */
+  .carousel-container {
+    will-change: transform;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+  }
+  
+  /* Mobile carousel slide transitions */
+  .carousel-slide {
+    transition: opacity 0.4s ease-in-out;
+  }
+  
+  /* Mobile floating icons optimization */
+  .floating-icons {
+    pointer-events: none;
+    will-change: transform;
+  }
+  
+  .floating-icon {
+    will-change: transform;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+  }
+}
+
+/* Mobile performance optimizations */
+@media (max-width: 768px) {
+  /* Reduce animation complexity on mobile */
+  .floating-icon {
+    animation-duration: 25s !important;
+    animation-timing-function: linear !important;
+  }
+  
+  /* Optimize mobile layout rendering */
+  .hero .grid {
+    will-change: transform;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+  }
+  
+  /* Mobile image loading optimization */
+  .carousel-slide img {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+  }
+}
+
+/* Mobile accessibility improvements */
+@media (max-width: 768px) {
+  /* Ensure proper focus states on mobile */
+  .carousel-dot:focus {
+    outline: 2px solid #3b82f6;
+    outline-offset: 2px;
+  }
+  
+  /* Mobile touch feedback */
+  .carousel-dot:active {
+    transform: scale(0.95);
+    transition: transform 0.1s ease;
+  }
+  
+  /* Mobile text readability */
+  .hero-title,
+  .hero-subtitle {
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+  }
+}
+
+/* Mobile landscape orientation fixes */
+@media (max-width: 768px) and (orientation: landscape) {
+  .hero {
+    min-height: 100vh;
+    padding-top: 2rem !important;
+  }
+  
+  .hero .grid {
+    min-height: 80vh;
+    gap: 1rem;
+  }
+  
+  .profile-carousel {
+    max-width: 200px !important;
+  }
+  
+  .carousel-container {
+    max-width: 200px !important;
+  }
+  
+  .hero-title {
+    font-size: 1.5rem !important;
+    margin-bottom: 0.5rem !important;
+  }
+  
+  .hero-subtitle {
+    font-size: 0.75rem !important;
+    margin-bottom: 1rem !important;
+  }
+}
+
+
+
+/* Profile Image Display Fixes */
+.carousel-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: opacity 0.3s ease;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* Ensure proper image loading states */
+.carousel-slide:not(.active) img {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.carousel-slide.active img {
+  opacity: 1;
   pointer-events: auto;
+}
+
+/* Carousel container improvements */
+.carousel-container {
+  position: relative;
+  overflow: hidden;
+  background: #ffffff;
+  border-radius: 1rem;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  border: 4px solid rgba(255, 255, 255, 0.8);
+}
+
+/* Carousel slides positioning */
+.carousel-slides {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.carousel-slide {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+  z-index: 1;
+}
+
+.carousel-slide.active {
+  opacity: 1;
+  z-index: 2;
+}
+
+/* Carousel dots improvements */
+.carousel-dots {
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 0.5rem;
+  z-index: 10;
+}
+
+.carousel-dot {
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.8);
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.carousel-dot:hover {
+  background-color: rgba(255, 255, 255, 1);
+  transform: scale(1.1);
+}
+
+.carousel-dot.active {
+  background-color: #ffffff;
+  transform: scale(1.2);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Mobile-specific carousel improvements */
+@media (max-width: 768px) {
+  .carousel-dot {
+    min-width: 44px;
+    min-height: 44px;
+    padding: 0.5rem;
+    background-color: rgba(255, 255, 255, 0.9);
+  }
+  
+  .carousel-dot.active {
+    background-color: #ffffff;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* Mobile image loading optimization */
+  .carousel-slide img {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    will-change: transform;
+  }
+  
+  /* Mobile carousel transitions */
+  .carousel-slide {
+    transition: opacity 0.4s ease-in-out;
+  }
+}
+
+/* Final Mobile Optimizations */
+@media (max-width: 768px) {
+  /* Prevent mobile image glitches */
+  .carousel-slide img {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  /* Mobile touch improvements */
+  .carousel-container {
+    touch-action: pan-y pinch-zoom;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  
+  /* Mobile performance */
+  .hero {
+    contain: layout style paint;
+  }
+  
+  /* Mobile image preloading */
+  .carousel-slide img[loading="eager"] {
+    display: block !important;
+    opacity: 1 !important;
+  }
+  
+  .carousel-slide img[loading="lazy"] {
+    display: none !important;
+    opacity: 0 !important;
+  }
+  
+  .carousel-slide.active img[loading="lazy"] {
+    display: block !important;
+    opacity: 1 !important;
+  }
+}
+
+/* Mobile Safari specific fixes */
+@supports (-webkit-touch-callout: none) {
+  .carousel-slide img {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+  
+  .carousel-container {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+/* Mobile Chrome/Android specific fixes */
+@supports (-webkit-appearance: none) and (not (-webkit-touch-callout: none)) {
+  .carousel-slide img {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+  }
 }
