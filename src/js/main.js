@@ -329,6 +329,51 @@ function initHeroDropdown() {
     console.log('ℹ️ Hero dropdown disabled (button removed).');
 }
 
+// ==============================================
+// MOBILE HEIGHT FIXES
+// ==============================================
+
+function initMobileHeightFixes() {
+    console.log('📱 Initializing mobile height fixes...');
+    
+    // Function to set CSS custom property for mobile height
+    function setMobileHeight() {
+        const vh = window.innerHeight * 0.01;
+        document.documentElement.style.setProperty('--vh', `${vh}px`);
+        
+        // Also set dynamic viewport height if supported
+        if (CSS.supports('height', '100dvh')) {
+            document.documentElement.style.setProperty('--dvh', '100dvh');
+        } else {
+            document.documentElement.style.setProperty('--dvh', `${window.innerHeight}px`);
+        }
+    }
+    
+    // Set initial height
+    setMobileHeight();
+    
+    // Update on resize and orientation change
+    window.addEventListener('resize', setMobileHeight);
+    window.addEventListener('orientationchange', () => {
+        // Wait for orientation change to complete
+        setTimeout(setMobileHeight, 100);
+    });
+    
+    // Update on scroll (for mobile browsers with dynamic toolbars)
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+        if (!ticking) {
+            requestAnimationFrame(() => {
+                setMobileHeight();
+                ticking = false;
+            });
+            ticking = true;
+        }
+    });
+    
+    console.log('✅ Mobile height fixes initialized');
+}
+
 
 
 function initializeApp() {
@@ -341,6 +386,7 @@ function initializeApp() {
     initCarousel();
     initSmoothScrolling();
     initHeroDropdown();
+    initMobileHeightFixes();
         // Debug helpers
         window.portfolioDebug = {
             testCarousel: () => {

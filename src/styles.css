@@ -3202,6 +3202,12 @@ html {
 
 
 
+/* CSS Custom Properties for mobile height fixes */
+:root {
+  --vh: 1vh;
+  --dvh: 100dvh;
+}
+
 /* Ensure top spacing for hero image section across browsers */
 .hero-image-container {
   padding-top: 3.5rem; /* Increased top spacing */
@@ -3239,6 +3245,8 @@ html {
   .hero {
     padding-top: 4rem !important;
     min-height: 100vh;
+    min-height: 100dvh; /* Dynamic viewport height for mobile */
+    min-height: calc(var(--vh, 1vh) * 100); /* Fallback for older browsers */
   }
   
   /* Hero content mobile layout */
@@ -3251,6 +3259,7 @@ html {
   .hero .grid {
     gap: 2rem;
     min-height: 90vh;
+    min-height: 90dvh; /* Dynamic viewport height for mobile */
   }
   
   /* Hero left content mobile */
@@ -3478,11 +3487,13 @@ html {
 @media (max-width: 768px) and (orientation: landscape) {
   .hero {
     min-height: 100vh;
+    min-height: 100dvh;
     padding-top: 2rem !important;
   }
   
   .hero .grid {
     min-height: 80vh;
+    min-height: 80dvh;
     gap: 1rem;
   }
   
