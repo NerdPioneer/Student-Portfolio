@@ -14,28 +14,28 @@
 </head>
 <body class="bg-gray-100 text-gray-800 font-mono">
     <!-- Navigation -->
-    <nav class="desktop-nav fixed w-full top-0 z-50 transition-all duration-300 bg-white shadow-lg border-b border-gray-200">
+    <nav class="desktop-nav fixed w-full top-0 z-50 transition-all duration-300 bg-black shadow-lg backdrop-blur-md bg-opacity-95">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
                 <!-- Logo -->
                 <div class="flex-shrink-0">
-                    <a href="index.html" class="text-gray-800 font-bold text-xl hover:text-blue-600 transition-colors duration-200">
+                    <a href="index.html" class="text-white font-bold text-xl hover:text-blue-400 transition-colors duration-200">
                         RETURN HOME
                     </a>
                 </div>
                 
                 <!-- Desktop Navigation -->
                 <div class="hidden lg:flex space-x-8">
-                    <a href="index.html" class="nav-link text-gray-600 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200">Home</a>
-                    <a href="terminal.html" class="nav-link text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200">Terminal</a>
+                    <a href="index.html" class="nav-link text-white hover:text-blue-400 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200">Home</a>
+                    <a href="terminal.html" class="nav-link text-blue-400 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200">Terminal</a>
                 </div>
                 
                 <!-- Mobile menu button -->
                 <div class="lg:hidden">
-                    <button class="nav-toggle p-2 border border-gray-300 rounded-lg bg-white hover:bg-gray-50 transition-colors duration-200">
-                        <div class="hamburger-line w-6 h-0.5 bg-gray-600 mb-1"></div>
-                        <div class="hamburger-line w-6 h-0.5 bg-gray-600 mb-1"></div>
-                        <div class="hamburger-line w-6 h-0.5 bg-gray-600"></div>
+                    <button class="nav-toggle p-2 border border-gray-600 rounded-lg bg-black hover:bg-gray-900 transition-colors duration-200">
+                        <div class="hamburger-line w-6 h-0.5 bg-white mb-1"></div>
+                        <div class="hamburger-line w-6 h-0.5 bg-white mb-1"></div>
+                        <div class="hamburger-line w-6 h-0.5 bg-white"></div>
                     </button>
                 </div>
             </div>
@@ -43,8 +43,8 @@
             <!-- Mobile Navigation Menu -->
             <div class="nav-menu lg:hidden overflow-hidden transition-all duration-300 ease-in-out max-h-0">
                 <div class="px-2 pt-2 pb-3 space-y-1">
-                    <a href="index.html" class="nav-link text-gray-600 hover:text-blue-600 block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200">Home</a>
-                    <a href="terminal.html" class="nav-link text-blue-600 block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200">Terminal</a>
+                    <a href="index.html" class="nav-link text-white hover:text-blue-400 block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200">Home</a>
+                    <a href="terminal.html" class="nav-link text-blue-400 block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200">Terminal</a>
                 </div>
             </div>
         </div>
@@ -65,59 +65,99 @@
             </div>
             
             <!-- Terminal Body -->
-            <div class="bg-white border border-gray-600 border-t-0 rounded-b-lg p-6 min-h-[500px] shadow-lg">
+            <div class="bg-black border border-gray-600 border-t-0 rounded-b-lg p-6 min-h-[600px] shadow-lg relative overflow-hidden">
+                <!-- CRT Scanline Overlay -->
+                <div class="crt-overlay absolute inset-0 pointer-events-none"></div>
+                
                 <!-- Terminal Content -->
-                <div class="space-y-4">
+                <div class="space-y-4 relative z-10">
                     <!-- Welcome Message -->
-                    <div class="text-gray-800">
-                        <span class="text-blue-600 font-semibold">root@portfolio:~$</span> 
-                        <span class="text-gray-700 ml-2">./welcome.sh</span>
+                    <div class="text-green-400">
+                        <span class="text-green-600 font-semibold">root@portfolio:~$</span> 
+                        <span class="text-green-400 ml-2">./welcome.sh</span>
                     </div>
-                    <div class="text-gray-700 ml-4">
+                    <div class="text-green-400 ml-4">
                         <div class="typing-effect">
-                            <span class="text-blue-500">█</span> Welcome to the Terminal, wanderer...
+                            <span class="text-green-500">█</span> Welcome to the Terminal, wanderer...
                         </div>
                     </div>
                     
-                    <!-- System Info -->
-                    <div class="text-gray-800 mt-6">
-                        <span class="text-blue-600 font-semibold">root@portfolio:~$</span> 
-                        <span class="text-gray-700 ml-2">system_info</span>
+                    <!-- Boot-up Sequence -->
+                    <div class="text-green-400 mt-6">
+                        <span class="text-green-600 font-semibold">root@portfolio:~$</span> 
+                        <span class="text-green-400 ml-2">./boot_sequence.sh</span>
                     </div>
-                    <div class="text-gray-700 ml-4 space-y-1">
+                    <div class="text-green-400 ml-4 space-y-1">
+                        <div class="animate-pulse">[SYSTEM] Allocating memory...</div>
+                        <div class="animate-pulse delay-100">[SYSTEM] Mounting knowledge base...</div>
+                        <div class="animate-pulse delay-200">[SYSTEM] Loading entries: 0 found</div>
+                        <div class="animate-pulse delay-300">[SYSTEM] Awaiting first log upload...</div>
+                    </div>
+                    
+                    <!-- System Info -->
+                    <div class="text-green-400 mt-6">
+                        <span class="text-green-600 font-semibold">root@portfolio:~$</span> 
+                        <span class="text-green-400 ml-2">system_info</span>
+                    </div>
+                    <div class="text-green-400 ml-4 space-y-1">
                         <div>OS: Portfolio Terminal v1.0</div>
-                        <div>Status: <span class="text-green-600 font-semibold">ONLINE</span></div>
+                        <div>Status: <span class="text-green-500 status-pulse">ONLINE</span></div>
                         <div>Purpose: Journey Log Repository</div>
-                        <div>Last Update: <span class="text-yellow-600 font-semibold">INITIALIZING...</span></div>
+                        <div>Last Update: <span class="text-yellow-500 blink-amber">INITIALIZING...</span></div>
+                    </div>
+                    
+                    <!-- Fake Command -->
+                    <div class="text-green-400 mt-6">
+                        <span class="text-green-600 font-semibold">root@portfolio:~$</span> 
+                        <span class="text-green-400 ml-2">ls /journey_logs</span>
+                    </div>
+                    <div class="text-green-400 ml-4">
+                        <div class="text-yellow-500">>> No logs found. Repository initializing...</div>
                     </div>
                     
                     <!-- Placeholder Content -->
-                    <div class="text-gray-800 mt-8 text-center">
-                        <div class="border-2 border-blue-500 rounded-lg p-8 bg-blue-50 shadow-md">
-                            <h1 class="text-3xl font-bold text-blue-700 mb-4">TERMINALS - JOURNEY LOGS</h1>
-                            <p class="text-gray-700 text-lg mb-4">A living diary of learning, building, and growth</p>
-                            <div class="text-gray-600 text-sm space-y-2">
+                    <div class="text-green-400 mt-8 text-center">
+                        <div class="border-2 border-green-500 rounded-lg p-8 bg-gray-900 bg-opacity-50 shadow-md">
+                            <h1 class="text-3xl font-bold text-green-400 mb-4">TERMINALS - JOURNEY LOGS</h1>
+                            <p class="text-green-300 text-lg mb-2">A living diary of learning, building, and growth</p>
+                            <p class="text-green-400 text-sm italic mb-4">Coming Soon: Live developer journey entries synced from my workspace.</p>
+                            <div class="text-green-400 text-sm space-y-2">
                                 <div class="animate-pulse">[SYSTEM] Initializing journey log repository...</div>
                                 <div class="animate-pulse delay-100">[SYSTEM] Connecting to knowledge base...</div>
                                 <div class="animate-pulse delay-200">[SYSTEM] Preparing retro terminal interface...</div>
                             </div>
-                            <div class="mt-6 text-blue-500">
+                            <div class="mt-6 text-green-500">
                                 <span class="text-2xl">█</span>
                             </div>
                         </div>
                     </div>
                     
+                    <!-- Engagement Hook -->
+                    <div class="text-green-400 mt-6 text-center">
+                        <p class="text-green-300 text-sm">Type 'help' to see available commands (coming soon).</p>
+                    </div>
+                    
+                    <!-- Fake Help Command -->
+                    <div class="text-green-400 mt-6">
+                        <span class="text-green-600 font-semibold">root@portfolio:~$</span> 
+                        <span class="text-green-400 ml-2">help</span>
+                    </div>
+                    <div class="text-green-400 ml-4 space-y-1">
+                        <div>Available commands: help, ls, view &lt;log&gt;, exit</div>
+                        <div class="text-yellow-500">(functionality not yet available in demo mode)</div>
+                    </div>
+                    
                     <!-- Current Prompt -->
-                    <div class="text-gray-800 mt-8">
-                        <span class="text-blue-600 font-semibold">root@portfolio:~$</span> 
-                        <span class="text-gray-700 ml-2">█</span>
+                    <div class="text-green-400 mt-8">
+                        <span class="text-green-600 font-semibold">root@portfolio:~$</span> 
+                        <span class="text-green-400 ml-2">█</span>
                     </div>
                 </div>
             </div>
             
             <!-- Back to Portfolio Link -->
             <div class="text-center mt-8">
-                <a href="index.html" class="inline-flex items-center px-6 py-3 border-2 border-blue-500 text-blue-600 rounded-lg hover:bg-blue-500 hover:text-white transition-all duration-300 font-mono shadow-md hover:shadow-lg">
+                <a href="index.html" class="inline-flex items-center px-6 py-3 border-2 border-green-500 text-green-600 rounded-lg hover:bg-green-500 hover:text-black transition-all duration-300 font-mono shadow-md hover:shadow-lg">
                     <span class="mr-2">←</span>
                     Return to Portfolio
                 </a>
@@ -130,7 +170,7 @@
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
             <div class="text-center text-gray-300">
                 <p class="text-sm font-mono">
-                    <span class="text-blue-400">root@portfolio:~$</span> 
+                    <span class="text-green-400">root@portfolio:~$</span> 
                     <span class="text-gray-300 ml-2">echo "Terminal access granted. Journey logs coming soon..."</span>
                 </p>
             </div>
@@ -144,7 +184,7 @@
     <style>
         .typing-effect {
             overflow: hidden;
-            border-right: 2px solid #3b82f6;
+            border-right: 2px solid #10b981;
             white-space: nowrap;
             animation: typing 3s steps(40, end), blink-caret 0.75s step-end infinite;
         }
@@ -156,7 +196,7 @@
         
         @keyframes blink-caret {
             from, to { border-color: transparent; }
-            50% { border-color: #3b82f6; }
+            50% { border-color: #10b981; }
         }
         
         .animate-pulse {
@@ -171,10 +211,49 @@
             animation-delay: 200ms;
         }
         
+        .delay-300 {
+            animation-delay: 300ms;
+        }
+        
+        /* Status pulse animation */
+        .status-pulse {
+            animation: statusPulse 2s ease-in-out infinite;
+        }
+        
+        @keyframes statusPulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+        
+        /* Blinking amber for INITIALIZING */
+        .blink-amber {
+            animation: blinkAmber 1.5s ease-in-out infinite;
+        }
+        
+        @keyframes blinkAmber {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+        
+        /* CRT scanline overlay */
+        .crt-overlay {
+            background: linear-gradient(
+                transparent 50%,
+                rgba(16, 185, 129, 0.03) 50%
+            );
+            background-size: 100% 4px;
+            animation: scanline 10s linear infinite;
+        }
+        
+        @keyframes scanline {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(100%); }
+        }
+        
         /* Terminal text selection */
         ::selection {
-            background: #3b82f6;
-            color: #fff;
+            background: #10b981;
+            color: #000;
         }
         
         /* Custom scrollbar for terminal */
@@ -183,16 +262,16 @@
         }
         
         ::-webkit-scrollbar-track {
-            background: #f1f5f9;
+            background: #000;
         }
         
         ::-webkit-scrollbar-thumb {
-            background: #3b82f6;
+            background: #10b981;
             border-radius: 4px;
         }
         
         ::-webkit-scrollbar-thumb:hover {
-            background: #2563eb;
+            background: #059669;
         }
         
         /* Responsive adjustments */
