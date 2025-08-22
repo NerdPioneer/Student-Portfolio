@@ -1,4 +1,82 @@
 // ==============================================
+// UMIAMI ANALYTICS TRACKING
+// ==============================================
+
+// Enhanced Umami tracking for better insights
+function trackEvent(eventName, eventData = {}) {
+    if (typeof umami !== 'undefined') {
+        umami.track(eventName, eventData);
+    }
+}
+
+// Track page views and user interactions
+function initAnalytics() {
+    // Track page load
+    trackEvent('page_view', {
+        page: window.location.pathname,
+        referrer: document.referrer,
+        user_agent: navigator.userAgent
+    });
+    
+    // Track navigation clicks
+    document.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', (e) => {
+            trackEvent('navigation_click', {
+                link_text: e.target.textContent.trim(),
+                link_href: e.target.href,
+                section: e.target.getAttribute('href')?.replace('#', '') || 'unknown'
+            });
+        });
+    });
+    
+    // Track project card interactions
+    document.querySelectorAll('.project-card').forEach(card => {
+        card.addEventListener('click', (e) => {
+            const projectTitle = card.querySelector('h3')?.textContent || 'Unknown Project';
+            trackEvent('project_interaction', {
+                project: projectTitle,
+                action: 'click'
+            });
+        });
+    });
+    
+    // Track terminal link clicks
+    document.querySelectorAll('.terminal-link').forEach(link => {
+        link.addEventListener('click', () => {
+            trackEvent('terminal_access', {
+                source: 'main_page',
+                action: 'open_terminal'
+            });
+        });
+    });
+    
+    // Track scroll depth
+    let maxScrollDepth = 0;
+    window.addEventListener('scroll', () => {
+        const scrollDepth = Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100);
+        if (scrollDepth > maxScrollDepth) {
+            maxScrollDepth = scrollDepth;
+            if (maxScrollDepth % 25 === 0) { // Track every 25%
+                trackEvent('scroll_depth', {
+                    depth: maxScrollDepth,
+                    page: window.location.pathname
+                });
+            }
+        }
+    });
+    
+    // Track time on page
+    let startTime = Date.now();
+    window.addEventListener('beforeunload', () => {
+        const timeOnPage = Math.round((Date.now() - startTime) / 1000);
+        trackEvent('time_on_page', {
+            seconds: timeOnPage,
+            page: window.location.pathname
+        });
+    });
+}
+
+// ==============================================
 // NAVBAR FUNCTIONALITY
 // ==============================================
 
@@ -566,6 +644,9 @@ function initializeApp() {
         initIntersectionObserver();
         initBackToTop();
         initTerminalTracking();
+        
+        // Initialize analytics tracking
+        initAnalytics();
     } catch (error) {
         console.error('Error during initialization:', error);
     }
