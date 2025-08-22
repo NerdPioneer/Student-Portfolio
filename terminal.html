@@ -75,10 +75,13 @@
                 <div class="center-panel">
                     <h2>TERMINALS — JOURNEY LOGS</h2>
                     <div class="system-messages">
-                        <div class="info-message">[INFO] Tracking system events: builds, breakages, breakthroughs</div>
+                        <div class="info-message">
+                            <span class="status-label info-glow" data-text="[INFO]">[INFO]</span>
+                            <span class="message-text">Tracking system events: builds, breakages, breakthroughs</span>
+                        </div>
                         <div class="warn-message">
-                            <span class="typing-text" id="typingWarn">[WARN] Sync pending — new entries will populate soon</span>
-                            <span class="typing-cursor">|</span>
+                            <span class="status-label warn-glow" data-text="[WARN]">[WARN]</span>
+                            <span class="message-text">Sync pending — new entries will populate soon</span>
                         </div>
                     </div>
                 </div>
@@ -225,31 +228,6 @@
                 window.location.href = 'index.html';
             }, 2000); // Redirect after 2 seconds
         }
-
-        // Typing effect for warn message
-        function startTypingEffect() {
-            const warnText = document.getElementById('typingWarn');
-            const originalText = warnText.textContent;
-            warnText.textContent = '';
-            warnText.style.width = '0';
-            
-            let i = 0;
-            const typeInterval = setInterval(() => {
-                if (i < originalText.length) {
-                    warnText.textContent += originalText.charAt(i);
-                    warnText.style.width = ((i + 1) / originalText.length * 100) + '%';
-                    i++;
-                } else {
-                    clearInterval(typeInterval);
-                    warnText.style.width = '100%';
-                }
-            }, 80); // Type each character every 80ms for better readability
-        }
-
-        // Start typing effect when page loads
-        window.addEventListener('load', () => {
-            setTimeout(startTypingEffect, 1500); // Start after 1.5 seconds
-        });
     </script>
 
     <!-- Terminal Styles -->
@@ -611,46 +589,102 @@
             padding: 8px 0;
         }
 
-        .info-message {
-            color: var(--accent-blue);
-            font-size: 13px;
-            font-weight: 500;
-            opacity: 0.9;
-            font-family: 'Source Code Pro', monospace;
+        .info-message, .warn-message {
+            display: flex;
+            align-items: center;
         }
 
-        .warn-message {
-            color: var(--accent-red);
-            font-size: 13px;
-            font-weight: 600;
-            opacity: 0.95;
-            font-family: 'Source Code Pro', monospace;
-        }
-
-        /* Typing effect for warn message */
-        .typing-text {
+        /* New styles for status labels */
+        .status-label {
             display: inline-block;
-            overflow: hidden;
-            white-space: nowrap;
-            width: 0;
-            animation: typing 3s steps(40, end) forwards;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: 700;
+            font-size: 12px;
+            text-transform: uppercase;
+            color: #000000;
+            position: relative;
+            animation: glitch-status 3s infinite;
         }
 
-        .typing-cursor {
-            color: var(--accent-red);
-            font-weight: bold;
-            animation: blink-cursor 1s infinite;
-            margin-left: 2px;
+        .info-glow {
+            background-color: var(--accent-blue);
+            box-shadow: 0 0 10px var(--accent-blue), 0 0 20px var(--accent-blue);
         }
 
-        @keyframes typing {
-            from { width: 0 }
-            to { width: 100% }
+        .warn-glow {
+            background-color: var(--accent-red);
+            box-shadow: 0 0 10px var(--accent-red), 0 0 20px var(--accent-red);
         }
 
-        @keyframes blink-cursor {
-            0%, 50% { opacity: 1 }
-            51%, 100% { opacity: 0 }
+        .message-text {
+            color: var(--text-primary);
+            margin-left: 8px;
+            font-size: 13px;
+            opacity: 0.9;
+        }
+
+        /* Glitch effect for status labels */
+        @keyframes glitch-status {
+            0%, 100% {
+                transform: translate(0);
+            }
+            20% {
+                transform: translate(-2px, 2px);
+            }
+            40% {
+                transform: translate(-2px, -2px);
+            }
+            60% {
+                transform: translate(2px, 2px);
+            }
+            80% {
+                transform: translate(2px, -2px);
+            }
+        }
+
+        .status-label::before,
+        .status-label::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: inherit;
+            border-radius: inherit;
+            padding: inherit;
+            font-weight: inherit;
+            font-size: inherit;
+            text-transform: inherit;
+            color: inherit;
+            z-index: -1;
+        }
+
+        .status-label::before {
+            animation: glitch-status-before 2s infinite;
+            color: #00ffff;
+            transform: translate(2px, -2px);
+        }
+
+        .status-label::after {
+            animation: glitch-status-after 2.5s infinite;
+            color: #ff00ff;
+            transform: translate(-2px, 2px);
+        }
+
+        @keyframes glitch-status-before {
+            0%, 100% { transform: translate(2px, -2px); }
+            25% { transform: translate(-1px, 1px); }
+            50% { transform: translate(1px, -1px); }
+            75% { transform: translate(-2px, 2px); }
+        }
+
+        @keyframes glitch-status-after {
+            0%, 100% { transform: translate(-2px, 2px); }
+            25% { transform: translate(1px, -1px); }
+            50% { transform: translate(-1px, 1px); }
+            75% { transform: translate(2px, -2px); }
         }
     </style>
 </body>
