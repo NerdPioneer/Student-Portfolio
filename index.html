@@ -1764,53 +1764,27 @@
                 </div>
 
                 <!-- Terminal Column -->
-                <div class="notes-card bg-white rounded-2xl p-8 flex flex-col h-full">
-                    <div class="flex items-start mb-4">
-                        <div class="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
-                            <svg class="w-6 h-6 text-white" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z"/>
-                            </svg>
+                <article class="card card--simple">
+                    <header class="card__head">
+                        <div class="card__icon term-icon" aria-hidden="true"></div>
+                        <div>
+                            <div class="card__eyebrow">JOURNEY LOGS</div>
+                            <h3 class="card__title">Terminal</h3>
                         </div>
-                        <div class="text-left">
-                            <h3 class="text-2xl font-bold text-gray-900 mb-2 font-raleway">Terminal</h3>
-                            <p class="text-sm text-gray-500 uppercase tracking-wider font-medium">JOURNEY LOGS</p>
-                        </div>
-                    </div>
-                    
-                    <div class="term-preview bg-gray-900 rounded-lg p-3 mb-4 flex-grow">
-                        <div class="term-header flex items-center gap-2 mb-2">
-                            <span class="w-2.5 h-2.5 bg-red-500 rounded-full"></span>
-                            <span class="w-2.5 h-2.5 bg-yellow-500 rounded-full"></span>
-                            <span class="w-2.5 h-2.5 bg-green-500 rounded-full"></span>
-                            <span class="text-gray-500 text-xs ml-2">terminal — journey logs</span>
-                        </div>
-                        <div class="term-content text-green-300 font-mono text-xs leading-tight">
-                            <div class="mb-1.5">
-                                <span class="text-blue-300 font-semibold">visitor@nerdpioneer:~$</span> ls tags
-                            </div>
-                            <div class="mb-2 text-gray-400">Build  Learn  Ops  Life</div>
-                            <div class="mb-1.5">
-                                <span class="text-blue-300 font-semibold">visitor@nerdpioneer:~$</span> latest
-                            </div>
-                            <div class="text-yellow-200 font-medium">[2025-08-21] OSPF finally clicked — LSAs + DR/BDR mental model.</div>
-                        </div>
-                    </div>
-                    
-                    <p class="text-gray-600 text-left mb-4 leading-relaxed text-sm">
-                        A retro, lightweight CLI for my daily build notes, study logs, and ops tweaks. 
-                        <a href="terminal.html#about" class="text-blue-600 hover:text-blue-800 underline">How it works</a>
+                    </header>
+
+                    <p class="card__text">
+                        A retro, lightweight CLI for my daily build notes, study logs, and ops tweaks.
+                        <a href="terminal.html#about" class="card__link">How it works</a>
                     </p>
-                    
-                    <div class="mt-auto">
-                        <a href="terminal.html" class="inline-flex items-center bg-blue-600 text-white px-6 py-3 rounded-full font-medium hover:bg-blue-700 transition duration-300 text-sm w-full justify-center terminal-link">
-                            <svg class="w-4 h-4 mr-2" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M8 5v14l11-7z"/>
-                            </svg>
+
+                    <div class="card__actions">
+                        <a class="btn btn--primary btn--terminal terminal-link" href="terminal.html" aria-label="Open Terminal — Journey Logs">
                             Open Terminal
-                            <span class="ml-2 text-xs opacity-75">Live journey logs</span>
                         </a>
+                        <span class="pill pill--terminal">Live journey logs</span>
                     </div>
-                </div>
+                </article>
                 
                 <!-- Inspirational Quote at Bottom of Notes -->
                 <div class="mt-16 mb-8 text-center px-4">
