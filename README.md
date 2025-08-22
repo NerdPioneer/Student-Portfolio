@@ -56,6 +56,10 @@ Open your browser to see the site running locally!
 - **JavaScript** - Interactivity
 - **GitHub Pages** - Hosting
 
+## Analytics
+
+This site uses [Umami](https://umami.is) for privacy-first analytics to monitor visitor traffic and site performance. It's free, open-source, and doesn't collect personal data - just basic metrics to understand how the site is being used.
+
 ## Deployment
 
 This site is automatically deployed via GitHub Pages. Simply push changes to the master branch and they'll be live within minutes.
