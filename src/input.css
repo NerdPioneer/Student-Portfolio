@@ -795,7 +795,7 @@ a:focus {
     align-items: flex-start;
   }
 
-  /* Button styling - matches GitHub pill structure exactly */
+  /* Button styling - simplified and centered */
   .btn--terminal {
     background: #7fb0ff;
     color: #0b0f12;
@@ -807,7 +807,7 @@ a:focus {
     text-decoration: none;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     transition: all 0.2s ease;
     position: relative;
   }
@@ -822,7 +822,7 @@ a:focus {
     outline-offset: 2px;
   }
 
-  /* Three-zone layout: icon, label, caption */
+  /* Simplified layout: icon and centered label */
   .btn__icon {
     display: flex;
     align-items: center;
@@ -833,32 +833,18 @@ a:focus {
     border-radius: 6px;
     color: #0b0f12;
     flex-shrink: 0;
+    margin-right: 0.75rem;
   }
 
   .btn__label {
     font-weight: 600;
     color: #0b0f12;
-    flex-grow: 1;
     text-align: center;
-    margin: 0 0.75rem;
-  }
-
-  .btn__caption {
-    font-size: 0.75rem;
-    font-weight: 500;
-    letter-spacing: 0.05em;
-    color: rgba(11, 15, 18, 0.75);
-    flex-shrink: 0;
-    text-align: right;
-    min-width: 0;
+    margin: 0;
   }
 
   /* Responsive behavior for narrow screens */
   @media (max-width: 400px) {
-    .btn__caption {
-      display: none;
-    }
-    
     .btn__label {
       margin: 0;
       text-align: center;
