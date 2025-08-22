@@ -594,23 +594,52 @@
         
         /* Enhanced floating icons animation and positioning */
         @keyframes float {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            25% { transform: translateY(-10px) rotate(3deg); }
-            50% { transform: translateY(-5px) rotate(-2deg); }
-            75% { transform: translateY(-15px) rotate(1deg); }
+            0%, 100% { transform: translateY(0px) translateX(0px) rotate(0deg) scale(1); }
+            10% { transform: translateY(-8px) translateX(5px) rotate(2deg) scale(1.05); }
+            20% { transform: translateY(-12px) translateX(-3px) rotate(-1deg) scale(0.98); }
+            30% { transform: translateY(-6px) translateX(8px) rotate(3deg) scale(1.02); }
+            40% { transform: translateY(-15px) translateX(-5px) rotate(-2deg) scale(0.95); }
+            50% { transform: translateY(-10px) translateX(3px) rotate(1deg) scale(1.03); }
+            60% { transform: translateY(-18px) translateX(-8px) rotate(-3deg) scale(0.97); }
+            70% { transform: translateY(-8px) translateX(6px) rotate(2deg) scale(1.04); }
+            80% { transform: translateY(-14px) translateX(-4px) rotate(-1deg) scale(0.99); }
+            90% { transform: translateY(-5px) translateX(7px) rotate(2deg) scale(1.01); }
+        }
+        
+        /* Additional movement patterns for variety */
+        @keyframes float2 {
+            0%, 100% { transform: translateY(0px) translateX(0px) rotate(0deg) scale(1); }
+            15% { transform: translateY(-10px) translateX(-6px) rotate(-2deg) scale(1.03); }
+            30% { transform: translateY(-16px) translateX(4px) rotate(1deg) scale(0.96); }
+            45% { transform: translateY(-7px) translateX(-8px) rotate(3deg) scale(1.05); }
+            60% { transform: translateY(-13px) translateX(5px) rotate(-1deg) scale(0.98); }
+            75% { transform: translateY(-9px) translateX(-7px) rotate(2deg) scale(1.02); }
+            90% { transform: translateY(-17px) translateX(3px) rotate(-2deg) scale(0.97); }
+        }
+        
+        @keyframes float3 {
+            0%, 100% { transform: translateY(0px) translateX(0px) rotate(0deg) scale(1); }
+            20% { transform: translateY(-11px) translateX(7px) rotate(1deg) scale(1.04); }
+            40% { transform: translateY(-19px) translateX(-4px) rotate(-3deg) scale(0.95); }
+            60% { transform: translateY(-6px) translateX(9px) rotate(2deg) scale(1.06); }
+            80% { transform: translateY(-14px) translateX(-6px) rotate(-1deg) scale(0.98); }
         }
         
         .floating-icon {
-            animation: float 6s ease-in-out infinite;
+            animation: float 8s ease-in-out infinite;
         }
         
-        /* Stagger animation delays for better effect */
-        .floating-icon:nth-child(odd) {
-            animation-duration: 7s;
+        /* Stagger animation delays and different patterns for variety */
+        .floating-icon:nth-child(3n) {
+            animation: float2 9s ease-in-out infinite;
         }
         
-        .floating-icon:nth-child(even) {
-            animation-duration: 5s;
+        .floating-icon:nth-child(3n+1) {
+            animation: float3 7s ease-in-out infinite;
+        }
+        
+        .floating-icon:nth-child(3n+2) {
+            animation: float 10s ease-in-out infinite;
         }
         
         /* Make icons more visible on mobile */
@@ -627,6 +656,12 @@
             .floating-icons div:nth-child(4) { top: 80% !important; right: 15% !important; }
             .floating-icons div:nth-child(5) { top: 30% !important; right: 5% !important; }
             .floating-icons div:nth-child(6) { top: 85% !important; left: 20% !important; }
+            
+            /* Position new tech stack icons on mobile */
+            .floating-icons div:nth-child(25) { top: 18% !important; left: 45% !important; } /* Ubuntu */
+            .floating-icons div:nth-child(26) { top: 65% !important; left: 55% !important; } /* Ansible */
+            .floating-icons div:nth-child(27) { top: 22% !important; right: 45% !important; } /* Cisco */
+            .floating-icons div:nth-child(28) { top: 78% !important; left: 65% !important; } /* VMware */
         }
         
         /* Browser-specific theme color fallbacks */
@@ -1238,6 +1273,38 @@
             <!-- Terminal/CLI -->
             <div class="floating-icon absolute text-gray-600 opacity-21" style="top: 68%; right: 45%; animation-delay: 14s;">
                 <i class="fas fa-terminal text-lg md:text-xl"></i>
+            </div>
+            
+            <!-- NEW TECH STACK ICONS -->
+            <!-- Ubuntu -->
+            <div class="floating-icon absolute text-gray-600 opacity-22" style="top: 18%; left: 45%; animation-delay: 15s;">
+                <i class="fab fa-ubuntu text-xl md:text-2xl"></i>
+            </div>
+            <!-- Ansible (using automation icon) -->
+            <div class="floating-icon absolute text-gray-600 opacity-22" style="top: 65%; left: 55%; animation-delay: 16s;">
+                <i class="fas fa-robot text-lg md:text-xl"></i>
+            </div>
+            <!-- Cisco (using network icon) -->
+            <div class="floating-icon absolute text-gray-600 opacity-22" style="top: 22%; right: 45%; animation-delay: 17s;">
+                <i class="fas fa-network-wired text-lg md:text-xl"></i>
+            </div>
+            <!-- VMware (using virtualization icon) -->
+            <div class="floating-icon absolute text-gray-600 opacity-22" style="top: 78%; left: 65%; animation-delay: 18s;">
+                <i class="fas fa-layer-group text-lg md:text-xl"></i>
+            </div>
+            
+            <!-- Additional movement variety icons -->
+            <div class="floating-icon absolute text-gray-600 opacity-20" style="top: 15%; left: 80%; animation-delay: 19s;">
+                <i class="fas fa-server text-lg md:text-xl"></i>
+            </div>
+            <div class="floating-icon absolute text-gray-600 opacity-20" style="top: 35%; left: 85%; animation-delay: 20s;">
+                <i class="fas fa-database text-lg md:text-xl"></i>
+            </div>
+            <div class="floating-icon absolute text-gray-600 opacity-20" style="top: 55%; right: 60%; animation-delay: 21s;">
+                <i class="fas fa-cloud text-lg md:text-xl"></i>
+            </div>
+            <div class="floating-icon absolute text-gray-600 opacity-20" style="top: 88%; right: 8%; animation-delay: 22s;">
+                <i class="fas fa-shield-alt text-lg md:text-xl"></i>
             </div>
         </div>
 
