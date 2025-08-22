@@ -76,7 +76,10 @@
                     <h2>TERMINALS — JOURNEY LOGS</h2>
                     <div class="system-messages">
                         <div class="info-message">[INFO] Tracking system events: builds, breakages, breakthroughs</div>
-                        <div class="warn-message">[WARN] Sync pending — new entries will populate soon</div>
+                        <div class="warn-message">
+                            <span class="typing-text" id="typingWarn">[WARN] Sync pending — new entries will populate soon</span>
+                            <span class="typing-cursor">|</span>
+                        </div>
                     </div>
                 </div>
 
@@ -222,6 +225,31 @@
                 window.location.href = 'index.html';
             }, 2000); // Redirect after 2 seconds
         }
+
+        // Typing effect for warn message
+        function startTypingEffect() {
+            const warnText = document.getElementById('typingWarn');
+            const originalText = warnText.textContent;
+            warnText.textContent = '';
+            warnText.style.width = '0';
+            
+            let i = 0;
+            const typeInterval = setInterval(() => {
+                if (i < originalText.length) {
+                    warnText.textContent += originalText.charAt(i);
+                    warnText.style.width = ((i + 1) / originalText.length * 100) + '%';
+                    i++;
+                } else {
+                    clearInterval(typeInterval);
+                    warnText.style.width = '100%';
+                }
+            }, 80); // Type each character every 80ms for better readability
+        }
+
+        // Start typing effect when page loads
+        window.addEventListener('load', () => {
+            setTimeout(startTypingEffect, 1500); // Start after 1.5 seconds
+        });
     </script>
 
     <!-- Terminal Styles -->
@@ -597,6 +625,32 @@
             font-weight: 600;
             opacity: 0.95;
             font-family: 'Source Code Pro', monospace;
+        }
+
+        /* Typing effect for warn message */
+        .typing-text {
+            display: inline-block;
+            overflow: hidden;
+            white-space: nowrap;
+            width: 0;
+            animation: typing 3s steps(40, end) forwards;
+        }
+
+        .typing-cursor {
+            color: var(--accent-red);
+            font-weight: bold;
+            animation: blink-cursor 1s infinite;
+            margin-left: 2px;
+        }
+
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+
+        @keyframes blink-cursor {
+            0%, 50% { opacity: 1 }
+            51%, 100% { opacity: 0 }
         }
     </style>
 </body>
