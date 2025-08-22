@@ -679,6 +679,58 @@
             -webkit-backface-visibility: hidden;
         }
         
+        /* Back to Top Button Styles */
+        .back-to-top {
+            position: fixed !important;
+            bottom: 20px !important;
+            right: 20px !important;
+            width: 50px !important;
+            height: 50px !important;
+            border-radius: 50% !important;
+            background-color: #3b82f6 !important;
+            color: white !important;
+            border: none !important;
+            font-size: 20px !important;
+            cursor: pointer !important;
+            opacity: 0 !important;
+            visibility: hidden !important;
+            transform: translateY(20px) scale(0.8) !important;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+            z-index: 1000 !important;
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3) !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            font-weight: bold !important;
+        }
+        
+        .back-to-top:hover {
+            background-color: #2563eb !important;
+            transform: translateY(0) scale(1.1) !important;
+            box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4) !important;
+        }
+        
+        .back-to-top:focus {
+            outline: 2px solid #60a5fa !important;
+            outline-offset: 2px !important;
+        }
+        
+        /* Ensure button is visible when scrolled */
+        .back-to-top.show {
+            opacity: 1 !important;
+            visibility: visible !important;
+            transform: translateY(0) scale(1) !important;
+        }
+        
+        /* Desktop-specific visibility */
+        @media (min-width: 768px) {
+            .back-to-top {
+                opacity: 1 !important;
+                visibility: visible !important;
+                transform: translateY(0) scale(1) !important;
+            }
+        }
+        
         /* Force hardware acceleration on Safari */
         .carousel-container {
             -webkit-transform: translateZ(0);

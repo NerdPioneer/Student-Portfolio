@@ -433,39 +433,17 @@ function initBackToTop() {
     backToTopBtn.className = 'back-to-top';
     backToTopBtn.setAttribute('aria-label', 'Back to top');
     
-    // Style the button
+    // Style the button - minimal inline styles, rest handled by CSS
     Object.assign(backToTopBtn.style, {
         position: 'fixed',
         bottom: '20px',
         right: '20px',
         width: '50px',
         height: '50px',
-        borderRadius: '50%',
-        backgroundColor: '#3b82f6',
-        color: 'white',
-        border: 'none',
-        fontSize: '20px',
-        cursor: 'pointer',
-        opacity: '0',
-        visibility: 'hidden',
-        transform: 'translateY(20px) scale(0.8)',
-        transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-        zIndex: '1000',
-        boxShadow: '0 4px 12px rgba(59, 130, 246, 0.3)'
+        zIndex: '1000'
     });
     
-    // Add hover effects
-    backToTopBtn.addEventListener('mouseenter', () => {
-        backToTopBtn.style.backgroundColor = '#2563eb';
-        backToTopBtn.style.transform = 'translateY(0) scale(1.1)';
-        backToTopBtn.style.boxShadow = '0 6px 20px rgba(59, 130, 246, 0.4)';
-    });
-    
-    backToTopBtn.addEventListener('mouseleave', () => {
-        backToTopBtn.style.backgroundColor = '#3b82f6';
-        backToTopBtn.style.transform = 'translateY(0) scale(1)';
-        backToTopBtn.style.boxShadow = '0 4px 12px rgba(59, 130, 246, 0.3)';
-    });
+    // Hover effects now handled by CSS
     
     // Add click functionality
     backToTopBtn.addEventListener('click', () => {
@@ -505,13 +483,9 @@ function toggleBackToTop() {
     
     // Show button when scrolled down and there's more content below
     if (scrollTop > windowHeight && scrollTop + windowHeight < documentHeight - 100) {
-        backToTopBtn.style.opacity = '1';
-        backToTopBtn.style.visibility = 'visible';
-        backToTopBtn.style.transform = 'translateY(0) scale(1)';
+        backToTopBtn.classList.add('show');
     } else {
-        backToTopBtn.style.opacity = '0';
-        backToTopBtn.style.visibility = 'hidden';
-        backToTopBtn.style.transform = 'translateY(20px) scale(0.8)';
+        backToTopBtn.classList.remove('show');
     }
 }
 
