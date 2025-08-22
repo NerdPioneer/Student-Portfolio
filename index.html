@@ -1764,28 +1764,30 @@
                 </div>
 
                 <!-- Terminal Column -->
-                <article class="card card--simple">
-                    <header class="card__head">
-                        <div class="card__icon term-icon" aria-hidden="true"></div>
-                        <div>
-                            <div class="card__eyebrow">JOURNEY LOGS</div>
-                            <h3 class="card__title">Terminal</h3>
+                <div class="notes-card bg-white rounded-2xl p-8 flex flex-col h-full">
+                    <div class="flex items-start mb-6">
+                        <div class="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                            <svg class="w-6 h-6 text-white" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z"/>
+                            </svg>
                         </div>
-                    </header>
-
-                    <p class="card__text">
+                        <div class="text-left">
+                            <h3 class="text-2xl font-bold text-gray-900 mb-2 font-raleway">Terminal</h3>
+                            <p class="text-sm text-gray-500 uppercase tracking-wider font-medium">JOURNEY LOGS</p>
+                        </div>
+                    </div>
+                    
+                    <p class="text-gray-600 text-left mb-8 leading-relaxed flex-grow">
                         A retro, lightweight CLI for my daily build notes, study logs, and ops tweaks.
-                        <a href="terminal.html#about" class="card__link">How it works</a>
+                        <a href="terminal.html#about" class="text-blue-600 hover:text-blue-800 underline text-sm">How it works</a>
                     </p>
 
-                    <div class="card__actions">
-                        <a class="btn btn--primary btn--terminal terminal-link" href="terminal.html" aria-label="Open Terminal — Journey Logs">
-                            <span class="btn__icon" aria-hidden="true">
-                                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z"/>
-                                </svg>
-                            </span>
-                            <span class="btn__label">Open Terminal</span>
+                    <div class="mt-auto">
+                        <a href="terminal.html" class="terminal-link inline-flex items-center bg-blue-600 text-white px-6 py-3 rounded-full font-medium hover:bg-blue-700 transition duration-300 text-sm w-full justify-center">
+                            <svg class="w-4 h-4 mr-2" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z"/>
+                            </svg>
+                            Open Terminal
                         </a>
                     </div>
                 </article>
