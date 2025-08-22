@@ -795,20 +795,21 @@ a:focus {
     align-items: flex-start;
   }
 
-  /* Button styling - reuses existing button classes */
+  /* Button styling - matches GitHub pill structure exactly */
   .btn--terminal {
     background: #7fb0ff;
     color: #0b0f12;
     border-color: transparent;
     width: 100%;
-    justify-content: center;
     padding: 0.75rem 1.5rem;
     border-radius: 9999px;
     font-weight: 500;
     text-decoration: none;
-    display: inline-flex;
+    display: flex;
     align-items: center;
+    justify-content: space-between;
     transition: all 0.2s ease;
+    position: relative;
   }
 
   .btn--terminal:hover {
@@ -816,16 +817,52 @@ a:focus {
     transform: translateY(-1px);
   }
 
-  /* Terminal pill styling */
-  .pill--terminal {
-    background: #0b1322;
-    color: #cfe6ff;
-    border: 1px solid #22324a;
-    padding: 0.25rem 0.75rem;
-    border-radius: 9999px;
+  .btn--terminal:focus {
+    outline: 2px solid #7fb0ff;
+    outline-offset: 2px;
+  }
+
+  /* Three-zone layout: icon, label, caption */
+  .btn__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    background: rgba(11, 19, 34, 0.2);
+    border-radius: 6px;
+    color: #0b0f12;
+    flex-shrink: 0;
+  }
+
+  .btn__label {
+    font-weight: 600;
+    color: #0b0f12;
+    flex-grow: 1;
+    text-align: center;
+    margin: 0 0.75rem;
+  }
+
+  .btn__caption {
     font-size: 0.75rem;
     font-weight: 500;
-    align-self: flex-start;
+    letter-spacing: 0.05em;
+    color: rgba(11, 15, 18, 0.75);
+    flex-shrink: 0;
+    text-align: right;
+    min-width: 0;
+  }
+
+  /* Responsive behavior for narrow screens */
+  @media (max-width: 400px) {
+    .btn__caption {
+      display: none;
+    }
+    
+    .btn__label {
+      margin: 0;
+      text-align: center;
+    }
   }
 
   /* Site quote styling */
