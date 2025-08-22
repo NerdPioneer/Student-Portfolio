@@ -565,6 +565,7 @@ function initializeApp() {
         initMobileHeightFixes();
         initIntersectionObserver();
         initBackToTop();
+        initTerminalTracking();
     } catch (error) {
         console.error('Error during initialization:', error);
     }
@@ -582,3 +583,16 @@ setTimeout(() => {
         initializeApp();
     }
 }, 1000);
+
+function initTerminalTracking() {
+    // Track clicks on terminal links for engagement analytics
+    const terminalLinks = document.querySelectorAll('.terminal-link');
+    
+    terminalLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            // You can add analytics tracking here
+            // Example: gtag('event', 'click', { 'event_category': 'terminal', 'event_label': 'notes_section' });
+            console.log('Terminal link clicked from notes section');
+        });
+    });
+}

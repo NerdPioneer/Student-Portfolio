@@ -1699,10 +1699,10 @@
             <div class="max-w-6xl mx-auto text-center">
                 <h2 class="text-4xl md:text-5xl font-bold mb-4 text-gray-900 font-raleway uppercase tracking-wide animate-fade-in">NOTES FROM THE CLIMB</h2>
                 <p class="text-lg text-gray-600 mb-16 max-w-2xl mx-auto">
-                    My two primary platforms for sharing knowledge and code
+                    My three platforms for sharing knowledge, code, and journey logs
                 </p>
                 
-                <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
                 <!-- Medium Column -->
                 <div class="notes-card bg-white rounded-2xl p-8 flex flex-col h-full">
                     <div class="flex items-start mb-6">
@@ -1718,7 +1718,7 @@
                     </div>
                     
                     <p class="text-gray-600 text-left mb-8 leading-relaxed flex-grow">
-                        Get a front-row seat to my evolving path in cloud computing, network engineering, and career growth—every milestone, insight, and lesson captured in detailed articles.
+                        Deep-dive write-ups, study notes, and long-form posts about my journey in cloud computing, network engineering, and career growth.
                     </p>
                     
                     <div class="mt-auto">
@@ -1746,7 +1746,7 @@
                         </div>
                         
                         <p class="text-gray-600 text-left mb-8 leading-relaxed flex-grow">
-                            Explore my hands-on projects, automation scripts, and technical solutions. From security tools to infrastructure code—see how I solve real-world problems.
+                            Source, prototypes, and experiments I'm shipping. From security tools to infrastructure code—see how I solve real-world problems.
                         </p>
                         
                         <div class="mt-auto">
@@ -1761,6 +1761,33 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- Terminal Column -->
+                <article class="notes-card terminal-card">
+                    <header class="term-bar" aria-hidden="true">
+                        <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+                        <span class="title">terminal — journey logs</span>
+                    </header>
+
+                    <div class="term-body">
+                        <pre class="term-stream" aria-label="Terminal preview">
+<span class="prompt">visitor@1percentnerd:~$</span> ls tags
+Build  Learn  Ops  Life
+
+<span class="prompt">visitor@1percentnerd:~$</span> latest
+[2025-08-21] OSPF finally clicked — LSAs + DR/BDR mental model.
+                        </pre>
+
+                        <p class="term-blurb">
+                            A retro, lightweight CLI for my daily build notes, study logs, and ops tweaks.
+                        </p>
+
+                        <div class="term-actions">
+                            <a class="btn primary terminal-link" href="terminal.html" aria-label="Open Terminal — Journey Logs" title="Open the live journey logs">Open Terminal</a>
+                            <a class="btn ghost" href="terminal.html#about" aria-label="How the Terminal works">How it works</a>
+                        </div>
+                    </div>
+                </article>
                 
                 <!-- Inspirational Quote at Bottom of Notes -->
                 <div class="mt-16 mb-8 text-center px-4">
