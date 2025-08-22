@@ -74,8 +74,10 @@
                 <!-- Center Panel -->
                 <div class="center-panel">
                     <h2>TERMINALS — JOURNEY LOGS</h2>
-                    <p>A living diary of learning, building, and growth</p>
-                    <p><em>Coming Soon: entries synced from my workspace.</em></p>
+                    <div class="system-messages">
+                        <div class="info-message">[INFO] Tracking system events: builds, breakages, breakthroughs</div>
+                        <div class="warn-message">[WARN] Sync pending — new entries will populate soon</div>
+                    </div>
                 </div>
 
                 <!-- Terminal Footer -->
@@ -239,6 +241,7 @@
             --text-dim: #7fb0ff;
             --accent-green: #2fe26c;
             --accent-blue: #7fb0ff;
+            --accent-red: #ff6b6b;
         }
 
         /* Reset and Base */
@@ -569,6 +572,31 @@
         .breadcrumb-link:focus {
             outline: 2px solid var(--accent-blue);
             outline-offset: 2px;
+        }
+
+        /* New styles for system messages */
+        .system-messages {
+            margin-top: 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            padding: 8px 0;
+        }
+
+        .info-message {
+            color: var(--accent-blue);
+            font-size: 13px;
+            font-weight: 500;
+            opacity: 0.9;
+            font-family: 'Source Code Pro', monospace;
+        }
+
+        .warn-message {
+            color: var(--accent-red);
+            font-size: 13px;
+            font-weight: 600;
+            opacity: 0.95;
+            font-family: 'Source Code Pro', monospace;
         }
     </style>
 </body>
