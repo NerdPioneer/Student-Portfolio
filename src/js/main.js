@@ -359,9 +359,17 @@ function initSmoothScrolling() {
         return 100; // Fallback
     }
     
-    // Enhanced smooth scroll function
-    function smoothScrollTo(targetElement, duration = 1200) {
-        const targetPosition = targetElement.offsetTop - getScrollOffset();
+    // Enhanced smooth scroll function - made global for back to top button
+    window.smoothScrollTo = function(targetElement, duration = 1200) {
+        let targetPosition;
+        
+        // Handle special case for back to top (scrolling to document top)
+        if (targetElement === document.documentElement || targetElement === document.body) {
+            targetPosition = 0;
+        } else {
+            targetPosition = targetElement.offsetTop - getScrollOffset();
+        }
+        
         const startPosition = window.pageYOffset;
         const distance = targetPosition - startPosition;
         let startTime = null;
@@ -389,7 +397,7 @@ function initSmoothScrolling() {
         }
         
         requestAnimationFrame(animateScroll);
-    }
+    };
     
     // Enhanced link click handling
     navLinks.forEach(link => {
@@ -482,17 +490,20 @@ function initBackToTop() {
     // Create back to top button
     const backToTopBtn = document.createElement('button');
     backToTopBtn.className = 'back-to-top-btn';
+    backToTopBtn.setAttribute('aria-label', 'Back to top');
     backToTopBtn.innerHTML = `
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M18 15l-6-6-6 6"/>
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="18,15 12,9 6,15"></polyline>
         </svg>
     `;
+    
+    // Apply styles via CSS class instead of inline styles
     backToTopBtn.style.cssText = `
         position: fixed;
         bottom: 30px;
         right: 30px;
-        width: 50px;
-        height: 50px;
+        width: 56px;
+        height: 56px;
         background: linear-gradient(135deg, #3b82f6, #8b5cf6);
         color: white;
         border: none;
@@ -500,10 +511,14 @@ function initBackToTop() {
         cursor: pointer;
         opacity: 0;
         visibility: hidden;
-        transform: translateY(20px);
+        transform: translateY(20px) scale(0.8);
         transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         box-shadow: 0 4px 20px rgba(59, 130, 246, 0.3);
         z-index: 1000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0;
     `;
     
     document.body.appendChild(backToTopBtn);
@@ -515,53 +530,91 @@ function initBackToTop() {
         if (scrollTop > 500) {
             backToTopBtn.style.opacity = '1';
             backToTopBtn.style.visibility = 'visible';
-            backToTopBtn.style.transform = 'translateY(0)';
+            backToTopBtn.style.transform = 'translateY(0) scale(1)';
         } else {
             backToTopBtn.style.opacity = '0';
             backToTopBtn.style.visibility = 'hidden';
-            backToTopBtn.style.transform = 'translateY(20px)';
+            backToTopBtn.style.transform = 'translateY(20px) scale(0.8)';
         }
     }
     
-    // Smooth scroll to top
-    backToTopBtn.addEventListener('click', () => {
-        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-        const duration = 800;
-        let startTime = null;
+    // Fixed smooth scroll to top function
+    backToTopBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        console.log('🔄 Back to top clicked, scrolling...');
         
-        function animateScrollToTop(currentTime) {
-            if (startTime === null) startTime = currentTime;
-            const timeElapsed = currentTime - startTime;
-            const progress = Math.min(timeElapsed / duration, 1);
-            
-            // Easing function
-            const easeOutCubic = 1 - Math.pow(1 - progress, 3);
-            const currentPosition = scrollTop * (1 - easeOutCubic);
-            
-            window.scrollTo(0, scrollTop - currentPosition);
-            
-            if (progress < 1) {
-                requestAnimationFrame(animateScrollToTop);
+        // Use the existing smooth scroll function if available, otherwise fallback
+        try {
+            // Try to use the enhanced smooth scroll function
+            const targetElement = document.documentElement;
+            if (typeof smoothScrollTo === 'function') {
+                smoothScrollTo(targetElement, 800);
+            } else {
+                // Fallback to native smooth scroll
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
             }
+        } catch (error) {
+            console.warn('⚠️ Enhanced scroll failed, using fallback:', error);
+            // Ultimate fallback
+            window.scrollTo(0, 0);
         }
-        
-        requestAnimationFrame(animateScrollToTop);
     });
     
-    // Hover effects
+    // Enhanced hover effects
     backToTopBtn.addEventListener('mouseenter', () => {
         backToTopBtn.style.transform = 'translateY(-5px) scale(1.1)';
-        backToTopBtn.style.boxShadow = '0 6px 25px rgba(59, 130, 246, 0.4)';
+        backToTopBtn.style.boxShadow = '0 8px 30px rgba(59, 130, 246, 0.4)';
+        backToTopBtn.style.background = 'linear-gradient(135deg, #2563eb, #7c3aed)';
     });
     
     backToTopBtn.addEventListener('mouseleave', () => {
-        backToTopBtn.style.transform = 'translateY(0) scale(1)';
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        if (scrollTop > 500) {
+            backToTopBtn.style.transform = 'translateY(0) scale(1)';
+        } else {
+            backToTopBtn.style.transform = 'translateY(20px) scale(0.8)';
+        }
         backToTopBtn.style.boxShadow = '0 4px 20px rgba(59, 130, 246, 0.3)';
+        backToTopBtn.style.background = 'linear-gradient(135deg, #3b82f6, #8b5cf6)';
     });
     
+    // Focus effects for accessibility
+    backToTopBtn.addEventListener('focus', () => {
+        backToTopBtn.style.outline = '3px solid rgba(59, 130, 246, 0.5)';
+        backToTopBtn.style.outlineOffset = '2px';
+    });
+    
+    backToTopBtn.addEventListener('blur', () => {
+        backToTopBtn.style.outline = 'none';
+    });
+    
+    // Initialize button state
+    toggleBackToTop();
+    
+    // Add scroll listener
     window.addEventListener('scroll', toggleBackToTop, { passive: true });
     
-    console.log('✅ Back to top functionality initialized');
+    // Debug: Log button creation
+    console.log('🔍 Back to top button created:', backToTopBtn);
+    console.log('🔍 Button styles:', backToTopBtn.style.cssText);
+    console.log('🔍 Button position:', backToTopBtn.getBoundingClientRect());
+    
+    // Force initial visibility for testing (remove in production)
+    setTimeout(() => {
+        console.log('🔍 Testing button visibility...');
+        backToTopBtn.style.opacity = '1';
+        backToTopBtn.style.visibility = 'visible';
+        backToTopBtn.style.transform = 'translateY(0) scale(1)';
+        
+        setTimeout(() => {
+            toggleBackToTop(); // Reset to normal behavior
+        }, 2000);
+    }, 1000);
+    
+    console.log('✅ Enhanced back to top functionality initialized');
 }
 
 // ==============================================

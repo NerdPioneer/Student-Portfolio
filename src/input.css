@@ -247,8 +247,8 @@ a:not(.btn-primary):not(.btn-secondary):not(.nav-link):hover {
     position: fixed;
     bottom: 30px;
     right: 30px;
-    width: 50px;
-    height: 50px;
+    width: 56px;
+    height: 56px;
     background: linear-gradient(135deg, #3b82f6, #8b5cf6);
     color: white;
     border: none;
@@ -256,20 +256,35 @@ a:not(.btn-primary):not(.btn-secondary):not(.nav-link):hover {
     cursor: pointer;
     opacity: 0;
     visibility: hidden;
-    transform: translateY(20px);
+    transform: translateY(20px) scale(0.8);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     box-shadow: 0 4px 20px rgba(59, 130, 246, 0.3);
     z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0;
 }
 
 .back-to-top-btn:hover {
     transform: translateY(-5px) scale(1.1);
-    box-shadow: 0 6px 25px rgba(59, 130, 246, 0.4);
+    box-shadow: 0 8px 30px rgba(59, 130, 246, 0.4);
+    background: linear-gradient(135deg, #2563eb, #7c3aed);
 }
 
 .back-to-top-btn:focus {
-    outline: none;
-    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+    outline: 3px solid rgba(59, 130, 246, 0.5);
+    outline-offset: 2px;
+    box-shadow: 0 4px 20px rgba(59, 130, 246, 0.3);
+}
+
+.back-to-top-btn svg {
+    width: 24px;
+    height: 24px;
+    stroke: currentColor;
+    stroke-width: 2.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
 }
 
 /* Enhanced scroll animations */
