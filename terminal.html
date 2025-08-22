@@ -76,12 +76,12 @@
                     <h2>TERMINALS — JOURNEY LOGS</h2>
                     <div class="system-messages">
                         <div class="info-message">
-                            <span class="status-label info-glow" data-text="[INFO]">[INFO]</span>
+                            <span class="status-label info-label">[INFO]</span>
                             <span class="message-text">Tracking system events: builds, breakages, breakthroughs</span>
                         </div>
                         <div class="warn-message">
-                            <span class="status-label warn-glow" data-text="[WARN]">[WARN]</span>
-                            <span class="message-text">Sync pending — new entries will populate soon</span>
+                            <span class="status-label warning-label">[WARNING]</span>
+                            <span class="message-text">Sync pending — new entries will populate soon...</span>
                         </div>
                     </div>
                 </div>
@@ -594,27 +594,24 @@
             align-items: center;
         }
 
-        /* New styles for status labels */
+        /* Simple status label styles */
         .status-label {
             display: inline-block;
             padding: 2px 6px;
-            border-radius: 4px;
-            font-weight: 700;
-            font-size: 12px;
+            border-radius: 3px;
+            font-weight: 600;
+            font-size: 11px;
             text-transform: uppercase;
             color: #000000;
-            position: relative;
-            animation: glitch-status 3s infinite;
+            font-family: 'Source Code Pro', monospace;
         }
 
-        .info-glow {
+        .info-label {
             background-color: var(--accent-blue);
-            box-shadow: 0 0 10px var(--accent-blue), 0 0 20px var(--accent-blue);
         }
 
-        .warn-glow {
+        .warning-label {
             background-color: var(--accent-red);
-            box-shadow: 0 0 10px var(--accent-red), 0 0 20px var(--accent-red);
         }
 
         .message-text {
@@ -622,69 +619,7 @@
             margin-left: 8px;
             font-size: 13px;
             opacity: 0.9;
-        }
-
-        /* Glitch effect for status labels */
-        @keyframes glitch-status {
-            0%, 100% {
-                transform: translate(0);
-            }
-            20% {
-                transform: translate(-2px, 2px);
-            }
-            40% {
-                transform: translate(-2px, -2px);
-            }
-            60% {
-                transform: translate(2px, 2px);
-            }
-            80% {
-                transform: translate(2px, -2px);
-            }
-        }
-
-        .status-label::before,
-        .status-label::after {
-            content: attr(data-text);
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: inherit;
-            border-radius: inherit;
-            padding: inherit;
-            font-weight: inherit;
-            font-size: inherit;
-            text-transform: inherit;
-            color: inherit;
-            z-index: -1;
-        }
-
-        .status-label::before {
-            animation: glitch-status-before 2s infinite;
-            color: #00ffff;
-            transform: translate(2px, -2px);
-        }
-
-        .status-label::after {
-            animation: glitch-status-after 2.5s infinite;
-            color: #ff00ff;
-            transform: translate(-2px, 2px);
-        }
-
-        @keyframes glitch-status-before {
-            0%, 100% { transform: translate(2px, -2px); }
-            25% { transform: translate(-1px, 1px); }
-            50% { transform: translate(1px, -1px); }
-            75% { transform: translate(-2px, 2px); }
-        }
-
-        @keyframes glitch-status-after {
-            0%, 100% { transform: translate(-2px, 2px); }
-            25% { transform: translate(1px, -1px); }
-            50% { transform: translate(-1px, 1px); }
-            75% { transform: translate(2px, -2px); }
+            font-family: 'Source Code Pro', monospace;
         }
     </style>
 </body>
