@@ -438,9 +438,26 @@
         /* Carousel Auto-rotation */
         .carousel-slide {
             transition: opacity 0.8s ease-in-out;
+            opacity: 0;
         }
         .carousel-slide.active {
             opacity: 1;
+        }
+        
+        /* Carousel dots styling */
+        .carousel-dot {
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .carousel-dot.active {
+            background-color: white !important;
+            transform: scale(1.2);
+        }
+        
+        .carousel-dot:hover {
+            background-color: white !important;
+            transform: scale(1.1);
         }
         
         /* Responsive Grid Fixes */

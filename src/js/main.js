@@ -283,13 +283,11 @@ let slidesCount = 0;
 let autoPlayInterval;
 
 function initCarousel() {
-    const carousel = document.querySelector('.carousel');
+    const carouselContainer = document.querySelector('.carousel-container');
     const slides = document.querySelectorAll('.carousel-slide');
-    const prevBtn = document.querySelector('.carousel-prev');
-    const nextBtn = document.querySelector('.carousel-next');
-    const indicators = document.querySelectorAll('.carousel-indicator');
+    const dots = document.querySelectorAll('.carousel-dot');
     
-    if (!carousel || slides.length === 0) {
+    if (!carouselContainer || slides.length === 0) {
         return;
     }
     
@@ -298,31 +296,27 @@ function initCarousel() {
     // Initialize first slide
     updateCarousel();
     
-    // Add event listeners
-    if (prevBtn) prevBtn.addEventListener('click', () => changeSlide(-1));
-    if (nextBtn) nextBtn.addEventListener('click', () => changeSlide(1));
-    
-    // Add indicator click events
-    indicators.forEach((indicator, index) => {
-        indicator.addEventListener('click', () => goToSlide(index));
+    // Add dot click events
+    dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => goToSlide(index));
     });
     
     // Auto-play functionality
     startAutoPlay();
     
     // Pause auto-play on hover
-    carousel.addEventListener('mouseenter', stopAutoPlay);
-    carousel.addEventListener('mouseleave', startAutoPlay);
+    carouselContainer.addEventListener('mouseenter', stopAutoPlay);
+    carouselContainer.addEventListener('mouseleave', startAutoPlay);
     
     // Touch/swipe support for mobile
     let startX = 0;
     let endX = 0;
     
-    carousel.addEventListener('touchstart', (e) => {
+    carouselContainer.addEventListener('touchstart', (e) => {
         startX = e.touches[0].clientX;
     });
     
-    carousel.addEventListener('touchend', (e) => {
+    carouselContainer.addEventListener('touchend', (e) => {
         endX = e.changedTouches[0].clientX;
         handleSwipe();
     });
@@ -355,7 +349,7 @@ function goToSlide(index) {
 
 function updateCarousel() {
     const slides = document.querySelectorAll('.carousel-slide');
-    const indicators = document.querySelectorAll('.carousel-indicator');
+    const dots = document.querySelectorAll('.carousel-dot');
     
     // Update slides
     slides.forEach((slide, index) => {
@@ -366,12 +360,12 @@ function updateCarousel() {
         }
     });
     
-    // Update indicators
-    indicators.forEach((indicator, index) => {
+    // Update dots
+    dots.forEach((dot, index) => {
         if (index === currentSlide) {
-            indicator.classList.add('active');
+            dot.classList.add('active');
         } else {
-            indicator.classList.remove('active');
+            dot.classList.remove('active');
         }
     });
 }
