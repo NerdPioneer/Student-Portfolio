@@ -504,7 +504,7 @@ function initBackToTop() {
         right: 30px;
         width: 56px;
         height: 56px;
-        background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+        background: #000000;
         color: white;
         border: none;
         border-radius: 50%;
@@ -513,7 +513,7 @@ function initBackToTop() {
         visibility: hidden;
         transform: translateY(20px) scale(0.8);
         transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        box-shadow: 0 4px 20px rgba(59, 130, 246, 0.3);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
         z-index: 1000;
         display: flex;
         align-items: center;
@@ -566,8 +566,8 @@ function initBackToTop() {
     // Enhanced hover effects
     backToTopBtn.addEventListener('mouseenter', () => {
         backToTopBtn.style.transform = 'translateY(-5px) scale(1.1)';
-        backToTopBtn.style.boxShadow = '0 8px 30px rgba(59, 130, 246, 0.4)';
-        backToTopBtn.style.background = 'linear-gradient(135deg, #2563eb, #7c3aed)';
+        backToTopBtn.style.boxShadow = '0 8px 30px rgba(0, 0, 0, 0.4)';
+        backToTopBtn.style.background = '#1a1a1a';
     });
     
     backToTopBtn.addEventListener('mouseleave', () => {
@@ -577,13 +577,13 @@ function initBackToTop() {
         } else {
             backToTopBtn.style.transform = 'translateY(20px) scale(0.8)';
         }
-        backToTopBtn.style.boxShadow = '0 4px 20px rgba(59, 130, 246, 0.3)';
-        backToTopBtn.style.background = 'linear-gradient(135deg, #3b82f6, #8b5cf6)';
+        backToTopBtn.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.3)';
+        backToTopBtn.style.background = '#000000';
     });
     
     // Focus effects for accessibility
     backToTopBtn.addEventListener('focus', () => {
-        backToTopBtn.style.outline = '3px solid rgba(59, 130, 246, 0.5)';
+        backToTopBtn.style.outline = '3px solid rgba(255, 255, 255, 0.5)';
         backToTopBtn.style.outlineOffset = '2px';
     });
     

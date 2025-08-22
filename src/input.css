@@ -249,7 +249,7 @@ a:not(.btn-primary):not(.btn-secondary):not(.nav-link):hover {
     right: 30px;
     width: 56px;
     height: 56px;
-    background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+    background: #000000;
     color: white;
     border: none;
     border-radius: 50%;
@@ -258,7 +258,7 @@ a:not(.btn-primary):not(.btn-secondary):not(.nav-link):hover {
     visibility: hidden;
     transform: translateY(20px) scale(0.8);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 4px 20px rgba(59, 130, 246, 0.3);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
     z-index: 1000;
     display: flex;
     align-items: center;
@@ -268,14 +268,14 @@ a:not(.btn-primary):not(.btn-secondary):not(.nav-link):hover {
 
 .back-to-top-btn:hover {
     transform: translateY(-5px) scale(1.1);
-    box-shadow: 0 8px 30px rgba(59, 130, 246, 0.4);
-    background: linear-gradient(135deg, #2563eb, #7c3aed);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+    background: #1a1a1a;
 }
 
 .back-to-top-btn:focus {
-    outline: 3px solid rgba(59, 130, 246, 0.5);
+    outline: 3px solid rgba(255, 255, 255, 0.5);
     outline-offset: 2px;
-    box-shadow: 0 4px 20px rgba(59, 130, 246, 0.3);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
 .back-to-top-btn svg {
