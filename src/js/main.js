@@ -429,7 +429,7 @@ function initSmoothScrolling() {
 
 function initBackToTop() {
     const backToTopBtn = document.createElement('button');
-    backToTopBtn.innerHTML = '↑';
+    backToTopBtn.innerHTML = '▲';
     backToTopBtn.className = 'back-to-top';
     backToTopBtn.setAttribute('aria-label', 'Back to top');
     
