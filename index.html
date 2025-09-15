@@ -1585,7 +1585,7 @@
                 <p class="section-subtitle text-xl text-gray-600 max-w-3xl mx-auto">Academic foundation and continuous learning in technology and computer science</p>
             </div>
             
-            <div class="education-grid grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
+            <div class="education-grid grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
                 <!-- Formal Education Card -->
                 <div class="education-card bg-white rounded-xl shadow-lg hover:shadow-xl transition duration-300 p-6 border border-gray-100 h-full">
                     <div class="card-header flex items-center mb-4">
@@ -1747,46 +1747,51 @@
                     </div>
                 </div>
 
-                <!-- GitHub Activity Card -->
-                <div class="education-card bg-white rounded-xl shadow-lg hover:shadow-xl transition duration-300 p-6 border border-gray-100 h-full">
-                    <div class="card-header flex items-center mb-4">
-                        <div class="card-icon w-10 h-10 bg-primary-100 rounded-lg flex items-center justify-center mr-3">
-                            <i class="fab fa-github text-primary-600 text-lg"></i>
-                        </div>
-                        <div>
-                            <h4 class="card-title text-lg font-semibold text-gray-900">GitHub Activity</h4>
-                            <p class="card-subtitle text-sm text-gray-600">Development contributions</p>
-                        </div>
-                    </div>
-                    
-                    <div class="github-contribution">
-                        <div class="flex items-center justify-between mb-3">
-                            <span class="text-sm font-medium text-gray-700">Recent Activity</span>
-                            <span class="text-xs text-gray-500">Last 365 days</span>
-                        </div>
-                        
-                        <!-- GitHub Contribution Chart -->
-                        <div class="github-chart-container">
-                            <img src="https://ghchart.rshah.org/NerdPioneer" 
-                                 alt="GitHub contribution chart for NerdPioneer" 
-                                 class="w-full h-auto rounded-lg border border-gray-200"
-                                 loading="lazy"
-                                 onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                            
-                            <!-- Fallback content if image fails to load -->
-                            <div class="fallback-content text-center py-8" style="display: none;">
-                                <i class="fab fa-github text-4xl text-gray-400 mb-3"></i>
-                                <p class="text-sm text-gray-600">GitHub activity chart</p>
-                                <p class="text-xs text-gray-500 mt-1">View on <a href="https://github.com/NerdPioneer" target="_blank" class="text-primary-600 hover:underline">GitHub</a></p>
+            </div>
+            
+            <!-- GitHub Activity Card -->
+            <div class="github-activity-section mt-12">
+                <div class="max-w-4xl mx-auto">
+                    <div class="education-card bg-white rounded-xl shadow-lg hover:shadow-xl transition duration-300 p-6 border border-gray-100">
+                        <div class="card-header flex items-center mb-6">
+                            <div class="card-icon w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center mr-4">
+                                <i class="fab fa-github text-primary-600 text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="card-title text-xl font-semibold text-gray-900">GitHub Activity</h4>
+                                <p class="card-subtitle text-gray-600">Development contributions and coding activity</p>
                             </div>
                         </div>
                         
-                        <div class="mt-3 flex items-center justify-between text-xs text-gray-600">
-                            <span>150+ contributions</span>
-                            <a href="https://github.com/NerdPioneer" target="_blank" rel="noopener noreferrer" 
-                               class="text-primary-600 hover:text-primary-700 font-medium">
-                                View Profile →
-                            </a>
+                        <div class="github-contribution">
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="text-sm font-medium text-gray-700">Recent Activity</span>
+                                <span class="text-xs text-gray-500">Last 365 days</span>
+                            </div>
+                            
+                            <!-- GitHub Contribution Chart -->
+                            <div class="github-chart-container">
+                                <img src="https://ghchart.rshah.org/NerdPioneer" 
+                                     alt="GitHub contribution chart for NerdPioneer" 
+                                     class="w-full h-auto rounded-lg border border-gray-200"
+                                     loading="lazy"
+                                     onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                                
+                                <!-- Fallback content if image fails to load -->
+                                <div class="fallback-content text-center py-12" style="display: none;">
+                                    <i class="fab fa-github text-5xl text-gray-400 mb-4"></i>
+                                    <p class="text-lg text-gray-600 mb-2">GitHub activity chart</p>
+                                    <p class="text-sm text-gray-500">View on <a href="https://github.com/NerdPioneer" target="_blank" class="text-primary-600 hover:underline">GitHub</a></p>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-4 flex items-center justify-between text-sm text-gray-600">
+                                <span class="font-medium">150+ contributions in the last year</span>
+                                <a href="https://github.com/NerdPioneer" target="_blank" rel="noopener noreferrer" 
+                                   class="text-primary-600 hover:text-primary-700 font-medium flex items-center">
+                                    View Profile <i class="fas fa-external-link-alt ml-1"></i>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
