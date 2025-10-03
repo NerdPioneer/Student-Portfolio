@@ -2,6 +2,24 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Smooth scrolling for all browsers */
+html {
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch; /* iOS smooth scrolling */
+}
+
+/* Ensure smooth scrolling works on mobile */
+@media (max-width: 1023px) {
+  html {
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  body {
+    scroll-behavior: smooth;
+  }
+}
+
 /* Custom Components - Optimized for Performance */
 @layer components {
   /* Enhanced Navbar Responsiveness */
@@ -83,6 +101,13 @@
       min-height: 44px; /* iOS touch target minimum */
       display: flex;
       align-items: center;
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+    }
+    
+    /* Ensure smooth scrolling works on mobile */
+    .nav-menu .nav-link:active {
+      background-color: rgba(55, 65, 81, 0.8);
     }
   }
   

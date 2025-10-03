@@ -246,34 +246,6 @@ function initNavbar() {
             }
         }, 250);
     });
-    
-    // Add smooth scrolling to nav links
-    navLinks.forEach(link => {
-        link.addEventListener('click', (e) => {
-            const href = link.getAttribute('href');
-            
-            if (href.startsWith('#')) {
-                e.preventDefault();
-                const targetId = href.substring(1);
-                const targetElement = document.getElementById(targetId);
-                
-                if (targetElement) {
-                    const navbarHeight = navbar ? navbar.offsetHeight : 0;
-                    const targetPosition = targetElement.offsetTop - navbarHeight - 20;
-                    
-                    window.scrollTo({
-                        top: targetPosition,
-                        behavior: 'smooth'
-                    });
-                    
-                    // Close mobile menu if open
-                    if (navMenu.classList.contains('open')) {
-                        toggleMobileMenu(e);
-                    }
-                }
-            }
-        });
-    });
 }
 
 // ==============================================
@@ -408,12 +380,46 @@ function initSmoothScrolling() {
             if (targetElement) {
                 const navbar = document.querySelector('.desktop-nav');
                 const navbarHeight = navbar ? navbar.offsetHeight : 0;
-                const targetPosition = targetElement.offsetTop - navbarHeight - 20;
                 
-                window.scrollTo({
-                    top: targetPosition,
-                    behavior: 'smooth'
-                });
+                // Enhanced mobile support - account for mobile navbar height
+                const isMobile = window.innerWidth <= 1023;
+                const mobileOffset = isMobile ? 20 : 20; // Consistent offset for both
+                const targetPosition = targetElement.offsetTop - navbarHeight - mobileOffset;
+                
+                // Close mobile menu if open (for mobile nav links)
+                const navMenu = document.querySelector('.nav-menu');
+                if (navMenu && navMenu.classList.contains('open')) {
+                    // Close mobile menu first
+                    navMenu.classList.remove('open');
+                    navMenu.style.maxHeight = '0px';
+                    navMenu.style.opacity = '0';
+                    navMenu.style.transform = 'translateY(-10px)';
+                    
+                    // Reset body styles for mobile
+                    if (isMobile) {
+                        document.body.style.overflow = '';
+                        document.body.style.position = '';
+                        document.body.style.width = '';
+                    }
+                    
+                    // Wait for menu to close, then scroll
+                    setTimeout(() => {
+                        // Recalculate position after menu closes
+                        const updatedNavbarHeight = navbar ? navbar.offsetHeight : 0;
+                        const updatedTargetPosition = targetElement.offsetTop - updatedNavbarHeight - mobileOffset;
+                        
+                        window.scrollTo({
+                            top: updatedTargetPosition,
+                            behavior: 'smooth'
+                        });
+                    }, 300);
+                } else {
+                    // Direct scroll if menu is not open
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
             }
         });
     });
