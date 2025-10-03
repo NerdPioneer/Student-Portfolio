@@ -8,7 +8,9 @@
     "build": "npm run build:css",
     "watch:css": "tailwindcss -i ./src/input.css -o ./dist/styles.css --watch",
     "build:css": "tailwindcss -i ./src/input.css -o ./dist/styles.css --minify",
-    "start": "live-server --port=3000"
+    "start": "live-server --port=3000",
+    "clean": "rm -rf dist/styles.css",
+    "preview": "live-server --port=3000 --entry-file=index.html"
   },
   "keywords": [
     "portfolio",
@@ -18,6 +20,11 @@
   ],
   "author": "NerdPioneer",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/NerdPioneer/Student-Portfolio.git"
+  },
+  "homepage": "https://www.1percentnerd.com",
   "devDependencies": {
     "@tailwindcss/forms": "^0.5.7",
     "@tailwindcss/typography": "^0.5.10",

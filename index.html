@@ -368,6 +368,23 @@
     <style>
         :root{--primary-color:#2563eb;--primary-600:#2563eb}
         
+        /* Professional zoom level - 90% zoom out for optimal balance */
+        html {
+            zoom: 0.9;
+            -moz-transform: scale(0.9);
+            -moz-transform-origin: 0 0;
+            -webkit-transform: scale(0.9);
+            -webkit-transform-origin: 0 0;
+            transform: scale(0.9);
+            transform-origin: 0 0;
+        }
+        
+        /* Adjust body height to compensate for zoom */
+        body {
+            height: 111.11%; /* 100% / 0.9 = 111.11% */
+            width: 111.11%;
+        }
+        
         /* Safari and cross-browser normalization */
         * {
             -webkit-box-sizing: border-box;

@@ -11,8 +11,8 @@ This portfolio demonstrates my skills in web development while providing a profe
 - **Responsive Design** - Works perfectly on all devices
 - **Photo Carousel** - Showcases multiple profile images
 - **Smooth Animations** - Professional interactions and transitions
-- **Terminal Interface** - Unique way to explore my journey logs
-- **Modern UI** - Clean, professional appearance
+- **Modern UI** - Clean, professional appearance with optimized zoom level
+- **Professional Layout** - Centered Medium and GitHub integration cards
 
 ## Getting Started
 
@@ -41,11 +41,12 @@ Open your browser to see the site running locally!
 
 ```
 ├── index.html          # Main portfolio page
-├── terminal.html       # Terminal interface
 ├── src/
 │   ├── input.css       # CSS source files
+│   ├── styles.css      # Compiled CSS
 │   └── js/main.js      # JavaScript functionality
 ├── public/images/      # Images and graphics
+├── dist/styles.css     # Production CSS build
 └── package.json        # Project configuration
 ```
 

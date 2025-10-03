@@ -4,8 +4,12 @@
 
 // Enhanced Umami tracking for better insights
 function trackEvent(eventName, eventData = {}) {
-    if (typeof umami !== 'undefined') {
-        umami.track(eventName, eventData);
+    try {
+        if (typeof umami !== 'undefined') {
+            umami.track(eventName, eventData);
+        }
+    } catch (error) {
+        console.warn('Analytics tracking error:', error);
     }
 }
 
@@ -41,20 +45,27 @@ function initAnalytics() {
     });
     
     
-    // Track scroll depth
+    // Track scroll depth with throttling for performance
     let maxScrollDepth = 0;
-    window.addEventListener('scroll', () => {
-        const scrollDepth = Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100);
-        if (scrollDepth > maxScrollDepth) {
-            maxScrollDepth = scrollDepth;
-            if (maxScrollDepth % 25 === 0) { // Track every 25%
-                trackEvent('scroll_depth', {
-                    depth: maxScrollDepth,
-                    page: window.location.pathname
-                });
+    let scrollTimeout;
+    const handleScroll = () => {
+        if (scrollTimeout) return;
+        scrollTimeout = setTimeout(() => {
+            const scrollDepth = Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100);
+            if (scrollDepth > maxScrollDepth) {
+                maxScrollDepth = scrollDepth;
+                if (maxScrollDepth % 25 === 0) { // Track every 25%
+                    trackEvent('scroll_depth', {
+                        depth: maxScrollDepth,
+                        page: window.location.pathname
+                    });
+                }
             }
-        }
-    });
+            scrollTimeout = null;
+        }, 100); // Throttle to 100ms
+    };
+    
+    window.addEventListener('scroll', handleScroll, { passive: true });
     
     // Track time on page
     let startTime = Date.now();

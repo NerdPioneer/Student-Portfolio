@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Custom Components */
+/* Custom Components - Optimized for Performance */
 @layer components {
   /* Enhanced Navbar Responsiveness */
   .desktop-nav {
@@ -10,6 +10,7 @@
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
     background-color: rgba(0, 0, 0, 0.95) !important;
+    will-change: transform, background-color;
   }
   
   /* Responsive Navigation Menu */
