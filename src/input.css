@@ -13,29 +13,36 @@
     will-change: transform, background-color;
   }
   
-  /* Responsive Navigation Menu */
+  /* Responsive Navigation Menu - Enhanced Mobile Support */
   .nav-menu {
     @apply lg:hidden overflow-hidden transition-all duration-300 ease-in-out;
     max-height: 0;
+    opacity: 0;
+    transform: translateY(-10px);
   }
   
   .nav-menu.open {
-    max-height: 400px;
+    max-height: 500px;
+    opacity: 1;
+    transform: translateY(0);
   }
   
-  /* Mobile Menu Button */
+  /* Mobile Menu Button - Enhanced Touch Support */
   .nav-toggle {
     @apply lg:hidden p-2 border border-gray-600 rounded-lg bg-black hover:bg-gray-900 transition-colors duration-200;
     -webkit-tap-highlight-color: transparent;
     -webkit-user-select: none;
     user-select: none;
     touch-action: manipulation;
+    min-height: 44px; /* iOS touch target minimum */
+    min-width: 44px;
   }
   
-  /* Hamburger Animation */
+  /* Hamburger Animation - Improved Mobile Performance */
   .hamburger-line {
     @apply block w-full h-0.5 bg-white transition-all duration-300;
     transform-origin: center;
+    will-change: transform, opacity;
   }
   
   /* Navigation Links */
@@ -51,14 +58,31 @@
     @apply text-gray-300 bg-gray-800;
   }
   
-  /* Responsive breakpoints for nav */
+  /* Responsive breakpoints for nav - Enhanced Mobile Support */
   @media (max-width: 1023px) {
     .nav-links {
       @apply hidden;
     }
     
     .nav-toggle {
-      @apply flex;
+      @apply flex items-center justify-center;
+    }
+    
+    /* Ensure mobile menu is properly positioned */
+    .nav-menu {
+      position: relative;
+      z-index: 1000;
+      background-color: rgba(0, 0, 0, 0.95);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+    
+    /* Mobile menu links styling */
+    .nav-menu .nav-link {
+      @apply block px-4 py-3 text-white hover:text-gray-300 hover:bg-gray-800 transition duration-300 rounded-lg font-montserrat font-medium uppercase tracking-wider text-sm;
+      min-height: 44px; /* iOS touch target minimum */
+      display: flex;
+      align-items: center;
     }
   }
   

@@ -385,6 +385,21 @@
             width: 111.11%;
         }
         
+        /* Mobile-specific zoom adjustments for navbar */
+        @media (max-width: 1023px) {
+            html {
+                zoom: 1.0; /* Reset zoom on mobile for proper navbar functionality */
+                -moz-transform: scale(1.0);
+                -webkit-transform: scale(1.0);
+                transform: scale(1.0);
+            }
+            
+            body {
+                height: 100%;
+                width: 100%;
+            }
+        }
+        
         /* Safari and cross-browser normalization */
         * {
             -webkit-box-sizing: border-box;
