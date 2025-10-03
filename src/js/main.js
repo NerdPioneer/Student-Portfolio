@@ -40,15 +40,6 @@ function initAnalytics() {
         });
     });
     
-    // Track terminal link clicks
-    document.querySelectorAll('.terminal-link').forEach(link => {
-        link.addEventListener('click', () => {
-            trackEvent('terminal_access', {
-                source: 'main_page',
-                action: 'open_terminal'
-            });
-        });
-    });
     
     // Track scroll depth
     let maxScrollDepth = 0;
@@ -611,7 +602,6 @@ function initializeApp() {
         initMobileHeightFixes();
         initIntersectionObserver();
         initBackToTop();
-        initTerminalTracking();
         
         // Initialize analytics tracking
         initAnalytics();
@@ -633,15 +623,3 @@ setTimeout(() => {
     }
 }, 1000);
 
-function initTerminalTracking() {
-    // Track clicks on terminal links for engagement analytics
-    const terminalLinks = document.querySelectorAll('.terminal-link');
-    
-    terminalLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            // You can add analytics tracking here
-            // Example: gtag('event', 'click', { 'event_category': 'terminal', 'event_label': 'notes_section' });
-            console.log('Terminal link clicked from notes section');
-        });
-    });
-}

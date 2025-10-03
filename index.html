@@ -673,23 +673,6 @@
                 opacity: 1 !important;
             }
             
-            .terminal-link {
-                display: inline-flex !important;
-                visibility: visible !important;
-                opacity: 1 !important;
-                position: relative !important;
-                z-index: 10 !important;
-                background-color: #2563eb !important;
-                color: white !important;
-                border: 2px solid #1d4ed8 !important;
-                box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06) !important;
-            }
-            
-            .terminal-link:hover {
-                background-color: #1d4ed8 !important;
-                transform: translateY(-2px) !important;
-                box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05) !important;
-            }
             
             /* Ensure grid items stack properly on mobile */
             #notes .grid {
@@ -721,12 +704,6 @@
                 margin-bottom: 1.5rem !important;
             }
             
-            /* Extra small screen terminal button visibility */
-            .terminal-link {
-                font-size: 0.875rem !important;
-                padding: 0.75rem 1rem !important;
-                min-height: 44px !important; /* Ensure touch-friendly size */
-            }
             
             .notes-card {
                 padding: 1.5rem !important;
@@ -1356,7 +1333,6 @@
                     <li><a href="#certifications" class="nav-link px-3 xl:px-4 py-2 text-white hover:text-gray-300 transition duration-300 rounded-lg font-montserrat font-medium uppercase tracking-wider text-sm">Certifications</a></li>
                     <li><a href="#projects" class="nav-link px-3 xl:px-4 py-2 text-white hover:text-gray-300 transition duration-300 rounded-lg font-montserrat font-medium uppercase tracking-wider text-sm">Projects</a></li>
                     <li><a href="#notes" class="nav-link px-3 xl:px-4 py-2 text-white hover:text-gray-300 transition duration-300 rounded-lg font-montserrat font-medium uppercase tracking-wider text-sm">Notes</a></li>
-                    <li><a href="terminal.html" class="nav-link px-3 xl:px-4 py-2 text-white hover:text-gray-300 transition duration-300 rounded-lg font-montserrat font-medium uppercase tracking-wider text-sm">Terminal</a></li>
                 </ul>
                 
                 <!-- Mobile Menu Button -->
@@ -1378,7 +1354,6 @@
                         <li><a href="#certifications" class="nav-link block px-4 py-3 text-white hover:text-gray-300 hover:bg-gray-800 transition duration-300 rounded-lg font-montserrat font-medium uppercase tracking-wider text-sm">Certifications</a></li>
                         <li><a href="#projects" class="nav-link block px-4 py-3 text-white hover:text-gray-300 hover:bg-gray-800 transition duration-300 rounded-lg font-montserrat font-medium uppercase tracking-wider text-sm">Projects</a></li>
                         <li><a href="#notes" class="nav-link block px-4 py-3 text-white hover:text-gray-300 hover:bg-gray-800 transition duration-300 rounded-lg font-montserrat font-medium uppercase tracking-wider text-sm">Notes</a></li>
-                        <li><a href="terminal.html" class="nav-link block px-4 py-3 text-white hover:text-gray-300 hover:bg-gray-800 transition duration-300 rounded-lg font-montserrat font-medium uppercase tracking-wider text-sm">Terminal</a></li>
                     </ul>
                 </div>
             </div>
@@ -2078,10 +2053,10 @@
             <div class="max-w-6xl mx-auto text-center">
                 <h2 class="text-4xl md:text-5xl font-bold mb-4 text-gray-900 font-raleway uppercase tracking-wide animate-fade-in">NOTES FROM THE CLIMB</h2>
                 <p class="text-lg text-gray-600 mb-16 max-w-2xl mx-auto">
-                    My three platforms for sharing knowledge, code, and journey logs
+                    My two platforms for sharing knowledge and code
                 </p>
                 
-                <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
                 <!-- Medium Column -->
                 <div class="notes-card bg-white rounded-2xl p-8 flex flex-col h-full shadow-lg hover:shadow-xl transition duration-300 border border-gray-100">
                     <div class="flex items-start mb-6">
@@ -2142,34 +2117,6 @@
                     </div>
                 </div>
 
-                <!-- Terminal Column -->
-                <div class="notes-card bg-white rounded-2xl p-8 flex flex-col h-full shadow-lg hover:shadow-xl transition duration-300 border border-gray-100">
-                    <div class="flex items-start mb-6">
-                        <div class="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
-                            <svg class="w-6 h-6 text-white" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z"/>
-                            </svg>
-                        </div>
-                        <div class="text-left">
-                            <h3 class="text-2xl font-bold text-gray-900 mb-2 font-raleway">Terminal</h3>
-                            <p class="text-sm text-gray-500 uppercase tracking-wider font-medium">JOURNEY LOGS</p>
-                        </div>
-                    </div>
-                    
-                    <p class="text-gray-600 text-left mb-8 leading-relaxed flex-grow">
-                        A retro, lightweight CLI for my daily build notes, study logs, and ops tweaks.
-                        <a href="terminal.html#about" class="text-blue-600 hover:text-blue-800 underline text-sm">How it works</a>
-                    </p>
-
-                    <div class="mt-auto">
-                        <a href="terminal.html" class="terminal-link inline-flex items-center bg-blue-600 text-white px-6 py-3 rounded-full font-medium hover:bg-blue-700 transition duration-300 text-sm w-full justify-center">
-                            <svg class="w-4 h-4 mr-2" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z"/>
-                            </svg>
-                            Open Terminal
-                        </a>
-                    </div>
-                </div>
             </div>
             
             <!-- Inspirational Quote Section - Centered -->
