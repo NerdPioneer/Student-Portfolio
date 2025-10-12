@@ -32,6 +32,10 @@ module.exports = {
           800: '#1e293b',
           900: '#0f172a',
         },
+        substack: {
+          orange: '#FF6719',
+          'orange-dark': '#E55A15',
+        },
       },
       fontFamily: {
         'sans': ['Inter', 'system-ui', 'sans-serif'],
@@ -78,5 +82,11 @@ module.exports = {
   plugins: [
     require('@tailwindcss/forms'),
     require('@tailwindcss/typography'),
+  ],
+  safelist: [
+    'bg-substack-orange',
+    'hover:bg-substack-orange-dark',
+    'border-substack-orange/20',
+    'hover:border-substack-orange/40',
   ],
 }

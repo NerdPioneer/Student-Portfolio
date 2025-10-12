@@ -2119,6 +2119,22 @@ html {
   background-color: rgb(255 237 213 / var(--tw-bg-opacity, 1));
 }
 
+.bg-substack-orange {
+  background-color: #FF6719;
+}
+
+.hover\:bg-substack-orange-dark:hover {
+  background-color: #E55A15;
+}
+
+.border-substack-orange\/20 {
+  border-color: rgba(255, 103, 25, 0.2);
+}
+
+.hover\:border-substack-orange\/40:hover {
+  border-color: rgba(255, 103, 25, 0.4);
+}
+
 .bg-primary-100 {
   --tw-bg-opacity: 1;
   background-color: rgb(219 234 254 / var(--tw-bg-opacity, 1));
