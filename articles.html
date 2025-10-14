@@ -126,77 +126,47 @@
     <!-- Main Content -->
     <main>
         <!-- Hero Section -->
-        <section class="bg-white text-black py-16 md:py-24">
-            <div class="container mx-auto px-6 text-center">
-                <h1 class="text-4xl md:text-5xl lg:text-6xl font-black mb-6 font-raleway">
-                    Articles & Writings
-                </h1>
-                <p class="text-xl md:text-2xl text-gray-700 max-w-3xl mx-auto leading-relaxed">
-                    Insights on cloud computing, cybersecurity, and career development from my journey as a Cloud Computing student
-                </p>
+        <section class="bg-white text-black py-12 md:py-20 lg:py-24">
+            <div class="container mx-auto px-6">
+                <div class="section-header text-center mb-16">
+                    <div class="section-accent-line w-20 h-1 bg-primary-600 mx-auto mb-6"></div>
+                    <h1 class="section-title text-4xl md:text-5xl font-bold text-gray-900 mb-4">ARTICLES & WRITINGS</h1>
+                    <p class="section-subtitle text-xl text-gray-600 max-w-3xl mx-auto">Deep dives into technology, cybersecurity, and career insights from my learning journey</p>
+                </div>
             </div>
         </section>
 
-        <!-- Articles List Section -->
-        <section class="py-12 md:py-16 lg:py-20 bg-white">
-            <div class="container mx-auto px-6 max-w-4xl">
-                <div class="w-16 h-1 bg-primary-600 mx-auto mb-12"></div>
-                
-                <!-- Articles List -->
-                <div class="space-y-8">
+        <!-- Articles Card Section -->
+        <section class="section py-12 md:py-20 lg:py-24 bg-gray-50 mt-8 md:mt-12 lg:mt-16">
+            <div class="container mx-auto px-6">
+                <!-- Articles Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
                     
                     <!-- Featured Article -->
-                    <article class="article-item border-b border-gray-200 pb-8">
-                        <div class="flex items-start space-x-6">
-                            <!-- Article Content -->
+                    <article class="article-card bg-white rounded-xl shadow-lg hover:shadow-xl transition duration-300 p-6 border border-gray-100 h-full">
+                        <div class="flex items-start mb-4">
+                            <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                                <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+                                </svg>
+                            </div>
                             <div class="flex-1">
-                                <div class="flex items-center text-sm text-gray-500 mb-3">
+                                <div class="flex items-center text-sm text-gray-500 mb-2">
                                     <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-xs font-medium">Technology & Society</span>
                                     <span class="mx-2">•</span>
                                     <time>Jul 31, 2025</time>
-                                    <span class="mx-2">•</span>
-                                    <span>7 min read</span>
                                 </div>
-                                
-                                <h2 class="text-2xl md:text-3xl font-bold text-black mb-3 font-raleway leading-tight">
-                                    The 'Dead Internet Theory' Explained: Why Most Online Engagement Isn't Human
-                                </h2>
-                                
-                                <p class="text-lg text-gray-600 mb-4 leading-relaxed">
-                                    Have you ever swiped through your social media feed and felt like all the posts are the same, repetitive, or oddly anticipated? Imagine that most of what you see — likes, comments, even full posts — aren't from real people, but automated programs...
-                                </p>
-                                
-                                <div class="flex items-center justify-between">
-                                    <a href="dead-internet-theory.html" class="bg-black hover:bg-gray-800 text-white px-6 py-2 rounded-full font-medium transition duration-300">
-                                        Read Article
-                                    </a>
-                                    <div class="flex items-center space-x-4 text-gray-500">
-                                        <span class="flex items-center">
-                                            <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 24 24">
-                                                <path d="M7.5 6.5C7.5 4.57 9.07 3 11 3s3.5 1.57 3.5 3.5c0 1.93-1.57 3.5-3.5 3.5S7.5 8.43 7.5 6.5zM11 12c-2.5 0-4.5 1.5-4.5 3.5V18h9v-2.5c0-2-2-3.5-4.5-3.5z"/>
-                                            </svg>
-                                            4
-                                        </span>
-                                        <button class="hover:text-gray-700 transition duration-300">
-                                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"/>
-                                            </svg>
-                                        </button>
-                                        <button class="hover:text-gray-700 transition duration-300">
-                                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z"/>
-                                            </svg>
-                                        </button>
-                                    </div>
-                                </div>
+                                <h3 class="text-lg font-bold text-gray-900 mb-3">The 'Dead Internet Theory' Explained</h3>
                             </div>
-                            
-                            <!-- Article Thumbnail -->
-                            <div class="flex-shrink-0">
-                                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80" 
-                                     alt="Digital landscape with abstract network connections" 
-                                     class="w-32 h-32 md:w-40 md:h-40 object-cover rounded-lg">
-                            </div>
+                        </div>
+                        <p class="text-gray-600 mb-4 leading-relaxed">
+                            Why most online engagement isn't human. Exploring the rise of bots, AI-generated content, and what it means for genuine human connection in our digital world.
+                        </p>
+                        <div class="flex items-center justify-between mt-auto">
+                            <a href="dead-internet-theory.html" class="bg-black hover:bg-gray-800 text-white px-6 py-2 rounded-lg font-medium transition duration-300 shadow-lg font-montserrat uppercase tracking-wider text-sm">
+                                Read Article
+                            </a>
+                            <span class="text-sm text-gray-500">7 min read</span>
                         </div>
                     </article>
 
@@ -207,8 +177,8 @@
                     <h3 class="text-xl font-semibold text-gray-900 mb-4">More Articles Coming Soon</h3>
                     <p class="text-gray-600 mb-6">I'm working on more articles about cloud computing, cybersecurity, and career development.</p>
                     <a href="https://medium.com/@nerdpioneer" target="_blank" rel="noopener noreferrer" 
-                       class="bg-black hover:bg-gray-800 text-white px-6 py-3 rounded-full font-medium transition duration-300 inline-flex items-center">
-                        <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                       class="inline-flex items-center bg-black text-white px-8 py-4 rounded-lg font-medium hover:bg-gray-800 transition duration-300 shadow-lg font-montserrat uppercase tracking-wider">
+                        <svg class="w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 24 24">
                             <path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42c1.87 0 3.38 2.88 3.38 6.42zM24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75S24 8.83 24 12z"/>
                         </svg>
                         Follow on Medium
