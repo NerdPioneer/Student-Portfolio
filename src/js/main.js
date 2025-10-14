@@ -565,6 +565,17 @@ function initIntersectionObserver() {
 }
 
 // ==============================================
+// MOBILE MENU TOGGLE (for articles pages)
+// ==============================================
+
+function toggleMobileMenu() {
+    const mobileMenu = document.getElementById('mobile-menu');
+    if (mobileMenu) {
+        mobileMenu.classList.toggle('hidden');
+    }
+}
+
+// ==============================================
 // INITIALIZATION
 // ==============================================
 
