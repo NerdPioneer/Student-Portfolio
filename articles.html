@@ -50,25 +50,64 @@
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
-        "@type": "Person",
-        "name": "Ezekiel Obeisun Jr",
-        "alternateName": ["NerdPioneer", "Akin"],
-        "givenName": "Ezekiel",
-        "familyName": "Obeisun",
-        "additionalName": "Jr",
-        "nickname": "NerdPioneer",
-        "url": "https://nerdpioneer.github.io",
-        "sameAs": [
-            "https://github.com/nerdpioneer",
-            "https://medium.com/@nerdpioneer",
-            "https://nerdpioneer.substack.com"
-        ],
-        "jobTitle": "Cloud Computing Student",
-        "worksFor": {
-            "@type": "EducationalOrganization",
-            "name": "Western Governors University"
+        "@type": "WebPage",
+        "name": "Articles & Writings - Ezekiel Obeisun Jr",
+        "description": "Deep dives into technology, cybersecurity, and career insights from my learning journey",
+        "url": "https://nerdpioneer.github.io/articles.html",
+        "author": {
+            "@type": "Person",
+            "name": "Ezekiel Obeisun Jr",
+            "alternateName": ["NerdPioneer", "Akin"],
+            "givenName": "Ezekiel",
+            "familyName": "Obeisun",
+            "additionalName": "Jr",
+            "nickname": "NerdPioneer",
+            "url": "https://nerdpioneer.github.io",
+            "sameAs": [
+                "https://github.com/nerdpioneer",
+                "https://medium.com/@nerdpioneer",
+                "https://nerdpioneer.substack.com"
+            ],
+            "jobTitle": "Cloud Computing Student",
+            "worksFor": {
+                "@type": "EducationalOrganization",
+                "name": "Western Governors University"
+            },
+            "knowsAbout": ["Cloud Computing", "Cybersecurity", "AWS", "Azure", "Python", "Infrastructure as Code"]
         },
-        "knowsAbout": ["Cloud Computing", "Cybersecurity", "AWS", "Azure", "Python", "Infrastructure as Code"]
+        "publisher": {
+            "@type": "Person",
+            "name": "Ezekiel Obeisun Jr",
+            "alternateName": ["NerdPioneer", "Akin"]
+        },
+        "datePublished": "2025-01-01",
+        "dateModified": "2025-01-01",
+        "mainEntity": {
+            "@type": "ItemList",
+            "name": "Featured Articles",
+            "itemListElement": [
+                {
+                    "@type": "Article",
+                    "headline": "The 'Dead Internet Theory' Explained: Why Most Online Engagement Isn't Human",
+                    "description": "Have you ever swiped through your social media feed and felt like all the posts are the same, repetitive, or oddly anticipated? Imagine that most of what you see — likes, comments, even full posts — aren't from real people, but automated programs.",
+                    "image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80",
+                    "author": {
+                        "@type": "Person",
+                        "name": "Ezekiel Obeisun Jr",
+                        "alternateName": ["NerdPioneer", "Akin"]
+                    },
+                    "datePublished": "2025-07-31",
+                    "dateModified": "2025-07-31",
+                    "mainEntityOfPage": {
+                        "@type": "WebPage",
+                        "@id": "https://nerdpioneer.github.io/dead-internet-theory.html"
+                    },
+                    "articleSection": "Technology & Society",
+                    "wordCount": "1200",
+                    "timeRequired": "PT7M"
+                }
+            ]
+        }
     }
     </script>
 </head>
@@ -136,39 +175,102 @@
             </div>
         </section>
 
-        <!-- Articles Card Section -->
+        <!-- Featured Article Section -->
         <section class="section py-12 md:py-20 lg:py-24 bg-gray-50 mt-8 md:mt-12 lg:mt-16">
             <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="section-title text-3xl md:text-4xl font-bold text-gray-900 mb-4">FEATURED ARTICLE</h2>
+                </div>
+                
+                <!-- Featured Article Card -->
+                <div class="max-w-4xl mx-auto mb-16">
+                    <a href="dead-internet-theory.html" class="block bg-white rounded-xl shadow-lg hover:shadow-xl transition duration-300 border border-gray-100 overflow-hidden group">
+                        <!-- Featured Image -->
+                        <div class="aspect-w-16 aspect-h-9 bg-gray-200">
+                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80" 
+                                 alt="Digital landscape with abstract network connections" 
+                                 class="w-full h-48 md:h-64 object-cover group-hover:scale-105 transition duration-300">
+                        </div>
+                        
+                        <!-- Content -->
+                        <div class="p-6">
+                            <div class="flex items-center text-sm text-gray-500 mb-3">
+                                <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-xs font-medium">Technology & Society</span>
+                                <span class="mx-3">•</span>
+                                <time>Jul 31, 2025</time>
+                                <span class="mx-3">•</span>
+                                <span>7 min read</span>
+                            </div>
+                            
+                            <h3 class="text-xl md:text-2xl font-bold text-gray-900 mb-4 group-hover:text-blue-600 transition duration-300">
+                                The 'Dead Internet Theory' Explained: Why Most Online Engagement Isn't Human
+                            </h3>
+                            
+                            <p class="text-gray-600 mb-6 leading-relaxed text-lg">
+                                Have you ever swiped through your social media feed and felt like all the posts are the same, repetitive, or oddly anticipated? Imagine that most of what you see — likes, comments, even full posts — aren't from real people, but automated programs. They're made by bots or AI-created accounts.
+                            </p>
+                            
+                            <div class="flex items-center justify-between">
+                                <span class="text-blue-600 font-medium group-hover:text-blue-700 transition duration-300">
+                                    Continue on Medium →
+                                </span>
+                                <div class="flex items-center space-x-2">
+                                    <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
+                                        <span class="text-blue-600 font-bold text-sm">EO</span>
+                                    </div>
+                                    <span class="text-sm text-gray-500">Ezekiel Obeisun Jr</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Recent Articles Section -->
+        <section class="section py-12 md:py-20 lg:py-24 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="section-title text-3xl md:text-4xl font-bold text-gray-900 mb-4">RECENT ARTICLES</h2>
+                    <p class="text-gray-600 max-w-2xl mx-auto">More insights on technology, cybersecurity, and career development</p>
+                </div>
+                
                 <!-- Articles Grid -->
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
                     
-                    <!-- Featured Article -->
-                    <article class="article-card bg-white rounded-xl shadow-lg hover:shadow-xl transition duration-300 p-6 border border-gray-100 h-full">
-                        <div class="flex items-start mb-4">
-                            <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
-                                <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
-                                </svg>
+                    <!-- Article Card 1 -->
+                    <a href="dead-internet-theory.html" class="block bg-white rounded-xl shadow-lg hover:shadow-xl transition duration-300 border border-gray-100 overflow-hidden group h-full">
+                        <!-- Thumbnail -->
+                        <div class="aspect-w-16 aspect-h-9 bg-gray-200">
+                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" 
+                                 alt="Digital landscape with abstract network connections" 
+                                 class="w-full h-40 object-cover group-hover:scale-105 transition duration-300">
+                        </div>
+                        
+                        <!-- Content -->
+                        <div class="p-6 flex flex-col h-full">
+                            <div class="flex items-center text-sm text-gray-500 mb-3">
+                                <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-xs font-medium">Technology & Society</span>
+                                <span class="mx-2">•</span>
+                                <time>Jul 31, 2025</time>
                             </div>
-                            <div class="flex-1">
-                                <div class="flex items-center text-sm text-gray-500 mb-2">
-                                    <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-xs font-medium">Technology & Society</span>
-                                    <span class="mx-2">•</span>
-                                    <time>Jul 31, 2025</time>
-                                </div>
-                                <h3 class="text-lg font-bold text-gray-900 mb-3">The 'Dead Internet Theory' Explained</h3>
+                            
+                            <h3 class="text-lg font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition duration-300">
+                                The 'Dead Internet Theory' Explained
+                            </h3>
+                            
+                            <p class="text-gray-600 mb-4 leading-relaxed flex-grow">
+                                Why most online engagement isn't human. Exploring the rise of bots, AI-generated content, and what it means for genuine human connection in our digital world.
+                            </p>
+                            
+                            <div class="flex items-center justify-between mt-auto">
+                                <span class="text-blue-600 font-medium group-hover:text-blue-700 transition duration-300">
+                                    Continue on Medium →
+                                </span>
+                                <span class="text-sm text-gray-500">7 min read</span>
                             </div>
                         </div>
-                        <p class="text-gray-600 mb-4 leading-relaxed">
-                            Why most online engagement isn't human. Exploring the rise of bots, AI-generated content, and what it means for genuine human connection in our digital world.
-                        </p>
-                        <div class="flex items-center justify-between mt-auto">
-                            <a href="dead-internet-theory.html" class="bg-black hover:bg-gray-800 text-white px-6 py-2 rounded-lg font-medium transition duration-300 shadow-lg font-montserrat uppercase tracking-wider text-sm">
-                                Read Article
-                            </a>
-                            <span class="text-sm text-gray-500">7 min read</span>
-                        </div>
-                    </article>
+                    </a>
 
                 </div>
                 
