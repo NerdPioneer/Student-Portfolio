@@ -954,7 +954,7 @@ html {
   /* New Skill Chips Design - Modern CSS Grid with Container Queries */
   .skill-chips-grid {
     @apply grid gap-3 mt-4;
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
     container-type: inline-size;
   }
 
@@ -977,11 +977,13 @@ html {
   }
   
   .skill-chip {
-    @apply inline-flex items-center px-4 py-3 rounded-full text-sm font-medium cursor-pointer;
+    @apply inline-flex items-center px-5 py-3 rounded-full text-sm font-medium cursor-pointer;
     transition: var(--transition-smooth);
     will-change: transform, box-shadow;
     position: relative;
     overflow: hidden;
+    min-width: 140px;
+    justify-content: center;
   }
 
   .skill-chip::before {
