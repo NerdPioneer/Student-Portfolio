@@ -1783,149 +1783,183 @@
                 <p class="section-subtitle text-xl text-gray-600 max-w-3xl mx-auto">Academic foundation and continuous learning in technology and computer science</p>
             </div>
             
-            <div class="education-grid grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-                <!-- Formal Education Card -->
-                <div class="education-card bg-white rounded-xl shadow-lg hover:shadow-xl transition duration-300 p-6 border border-gray-100 h-full">
-                    <div class="card-header flex items-center mb-4">
-                        <div class="card-icon w-10 h-10 bg-primary-100 rounded-lg flex items-center justify-center mr-3">
-                            <i class="fas fa-university text-primary-600 text-lg"></i>
+            <!-- Full-Width Education & Skills Card -->
+            <div class="max-w-7xl mx-auto">
+                <div class="education-card bg-white rounded-xl shadow-lg hover:shadow-xl transition duration-300 p-10 border border-gray-100">
+                    <!-- Education Header - Anchor Point -->
+                    <div class="education-header mb-12">
+                        <div class="flex items-center mb-6">
+                            <div class="card-icon w-14 h-14 bg-primary-100 rounded-lg flex items-center justify-center mr-5">
+                                <i class="fas fa-university text-primary-600 text-2xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="card-title text-2xl font-bold text-gray-900">Education & Technical Skills</h4>
+                                <p class="card-subtitle text-base text-gray-600">Academic foundation and cloud computing expertise</p>
+                            </div>
                         </div>
-                        <div>
-                            <h4 class="card-title text-lg font-semibold text-gray-900">Formal Education</h4>
-                            <p class="card-subtitle text-sm text-gray-600">Professional degree program</p>
+                        
+                        <!-- Degree Information -->
+                        <div class="degree-info">
+                            <h5 class="text-3xl font-bold text-gray-900 mb-4 leading-tight">Bachelor of Science in Cloud Computing</h5>
+                            <div class="flex items-center gap-4 text-primary-600 font-semibold mb-6">
+                                <img src="./public/icons/wgu-logo.png" alt="Western Governors University logo" class="h-8 w-auto object-contain" loading="lazy">
+                                <span class="text-xl">Western Governors University</span>
+                            </div>
+                            
+                            <!-- Degree Progress -->
+                            <div class="degree-progress">
+                                <div class="flex items-center justify-between mb-4">
+                                    <span class="text-base font-semibold text-gray-700 uppercase tracking-wide">Degree Progress</span>
+                                </div>
+                                <div class="relative">
+                                    <progress 
+                                        class="w-full h-4 bg-gray-200 rounded-full overflow-hidden" 
+                                        value="85" 
+                                        max="100" 
+                                        aria-label="Degree progress: 85% complete"
+                                        role="progressbar"
+                                        aria-valuenow="85" 
+                                        aria-valuemin="0" 
+                                        aria-valuemax="100">
+                                    </progress>
+                                    <div class="absolute inset-0 flex items-center justify-center">
+                                        <span class="text-sm font-bold text-white drop-shadow-sm">85%</span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     
-                    <div class="education-item border-l-4 border-primary-600 pl-6">
-                        <h5 class="text-lg font-semibold text-gray-900 mb-2">Bachelor of Science in Cloud Computing</h5>
-                        <div class="flex items-center gap-3 text-primary-600 font-medium mb-3">
-                            <img src="./public/icons/wgu-logo.png" alt="Western Governors University logo" class="h-6 w-auto object-contain" loading="lazy">
-                            <span>Western Governors University</span>
+                    <!-- Skills Grid - 3 Column Layout with Visual Hierarchy -->
+                    <div class="skills-grid grid lg:grid-cols-3 md:grid-cols-2 gap-8 mb-12">
+                        <!-- Languages & Tools - Primary Skills -->
+                        <div class="skill-section">
+                            <div class="skill-section-header">
+                                <div class="skill-section-icon">
+                                    <i class="fas fa-code text-primary-600"></i>
+                                </div>
+                                <div class="skill-section-accent"></div>
+                                <h6 class="skill-section-title">Languages & Tools</h6>
+                            </div>
+                            <div class="skill-chips-grid">
+                                <span class="skill-chip skill-chip-python">
+                                    <i class="fab fa-python text-green-600"></i>
+                                    <span>Python</span>
+                                </span>
+                                <span class="skill-chip skill-chip-primary">
+                                    <i class="fab fa-docker text-primary-600"></i>
+                                    <span>Docker</span>
+                                </span>
+                                <span class="skill-chip skill-chip-primary">
+                                    <i class="fas fa-cube text-primary-600"></i>
+                                    <span>Terraform</span>
+                                </span>
+                                <span class="skill-chip skill-chip-secondary">
+                                    <i class="fas fa-database text-blue-500"></i>
+                                    <span>SQL</span>
+                                </span>
+                                <span class="skill-chip skill-chip-secondary">
+                                    <i class="fas fa-terminal text-blue-500"></i>
+                                    <span>Bash/Linux</span>
+                                </span>
+                                <span class="skill-chip skill-chip-secondary">
+                                    <i class="fab fa-git-alt text-blue-500"></i>
+                                    <span>Git</span>
+                                </span>
+                            </div>
                         </div>
                         
-                        <!-- Degree Progress -->
-                        <div class="degree-progress mb-3">
-                            <div class="flex items-center justify-between mb-1">
-                                <span class="text-sm font-medium text-gray-700">Degree Progress</span>
-                                <span class="text-sm font-bold text-primary-600">85%</span>
+                        <!-- Cloud Focus - AWS Highlighted -->
+                        <div class="skill-section">
+                            <div class="skill-section-header">
+                                <div class="skill-section-icon">
+                                    <i class="fas fa-cloud text-primary-600"></i>
+                                </div>
+                                <div class="skill-section-accent"></div>
+                                <h6 class="skill-section-title">Cloud Focus</h6>
                             </div>
-                            <div class="w-full bg-gray-200 rounded-full h-2.5 mb-1">
-                                <div class="bg-gradient-to-r from-primary-500 to-primary-600 h-2.5 rounded-full transition-all duration-500 ease-out" style="width: 85%"></div>
+                            <div class="skill-chips-grid">
+                                <span class="skill-chip skill-chip-aws">
+                                    <i class="fab fa-aws text-white"></i>
+                                    <span>AWS</span>
+                                </span>
+                                <span class="skill-chip skill-chip-security">
+                                    <i class="fas fa-shield-alt text-purple-600"></i>
+                                    <span>Cloud Security</span>
+                                </span>
+                                <span class="skill-chip skill-chip-primary">
+                                    <i class="fas fa-cogs text-primary-600"></i>
+                                    <span>DevOps & Automation</span>
+                                </span>
+                                <span class="skill-chip skill-chip-secondary">
+                                    <i class="fab fa-microsoft text-blue-500"></i>
+                                    <span>Azure</span>
+                                </span>
+                                <span class="skill-chip skill-chip-secondary">
+                                    <i class="fas fa-code text-blue-500"></i>
+                                    <span>Infrastructure as Code</span>
+                                </span>
+                                <span class="skill-chip skill-chip-secondary">
+                                    <i class="fab fa-google text-blue-500"></i>
+                                    <span>GCP</span>
+                                </span>
                             </div>
-                            <p class="text-xs text-gray-600">Expected Graduation: 2025-2026</p>
                         </div>
                         
-                        <div class="course-highlights">
-                            <h6 class="font-medium text-gray-900 mb-2">Key Focus Areas:</h6>
-                            <div class="flex flex-wrap gap-1.5">
-                                <span class="inline-flex items-center px-3 py-1.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
-                                    <i class="fas fa-cogs mr-2"></i>DevOps & Automation
+                        <!-- Methods & Domains -->
+                        <div class="skill-section">
+                            <div class="skill-section-header">
+                                <div class="skill-section-icon">
+                                    <i class="fas fa-tasks text-primary-600"></i>
+                                </div>
+                                <div class="skill-section-accent"></div>
+                                <h6 class="skill-section-title">Methods & Domains</h6>
+                            </div>
+                            <div class="skill-chips-grid">
+                                <span class="skill-chip skill-chip-secondary">
+                                    <i class="fas fa-chart-gantt text-blue-500"></i>
+                                    <span>Agile/Scrum</span>
                                 </span>
-                                <span class="inline-flex items-center px-3 py-1.5 rounded-full text-xs font-medium bg-red-100 text-red-800">
-                                    <i class="fas fa-shield-alt mr-2"></i>Cloud Security
+                                <span class="skill-chip skill-chip-secondary">
+                                    <i class="fas fa-project-diagram text-blue-500"></i>
+                                    <span>Project Management</span>
                                 </span>
-                                <span class="inline-flex items-center px-3 py-1.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
-                                    <i class="fas fa-code mr-2"></i>Infrastructure as Code
-                                </span>
-                                <span class="inline-flex items-center px-3 py-1.5 rounded-full text-xs font-medium bg-purple-100 text-purple-800">
-                                    <i class="fas fa-network-wired mr-2"></i>Network Engineering (Cisco)
+                                <span class="skill-chip skill-chip-secondary">
+                                    <i class="fas fa-network-wired text-blue-500"></i>
+                                    <span>Network Engineering</span>
                                 </span>
                             </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Technical Skills Card -->
-                <div class="education-card bg-white rounded-xl shadow-lg hover:shadow-xl transition duration-300 p-6 border border-gray-100 h-full">
-                    <div class="card-header flex items-center mb-4">
-                        <div class="card-icon w-10 h-10 bg-primary-100 rounded-lg flex items-center justify-center mr-3">
-                            <i class="fas fa-code text-primary-600 text-lg"></i>
-                        </div>
-                        <div class="flex-1">
-                            <h4 class="card-title text-lg font-semibold text-gray-900">Technical Skills</h4>
-                            <p class="card-subtitle text-sm text-gray-600">Core programming & development tools</p>
                         </div>
                     </div>
                     
-                    <div class="skills-showcase space-y-4">
-                        <!-- Programming Languages -->
-                        <div class="skill-group">
-                            <h6 class="flex items-center font-semibold text-gray-900 mb-3 text-sm uppercase tracking-wide">
-                                <i class="fas fa-code text-blue-600 mr-2"></i>
-                                Programming Languages
-                            </h6>
-                            <div class="flex flex-wrap gap-2">
-                                <span class="skill-pill inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-yellow-100 text-yellow-800 hover:bg-yellow-200 transition-colors">
-                                    <i class="fab fa-js-square mr-2 text-lg"></i>JavaScript
-                                </span>
-                                <span class="skill-pill inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-blue-100 text-blue-800 hover:bg-blue-200 transition-colors">
-                                    <i class="fab fa-python mr-2 text-lg"></i>Python
-                                </span>
-                                <span class="skill-pill inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-purple-100 text-purple-800 hover:bg-purple-200 transition-colors">
-                                    <i class="fas fa-database mr-2"></i>SQL
-                                </span>
-                                <span class="skill-pill inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-orange-100 text-orange-800 hover:bg-orange-200 transition-colors">
-                                    <i class="fab fa-html5 mr-2 text-lg"></i>HTML/CSS
-                                </span>
+                    <!-- Additional Skills - Collapsed -->
+                    <div class="additional-skills">
+                        <details class="more-skills-details">
+                            <summary class="more-skills-summary">
+                                <div class="skill-section-header">
+                                    <div class="skill-section-icon">
+                                        <i class="fas fa-plus text-gray-600"></i>
+                                    </div>
+                                    <div class="skill-section-accent"></div>
+                                    <h6 class="skill-section-title">Supporting Skills</h6>
+                                </div>
+                            </summary>
+                            
+                            <div class="more-skills-content mt-6">
+                                <div class="skill-chips-grid">
+                                    <span class="skill-chip">
+                                        <i class="fab fa-js-square text-gray-500"></i>
+                                        <span>JavaScript</span>
+                                    </span>
+                                    <span class="skill-chip">
+                                        <i class="fab fa-html5 text-gray-500"></i>
+                                        <span>HTML/CSS</span>
+                                    </span>
+                                </div>
                             </div>
-                        </div>
-                        
-                        <!-- Development Tools -->
-                        <div class="skill-group">
-                            <h6 class="flex items-center font-semibold text-gray-900 mb-3 text-sm uppercase tracking-wide">
-                                <i class="fas fa-tools text-gray-600 mr-2"></i>
-                                Development Tools
-                            </h6>
-                            <div class="flex flex-wrap gap-2">
-                                <span class="skill-pill inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-blue-100 text-blue-800 hover:bg-blue-200 transition-colors">
-                                    <i class="fab fa-docker mr-2 text-lg"></i>Docker
-                                </span>
-                                <span class="skill-pill inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-red-100 text-red-800 hover:bg-red-200 transition-colors">
-                                    <i class="fab fa-git-alt mr-2 text-lg"></i>Git
-                                </span>
-                                <span class="skill-pill inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-gray-100 text-gray-800 hover:bg-gray-200 transition-colors">
-                                    <i class="fas fa-terminal mr-2"></i>Linux/CLI
-                                </span>
-                            </div>
-                        </div>
-                        
-                        <!-- Cloud Platforms -->
-                        <div class="skill-group">
-                            <h6 class="flex items-center font-semibold text-gray-900 mb-3 text-sm uppercase tracking-wide">
-                                <i class="fas fa-cloud text-blue-500 mr-2"></i>
-                                Cloud Platforms
-                            </h6>
-                            <div class="flex flex-wrap gap-2">
-                                <span class="skill-pill inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-orange-100 text-orange-800 hover:bg-orange-200 transition-colors">
-                                    <i class="fab fa-aws mr-2 text-lg"></i>AWS
-                                </span>
-                                <span class="skill-pill inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-blue-100 text-blue-800 hover:bg-blue-200 transition-colors">
-                                    <i class="fab fa-microsoft mr-2 text-lg"></i>Azure
-                                </span>
-                                <span class="skill-pill inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-red-100 text-red-800 hover:bg-red-200 transition-colors">
-                                    <i class="fab fa-google mr-2 text-lg"></i>GCP
-                                </span>
-                            </div>
-                        </div>
-                        
-                        <!-- Project Management -->
-                        <div class="skill-group">
-                            <h6 class="flex items-center font-semibold text-gray-900 mb-3 text-sm uppercase tracking-wide">
-                                <i class="fas fa-tasks text-green-500 mr-2"></i>
-                                Project Management
-                            </h6>
-                            <div class="flex flex-wrap gap-2">
-                                <span class="skill-pill inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-green-100 text-green-800 hover:bg-green-200 transition-colors">
-                                    <i class="fas fa-project-diagram mr-2"></i>Project Management
-                                </span>
-                                <span class="skill-pill inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-indigo-100 text-indigo-800 hover:bg-indigo-200 transition-colors">
-                                    <i class="fas fa-chart-gantt mr-2"></i>Agile/Scrum
-                                </span>
-                            </div>
-                        </div>
+                        </details>
                     </div>
                 </div>
-
             </div>
             
             <!-- GitHub Activity Card -->

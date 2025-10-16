@@ -1067,6 +1067,26 @@ function initMobileHeightFixes() {
     });
 }
 
+// Skills Toggle Function
+function toggleMoreSkills() {
+    const content = document.getElementById('more-skills-content');
+    const icon = document.getElementById('more-skills-icon');
+    
+    if (content && icon) {
+        const isHidden = content.classList.contains('hidden');
+        
+        if (isHidden) {
+            content.classList.remove('hidden');
+            icon.style.transform = 'rotate(180deg)';
+            trackEvent('skills_expanded', { section: 'technical_skills' });
+        } else {
+            content.classList.add('hidden');
+            icon.style.transform = 'rotate(0deg)';
+            trackEvent('skills_collapsed', { section: 'technical_skills' });
+        }
+    }
+}
+
 function initializeApp() {
     try {
         // Initialize enhanced components
@@ -1081,6 +1101,12 @@ function initializeApp() {
         
         // Initialize analytics tracking
         initAnalytics();
+        
+        // Initialize skills toggle
+        const toggle = document.querySelector('.more-skills-toggle');
+        if (toggle) {
+            toggle.addEventListener('click', toggleMoreSkills);
+        }
     } catch (error) {
         console.error('Error during initialization:', error);
     }

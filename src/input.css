@@ -641,4 +641,269 @@ html {
     }
   }
   
+  /* Education Section Improvements */
+  progress {
+    -webkit-appearance: none;
+    appearance: none;
+    background: #e5e7eb;
+    border-radius: 9999px;
+    overflow: hidden;
+  }
+  
+  progress::-webkit-progress-bar {
+    background: #e5e7eb;
+    border-radius: 9999px;
+  }
+  
+  progress::-webkit-progress-value {
+    background: linear-gradient(to right, #3b82f6, #2563eb);
+    border-radius: 9999px;
+  }
+  
+  progress::-moz-progress-bar {
+    background: linear-gradient(to right, #3b82f6, #2563eb);
+    border-radius: 9999px;
+  }
+  
+  /* Polished Skills Section - Segmented List Design */
+  .skill-section-header {
+    @apply flex items-center mb-4 relative;
+  }
+  
+  .skill-section-icon {
+    @apply w-8 h-8 bg-gray-100 rounded-lg flex items-center justify-center mr-3 flex-shrink-0;
+  }
+  
+  .skill-section-accent {
+    @apply absolute left-0 bottom-0 w-12 h-0.5 bg-gradient-to-r from-primary-500 to-primary-600 rounded-full;
+    margin-left: 2.5rem; /* 40px (w-10) + 12px (mr-3) */
+  }
+  
+  .skill-section-title {
+    @apply text-sm font-semibold text-gray-900 uppercase tracking-wide;
+  }
+  
+  .skill-segmented-list {
+    @apply bg-gray-50 rounded-xl p-1 space-y-1;
+  }
+  
+  .skill-segment {
+    @apply flex items-center px-4 py-3 bg-white rounded-lg shadow-sm hover:shadow-md transition-all duration-200 cursor-pointer;
+  }
+  
+  .skill-segment:hover {
+    @apply transform scale-[1.02];
+  }
+  
+  .skill-segment-icon {
+    @apply w-6 h-6 flex items-center justify-center mr-3 flex-shrink-0;
+  }
+  
+  .skill-segment-text {
+    @apply text-sm font-medium text-gray-900;
+  }
+  
+  /* More Skills Details/Summary Styling */
+  .more-skills-details {
+    @apply w-full;
+  }
+  
+  .more-skills-summary {
+    @apply cursor-pointer list-none;
+  }
+  
+  .more-skills-summary::-webkit-details-marker {
+    display: none;
+  }
+  
+  .more-skills-summary::-moz-list-bullet {
+    list-style-type: none;
+  }
+  
+  .more-skills-details[open] .skill-section-icon i {
+    @apply transform rotate-45;
+  }
+  
+  .more-skills-details[open] .skill-section-accent {
+    @apply from-primary-600 to-primary-700;
+  }
+  
+  /* Dark mode support */
+  @media (prefers-color-scheme: dark) {
+    .skill-segmented-list {
+      @apply bg-gray-800;
+    }
+    
+    .skill-segment {
+      @apply bg-gray-900 border border-gray-700;
+    }
+    
+    .skill-segment-text {
+      @apply text-gray-100;
+    }
+    
+    .skill-section-title {
+      @apply text-gray-100;
+    }
+    
+    .skill-section-icon {
+      @apply bg-gray-800;
+    }
+  }
+  
+  /* New Skill Chips Design - Consistent Pills with Visual Hierarchy */
+  .skill-chips-grid {
+    @apply grid grid-cols-2 gap-3 mt-4;
+  }
+  
+  .skill-chip {
+    @apply inline-flex items-center px-4 py-3 rounded-full text-sm font-medium transition-all duration-200 cursor-pointer;
+  }
+  
+  .skill-chip:hover {
+    @apply transform scale-105 shadow-sm;
+  }
+  
+  .skill-chip i {
+    @apply mr-2 text-base;
+  }
+  
+  .skill-chip span {
+    @apply font-medium;
+  }
+  
+  /* Primary Skills - Standout Design */
+  .skill-chip-primary {
+    @apply bg-primary-50 text-primary-700 border border-primary-200 hover:bg-primary-100 hover:border-primary-300;
+  }
+  
+  .skill-chip-primary i {
+    @apply text-primary-600;
+  }
+  
+  /* Python Special Accent - Soft Green */
+  .skill-chip-python {
+    @apply bg-green-50 text-green-700 border border-green-200 hover:bg-green-100 hover:border-green-300;
+  }
+  
+  .skill-chip-python i {
+    @apply text-green-600;
+  }
+  
+  /* Cloud Security Special Accent - Soft Purple */
+  .skill-chip-security {
+    @apply bg-purple-50 text-purple-700 border border-purple-200 hover:bg-purple-100 hover:border-purple-300;
+  }
+  
+  .skill-chip-security i {
+    @apply text-purple-600;
+  }
+  
+  /* Secondary Skills - Muted Blue (Active, not Disabled) */
+  .skill-chip-secondary {
+    @apply bg-blue-50 text-blue-600 border border-blue-200 hover:bg-blue-100 hover:border-blue-300;
+  }
+  
+  .skill-chip-secondary i {
+    @apply text-blue-500;
+  }
+  
+  /* AWS Special Highlight - Orange */
+  .skill-chip-aws {
+    @apply bg-orange-500 text-white border-orange-500 hover:bg-orange-600 hover:border-orange-600;
+  }
+  
+  .skill-chip-aws i {
+    @apply text-white;
+  }
+  
+  /* Skill Section Spacing - Enhanced */
+  .skill-section {
+    @apply space-y-4 mb-8;
+  }
+  
+  .skill-section-header {
+    @apply flex items-center mb-6 relative;
+  }
+  
+  .skill-section-icon {
+    @apply w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center mr-3 flex-shrink-0;
+  }
+  
+  .skill-section-accent {
+    @apply absolute left-0 bottom-0 w-16 h-1 bg-gradient-to-r from-primary-500 to-primary-600 rounded-full;
+    margin-left: 2.75rem; /* 44px (w-11) + 12px (mr-3) */
+  }
+  
+  .skill-section-title {
+    @apply text-base font-semibold text-gray-900 uppercase tracking-wide;
+  }
+  
+  /* Supporting Skills Mobile Enhancement */
+  .additional-skills {
+    @apply mt-8;
+  }
+  
+  .more-skills-details {
+    @apply w-full;
+  }
+  
+  .more-skills-summary {
+    @apply cursor-pointer list-none p-4 rounded-lg border border-gray-200 hover:bg-gray-50 transition-colors duration-200;
+  }
+  
+  .more-skills-summary::-webkit-details-marker {
+    display: none;
+  }
+  
+  .more-skills-summary::-moz-list-bullet {
+    list-style-type: none;
+  }
+  
+  .more-skills-details[open] .skill-section-icon i {
+    @apply transform rotate-45;
+  }
+  
+  .more-skills-details[open] .skill-section-accent {
+    @apply from-primary-600 to-primary-700;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .skill-chips-grid {
+      @apply grid-cols-1;
+    }
+    
+    .skill-chip {
+      @apply justify-center;
+    }
+    
+    .skill-section {
+      @apply mb-6;
+    }
+    
+    .additional-skills {
+      @apply mt-6;
+    }
+    
+    .more-skills-summary {
+      @apply p-3;
+    }
+  }
+  
+  /* Dark mode for new chips */
+  @media (prefers-color-scheme: dark) {
+    .skill-chip {
+      @apply bg-gray-800 text-gray-200 border-gray-700 hover:bg-gray-700 hover:border-gray-600;
+    }
+    
+    .skill-section-icon {
+      @apply bg-gray-800;
+    }
+    
+    .skill-section-title {
+      @apply text-gray-100;
+    }
+  }
+  
 }
