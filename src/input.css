@@ -868,7 +868,7 @@ html {
     @apply from-primary-600 to-primary-700;
   }
   
-  /* Responsive adjustments */
+  /* Comprehensive Mobile Responsive Adjustments */
   @media (max-width: 768px) {
     .skill-chips-grid {
       @apply grid-cols-1;
@@ -889,6 +889,71 @@ html {
     .more-skills-summary {
       @apply p-3;
     }
+    
+    /* Education section mobile improvements */
+    .education-card {
+      @apply p-6;
+    }
+    
+    .card-title {
+      @apply text-xl;
+    }
+    
+    .card-subtitle {
+      @apply text-sm;
+    }
+    
+    .degree-info h5 {
+      @apply text-2xl;
+    }
+    
+    .degree-progress {
+      @apply mb-4;
+    }
+    
+    /* Skills grid mobile layout */
+    .skills-grid {
+      @apply grid-cols-1 gap-6;
+    }
+    
+    .skill-section-header {
+      @apply mb-4;
+    }
+    
+    .skill-section-title {
+      @apply text-sm;
+    }
+  }
+  
+  @media (max-width: 640px) {
+    /* Extra small mobile adjustments */
+    .education-card {
+      @apply p-4;
+    }
+    
+    .card-title {
+      @apply text-lg;
+    }
+    
+    .degree-info h5 {
+      @apply text-xl;
+    }
+    
+    .skill-chip {
+      @apply px-3 py-2 text-xs;
+    }
+    
+    .skill-chip i {
+      @apply mr-1 text-sm;
+    }
+    
+    .skill-section-icon {
+      @apply w-8 h-8;
+    }
+    
+    .skill-section-title {
+      @apply text-xs;
+    }
   }
   
   /* Dark mode for new chips */
@@ -903,6 +968,125 @@ html {
     
     .skill-section-title {
       @apply text-gray-100;
+    }
+  }
+  
+  /* Mobile Navigation Improvements */
+  @media (max-width: 1023px) {
+    .nav-menu {
+      @apply bg-black bg-opacity-95 backdrop-blur-md;
+    }
+    
+    .nav-link {
+      @apply min-h-[44px] flex items-center;
+    }
+    
+    .nav-toggle {
+      @apply min-h-[44px] min-w-[44px];
+    }
+  }
+  
+  /* Mobile Projects Section */
+  @media (max-width: 768px) {
+    .projects-grid {
+      @apply grid-cols-1 gap-6;
+    }
+    
+    .project-card {
+      @apply mx-2;
+    }
+    
+    .project-header {
+      @apply p-4;
+    }
+    
+    .project-image {
+      @apply w-10 h-10;
+    }
+  }
+  
+  /* Mobile Certifications Section */
+  @media (max-width: 768px) {
+    .certifications-grid {
+      @apply grid-cols-1 gap-4;
+    }
+    
+    .certification-card {
+      @apply p-4;
+    }
+    
+    .highlighted-courses .grid {
+      @apply grid-cols-1 gap-6;
+    }
+    
+    .course-card {
+      @apply p-4;
+    }
+  }
+  
+  /* Mobile Notes Section */
+  @media (max-width: 768px) {
+    .notes-grid {
+      @apply grid-cols-1 gap-4;
+    }
+    
+    .notes-card {
+      @apply p-4;
+    }
+    
+    .notes-card h3 {
+      @apply text-lg;
+    }
+    
+    .notes-card p {
+      @apply text-sm;
+    }
+  }
+  
+  /* Mobile Footer */
+  @media (max-width: 768px) {
+    .footer {
+      @apply py-6 px-4;
+    }
+    
+    .footer p {
+      @apply text-sm;
+    }
+  }
+  
+  /* Mobile Performance Optimizations */
+  @media (max-width: 768px) {
+    /* Reduce animations on mobile for better performance */
+    .floating-icon {
+      animation-duration: 20s !important;
+    }
+    
+    .carousel-slide {
+      transition-duration: 0.5s;
+    }
+    
+    /* Optimize touch interactions */
+    .skill-chip,
+    .project-card,
+    .certification-card,
+    .notes-card {
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
+    }
+    
+    /* Reduce shadow complexity on mobile */
+    .project-card,
+    .certification-card,
+    .notes-card,
+    .education-card {
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    }
+    
+    .project-card:hover,
+    .certification-card:hover,
+    .notes-card:hover,
+    .education-card:hover {
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
     }
   }
   
