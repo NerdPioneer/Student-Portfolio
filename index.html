@@ -381,7 +381,7 @@
         
         /* Adjust body height to compensate for zoom */
         body {
-            height: 111.11%; /* 100% / 0.9 = 111.11% */
+            height: 100%; /* Fixed: was 111.11% causing extra space */
             width: 111.11%;
         }
         
@@ -1319,6 +1319,193 @@
                 font-weight: 400 !important;
             }
         }
+        
+        /* Enhanced Notes Cards Styling */
+        .notes-card {
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(10px);
+        }
+        
+        .notes-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #10b981, #059669, #047857);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .notes-card:hover::before {
+            opacity: 1;
+        }
+        
+        .notes-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(0, 0, 0, 0.05);
+            border-color: rgba(16, 185, 129, 0.2);
+        }
+        
+        /* Medium Card Specific Styling */
+        .notes-card:first-child {
+            background: linear-gradient(135deg, #ffffff 0%, #f0fdf4 100%);
+        }
+        
+        .notes-card:first-child:hover {
+            background: linear-gradient(135deg, #ffffff 0%, #ecfdf5 100%);
+            border-color: rgba(16, 185, 129, 0.3);
+        }
+        
+        .notes-card:first-child::before {
+            background: linear-gradient(90deg, #10b981, #059669, #047857);
+        }
+        
+        /* GitHub Card Specific Styling */
+        .notes-card:last-child {
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+        }
+        
+        .notes-card:last-child:hover {
+            background: linear-gradient(135deg, #ffffff 0%, #f1f5f9 100%);
+            border-color: rgba(31, 41, 55, 0.3);
+        }
+        
+        .notes-card:last-child::before {
+            background: linear-gradient(90deg, #374151, #1f2937, #111827);
+        }
+        
+        /* Icon Container Enhancements */
+        .notes-card .w-14 {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .notes-card:hover .w-14 {
+            transform: scale(1.1) rotate(5deg);
+        }
+        
+        .notes-card .w-14::after {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .notes-card:hover .w-14::after {
+            opacity: 1;
+        }
+        
+        /* Feature List Enhancements */
+        .notes-card .space-y-3 > div {
+            position: relative;
+            padding-left: 1rem;
+            transition: all 0.2s ease;
+        }
+        
+        .notes-card .space-y-3 > div:hover {
+            transform: translateX(4px);
+            color: #374151;
+        }
+        
+        .notes-card .space-y-3 > div .w-2 {
+            transition: all 0.2s ease;
+        }
+        
+        .notes-card:hover .space-y-3 > div .w-2 {
+            transform: scale(1.2);
+        }
+        
+        /* Button Enhancements */
+        .notes-card a {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .notes-card a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .notes-card a:hover::before {
+            left: 100%;
+        }
+        
+        .notes-card a:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Text Enhancements */
+        .notes-card h3 {
+            background: linear-gradient(135deg, #1f2937, #374151);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            transition: all 0.3s ease;
+        }
+        
+        .notes-card:hover h3 {
+            background: linear-gradient(135deg, #111827, #1f2937);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        /* Subtle Animation on Load */
+        @keyframes cardSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .notes-card {
+            animation: cardSlideIn 0.6s ease-out;
+        }
+        
+        .notes-card:last-child {
+            animation-delay: 0.2s;
+        }
+        
+        /* Mobile Optimizations */
+        @media (max-width: 768px) {
+            .notes-card:hover {
+                transform: translateY(-4px) scale(1.01);
+            }
+            
+            .notes-card .w-14 {
+                width: 3rem;
+                height: 3rem;
+            }
+            
+            .notes-card .w-7 {
+                width: 1.5rem;
+                height: 1.5rem;
+            }
+        }
     </style>
     
     <link rel="stylesheet" href="./dist/styles.css">
@@ -1520,7 +1707,7 @@
                         NAVIGATE THE DIGITAL LANDSCAPE WITH CONFIDENCE
                     </h1>
                     <h2 class="hero-subtitle text-center lg:text-left text-base sm:text-lg md:text-xl text-black mb-6 md:mb-8 font-medium font-montserrat uppercase tracking-wider">
-                        EZEKIEL OBEISUN JR. - <strong>CLOUD COMPUTING STUDENT</strong>
+                        EZEKIEL OBEISUN JR. - <br><strong>CLOUD COMPUTING STUDENT</strong>
                     </h2>
                     <!-- CTAs removed per request -->
                     
@@ -2089,15 +2276,15 @@
             <div class="max-w-6xl mx-auto text-center">
                 <h2 class="text-4xl md:text-5xl font-bold mb-4 text-gray-900 font-raleway uppercase tracking-wide animate-fade-in">NOTES FROM THE CLIMB</h2>
                 <p class="text-lg text-gray-600 mb-16 max-w-2xl mx-auto">
-                    My three platforms for sharing knowledge and code
+                    My two platforms for sharing knowledge and code
                 </p>
                 
-                <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
                 <!-- Medium Column -->
-                <div class="notes-card bg-white rounded-2xl p-8 flex flex-col h-full shadow-lg hover:shadow-xl transition duration-300 border border-gray-100">
-                    <div class="flex items-start mb-6">
-                        <div class="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
-                            <svg class="w-6 h-6 text-white" viewBox="0 0 24 24" fill="currentColor">
+                <div class="notes-card bg-white rounded-2xl p-10 flex flex-col h-full shadow-lg hover:shadow-xl transition duration-300 border border-gray-100 min-h-[400px]">
+                    <div class="flex items-start mb-8">
+                        <div class="w-14 h-14 bg-green-500 rounded-full flex items-center justify-center mr-5 flex-shrink-0">
+                            <svg class="w-7 h-7 text-white" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/>
                             </svg>
                         </div>
@@ -2107,13 +2294,30 @@
                         </div>
                     </div>
                     
-                    <p class="text-gray-600 text-left mb-8 leading-relaxed flex-grow">
-                        Deep-dive write-ups, study notes, and long-form posts about my journey in cloud computing, network engineering, and career growth.
-                    </p>
+                    <div class="flex-grow mb-8">
+                        <p class="text-gray-600 text-left mb-6 leading-relaxed text-base">
+                            Deep-dive write-ups, study notes, and long-form posts about my journey in cloud computing, network engineering, and career growth.
+                        </p>
+                        
+                        <div class="space-y-3">
+                            <div class="flex items-center text-sm text-gray-500">
+                                <div class="w-2 h-2 bg-green-500 rounded-full mr-3"></div>
+                                <span>Technical articles and tutorials</span>
+                            </div>
+                            <div class="flex items-center text-sm text-gray-500">
+                                <div class="w-2 h-2 bg-green-500 rounded-full mr-3"></div>
+                                <span>Career development insights</span>
+                            </div>
+                            <div class="flex items-center text-sm text-gray-500">
+                                <div class="w-2 h-2 bg-green-500 rounded-full mr-3"></div>
+                                <span>Learning journey documentation</span>
+                            </div>
+                        </div>
+                    </div>
                     
                     <div class="mt-auto">
                         <a href="https://medium.com/@nerdpioneer" target="_blank" rel="noopener noreferrer" 
-                           class="inline-flex items-center bg-green-500 text-white px-6 py-3 rounded-full font-medium hover:bg-green-600 transition duration-300 text-sm w-full justify-center">
+                           class="inline-flex items-center bg-green-500 text-white px-8 py-4 rounded-full font-medium hover:bg-green-600 transition duration-300 text-sm w-full justify-center">
                             <svg class="w-4 h-4 mr-2" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/>
                             </svg>
@@ -2123,12 +2327,11 @@
                     </div>
                 </div>
 
-
                 <!-- GitHub Column -->
-                <div class="notes-card bg-white rounded-2xl p-8 flex flex-col h-full shadow-lg hover:shadow-xl transition duration-300 border border-gray-100">
-                    <div class="flex items-start mb-6">
-                        <div class="w-12 h-12 bg-gray-800 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
-                            <svg class="w-6 h-6 text-white" viewBox="0 0 24 24" fill="currentColor">
+                <div class="notes-card bg-white rounded-2xl p-10 flex flex-col h-full shadow-lg hover:shadow-xl transition duration-300 border border-gray-100 min-h-[400px]">
+                    <div class="flex items-start mb-8">
+                        <div class="w-14 h-14 bg-gray-800 rounded-full flex items-center justify-center mr-5 flex-shrink-0">
+                            <svg class="w-7 h-7 text-white" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.30.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
                             </svg>
                         </div>
@@ -2138,13 +2341,30 @@
                         </div>
                     </div>
                     
-                    <p class="text-gray-600 text-left mb-8 leading-relaxed flex-grow">
-                        Source, prototypes, and experiments I'm shipping. From security tools to infrastructure code—see how I solve real-world problems.
-                    </p>
+                    <div class="flex-grow mb-8">
+                        <p class="text-gray-600 text-left mb-6 leading-relaxed text-base">
+                            Source, prototypes, and experiments I'm shipping. From security tools to infrastructure code—see how I solve real-world problems.
+                        </p>
+                        
+                        <div class="space-y-3">
+                            <div class="flex items-center text-sm text-gray-500">
+                                <div class="w-2 h-2 bg-gray-800 rounded-full mr-3"></div>
+                                <span>Cloud infrastructure projects</span>
+                            </div>
+                            <div class="flex items-center text-sm text-gray-500">
+                                <div class="w-2 h-2 bg-gray-800 rounded-full mr-3"></div>
+                                <span>Security tools and scripts</span>
+                            </div>
+                            <div class="flex items-center text-sm text-gray-500">
+                                <div class="w-2 h-2 bg-gray-800 rounded-full mr-3"></div>
+                                <span>Open source contributions</span>
+                            </div>
+                        </div>
+                    </div>
                     
                     <div class="mt-auto">
                         <a href="https://github.com/NerdPioneer" target="_blank" rel="noopener noreferrer" 
-                           class="inline-flex items-center bg-gray-800 text-white px-6 py-3 rounded-full font-medium hover:bg-gray-900 transition duration-300 text-sm w-full justify-center">
+                           class="inline-flex items-center bg-gray-800 text-white px-8 py-4 rounded-full font-medium hover:bg-gray-900 transition duration-300 text-sm w-full justify-center">
                             <svg class="w-4 h-4 mr-2" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.30.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
                             </svg>
@@ -2157,7 +2377,7 @@
             </div>
             
             <!-- Inspirational Quote Section - Centered -->
-            <div class="w-full flex justify-center mt-16 mb-8">
+            <div class="w-full flex justify-center mt-8 mb-4">
                 <div class="max-w-2xl px-4">
                     <!-- Decorative line above quote -->
                     <div class="w-16 h-px bg-gradient-to-r from-transparent via-gray-400 to-transparent mx-auto mb-6"></div>
@@ -2191,7 +2411,7 @@
                     </div>
                     
                     <!-- Decorative line below quote -->
-                    <div class="w-16 h-px bg-gradient-to-r from-transparent via-gray-400 to-transparent mx-auto mt-6"></div>
+                    <div class="w-16 h-px bg-gradient-to-r from-transparent via-gray-400 to-transparent mx-auto mt-4"></div>
                 </div>
             </div>
             </div>
@@ -2200,7 +2420,7 @@
 
     </main>
     <!-- Footer -->
-    <footer class="footer bg-gray-50 text-gray-900 py-0 border-t border-gray-200" role="contentinfo">
+    <footer class="footer bg-gray-50 text-gray-900 py-4 border-t border-gray-200" role="contentinfo">
         <div class="container mx-auto px-6">
             <div class="text-center">
                 <p class="text-gray-700 font-montserrat font-medium uppercase tracking-wider">&copy; 2025 Ezekiel Obeisun Jr All rights reserved.</p>

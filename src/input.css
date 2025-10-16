@@ -641,20 +641,4 @@ html {
     }
   }
   
-  /* Substack Brand Colors */
-  .bg-substack-orange {
-    background-color: #FF6719;
-  }
-  
-  .hover\:bg-substack-orange-dark:hover {
-    background-color: #E55A15;
-  }
-  
-  .border-substack-orange\/20 {
-    border-color: rgba(255, 103, 25, 0.2);
-  }
-  
-  .hover\:border-substack-orange\/40:hover {
-    border-color: rgba(255, 103, 25, 0.4);
-  }
 }
