@@ -1258,6 +1258,59 @@ html {
       @apply text-gray-100;
     }
   }
+
+  /* Safari Mobile Specific Fixes for Golden Ribbon */
+  @supports (-webkit-touch-callout: none) {
+    .degree-ribbon-badge {
+      -webkit-transform: translateZ(0);
+      transform: translateZ(0);
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+      -webkit-perspective: 1000px;
+      perspective: 1000px;
+      will-change: transform, opacity;
+    }
+    
+    .degree-ribbon-badge::before,
+    .degree-ribbon-badge::after {
+      -webkit-transform: translateZ(0);
+      transform: translateZ(0);
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+    }
+  }
+
+  /* Safari Mobile Hardware Acceleration */
+  @media (max-width: 768px) {
+    .degree-ribbon-badge {
+      -webkit-transform: translate3d(0, 0, 0);
+      transform: translate3d(0, 0, 0);
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+      contain: layout style paint;
+      /* Safari fallback background */
+      background-color: #d97706 !important;
+      background-image: linear-gradient(135deg, #eab308 0%, #d97706 100%) !important;
+    }
+    
+    .degree-ribbon-title,
+    .degree-ribbon-subtitle,
+    .degree-ribbon-university {
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+    }
+  }
+
+  /* Safari Mobile Fallback for Gradient Issues */
+  @supports (-webkit-touch-callout: none) and (max-width: 768px) {
+    .degree-ribbon-badge {
+      background: #d97706 !important;
+      background-image: linear-gradient(135deg, #eab308 0%, #d97706 100%) !important;
+      -webkit-background-clip: padding-box;
+      background-clip: padding-box;
+    }
+  }
   
   /* Mobile Navigation Improvements */
   @media (max-width: 1023px) {
