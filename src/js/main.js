@@ -698,12 +698,12 @@ function toggleMobileMenu() {
 function initRotatingQuotes() {
     const quotes = [
         {
-            text: "But seek first his kingdom and his righteousness, and all these things will be given to you as well.",
-            author: "Matthew 6:33"
+            text: "Whatever your hand finds to do, do it with all your might, for in the realm of the dead, where you are going, there is neither working nor planning nor knowledge nor wisdom.",
+            author: "Ecclesiastes 9:10"
         },
         {
-            text: "Whatever you do, work at it with all your heart, as working for the Lord, not for human masters.",
-            author: "Colossians 3:23"
+            text: "Commit to the Lord whatever you do, and he will establish your plans.",
+            author: "Proverbs 16:3"
         },
         {
             text: "Trust in the Lord with all your heart and lean not on your own understanding; in all your ways submit to him, and he will make your paths straight.",
