@@ -1581,6 +1581,7 @@
                     <p>Now, with <strong>AI reshaping technology and security</strong> at a rapid pace, my goal is to document my journey — the lessons I learn, the people I meet, and the challenges I face along the way. I believe the industry will only grow more complex, and I want to be prepared for it while maintaining a clear record of my progress. Above all, I aim to approach this path with integrity, ensuring that the work I do leaves a reliable mark and contributes to something lasting.</p>
                     <p><strong>Every project, lesson, and challenge is a chance to improve.</strong></p>
                      <p class="text-center italic text-gray-900 font-montserrat">1% Better Everyday — Atomic Habits by James Clear</p>
+                     <p class="text-center italic text-gray-700 font-montserrat mt-4">"Do you see someone skilled in their work? They will serve before kings; they will not serve before officials of low rank." — Proverbs 22:29</p>
                  </div>
              </div>
          </div>
@@ -2190,15 +2191,33 @@
                     <!-- Decorative line above quote -->
                     <div class="w-16 h-px bg-gradient-to-r from-transparent via-gray-400 to-transparent mx-auto mb-6"></div>
                     
-                    <blockquote class="site-quote ghost-quote ghost-effect relative bg-gray-50 rounded-lg p-6 md:p-8 shadow-sm border-l-4 border-blue-600" data-text="Every next level will demand a different version of you.">
-                        <p class="text-base md:text-lg text-gray-800 font-medium italic leading-relaxed mb-4 ghost-quote-mark">
-                            "Every next level will demand a different version of you."
-                        </p>
+                    <div class="rotating-quotes-container bg-gray-50 rounded-lg p-6 border-l-4 border-blue-600 relative overflow-hidden">
+                        <!-- Quote content with smooth transitions -->
+                        <div class="quote-content-wrapper relative">
+                            <blockquote class="text-center quote-block transition-all duration-500 ease-in-out opacity-100 transform translate-y-0" id="quote-block" role="region" aria-live="polite" aria-label="Inspirational quotes">
+                                <p class="text-lg text-gray-700 italic mb-2 min-h-[3rem] flex items-center justify-center leading-relaxed" id="quote-text">
+                                    "But seek first his kingdom and his righteousness, and all these things will be given to you as well."
+                                </p>
+                                <footer class="text-sm text-gray-600 min-h-[1.25rem] flex items-center justify-center" id="quote-author">
+                                    — Matthew 6:33
+                                </footer>
+                            </blockquote>
+                        </div>
                         
-                        <footer class="text-sm text-gray-600 font-normal">
-                            — Leonardo DiCaprio
-                        </footer>
-                    </blockquote>
+                        <!-- Quote navigation dots -->
+                        <div class="flex justify-center mt-4 space-x-2" role="tablist" aria-label="Quote navigation">
+                            <button class="quote-dot w-2 h-2 rounded-full bg-blue-500 transition-all duration-300 hover:scale-125 focus:outline-none focus:ring-2 focus:ring-blue-300" data-quote="0" aria-label="Show quote 1" role="tab" aria-selected="true" tabindex="0"></button>
+                            <button class="quote-dot w-2 h-2 rounded-full bg-gray-600 hover:bg-gray-400 hover:scale-125 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-300" data-quote="1" aria-label="Show quote 2" role="tab" aria-selected="false" tabindex="-1"></button>
+                            <button class="quote-dot w-2 h-2 rounded-full bg-gray-600 hover:bg-gray-400 hover:scale-125 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-300" data-quote="2" aria-label="Show quote 3" role="tab" aria-selected="false" tabindex="-1"></button>
+                            <button class="quote-dot w-2 h-2 rounded-full bg-gray-600 hover:bg-gray-400 hover:scale-125 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-300" data-quote="3" aria-label="Show quote 4" role="tab" aria-selected="false" tabindex="-1"></button>
+                            <button class="quote-dot w-2 h-2 rounded-full bg-gray-600 hover:bg-gray-400 hover:scale-125 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-300" data-quote="4" aria-label="Show quote 5" role="tab" aria-selected="false" tabindex="-1"></button>
+                        </div>
+                        
+                        <!-- Loading indicator -->
+                        <div class="absolute top-2 right-2 opacity-0 transition-opacity duration-300" id="quote-loading" aria-hidden="true">
+                            <div class="w-4 h-4 border-2 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
+                        </div>
+                    </div>
                     
                     <!-- Decorative line below quote -->
                     <div class="w-16 h-px bg-gradient-to-r from-transparent via-gray-400 to-transparent mx-auto mt-6"></div>

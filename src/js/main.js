@@ -560,6 +560,122 @@ function initIntersectionObserver() {
             opacity: 1;
             transform: translateY(0);
         }
+        
+        /* Rotating quotes enhancements */
+        .rotating-quotes-container {
+            min-height: 120px; /* Prevent layout shift */
+        }
+        
+        .quote-block {
+            will-change: opacity, transform; /* Optimize for animations */
+        }
+        
+        .quote-dot {
+            cursor: pointer;
+            border: none;
+            background: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .quote-dot:focus {
+            outline: 2px solid #60a5fa;
+            outline-offset: 2px;
+        }
+        
+        .quote-dot:focus:not(:focus-visible) {
+            outline: none;
+        }
+        
+        /* Mobile optimizations */
+        @media (max-width: 768px) {
+            .rotating-quotes-container {
+                min-height: 120px;
+                padding: 1rem !important;
+                margin: 0 0.5rem;
+            }
+            
+            .quote-block p {
+                font-size: 1rem !important;
+                line-height: 1.6 !important;
+                padding: 0 0.5rem;
+                word-wrap: break-word;
+                hyphens: auto;
+            }
+            
+            .quote-block footer {
+                font-size: 0.875rem !important;
+                margin-top: 0.5rem !important;
+            }
+            
+            /* Larger touch targets for mobile */
+            .quote-dot {
+                width: 12px !important;
+                height: 12px !important;
+                margin: 0 4px !important;
+            }
+            
+            /* Better spacing for mobile */
+            .quote-content-wrapper {
+                padding: 0.5rem 0;
+            }
+            
+            /* Ensure proper text wrapping */
+            .quote-block {
+                word-break: break-word;
+                overflow-wrap: break-word;
+            }
+        }
+        
+        /* Extra small mobile devices */
+        @media (max-width: 480px) {
+            .rotating-quotes-container {
+                min-height: 100px;
+                padding: 0.75rem !important;
+                margin: 0 0.25rem;
+            }
+            
+            .quote-block p {
+                font-size: 0.9rem !important;
+                line-height: 1.5 !important;
+                padding: 0 0.25rem;
+            }
+            
+            .quote-block footer {
+                font-size: 0.8rem !important;
+            }
+            
+            /* Smaller dots for very small screens */
+            .quote-dot {
+                width: 10px !important;
+                height: 10px !important;
+                margin: 0 3px !important;
+            }
+        }
+        
+        /* Landscape mobile orientation */
+        @media (max-width: 768px) and (orientation: landscape) {
+            .rotating-quotes-container {
+                min-height: 80px;
+                padding: 0.5rem !important;
+            }
+            
+            .quote-block p {
+                font-size: 0.9rem !important;
+                line-height: 1.4 !important;
+            }
+        }
+        
+        /* Reduced motion support */
+        @media (prefers-reduced-motion: reduce) {
+            .quote-block {
+                transition: none !important;
+            }
+            
+            .quote-dot {
+                transition: none !important;
+            }
+        }
     `;
     document.head.appendChild(style);
 }
@@ -573,6 +689,337 @@ function toggleMobileMenu() {
     if (mobileMenu) {
         mobileMenu.classList.toggle('hidden');
     }
+}
+
+// ==============================================
+// ROTATING QUOTES FUNCTIONALITY
+// ==============================================
+
+function initRotatingQuotes() {
+    const quotes = [
+        {
+            text: "But seek first his kingdom and his righteousness, and all these things will be given to you as well.",
+            author: "Matthew 6:33"
+        },
+        {
+            text: "Whatever you do, work at it with all your heart, as working for the Lord, not for human masters.",
+            author: "Colossians 3:23"
+        },
+        {
+            text: "Trust in the Lord with all your heart and lean not on your own understanding; in all your ways submit to him, and he will make your paths straight.",
+            author: "Proverbs 3:5–6"
+        },
+        {
+            text: "Every next level will demand a different version of you.",
+            author: "Leonardo DiCaprio"
+        },
+        {
+            text: "Do you see someone skilled in their work? They will serve before kings; they will not serve before officials of low rank.",
+            author: "Proverbs 22:29"
+        }
+    ];
+
+    // Get DOM elements with error checking
+    const quoteText = document.getElementById('quote-text');
+    const quoteAuthor = document.getElementById('quote-author');
+    const quoteBlock = document.getElementById('quote-block');
+    const quoteDots = document.querySelectorAll('.quote-dot');
+    const quotesContainer = document.querySelector('.rotating-quotes-container');
+    const loadingIndicator = document.getElementById('quote-loading');
+    
+    // Early return if essential elements are missing
+    if (!quoteText || !quoteAuthor || !quoteBlock || quoteDots.length === 0) {
+        console.warn('Rotating quotes: Required elements not found');
+        return;
+    }
+
+    let currentQuoteIndex = 0;
+    let autoRotateInterval = null;
+    let isTransitioning = false;
+    let isHovered = false;
+    let isPaused = false;
+
+    // Smooth transition function with fade effect
+    function updateQuote(index, skipTransition = false) {
+        if (isTransitioning || index === currentQuoteIndex) return;
+        
+        const quote = quotes[index];
+        if (!quote) {
+            console.error('Rotating quotes: Invalid quote index', index);
+            return;
+        }
+
+        isTransitioning = true;
+        
+        // Show loading indicator for longer quotes
+        if (quote.text.length > 100 && loadingIndicator) {
+            loadingIndicator.style.opacity = '1';
+        }
+
+        if (skipTransition) {
+            // Immediate update without transition
+            quoteText.textContent = `"${quote.text}"`;
+            quoteAuthor.textContent = `— ${quote.author}`;
+            updateDots(index);
+            currentQuoteIndex = index;
+            isTransitioning = false;
+            if (loadingIndicator) loadingIndicator.style.opacity = '0';
+            return;
+        }
+
+        // Smooth fade transition
+        quoteBlock.style.opacity = '0';
+        quoteBlock.style.transform = 'translateY(10px)';
+        
+        setTimeout(() => {
+            // Update content
+            quoteText.textContent = `"${quote.text}"`;
+            quoteAuthor.textContent = `— ${quote.author}`;
+            
+            // Update dots
+            updateDots(index);
+            
+            // Fade back in
+            quoteBlock.style.opacity = '1';
+            quoteBlock.style.transform = 'translateY(0)';
+            
+            currentQuoteIndex = index;
+            isTransitioning = false;
+            
+            if (loadingIndicator) loadingIndicator.style.opacity = '0';
+        }, 250); // Half of transition duration
+    }
+
+    function updateDots(index) {
+        quoteDots.forEach((dot, i) => {
+            if (i === index) {
+                dot.classList.remove('bg-gray-600', 'hover:bg-gray-400');
+                dot.classList.add('bg-blue-500');
+                dot.setAttribute('aria-pressed', 'true');
+                dot.setAttribute('aria-selected', 'true');
+                dot.setAttribute('tabindex', '0');
+            } else {
+                dot.classList.remove('bg-blue-500');
+                dot.classList.add('bg-gray-600', 'hover:bg-gray-400');
+                dot.setAttribute('aria-pressed', 'false');
+                dot.setAttribute('aria-selected', 'false');
+                dot.setAttribute('tabindex', '-1');
+            }
+        });
+    }
+
+    function nextQuote() {
+        if (isTransitioning || isPaused) return;
+        const nextIndex = (currentQuoteIndex + 1) % quotes.length;
+        updateQuote(nextIndex);
+    }
+
+    function startAutoRotate() {
+        if (autoRotateInterval || isPaused) return;
+        
+        // Enhanced mobile detection
+        const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        const isSmallScreen = window.innerWidth <= 768;
+        const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+        
+        // Determine if we're on a mobile device (more comprehensive check)
+        const isMobileDevice = isMobile || (isSmallScreen && isTouchDevice);
+        
+        // Adjust timing based on device type and screen size
+        let intervalTime;
+        if (isMobileDevice) {
+            if (window.innerWidth <= 480) {
+                intervalTime = 9000; // Extra long for very small screens
+            } else {
+                intervalTime = 8000; // Long for mobile
+            }
+        } else {
+            intervalTime = 7000; // Standard for desktop
+        }
+        
+        autoRotateInterval = setInterval(() => {
+            if (!isHovered && !isPaused) {
+                nextQuote();
+            }
+        }, intervalTime);
+    }
+
+    function stopAutoRotate() {
+        if (autoRotateInterval) {
+            clearInterval(autoRotateInterval);
+            autoRotateInterval = null;
+        }
+    }
+
+    function resetAutoRotate() {
+        stopAutoRotate();
+        if (!isPaused) {
+            startAutoRotate();
+        }
+    }
+
+    // Enhanced dot click events with debouncing
+    let clickTimeout = null;
+    quoteDots.forEach((dot, index) => {
+        dot.addEventListener('click', (e) => {
+            e.preventDefault();
+            
+            // Debounce rapid clicks
+            if (clickTimeout) {
+                clearTimeout(clickTimeout);
+            }
+            
+            clickTimeout = setTimeout(() => {
+                if (!isTransitioning) {
+                    updateQuote(index);
+                    resetAutoRotate();
+                }
+            }, 100);
+        });
+
+        // Keyboard support with enhanced mobile accessibility
+        dot.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                dot.click();
+            } else if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
+                e.preventDefault();
+                const currentIndex = parseInt(dot.getAttribute('data-quote'));
+                let newIndex;
+                
+                if (e.key === 'ArrowLeft') {
+                    newIndex = currentIndex > 0 ? currentIndex - 1 : quotes.length - 1;
+                } else {
+                    newIndex = currentIndex < quotes.length - 1 ? currentIndex + 1 : 0;
+                }
+                
+                updateQuote(newIndex);
+                resetAutoRotate();
+                
+                // Update focus to the new active dot
+                const newDot = document.querySelector(`[data-quote="${newIndex}"]`);
+                if (newDot) {
+                    newDot.focus();
+                }
+            }
+        });
+    });
+
+    // Enhanced hover handling
+    if (quotesContainer) {
+        quotesContainer.addEventListener('mouseenter', () => {
+            isHovered = true;
+            stopAutoRotate();
+        });
+        
+        quotesContainer.addEventListener('mouseleave', () => {
+            isHovered = false;
+            if (!isPaused) {
+                startAutoRotate();
+            }
+        });
+
+        // Enhanced touch support for mobile
+        let touchStartTime = 0;
+        let touchMoved = false;
+        
+        quotesContainer.addEventListener('touchstart', (e) => {
+            touchStartTime = Date.now();
+            touchMoved = false;
+            isHovered = true;
+            stopAutoRotate();
+            
+            // Prevent default to avoid scrolling issues
+            e.preventDefault();
+        });
+        
+        quotesContainer.addEventListener('touchmove', () => {
+            touchMoved = true;
+        });
+        
+        quotesContainer.addEventListener('touchend', (e) => {
+            const touchDuration = Date.now() - touchStartTime;
+            
+            // If it was a quick tap (not a scroll), don't resume immediately
+            if (!touchMoved && touchDuration < 500) {
+                setTimeout(() => {
+                    isHovered = false;
+                    if (!isPaused) {
+                        startAutoRotate();
+                    }
+                }, 3000); // Resume after 3 seconds for quick taps
+            } else {
+                // For longer touches or scrolls, resume sooner
+                setTimeout(() => {
+                    isHovered = false;
+                    if (!isPaused) {
+                        startAutoRotate();
+                    }
+                }, 1500);
+            }
+            
+            e.preventDefault();
+        });
+        
+        // Handle touch cancellation
+        quotesContainer.addEventListener('touchcancel', () => {
+            isHovered = false;
+            if (!isPaused) {
+                startAutoRotate();
+            }
+        });
+    }
+
+    // Pause when page is not visible (performance optimization)
+    document.addEventListener('visibilitychange', () => {
+        if (document.hidden) {
+            isPaused = true;
+            stopAutoRotate();
+        } else {
+            isPaused = false;
+            if (!isHovered) {
+                startAutoRotate();
+            }
+        }
+    });
+
+    // Handle window resize
+    let resizeTimeout = null;
+    window.addEventListener('resize', () => {
+        if (resizeTimeout) {
+            clearTimeout(resizeTimeout);
+        }
+        
+        resizeTimeout = setTimeout(() => {
+            // Reset transitions on resize to prevent layout issues
+            if (quoteBlock) {
+                quoteBlock.style.transition = 'none';
+                quoteBlock.style.opacity = '1';
+                quoteBlock.style.transform = 'translateY(0)';
+                
+                setTimeout(() => {
+                    quoteBlock.style.transition = 'all 0.5s ease-in-out';
+                }, 50);
+            }
+        }, 250);
+    });
+
+    // Initialize with random quote for variety on each visit
+    try {
+        // Generate random starting index for variety on each site visit
+        const randomStartIndex = Math.floor(Math.random() * quotes.length);
+        updateQuote(randomStartIndex, true); // Skip transition on initial load
+        startAutoRotate();
+    } catch (error) {
+        console.error('Rotating quotes initialization error:', error);
+    }
+
+    // Cleanup function for potential future use
+    window.cleanupRotatingQuotes = () => {
+        stopAutoRotate();
+        if (clickTimeout) clearTimeout(clickTimeout);
+        if (resizeTimeout) clearTimeout(resizeTimeout);
+    };
 }
 
 // ==============================================
@@ -630,6 +1077,7 @@ function initializeApp() {
         initMobileHeightFixes();
         initIntersectionObserver();
         initBackToTop();
+        initRotatingQuotes();
         
         // Initialize analytics tracking
         initAnalytics();
