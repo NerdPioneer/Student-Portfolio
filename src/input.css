@@ -2,6 +2,76 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Modern CSS Custom Properties for Better Performance */
+:root {
+  --color-primary: 59 130 246;
+  --color-secondary: 100 116 139;
+  --color-accent: 245 158 11;
+  --shadow-glow: 0 0 20px rgba(var(--color-primary), 0.5);
+  --shadow-glass: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  --backdrop-blur: blur(10px);
+  --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-bounce: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+/* Modern CSS Features - Container Queries Support */
+@supports (container-type: inline-size) {
+  .container-query {
+    container-type: inline-size;
+  }
+}
+
+/* Modern CSS Features - CSS Grid Subgrid Support */
+@supports (grid-template-rows: subgrid) {
+  .subgrid {
+    grid-template-rows: subgrid;
+  }
+}
+
+/* Modern CSS Features - CSS Logical Properties */
+.logical-props {
+  margin-inline-start: 1rem;
+  margin-inline-end: 1rem;
+  padding-block-start: 0.5rem;
+  padding-block-end: 0.5rem;
+}
+
+/* Modern CSS Features - Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  
+  .skill-chip::before {
+    display: none;
+  }
+}
+
+/* Modern CSS Features - High Contrast Mode Support */
+@media (prefers-contrast: high) {
+  .skill-chip {
+    border: 2px solid currentColor;
+  }
+  
+  .degree-ribbon-badge {
+    border: 3px solid currentColor;
+  }
+}
+
+/* Modern CSS Features - Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-primary: 96 165 250;
+    --color-secondary: 148 163 184;
+    --color-accent: 251 191 36;
+  }
+}
+
 /* Smooth scrolling for all browsers */
 html {
   scroll-behavior: smooth;
@@ -22,13 +92,20 @@ html {
 
 /* Custom Components - Optimized for Performance */
 @layer components {
-  /* Enhanced Navbar Responsiveness */
+  /* Enhanced Navbar Responsiveness - Modern Glass Morphism */
   .desktop-nav {
-    @apply fixed w-full top-0 z-50 transition-all duration-300 bg-black shadow-lg;
-    -webkit-backdrop-filter: blur(10px);
-    backdrop-filter: blur(10px);
-    background-color: rgba(0, 0, 0, 0.95) !important;
+    @apply fixed w-full top-0 z-50 transition-all duration-300 shadow-glass;
+    backdrop-filter: var(--backdrop-blur);
+    -webkit-backdrop-filter: var(--backdrop-blur);
+    background: rgba(0, 0, 0, 0.8);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     will-change: transform, background-color;
+    transition: var(--transition-smooth);
+  }
+
+  .desktop-nav:hover {
+    background: rgba(0, 0, 0, 0.9);
+    box-shadow: var(--shadow-glass);
   }
   
   /* Responsive Navigation Menu - Enhanced Mobile Support */
@@ -751,9 +828,10 @@ html {
     }
   }
   
-  /* Golden Degree Ribbon Styling */
+  /* Golden Degree Ribbon Styling - Enhanced with Modern Features */
   .degree-ribbon {
     @apply relative mb-8;
+    container-type: inline-size;
   }
 
   .degree-ribbon-content {
@@ -761,8 +839,17 @@ html {
   }
 
   .degree-ribbon-badge {
-    @apply bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600 rounded-lg p-6 shadow-lg border border-yellow-300;
+    @apply bg-gradient-gold rounded-4xl p-6 shadow-glass border border-yellow-300;
     @apply transform -rotate-1;
+    backdrop-filter: var(--backdrop-blur);
+    background: linear-gradient(135deg, rgba(246, 211, 101, 0.9) 0%, rgba(253, 160, 133, 0.9) 100%);
+    box-shadow: var(--shadow-glass), 0 0 0 1px rgba(255, 255, 255, 0.2);
+    transition: var(--transition-bounce);
+  }
+
+  .degree-ribbon-badge:hover {
+    @apply shadow-glow-lg transform scale-105;
+    transition: var(--transition-bounce);
   }
 
   .degree-ribbon-title {
@@ -784,7 +871,7 @@ html {
     @apply filter brightness-0 invert;
   }
 
-  /* Supporting Skills Styling */
+  /* Supporting Skills Styling - Enhanced Accessibility */
   .supporting-skills {
     @apply mt-8;
   }
@@ -792,23 +879,79 @@ html {
   .supporting-skills-header {
     @apply flex items-center gap-2 text-gray-500 hover:text-gray-700;
     @apply transition-colors duration-200 cursor-pointer;
+    @apply focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2;
+    @apply rounded-lg p-2 -m-2;
+    min-height: 44px;
+    min-width: 44px;
   }
 
   .supporting-skills-text {
     @apply text-sm font-medium;
   }
 
-  /* New Skill Chips Design - Consistent Pills with Visual Hierarchy */
+  /* Modern Focus Management */
+  .focus-visible {
+    @apply focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2;
+  }
+
+  /* Skip Links for Accessibility */
+  .skip-link {
+    @apply sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4;
+    @apply bg-primary-600 text-white px-4 py-2 rounded-lg z-50;
+    @apply focus:outline-none focus:ring-2 focus:ring-primary-300;
+  }
+
+  /* New Skill Chips Design - Modern CSS Grid with Container Queries */
   .skill-chips-grid {
-    @apply grid grid-cols-2 gap-3 mt-4;
+    @apply grid gap-3 mt-4;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    container-type: inline-size;
+  }
+
+  @container (min-width: 300px) {
+    .skill-chips-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @container (min-width: 500px) {
+    .skill-chips-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  @container (min-width: 700px) {
+    .skill-chips-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
   }
   
   .skill-chip {
-    @apply inline-flex items-center px-4 py-3 rounded-full text-sm font-medium transition-all duration-200 cursor-pointer;
+    @apply inline-flex items-center px-4 py-3 rounded-full text-sm font-medium cursor-pointer;
+    transition: var(--transition-smooth);
+    will-change: transform, box-shadow;
+    position: relative;
+    overflow: hidden;
   }
-  
+
+  .skill-chip::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+  }
+
   .skill-chip:hover {
-    @apply transform scale-105 shadow-sm;
+    @apply transform scale-105 shadow-glow;
+    transition: var(--transition-bounce);
+  }
+
+  .skill-chip:hover::before {
+    left: 100%;
   }
   
   .skill-chip i {
