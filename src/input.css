@@ -751,6 +751,53 @@ html {
     }
   }
   
+  /* Golden Degree Ribbon Styling */
+  .degree-ribbon {
+    @apply relative mb-8;
+  }
+
+  .degree-ribbon-content {
+    @apply relative;
+  }
+
+  .degree-ribbon-badge {
+    @apply bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600 rounded-lg p-6 shadow-lg border border-yellow-300;
+    @apply transform -rotate-1;
+  }
+
+  .degree-ribbon-title {
+    @apply text-2xl font-bold text-white mb-2 text-center;
+    @apply drop-shadow-sm;
+  }
+
+  .degree-ribbon-subtitle {
+    @apply text-sm text-yellow-100 text-center mb-4;
+    @apply font-medium;
+  }
+
+  .degree-ribbon-university {
+    @apply flex items-center justify-center gap-3 text-yellow-100;
+    @apply font-semibold text-sm;
+  }
+
+  .degree-ribbon-university img {
+    @apply filter brightness-0 invert;
+  }
+
+  /* Supporting Skills Styling */
+  .supporting-skills {
+    @apply mt-8;
+  }
+
+  .supporting-skills-header {
+    @apply flex items-center gap-2 text-gray-500 hover:text-gray-700;
+    @apply transition-colors duration-200 cursor-pointer;
+  }
+
+  .supporting-skills-text {
+    @apply text-sm font-medium;
+  }
+
   /* New Skill Chips Design - Consistent Pills with Visual Hierarchy */
   .skill-chips-grid {
     @apply grid grid-cols-2 gap-3 mt-4;
@@ -907,8 +954,12 @@ html {
       @apply text-2xl;
     }
     
-    .degree-progress {
+    .degree-status {
       @apply mb-4;
+    }
+    
+    .degree-status p {
+      @apply text-base;
     }
     
     /* Skills grid mobile layout */
@@ -937,6 +988,18 @@ html {
     
     .degree-info h5 {
       @apply text-xl;
+    }
+    
+    .degree-ribbon-title {
+      @apply text-xl;
+    }
+    
+    .degree-ribbon-subtitle {
+      @apply text-xs;
+    }
+    
+    .degree-ribbon-university {
+      @apply text-xs;
     }
     
     .skill-chip {

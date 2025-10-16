@@ -1789,45 +1789,15 @@
             <!-- Full-Width Education & Skills Card -->
             <div class="max-w-7xl mx-auto">
                 <div class="education-card bg-white rounded-xl shadow-lg hover:shadow-xl transition duration-300 p-10 border border-gray-100">
-                    <!-- Education Header - Anchor Point -->
-                    <div class="education-header mb-12">
-                        <div class="flex items-center mb-6">
-                            <div class="card-icon w-14 h-14 bg-primary-100 rounded-lg flex items-center justify-center mr-5">
-                                <i class="fas fa-university text-primary-600 text-2xl"></i>
-                            </div>
-                            <div>
-                                <h4 class="card-title text-2xl font-bold text-gray-900">Education & Technical Skills</h4>
-                                <p class="card-subtitle text-base text-gray-600">Academic foundation and cloud computing expertise</p>
-                            </div>
-                        </div>
-                        
-                        <!-- Degree Information -->
-                        <div class="degree-info">
-                            <h5 class="text-3xl font-bold text-gray-900 mb-4 leading-tight">Bachelor of Science in Cloud Computing</h5>
-                            <div class="flex items-center gap-4 text-primary-600 font-semibold mb-6">
-                                <img src="./public/icons/wgu-logo.png" alt="Western Governors University logo" class="h-8 w-auto object-contain" loading="lazy">
-                                <span class="text-xl">Western Governors University</span>
-                            </div>
-                            
-                            <!-- Degree Progress -->
-                            <div class="degree-progress">
-                                <div class="flex items-center justify-between mb-4">
-                                    <span class="text-base font-semibold text-gray-700 uppercase tracking-wide">Degree Progress</span>
-                                </div>
-                                <div class="relative">
-                                    <progress 
-                                        class="w-full h-4 bg-gray-200 rounded-full overflow-hidden" 
-                                        value="85" 
-                                        max="100" 
-                                        aria-label="Degree progress: 85% complete"
-                                        role="progressbar"
-                                        aria-valuenow="85" 
-                                        aria-valuemin="0" 
-                                        aria-valuemax="100">
-                                    </progress>
-                                    <div class="absolute inset-0 flex items-center justify-center">
-                                        <span class="text-sm font-bold text-white drop-shadow-sm">85%</span>
-                                    </div>
+                    <!-- Golden Degree Ribbon - Centerpiece -->
+                    <div class="degree-ribbon mb-12">
+                        <div class="degree-ribbon-content">
+                            <div class="degree-ribbon-badge">
+                                <h4 class="degree-ribbon-title">Bachelor of Science in Cloud Computing</h4>
+                                <p class="degree-ribbon-subtitle">Bachelor of Science in Cloud Computing (Expected February 2026)</p>
+                                <div class="degree-ribbon-university">
+                                    <img src="./public/icons/wgu-logo.png" alt="Western Governors University logo" class="h-6 w-auto object-contain" loading="lazy">
+                                    <span>Western Governors University</span>
                                 </div>
                             </div>
                         </div>
@@ -1853,10 +1823,6 @@
                                     <i class="fab fa-docker text-primary-600"></i>
                                     <span>Docker</span>
                                 </span>
-                                <span class="skill-chip skill-chip-primary">
-                                    <i class="fas fa-cube text-primary-600"></i>
-                                    <span>Terraform</span>
-                                </span>
                                 <span class="skill-chip skill-chip-secondary">
                                     <i class="fas fa-database text-blue-500"></i>
                                     <span>SQL</span>
@@ -1868,6 +1834,10 @@
                                 <span class="skill-chip skill-chip-secondary">
                                     <i class="fab fa-git-alt text-blue-500"></i>
                                     <span>Git</span>
+                                </span>
+                                <span class="skill-chip skill-chip-secondary">
+                                    <i class="fas fa-cube text-blue-500"></i>
+                                    <span>Terraform</span>
                                 </span>
                             </div>
                         </div>
@@ -1890,10 +1860,6 @@
                                     <i class="fas fa-shield-alt text-purple-600"></i>
                                     <span>Cloud Security</span>
                                 </span>
-                                <span class="skill-chip skill-chip-primary">
-                                    <i class="fas fa-cogs text-primary-600"></i>
-                                    <span>DevOps & Automation</span>
-                                </span>
                                 <span class="skill-chip skill-chip-secondary">
                                     <i class="fab fa-microsoft text-blue-500"></i>
                                     <span>Azure</span>
@@ -1901,6 +1867,10 @@
                                 <span class="skill-chip skill-chip-secondary">
                                     <i class="fas fa-code text-blue-500"></i>
                                     <span>Infrastructure as Code</span>
+                                </span>
+                                <span class="skill-chip skill-chip-secondary">
+                                    <i class="fas fa-cogs text-blue-500"></i>
+                                    <span>DevOps & Automation</span>
                                 </span>
                                 <span class="skill-chip skill-chip-secondary">
                                     <i class="fab fa-google text-blue-500"></i>
@@ -1935,27 +1905,24 @@
                         </div>
                     </div>
                     
-                    <!-- Additional Skills - Collapsed -->
-                    <div class="additional-skills">
+                    <!-- Supporting Skills - Collapsed -->
+                    <div class="supporting-skills">
                         <details class="more-skills-details">
                             <summary class="more-skills-summary">
-                                <div class="skill-section-header">
-                                    <div class="skill-section-icon">
-                                        <i class="fas fa-plus text-gray-600"></i>
-                                    </div>
-                                    <div class="skill-section-accent"></div>
-                                    <h6 class="skill-section-title">Supporting Skills</h6>
+                                <div class="supporting-skills-header">
+                                    <i class="fas fa-plus text-gray-500"></i>
+                                    <span class="supporting-skills-text">Show Supporting Skills</span>
                                 </div>
                             </summary>
                             
-                            <div class="more-skills-content mt-6">
+                            <div class="more-skills-content mt-4">
                                 <div class="skill-chips-grid">
-                                    <span class="skill-chip">
-                                        <i class="fab fa-js-square text-gray-500"></i>
+                                    <span class="skill-chip skill-chip-secondary">
+                                        <i class="fab fa-js-square text-blue-500"></i>
                                         <span>JavaScript</span>
                                     </span>
-                                    <span class="skill-chip">
-                                        <i class="fab fa-html5 text-gray-500"></i>
+                                    <span class="skill-chip skill-chip-secondary">
+                                        <i class="fab fa-html5 text-blue-500"></i>
                                         <span>HTML/CSS</span>
                                     </span>
                                 </div>
