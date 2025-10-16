@@ -50,6 +50,12 @@
   .skill-chip::before {
     display: none;
   }
+  
+  /* Disable star effects for reduced motion */
+  .degree-ribbon-badge::before,
+  .degree-ribbon-badge::after {
+    display: none;
+  }
 }
 
 /* Modern CSS Features - High Contrast Mode Support */
@@ -839,12 +845,56 @@ html {
   }
 
   .degree-ribbon-badge {
-    @apply bg-gradient-gold rounded-4xl p-6 shadow-glass border border-yellow-300;
-    @apply transform -rotate-1;
+    @apply bg-gradient-gold rounded-4xl p-6 shadow-glass border border-yellow-400;
+    @apply transform rotate-0 relative overflow-hidden;
     backdrop-filter: var(--backdrop-blur);
-    background: linear-gradient(135deg, rgba(246, 211, 101, 0.9) 0%, rgba(253, 160, 133, 0.9) 100%);
-    box-shadow: var(--shadow-glass), 0 0 0 1px rgba(255, 255, 255, 0.2);
+    background: linear-gradient(135deg, rgba(234, 179, 8, 0.95) 0%, rgba(217, 119, 6, 0.95) 100%);
+    box-shadow: var(--shadow-glass), 0 0 0 1px rgba(255, 255, 255, 0.3);
     transition: var(--transition-bounce);
+  }
+
+  /* Star/Space Effect */
+  .degree-ribbon-badge::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+      radial-gradient(2px 2px at 20px 30px, rgba(255, 255, 255, 0.8), transparent),
+      radial-gradient(2px 2px at 40px 70px, rgba(255, 255, 255, 0.6), transparent),
+      radial-gradient(1px 1px at 90px 40px, rgba(255, 255, 255, 0.9), transparent),
+      radial-gradient(1px 1px at 130px 80px, rgba(255, 255, 255, 0.7), transparent),
+      radial-gradient(2px 2px at 160px 30px, rgba(255, 255, 255, 0.5), transparent);
+    background-repeat: repeat;
+    background-size: 200px 100px;
+    animation: twinkle 3s ease-in-out infinite alternate;
+    pointer-events: none;
+  }
+
+  /* Floating Light Flashes */
+  .degree-ribbon-badge::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.1) 50%, transparent 70%);
+    animation: shimmer-flash 4s ease-in-out infinite;
+    pointer-events: none;
+  }
+
+  @keyframes twinkle {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 1; }
+  }
+
+  @keyframes shimmer-flash {
+    0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+    50% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+    100% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
   }
 
   .degree-ribbon-badge:hover {
@@ -1105,6 +1155,26 @@ html {
       @apply text-base;
     }
     
+    /* Golden ribbon mobile visibility */
+    .degree-ribbon-badge {
+      @apply p-5 rounded-3xl relative overflow-hidden;
+      transform: rotate(0deg) !important; /* Keep straight on mobile */
+      background: linear-gradient(135deg, rgba(234, 179, 8, 0.95) 0%, rgba(217, 119, 6, 0.95) 100%) !important;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(255, 255, 255, 0.3) !important;
+    }
+    
+    .degree-ribbon-title {
+      @apply text-xl font-bold;
+    }
+    
+    .degree-ribbon-subtitle {
+      @apply text-sm;
+    }
+    
+    .degree-ribbon-university {
+      @apply text-sm;
+    }
+    
     /* Skills grid mobile layout */
     .skills-grid {
       @apply grid-cols-1 gap-6;
@@ -1133,16 +1203,28 @@ html {
       @apply text-xl;
     }
     
+    /* Golden ribbon mobile optimizations */
+    .degree-ribbon {
+      @apply mb-6;
+    }
+    
+    .degree-ribbon-badge {
+      @apply p-4 rounded-2xl relative overflow-hidden;
+      transform: rotate(0deg) !important; /* Keep straight on mobile */
+      background: linear-gradient(135deg, rgba(234, 179, 8, 0.95) 0%, rgba(217, 119, 6, 0.95) 100%) !important;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(255, 255, 255, 0.3) !important;
+    }
+    
     .degree-ribbon-title {
-      @apply text-xl;
+      @apply text-lg font-bold;
     }
     
     .degree-ribbon-subtitle {
-      @apply text-xs;
+      @apply text-sm;
     }
     
     .degree-ribbon-university {
-      @apply text-xs;
+      @apply text-sm;
     }
     
     .skill-chip {
