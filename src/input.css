@@ -844,14 +844,55 @@ html {
     @apply relative;
   }
 
-  .degree-ribbon-badge {
-    @apply bg-gradient-gold rounded-4xl p-6 shadow-glass border border-yellow-400;
-    @apply transform rotate-0 relative overflow-hidden;
-    backdrop-filter: var(--backdrop-blur);
-    background: linear-gradient(135deg, rgba(234, 179, 8, 0.95) 0%, rgba(217, 119, 6, 0.95) 100%);
-    box-shadow: var(--shadow-glass), 0 0 0 1px rgba(255, 255, 255, 0.3);
-    transition: var(--transition-bounce);
-  }
+.degree-ribbon-badge {
+  @apply bg-gradient-gold rounded-4xl p-6 shadow-glass border border-yellow-400;
+  @apply transform rotate-0 relative overflow-hidden;
+  backdrop-filter: var(--backdrop-blur);
+  background: linear-gradient(135deg, rgba(234, 179, 8, 0.95) 0%, rgba(217, 119, 6, 0.95) 100%);
+  box-shadow: var(--shadow-glass), 0 0 0 1px rgba(255, 255, 255, 0.3);
+  transition: var(--transition-bounce);
+  position: relative;
+}
+
+/* Status Badge */
+.degree-status-badge {
+  @apply absolute -top-2 left-1/2 transform -translate-x-1/2;
+  @apply bg-white rounded-full px-4 py-1 shadow-lg border border-yellow-300;
+  @apply flex items-center gap-2;
+  z-index: 10;
+}
+
+.status-indicator {
+  @apply w-2 h-2 rounded-full bg-green-500;
+  animation: pulse-status 2s ease-in-out infinite;
+}
+
+.status-text {
+  @apply text-xs font-bold text-gray-700 uppercase tracking-wide;
+}
+
+/* Credential Ribbon Ends */
+.ribbon-end {
+  @apply absolute top-0 w-0 h-0;
+  border-style: solid;
+}
+
+.ribbon-end-left {
+  left: -8px;
+  border-width: 0 8px 20px 0;
+  border-color: transparent rgba(217, 119, 6, 0.8) transparent transparent;
+}
+
+.ribbon-end-right {
+  right: -8px;
+  border-width: 0 0 20px 8px;
+  border-color: transparent transparent transparent rgba(217, 119, 6, 0.8);
+}
+
+@keyframes pulse-status {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.7; transform: scale(1.1); }
+}
 
   /* Star/Space Effect */
   .degree-ribbon-badge::before {
@@ -1175,6 +1216,22 @@ html {
     
     .degree-ribbon-university {
       @apply text-sm;
+    }
+    
+    /* Mobile Status Badge */
+    .degree-status-badge {
+      @apply px-3 py-1;
+    }
+    .status-text {
+      @apply text-xs;
+    }
+    .status-indicator {
+      @apply w-1.5 h-1.5;
+    }
+    
+    /* Hide ribbon ends on mobile for cleaner look */
+    .ribbon-end {
+      display: none;
     }
     
     /* Skills grid mobile layout */
