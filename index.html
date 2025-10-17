@@ -1512,6 +1512,23 @@
     </style>
     
     <link rel="stylesheet" href="./dist/styles.css">
+    
+    <!-- Static Effect Animation -->
+    <style>
+        @keyframes staticNoise {
+            0% { transform: translate(0, 0); }
+            10% { transform: translate(-1px, -1px); }
+            20% { transform: translate(1px, -1px); }
+            30% { transform: translate(-1px, 1px); }
+            40% { transform: translate(1px, 1px); }
+            50% { transform: translate(-1px, -1px); }
+            60% { transform: translate(1px, -1px); }
+            70% { transform: translate(-1px, 1px); }
+            80% { transform: translate(1px, 1px); }
+            90% { transform: translate(-1px, -1px); }
+            100% { transform: translate(0, 0); }
+        }
+    </style>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=Poppins:wght@300;400;500;600;700;800&family=Raleway:wght@300;400;500;600;700;900&family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
     
@@ -1779,7 +1796,20 @@
      <!-- Inspirational Quote Section -->
      <section class="py-12 md:py-16 bg-white">
          <div class="container mx-auto px-6 max-w-4xl">
-             <div class="bg-white rounded-xl shadow-xl hover:shadow-2xl transition-shadow duration-300 border border-gray-100 p-5 md:p-8 static-effect">
+             <div class="bg-white rounded-xl shadow-xl hover:shadow-2xl transition-shadow duration-300 border border-gray-100 p-5 md:p-8 relative overflow-hidden" style="position: relative; overflow: hidden;">
+                 <!-- Static Effect Overlay -->
+                 <div class="absolute inset-0 pointer-events-none opacity-30" style="
+                     background: 
+                         radial-gradient(1px 1px at 20px 30px, rgba(255, 255, 255, 0.3), transparent),
+                         radial-gradient(1px 1px at 40px 70px, rgba(0, 0, 0, 0.2), transparent),
+                         radial-gradient(1px 1px at 90px 40px, rgba(255, 255, 255, 0.3), transparent),
+                         radial-gradient(1px 1px at 130px 80px, rgba(0, 0, 0, 0.2), transparent),
+                         radial-gradient(1px 1px at 160px 30px, rgba(255, 255, 255, 0.3), transparent);
+                     background-repeat: repeat;
+                     background-size: 200px 100px;
+                     animation: staticNoise 0.1s linear infinite;
+                     z-index: 1;
+                 "></div>
                  <div class="prose prose-gray max-w-none text-gray-700 leading-relaxed text-center relative z-10">
                      <p class="italic text-gray-700 font-montserrat">"Do you see someone skilled in their work? They will serve before kings; they will not serve before officials of low rank." — Proverbs 22:29</p>
                  </div>

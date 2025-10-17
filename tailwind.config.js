@@ -124,5 +124,9 @@ module.exports = {
     require('@tailwindcss/typography'),
   ],
   safelist: [
+    'static-effect',
+    'static-effect::before',
+    'static-effect::after',
+    'staticNoise',
   ],
 }
