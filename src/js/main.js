@@ -698,10 +698,6 @@ function toggleMobileMenu() {
 function initRotatingQuotes() {
     const quotes = [
         {
-            text: "Whatever your hand finds to do, do it with all your might, for in the realm of the dead, where you are going, there is neither working nor planning nor knowledge nor wisdom.",
-            author: "Ecclesiastes 9:10"
-        },
-        {
             text: "Commit to the Lord whatever you do, and he will establish your plans.",
             author: "Proverbs 16:3"
         },

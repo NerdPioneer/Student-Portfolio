@@ -1435,6 +1435,68 @@ html {
   
 }
 
+/* Static Effect for Bible Verse Card */
+.static-effect {
+  position: relative;
+  overflow: hidden;
+}
+
+.static-effect::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(1px 1px at 20px 30px, rgba(255, 255, 255, 0.1), transparent),
+    radial-gradient(1px 1px at 40px 70px, rgba(0, 0, 0, 0.1), transparent),
+    radial-gradient(1px 1px at 90px 40px, rgba(255, 255, 255, 0.1), transparent),
+    radial-gradient(1px 1px at 130px 80px, rgba(0, 0, 0, 0.1), transparent),
+    radial-gradient(1px 1px at 160px 30px, rgba(255, 255, 255, 0.1), transparent);
+  background-repeat: repeat;
+  background-size: 200px 100px;
+  animation: staticNoise 0.1s linear infinite;
+  pointer-events: none;
+  opacity: 0.3;
+  z-index: 1;
+}
+
+.static-effect::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(1px 1px at 20px 30px, rgba(0, 0, 0, 0.05), transparent),
+    radial-gradient(1px 1px at 40px 70px, rgba(255, 255, 255, 0.05), transparent),
+    radial-gradient(1px 1px at 90px 40px, rgba(0, 0, 0, 0.05), transparent),
+    radial-gradient(1px 1px at 130px 80px, rgba(255, 255, 255, 0.05), transparent),
+    radial-gradient(1px 1px at 160px 30px, rgba(0, 0, 0, 0.05), transparent);
+  background-repeat: repeat;
+  background-size: 150px 75px;
+  animation: staticNoise 0.15s linear infinite reverse;
+  pointer-events: none;
+  opacity: 0.2;
+  z-index: 1;
+}
+
+@keyframes staticNoise {
+  0% { transform: translate(0, 0); }
+  10% { transform: translate(-1px, -1px); }
+  20% { transform: translate(1px, -1px); }
+  30% { transform: translate(-1px, 1px); }
+  40% { transform: translate(1px, 1px); }
+  50% { transform: translate(-1px, -1px); }
+  60% { transform: translate(1px, -1px); }
+  70% { transform: translate(-1px, 1px); }
+  80% { transform: translate(1px, 1px); }
+  90% { transform: translate(-1px, -1px); }
+  100% { transform: translate(0, 0); }
+}
+
 /* Terminal Style Layout */
 .terminal-container {
   font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
