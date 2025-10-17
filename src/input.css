@@ -1434,3 +1434,67 @@ html {
   }
   
 }
+
+/* Terminal Style Layout */
+.terminal-container {
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+}
+
+.terminal-header {
+  user-select: none;
+}
+
+.terminal-content {
+  overflow-y: auto;
+  max-height: calc(100vh - 200px);
+}
+
+.terminal-pane-left {
+  min-height: calc(100vh - 120px);
+}
+
+.terminal-pane-right {
+  min-height: calc(100vh - 120px);
+}
+
+/* Terminal text effects */
+.terminal-content .text-green-400 {
+  text-shadow: 0 0 5px rgba(34, 197, 94, 0.3);
+}
+
+.terminal-content .text-blue-400 {
+  text-shadow: 0 0 5px rgba(59, 130, 246, 0.3);
+}
+
+.terminal-content .text-yellow-400 {
+  text-shadow: 0 0 5px rgba(250, 204, 21, 0.3);
+}
+
+.terminal-content .text-cyan-400 {
+  text-shadow: 0 0 5px rgba(34, 211, 238, 0.3);
+}
+
+.terminal-content .text-red-400 {
+  text-shadow: 0 0 5px rgba(248, 113, 113, 0.3);
+}
+
+/* Mobile responsive terminal */
+@media (max-width: 1024px) {
+  .terminal-container {
+    flex-direction: column;
+  }
+  
+  .terminal-pane-right {
+    width: 100%;
+    border-left: none;
+    border-top: 1px solid #374151;
+  }
+  
+  .terminal-pane-left {
+    min-height: 50vh;
+  }
+  
+  .terminal-pane-right {
+    min-height: auto;
+  }
+}
